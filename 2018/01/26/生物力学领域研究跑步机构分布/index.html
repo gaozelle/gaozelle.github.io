@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title>
-  
-    归档 · gazelle
-  
-</title>
+    <title> Mrakdown 常用语法简要说明 · gazelle </title>
     <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
@@ -27,6 +23,8 @@
     <meta name="description" content="Keep Writing Will Be Better">
 
 
+
+    <meta name="keywords" content="笔记 图表, Nlvi" />
 
 <link rel="stylesheet" href="/style/style.css">
 <script src="/script/jquery.min.js"></script>
@@ -224,45 +222,202 @@
         <main class="main" id="main">
             
     
-    <div class="archive syuanpi riseIn-light" id="archive">
-        
-            <h1 class="archive-title">Total</h1>
-            <span class="archive-num">一共有 6 篇文章</span>
-        
-        <div class="archive-list">
-            <ul>
-        
+    <article class="post">
+        <header class="post-header">
+            <div class="post-time syuanpi riseIn-light back-1">
+                <span>2018年1月26日</span>
+                
+            </div>
+            <h1 class="post-title syuanpi riseIn-light back-2">
+            
+                Mrakdown 常用语法简要说明
+            
+            </h1>
             
                 
-                
-                
+                    <div class="post-tags syuanpi riseIn-light back-3">
                     
-                     
-                        <h2 class="archive-year"> 2017 </h2>
+                        <a href="/tags/笔记-图表/">笔记 图表</a>
                     
+                    </div>
                 
             
+        </header>
+        <div class="post-content syuanpi riseIn-light back-3">
             
-            <li class="archive-post">
-                <span class="archive-post-time">
-                
-                    06-16
-                
-                </span>
-                <span class="archive-post-link">
-                    <a href="/2017/06/16/pandoc_maneul(CN)/">Pandoc`s Markdown 语法中文翻译</a>
-                </span>
-            </li>
+                <h1 id="生物力学领域研究跑步机构分布">生物力学领域研究跑步机构分布</h1>
+<div id="echarts7403" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<script src="http://echarts.baidu.com/dist/echarts.common.min.js"></script>
 
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('echarts7403'));
+        // 指定图表的配置项和数据
+        var option = 
+myChart.showLoading();
+
+$.get('data/asset/data/weibo.json', function (weiboData) {
+    myChart.hideLoading();
+
+    weiboData = weiboData.map(function (serieData, idx) {
+        var px = serieData[0] / 1000;
+        var py = serieData[1] / 1000;
+        var res = [[px, py]];
+    
+        for (var i = 2; i < serieData.length; i += 2) {
+            var dx = serieData[i] / 1000;
+            var dy = serieData[i + 1] / 1000;
+            var x = px + dx;
+            var y = py + dy;
+            res.push([x.toFixed(2), y.toFixed(2), 1]);
+    
+            px = x;
+            py = y;
+        }
+        return res;
+    });
+    myChart.setOption(option = {
+        backgroundColor: '#404a59',
+        title : {
+            text: '微博签到数据点亮中国',
+            subtext: 'From ThinkGIS',
+            sublink: 'http://www.thinkgis.cn/public/sina',
+            left: 'center',
+            top: 'top',
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        tooltip: {},
+        legend: {
+            left: 'left',
+            data: ['强', '中', '弱'],
+            textStyle: {
+                color: '#ccc'
+            }
+        },
+        geo: {
+            map: 'china',
+            roam: true,
+            label: {
+                emphasis: {
+                    show: false
+                }
+            },
+            itemStyle: {
+                normal: {
+                    areaColor: '#323c48',
+                    borderColor: '#111'
+                },
+                emphasis: {
+                    areaColor: '#2a333d'
+                }
+            }
+        },
+        series: [{
+            name: '弱',
+            type: 'scatter',
+            coordinateSystem: 'geo',
+            symbolSize: 1,
+            large: true,
+            itemStyle: {
+                normal: {
+                    shadowBlur: 2,
+                    shadowColor: 'rgba(37, 140, 249, 0.8)',
+                    color: 'rgba(37, 140, 249, 0.8)'
+                }
+            },
+            data: weiboData[0]
+        }, {
+            name: '中',
+            type: 'scatter',
+            coordinateSystem: 'geo',
+            symbolSize: 1,
+            large: true,
+            itemStyle: {
+                normal: {
+                    shadowBlur: 2,
+                    shadowColor: 'rgba(14, 241, 242, 0.8)',
+                    color: 'rgba(14, 241, 242, 0.8)'
+                }
+            },
+            data: weiboData[1]
+        }, {
+            name: '强',
+            type: 'scatter',
+            coordinateSystem: 'geo',
+            symbolSize: 1,
+            large: true,
+            itemStyle: {
+                normal: {
+                    shadowBlur: 2,
+                    shadowColor: 'rgba(255, 255, 255, 0.8)',
+                    color: 'rgba(255, 255, 255, 0.8)'
+                }
+            },
+            data: weiboData[2]
+        }]
+    });
+});
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+</script>
+
+            
         
-            </ul>
+        </div>
+        
+            
+    <div class="post-reward">
+        <span class="reward-btn" id="reward-btn">赞赏</span>
+        <div class="reward-wrapper" id="reward-wrapper" style="display:none;">
+            
+                
+                
+            
+                
+                <div class="reward-item reward-alipay">
+                    <img src="http://ov3jxphpw.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20170823013259.jpg">
+                </div>
+                
+            
+                
+                <div class="reward-item reward-wechat">
+                    <img src="http://ov3jxphpw.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20170823013308.jpg">
+                </div>
+                
+            
         </div>
     </div>
+
+
+
+            
+    <hr class="copy-line">
+
+        <div class="copy-license">
+            
+            著作权归作者所有，转载请联系作者获得授权。
+        </div>
+    </div>
+
+        
+    </article>
     
-    <nav class="pagination">
-        <span class="page-number current">1</span>
+        
+    <nav class="article-page">
+        
+        
+            <a href="/2018/01/26/图：生物力学领域研究跑步机构分布/" id="art-right" class="art-left">
+                <span class="prev-title"> 
+                    <i class="iconfont icon-left"></i>图：生物力学领域研究跑步机构分布
+                </span>
+            </a>
+        
     </nav>
 
+        
+    
 
 
         </main>
@@ -336,6 +491,16 @@ $(document).ready(function(){
 })
 </script>
     </div>
+    
+        
+    <div class="post-toc">
+        <span class="title">文章目录</span>
+        <div class="toc-inner syuanpi back-1 fallIn-light">
+            <li class="title-link"><a href="javascript:;" class="toTop">Mrakdown 常用语法简要说明</a></li>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#生物力学领域研究跑步机构分布"><span class="toc-text">生物力学领域研究跑步机构分布</span></a></li></ol>
+        </div>
+    </div>
+
     
     <div class="backtop syuanpi dead toTop" id="backtop">
     <i class="iconfont icon-up"></i>
