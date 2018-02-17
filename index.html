@@ -232,12 +232,12 @@
     <article class="post">
         <header class="post-header">
             <div class="post-time syuanpi riseIn-light back-1">
-                <span>2018年2月17日</span>
+                <span>2018年1月26日</span>
                 
             </div>
             <h1 class="post-title syuanpi riseIn-light back-2">
             
-                <a href="/2018/02/17/图/"></a>
+                <a href="/2018/01/26/生物力学领域研究跑步机构分布/">Mrakdown 常用语法简要说明</a>
             
             </h1>
             
@@ -245,7 +245,152 @@
         <div class="post-content syuanpi riseIn-light back-3">
             
                 
-                    <!DOCTYPE html>
+                    <h1 id="生物力学领域研究跑步机构分布">生物力学领域研究跑步机构分布</h1>
+<div id="echarts5598" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<script src="http://echarts.baidu.com/dist/echarts.common.min.js"></script>
+
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('echarts5598'));
+        // 指定图表的配置项和数据
+        var option = 
+myChart.showLoading();
+
+$.get('data/asset/data/weibo.json', function (weiboData) {
+    myChart.hideLoading();
+
+    weiboData = weiboData.map(function (serieData, idx) {
+        var px = serieData[0] / 1000;
+        var py = serieData[1] / 1000;
+        var res = [[px, py]];
+    
+        for (var i = 2; i < serieData.length; i += 2) {
+            var dx = serieData[i] / 1000;
+            var dy = serieData[i + 1] / 1000;
+            var x = px + dx;
+            var y = py + dy;
+            res.push([x.toFixed(2), y.toFixed(2), 1]);
+    
+            px = x;
+            py = y;
+        }
+        return res;
+    });
+    myChart.setOption(option = {
+        backgroundColor: '#404a59',
+        title : {
+            text: '微博签到数据点亮中国',
+            subtext: 'From ThinkGIS',
+            sublink: 'http://www.thinkgis.cn/public/sina',
+            left: 'center',
+            top: 'top',
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        tooltip: {},
+        legend: {
+            left: 'left',
+            data: ['强', '中', '弱'],
+            textStyle: {
+                color: '#ccc'
+            }
+        },
+        geo: {
+            map: 'china',
+            roam: true,
+            label: {
+                emphasis: {
+                    show: false
+                }
+            },
+            itemStyle: {
+                normal: {
+                    areaColor: '#323c48',
+                    borderColor: '#111'
+                },
+                emphasis: {
+                    areaColor: '#2a333d'
+                }
+            }
+        },
+        series: [{
+            name: '弱',
+            type: 'scatter',
+            coordinateSystem: 'geo',
+            symbolSize: 1,
+            large: true,
+            itemStyle: {
+                normal: {
+                    shadowBlur: 2,
+                    shadowColor: 'rgba(37, 140, 249, 0.8)',
+                    color: 'rgba(37, 140, 249, 0.8)'
+                }
+            },
+            data: weiboData[0]
+        }, {
+            name: '中',
+            type: 'scatter',
+            coordinateSystem: 'geo',
+            symbolSize: 1,
+            large: true,
+            itemStyle: {
+                normal: {
+                    shadowBlur: 2,
+                    shadowColor: 'rgba(14, 241, 242, 0.8)',
+                    color: 'rgba(14, 241, 242, 0.8)'
+                }
+            },
+            data: weiboData[1]
+        }, {
+            name: '强',
+            type: 'scatter',
+            coordinateSystem: 'geo',
+            symbolSize: 1,
+            large: true,
+            itemStyle: {
+                normal: {
+                    shadowBlur: 2,
+                    shadowColor: 'rgba(255, 255, 255, 0.8)',
+                    color: 'rgba(255, 255, 255, 0.8)'
+                }
+            },
+            data: weiboData[2]
+        }]
+    });
+});
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+</script>
+
+                
+            
+        
+        </div>
+        
+    </article>
+    
+
+    
+        
+    <article class="post">
+        <header class="post-header">
+            <div class="post-time syuanpi riseIn-light back-1">
+                <span>2018年1月26日</span>
+                
+            </div>
+            <h1 class="post-title syuanpi riseIn-light back-2">
+            
+                <a href="/2018/01/26/图/">图：生物力学领域研究跑步机构分布</a>
+            
+            </h1>
+            
+        </header>
+        <div class="post-content syuanpi riseIn-light back-3">
+            
+                
+                    ---
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -2404,150 +2549,6 @@ Charlottesville
 
 </body>
 </html>
-
-                
-            
-        
-        </div>
-        
-    </article>
-    
-
-    
-        
-    <article class="post">
-        <header class="post-header">
-            <div class="post-time syuanpi riseIn-light back-1">
-                <span>2018年1月26日</span>
-                
-            </div>
-            <h1 class="post-title syuanpi riseIn-light back-2">
-            
-                <a href="/2018/01/26/生物力学领域研究跑步机构分布/">Mrakdown 常用语法简要说明</a>
-            
-            </h1>
-            
-        </header>
-        <div class="post-content syuanpi riseIn-light back-3">
-            
-                
-                    <h1 id="生物力学领域研究跑步机构分布">生物力学领域研究跑步机构分布</h1>
-<div id="echarts6026" style="width: 85%;height: 400px;margin: 0 auto"></div>
-<script src="http://echarts.baidu.com/dist/echarts.common.min.js"></script>
-
-<script type="text/javascript">
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts6026'));
-        // 指定图表的配置项和数据
-        var option = 
-myChart.showLoading();
-
-$.get('data/asset/data/weibo.json', function (weiboData) {
-    myChart.hideLoading();
-
-    weiboData = weiboData.map(function (serieData, idx) {
-        var px = serieData[0] / 1000;
-        var py = serieData[1] / 1000;
-        var res = [[px, py]];
-    
-        for (var i = 2; i < serieData.length; i += 2) {
-            var dx = serieData[i] / 1000;
-            var dy = serieData[i + 1] / 1000;
-            var x = px + dx;
-            var y = py + dy;
-            res.push([x.toFixed(2), y.toFixed(2), 1]);
-    
-            px = x;
-            py = y;
-        }
-        return res;
-    });
-    myChart.setOption(option = {
-        backgroundColor: '#404a59',
-        title : {
-            text: '微博签到数据点亮中国',
-            subtext: 'From ThinkGIS',
-            sublink: 'http://www.thinkgis.cn/public/sina',
-            left: 'center',
-            top: 'top',
-            textStyle: {
-                color: '#fff'
-            }
-        },
-        tooltip: {},
-        legend: {
-            left: 'left',
-            data: ['强', '中', '弱'],
-            textStyle: {
-                color: '#ccc'
-            }
-        },
-        geo: {
-            map: 'china',
-            roam: true,
-            label: {
-                emphasis: {
-                    show: false
-                }
-            },
-            itemStyle: {
-                normal: {
-                    areaColor: '#323c48',
-                    borderColor: '#111'
-                },
-                emphasis: {
-                    areaColor: '#2a333d'
-                }
-            }
-        },
-        series: [{
-            name: '弱',
-            type: 'scatter',
-            coordinateSystem: 'geo',
-            symbolSize: 1,
-            large: true,
-            itemStyle: {
-                normal: {
-                    shadowBlur: 2,
-                    shadowColor: 'rgba(37, 140, 249, 0.8)',
-                    color: 'rgba(37, 140, 249, 0.8)'
-                }
-            },
-            data: weiboData[0]
-        }, {
-            name: '中',
-            type: 'scatter',
-            coordinateSystem: 'geo',
-            symbolSize: 1,
-            large: true,
-            itemStyle: {
-                normal: {
-                    shadowBlur: 2,
-                    shadowColor: 'rgba(14, 241, 242, 0.8)',
-                    color: 'rgba(14, 241, 242, 0.8)'
-                }
-            },
-            data: weiboData[1]
-        }, {
-            name: '强',
-            type: 'scatter',
-            coordinateSystem: 'geo',
-            symbolSize: 1,
-            large: true,
-            itemStyle: {
-                normal: {
-                    shadowBlur: 2,
-                    shadowColor: 'rgba(255, 255, 255, 0.8)',
-                    color: 'rgba(255, 255, 255, 0.8)'
-                }
-            },
-            data: weiboData[2]
-        }]
-    });
-});
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-</script>
 
                 
             
