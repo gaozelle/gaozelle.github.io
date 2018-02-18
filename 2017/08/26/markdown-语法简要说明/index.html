@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title> Mrakdown 常用语法简要说明 · gazelle </title>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><title> Mrakdown 常用语法简要说明 · gazelle </title>
     <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
@@ -56,12 +56,12 @@
 
 
 
-    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </head>
 <body>
-    <div class="progress">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="progress">
     <div class="progress-inner"></div>
 </div>
     <div class="body">
@@ -292,7 +292,7 @@
 <p>输入的文字<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>输入的文字</p>
 </blockquote>
 <h1 id="引用">引用</h1>
-<p>@+.bib的文章引用名称，字YAML中插入，–Bibliographies=xxx.bib 也可以在YAML中声明Meta data，编译完于文章后标注。</p>
+<p>@+.bib的文章引用名称，字YAML中插入，–Bibliographies=xxx.bib 也可以在YAML中声明Meta data，编译完于文章后标注。<span class="citation" data-cites="Pugh1971">[@Pugh1971]</span></p>
 <p><code>马拉松的脚注@Hausswirth1997</code></p>
 <h1 id="表格">表格</h1>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-------------------------------------------------------------</span><br><span class="line"> Centered   Default           Right Left</span><br><span class="line">  Header    Aligned         Aligned Aligned</span><br><span class="line">----------- ------- --------------- -------------------------</span><br><span class="line">   First    row                12.0 Example of a row that</span><br><span class="line">                                    spans multiple lines.</span><br><span class="line"></span><br><span class="line">  Second    row                 5.0 Here&apos;s another one. Note</span><br><span class="line">                                    the blank line between</span><br><span class="line">                                    rows.</span><br><span class="line">-------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">Table: Here&apos;s the caption. It, too, may span</span><br><span class="line">multiple lines.</span><br></pre></td></tr></table></figure>
@@ -487,7 +487,24 @@ $(document).ready(function(){
     $(document).ready(function(){
         Nlvi.search();
     });
-    </script>
+    </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 </body>
 </html>
