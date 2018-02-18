@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-02-18T16:47:55.557Z</updated>
+  <updated>2018-02-18T19:45:57.232Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,16 +21,16 @@
     <link href="http://yoursite.com/2018/01/30/123/"/>
     <id>http://yoursite.com/2018/01/30/123/</id>
     <published>2018-01-29T23:45:12.000Z</published>
-    <updated>2018-02-18T16:47:55.557Z</updated>
+    <updated>2018-02-18T19:45:57.232Z</updated>
     
-    <content type="html"><![CDATA[<p><span class="math display">\[a =\arccos \bigg( \frac{S1\bullet S2}{(|S1||S2|)}\bigg)\]</span></p><p>==123==<span class="citation" data-cites="Pugh1971">[@Pugh1971]</span></p>]]></content>
+    <content type="html"><![CDATA[<span>$a =\arccos \bigg( \frac{S1\bullet S2}{(|S1||S2|)}\bigg)$</span><!-- Has MathJax --><p>==123==<span class="citation" data-cites="Pugh1971">[@Pugh1971]</span></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;&lt;span class=&quot;math display&quot;&gt;\[a =\arccos \bigg( \frac{S1\bullet S2}{(|S1||S2|)}\bigg)\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;==123==&lt;span class=&quot;citation&quot; data-c
+        &lt;span&gt;$a =\arccos \bigg( \frac{S1\bullet S2}{(|S1||S2|)}\bigg)$&lt;/span&gt;&lt;!-- Has MathJax --&gt;
+&lt;p&gt;==123==&lt;span class=&quot;citation&quot; data-cites=&quot;Pugh
       
     
     </summary>
