@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title><![CDATA[Congratulations !🍻My Blog change a new themes]]></title>
-    <url>%2F2018%2F01%2F21%2Fnew%20themes%2F</url>
+    <url>%2F2018%2F02%2F21%2Fnew%20themes%2F</url>
     <content type="text"><![CDATA[I had already have a long time to update my blog. Because I changed my PC to MAC. My blog is free and it use Hoxe rely on GitHub. Means it should use Git to connect, and Git has a SHH (like a code). When I change my computer I must change my SHH and arrange Hexo again.I did it and update a new post, a discus note, then I got a problem. There have some formula in it. If you want show the formula in blog the markdwon document should be transform to HTML, and the formula should transform from LaTeX to Mathjax format.It like the formula \cos 2\theta = \cos^2 \theta - \sin^2 \theta = 2 \cos^2 \theta - 1will become\cos 2\theta = \cos^2 \theta - \sin^2 \theta = 2 \cos^2 \theta - 1,never show correct style$\cos 2\theta = \cos^2 \theta - \sin^2 \theta = 2 \cos^2 \theta - 1$Another problem again. I search many websites and it didn’t work, feel maybe the themes did not support mathjax format. So I decide change my blog themes. So I changed my blog themes. congratulations! We have a hole new website!And it welcome the new year, by the way.I will keep writing fighting !!!]]></content>
       <categories>
         <category>new</category>
