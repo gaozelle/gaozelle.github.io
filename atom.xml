@@ -5,9 +5,9 @@
   <subtitle>A Biomechanics Note and Life</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
-  <updated>2018-02-20T18:16:24.168Z</updated>
-  <id>http://yoursite.com/</id>
+  <link href="http://gaomm.top/"/>
+  <updated>2018-02-21T12:13:15.398Z</updated>
+  <id>http://gaomm.top/</id>
   
   <author>
     <name>gazelle©</name>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Congratulations !🍻&lt;br/&gt;My Blog change a new themes</title>
-    <link href="http://yoursite.com/2018/02/21/new%20themes/"/>
-    <id>http://yoursite.com/2018/02/21/new themes/</id>
+    <link href="http://gaomm.top/2018/02/21/new%20themes/"/>
+    <id>http://gaomm.top/2018/02/21/new themes/</id>
     <published>2018-02-20T17:36:12.000Z</published>
-    <updated>2018-02-20T18:16:24.168Z</updated>
+    <updated>2018-02-21T12:13:15.398Z</updated>
     
     <content type="html"><![CDATA[<p>I had already have a long time to update my blog. Because I changed my PC to MAC. My blog is free and it use Hoxe rely on GitHub. Means it should use Git to connect, and Git has a SHH (like a code). When I change my computer I must change my SHH and arrange Hexo again.<br><a id="more"></a> I did it and update a new post, a discus note, then I got a problem. There have some formula in it. If you want show the formula in blog the markdwon document should be transform to HTML, and the formula should transform from LaTeX to Mathjax format.<br>It like the formula<br><code>/$ \cos 2\theta = \cos^2 \theta - \sin^2 \theta =  2 \cos^2 \theta - 1/$</code><br>will become<br><code>\cos 2\theta = \cos^2 \theta - \sin^2 \theta =  2 \cos^2 \theta - 1</code>,<br>never show correct style<br><span class="math inline">\(\cos 2\theta = \cos^2 \theta - \sin^2 \theta = 2 \cos^2 \theta - 1\)</span><br>Another problem again. I search many websites and it didn’t work, feel maybe the themes did not support mathjax format. So I decide change my blog themes.</p><p>So I changed my blog themes. congratulations! We have a hole new website!<br>And it welcome the new year, by the way.<br>I will keep writing fighting !!!</p><p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=16900590&auto=1&height=66"></iframe></p>]]></content>
     
@@ -31,19 +31,19 @@
     
     </summary>
     
-      <category term="new" scheme="http://yoursite.com/categories/new/"/>
+      <category term="new" scheme="http://gaomm.top/categories/new/"/>
     
     
-      <category term="blog" scheme="http://yoursite.com/tags/blog/"/>
+      <category term="blog" scheme="http://gaomm.top/tags/blog/"/>
     
-      <category term="themes" scheme="http://yoursite.com/tags/themes/"/>
+      <category term="themes" scheme="http://gaomm.top/tags/themes/"/>
     
   </entry>
   
   <entry>
     <title>Discus Throwing Reference Note</title>
-    <link href="http://yoursite.com/2017/12/23/discus%20throwing%20reference%20note/"/>
-    <id>http://yoursite.com/2017/12/23/discus throwing reference note/</id>
+    <link href="http://gaomm.top/2017/12/23/discus%20throwing%20reference%20note/"/>
+    <id>http://gaomm.top/2017/12/23/discus throwing reference note/</id>
     <published>2017-12-23T02:26:48.000Z</published>
     <updated>2018-02-20T18:14:37.524Z</updated>
     
@@ -55,19 +55,19 @@
     
     </summary>
     
-      <category term="biomechanics" scheme="http://yoursite.com/categories/biomechanics/"/>
+      <category term="biomechanics" scheme="http://gaomm.top/categories/biomechanics/"/>
     
     
-      <category term="笔记" scheme="http://yoursite.com/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="http://gaomm.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="Discus" scheme="http://yoursite.com/tags/Discus/"/>
+      <category term="Discus" scheme="http://gaomm.top/tags/Discus/"/>
     
   </entry>
   
   <entry>
     <title>论文写作笔记</title>
-    <link href="http://yoursite.com/2017/08/30/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
-    <id>http://yoursite.com/2017/08/30/论文写作笔记/</id>
+    <link href="http://gaomm.top/2017/08/30/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C%E7%AC%94%E8%AE%B0/"/>
+    <id>http://gaomm.top/2017/08/30/论文写作笔记/</id>
     <published>2017-08-29T23:45:12.000Z</published>
     <updated>2018-02-20T16:39:42.007Z</updated>
     
@@ -79,17 +79,17 @@
     
     </summary>
     
-      <category term="papers" scheme="http://yoursite.com/categories/papers/"/>
+      <category term="papers" scheme="http://gaomm.top/categories/papers/"/>
     
     
-      <category term="笔记" scheme="http://yoursite.com/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="http://gaomm.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>Mrakdown 常用语法简要说明</title>
-    <link href="http://yoursite.com/2017/08/26/markdown-%E8%AF%AD%E6%B3%95%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/"/>
-    <id>http://yoursite.com/2017/08/26/markdown-语法简要说明/</id>
+    <link href="http://gaomm.top/2017/08/26/markdown-%E8%AF%AD%E6%B3%95%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/"/>
+    <id>http://gaomm.top/2017/08/26/markdown-语法简要说明/</id>
     <published>2017-08-26T02:26:48.000Z</published>
     <updated>2018-02-20T16:36:19.867Z</updated>
     
@@ -102,17 +102,17 @@
     
     </summary>
     
-      <category term="markdown" scheme="http://yoursite.com/categories/markdown/"/>
+      <category term="markdown" scheme="http://gaomm.top/categories/markdown/"/>
     
     
-      <category term="笔记" scheme="http://yoursite.com/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="http://gaomm.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>marothron 笔记</title>
-    <link href="http://yoursite.com/2017/08/23/marothron/"/>
-    <id>http://yoursite.com/2017/08/23/marothron/</id>
+    <link href="http://gaomm.top/2017/08/23/marothron/"/>
+    <id>http://gaomm.top/2017/08/23/marothron/</id>
     <published>2017-08-22T19:17:36.000Z</published>
     <updated>2018-02-20T16:36:55.847Z</updated>
     
@@ -125,17 +125,17 @@
     
     </summary>
     
-      <category term="biomechanics" scheme="http://yoursite.com/categories/biomechanics/"/>
+      <category term="biomechanics" scheme="http://gaomm.top/categories/biomechanics/"/>
     
     
-      <category term="笔记" scheme="http://yoursite.com/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="http://gaomm.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>Pandoc`s Markdown 语法中文翻译</title>
-    <link href="http://yoursite.com/2017/06/16/pandoc_maneul(CN)/"/>
-    <id>http://yoursite.com/2017/06/16/pandoc_maneul(CN)/</id>
+    <link href="http://gaomm.top/2017/06/16/pandoc_maneul(CN)/"/>
+    <id>http://gaomm.top/2017/06/16/pandoc_maneul(CN)/</id>
     <published>2017-06-16T11:55:01.000Z</published>
     <updated>2018-02-20T16:42:06.771Z</updated>
     
@@ -148,10 +148,10 @@
     
     </summary>
     
-      <category term="markdown" scheme="http://yoursite.com/categories/markdown/"/>
+      <category term="markdown" scheme="http://gaomm.top/categories/markdown/"/>
     
     
-      <category term="笔记" scheme="http://yoursite.com/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="http://gaomm.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
