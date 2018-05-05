@@ -3,7 +3,7 @@
   <entry>
     <title></title>
     <url>%2F2018%2F05%2F05%2Fdiscus-data-analysis-use-R%2F</url>
-    <content type="text"><![CDATA[mathjax: truetitle: discus data analysis use Rdate: 2018-5-5 19:18:48categories: biomechanics tags: 笔记x]]></content>
+    <content type="text"><![CDATA[mathjax: truetitle: discus data analysis use Rdate: 2018-5-5 20:18:48categories: biomechanics tags: 笔记 在生物力学中，会对运动员进行动作分析。由于比赛场地不允许带入分析设备，通常会使用两台（或多台）摄像机拍摄运动员的录像对运动员的动作进行三维解析。三维解析的过程比较繁琐，需要人工将人体的关节位置识别出。而在国内，分析运动员的动作是将少数的一两个运动员的解析数据进行比较，很少有多名运动员的数据进行统计分析和对比。原因是并没有统计三维解析的工具，但binyu我使用R语言处理分析解析三维坐标的代码 function]]></content>
   </entry>
   <entry>
     <title><![CDATA[R语言笔记]]></title>
