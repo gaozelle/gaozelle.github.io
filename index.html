@@ -363,6 +363,180 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gaomm.top/2018/05/05/R语言笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gazelle©">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gazelle">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/05/R语言笔记/" itemprop="url">R语言笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-05T19:18:48+08:00">2018-05-05</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/笔记/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/05/R语言笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/05/R语言笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/05/05/R语言笔记/" class="leancloud_visitors" data-flag-title="R语言笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="rstudio快捷键">1 Rstudio快捷键</h1>
+<blockquote>
+<p><span style="background:#C1FFC1">Alt + -</span> 快捷输入 <span style="background:#C1FFC1"> &lt;- </span></p>
+</blockquote>
+<h1 id="r中字符串操作">2 R中字符串操作</h1>
+<h2 id="字符串链接-paste">字符串链接 paste( )</h2>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paste(<span class="keyword">...</span>, sep = <span class="string">" "</span>, collapse = <span class="literal">NULL</span>)</span><br></pre></td></tr></table></figure>
+<p>用法： <span style="background:#C1FFC1 ">…</span> 为字符； <span style="background:#C1FFC1   ">sep=&quot; &quot; </span>中的 &quot; &quot; 为分隔符； <span style="background:#C1FFC1   ">collaspse= NULL</span>表示连成一个字符串，如果将NULL修改成 “,” 则将字符连接成一个字符，并用 ，分隔。<br>
+例： <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; paste(<span class="string">"A"</span>,<span class="string">"B"</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"A B"</span></span><br><span class="line"></span><br><span class="line">&gt; paste(<span class="string">"A"</span>,<span class="string">"B"</span>,sep=<span class="string">","</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"A,B"</span></span><br><span class="line"></span><br><span class="line">&gt; paste(<span class="string">"A"</span>,<span class="number">1</span>:<span class="number">3</span>,sep=<span class="string">""</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"A1"</span> <span class="string">"A2"</span> <span class="string">"A3"</span></span><br><span class="line"></span><br><span class="line">&gt; paste(<span class="string">"A"</span>, <span class="number">1</span>:<span class="number">3</span> ,sep = <span class="string">""</span> ,collapse = <span class="string">","</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"A1,A2,A3"</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="字符串替换-gsub">字符串替换 gsub( )</h2>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gsub(pattern, replacement, x, ignore.case = <span class="literal">FALSE</span>, perl = <span class="literal">FALSE</span>,</span><br><span class="line">     fixed = <span class="literal">FALSE</span>, useBytes = <span class="literal">FALSE</span>)</span><br></pre></td></tr></table></figure>
+<p>用法： <span style="background:#C1FFC1 ">pattern</span> 为需要替换的字符；<span style="background:#C1FFC1">replacement</span>为替换后的字符；<span style="background:#C1FFC1">x</span>为包含字符的向量。 例： <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; a &lt;- <span class="string">"abc,d"</span></span><br><span class="line">&gt; a</span><br><span class="line">[<span class="number">1</span>] <span class="string">"abc,d"</span></span><br><span class="line"></span><br><span class="line">&gt; b &lt;- gsub(<span class="string">"a"</span>,<span class="string">"x"</span>,a)</span><br><span class="line">&gt; b</span><br><span class="line">[<span class="number">1</span>] <span class="string">"xbc,d"</span></span><br><span class="line"></span><br><span class="line">&gt; b &lt;- gsub(<span class="string">","</span>, <span class="string">"x"</span>, a, fixed = <span class="literal">TRUE</span>)</span><br><span class="line">&gt; b</span><br><span class="line">[<span class="number">1</span>] <span class="string">"abcxd"</span></span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://gaomm.top/2018/03/08/Communicate-with-CL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1549,7 +1723,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1572,7 +1746,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1595,7 +1771,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -2330,6 +2508,8 @@
     
       
         
+      
+    
       
     
       

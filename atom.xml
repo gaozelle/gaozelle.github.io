@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gaomm.top/"/>
-  <updated>2018-03-08T08:53:39.410Z</updated>
+  <updated>2018-05-05T11:20:04.109Z</updated>
   <id>http://gaomm.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>R语言笔记</title>
+    <link href="http://gaomm.top/2018/05/05/R%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/"/>
+    <id>http://gaomm.top/2018/05/05/R语言笔记/</id>
+    <published>2018-05-05T11:18:48.000Z</published>
+    <updated>2018-05-05T11:20:04.109Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="rstudio快捷键">1 Rstudio快捷键</h1><blockquote><p><span style="background:#C1FFC1">Alt + -</span> 快捷输入 <span style="background:#C1FFC1"> &lt;- </span></p></blockquote><h1 id="r中字符串操作">2 R中字符串操作</h1><h2 id="字符串链接-paste">字符串链接 paste( )</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paste(<span class="keyword">...</span>, sep = <span class="string">" "</span>, collapse = <span class="literal">NULL</span>)</span><br></pre></td></tr></table></figure><p>用法： <span style="background:#C1FFC1 ">…</span> 为字符； <span style="background:#C1FFC1   ">sep=&quot; &quot; </span>中的 &quot; &quot; 为分隔符； <span style="background:#C1FFC1   ">collaspse= NULL</span>表示连成一个字符串，如果将NULL修改成 “,” 则将字符连接成一个字符，并用 ，分隔。<br>例： <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; paste(<span class="string">"A"</span>,<span class="string">"B"</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"A B"</span></span><br><span class="line"></span><br><span class="line">&gt; paste(<span class="string">"A"</span>,<span class="string">"B"</span>,sep=<span class="string">","</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"A,B"</span></span><br><span class="line"></span><br><span class="line">&gt; paste(<span class="string">"A"</span>,<span class="number">1</span>:<span class="number">3</span>,sep=<span class="string">""</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"A1"</span> <span class="string">"A2"</span> <span class="string">"A3"</span></span><br><span class="line"></span><br><span class="line">&gt; paste(<span class="string">"A"</span>, <span class="number">1</span>:<span class="number">3</span> ,sep = <span class="string">""</span> ,collapse = <span class="string">","</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"A1,A2,A3"</span></span><br></pre></td></tr></table></figure></p><h2 id="字符串替换-gsub">字符串替换 gsub( )</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gsub(pattern, replacement, x, ignore.case = <span class="literal">FALSE</span>, perl = <span class="literal">FALSE</span>,</span><br><span class="line">     fixed = <span class="literal">FALSE</span>, useBytes = <span class="literal">FALSE</span>)</span><br></pre></td></tr></table></figure><p>用法： <span style="background:#C1FFC1 ">pattern</span> 为需要替换的字符；<span style="background:#C1FFC1">replacement</span>为替换后的字符；<span style="background:#C1FFC1">x</span>为包含字符的向量。 例： <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; a &lt;- <span class="string">"abc,d"</span></span><br><span class="line">&gt; a</span><br><span class="line">[<span class="number">1</span>] <span class="string">"abc,d"</span></span><br><span class="line"></span><br><span class="line">&gt; b &lt;- gsub(<span class="string">"a"</span>,<span class="string">"x"</span>,a)</span><br><span class="line">&gt; b</span><br><span class="line">[<span class="number">1</span>] <span class="string">"xbc,d"</span></span><br><span class="line"></span><br><span class="line">&gt; b &lt;- gsub(<span class="string">","</span>, <span class="string">"x"</span>, a, fixed = <span class="literal">TRUE</span>)</span><br><span class="line">&gt; b</span><br><span class="line">[<span class="number">1</span>] <span class="string">"abcxd"</span></span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;rstudio快捷键&quot;&gt;1 Rstudio快捷键&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;span style=&quot;background:#C1FFC1&quot;&gt;Alt + -&lt;/span&gt; 快捷输入 &lt;span style=&quot;background:#C1FFC1&quot;&gt;
+      
+    
+    </summary>
+    
+      <category term="笔记" scheme="http://gaomm.top/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="r" scheme="http://gaomm.top/tags/r/"/>
+    
+  </entry>
   
   <entry>
     <title>Communicate with CL</title>
