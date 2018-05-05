@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>%2F2018%2F05%2F05%2Fdiscus-data-analysis-use-R%2F</url>
+    <content type="text"><![CDATA[mathjax: truetitle: discus data analysis use Rdate: 2018-5-5 19:18:48categories: biomechanics tags: 笔记x]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[R语言笔记]]></title>
     <url>%2F2018%2F05%2F05%2FR%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[1 Rstudio快捷键 Alt + - 快捷输入 &lt;- 2 R中字符串操作字符串链接 paste( )1paste(..., sep = " ", collapse = NULL) 用法：… 为字符； sep=” “ 中的 “ “ 为分隔符； collaspse= NULL表示连成一个字符串，如果将NULL修改成 “,” 则将字符连接成一个字符，并用 ，分隔。例：1234567891011&gt; paste("A","B")[1] "A B"&gt; paste("A","B",sep=",")[1] "A,B"&gt; paste("A",1:3,sep="")[1] "A1" "A2" "A3"&gt; paste("A", 1:3 ,sep = "" ,collapse = ",")[1] "A1,A2,A3" 字符串替换 gsub( )12gsub(pattern, replacement, x, ignore.case = FALSE, perl = FALSE, fixed = FALSE, useBytes = FALSE) 用法：pattern 为需要替换的字符；replacement为替换后的字符；x为包含字符的向量。例：1234567891011&gt; a &lt;- "abc,d"&gt; a[1] "abc,d"&gt; b &lt;- gsub("a","x",a)&gt; b[1] "xbc,d"&gt; b &lt;- gsub(",", "x", a, fixed = TRUE)&gt; b[1] "abcxd"]]></content>
+    <content type="text"><![CDATA[1 Rstudio快捷键 Alt + - 快捷输入 &lt;- 2 R中字符串操作字符串链接 paste( )1paste(..., sep = " ", collapse = NULL) 用法：… 为字符； sep=” “ 中的 “ “ 为分隔符； collaspse= NULL表示连成一个字符串，如果将NULL修改成 “,” 则将字符连接成一个字符，并用 ，分隔。例：1234567891011&gt; paste("A","B")[1] "A B"&gt; paste("A","B",sep=",")[1] "A,B"&gt; paste("A",1:3,sep="")[1] "A1" "A2" "A3"&gt; paste("A", 1:3 ,sep = "" ,collapse = ",")[1] "A1,A2,A3" 字符串替换 gsub( )12gsub(pattern, replacement, x, ignore.case = FALSE, perl = FALSE, fixed = FALSE, useBytes = FALSE) 用法：pattern 为需要替换的字符；replacement为替换后的字符；x为包含字符的向量。例：1234567891011&gt; a &lt;- "abc,d"&gt; a[1] "abc,d"&gt; b &lt;- gsub("a","x",a)&gt; b[1] "xbc,d"&gt; b &lt;- gsub(",", "x", a, fixed = TRUE)&gt; b[1] "abcxd" 3 批量赋值 assign( )12assign(x, value, pos = -1, envir = as.environment(pos), inherits = FALSE, immediate = TRUE) 用法：将value 的值赋给x例：1234567891011&gt; value &lt;- c(1:3)&gt; x &lt;- c("a","b","c")&gt; &gt; for (i in x) &#123;+ assign(i,value)+ &#125;&gt;a[1] 1 2 3&gt;b[1] 1 2 3&gt;c[1] 1 2 3]]></content>
       <categories>
-        <category>笔记</category>
+        <category>r</category>
       </categories>
       <tags>
-        <tag>r</tag>
+        <tag>笔记</tag>
       </tags>
   </entry>
   <entry>
