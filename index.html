@@ -363,7 +363,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://gaomm.top/2018/06/17/安装Ubuntu版openpose/">
+    <link itemprop="mainEntityOfPage" href="http://gaomm.top/2018/06/18/安装Ubuntu版openpose/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gazelle©">
@@ -382,7 +382,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/17/安装Ubuntu版openpose/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2018/06/18/安装Ubuntu版openpose/" itemprop="url">安装Ubuntu版openpose</a></h1>
         
 
         <div class="post-meta">
@@ -394,7 +394,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-17T16:26:10+08:00">2018-06-17</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-18T17:18:48+08:00">2018-06-18</time>
             
 
             
@@ -404,6 +404,24 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/openpose/" itemprop="url" rel="index"><span itemprop="name">openpose</span></a></span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -412,8 +430,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/06/17/安装Ubuntu版openpose/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/06/17/安装Ubuntu版openpose/" itemprop="commentCount"></span>
+                <a href="/2018/06/18/安装Ubuntu版openpose/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/06/18/安装Ubuntu版openpose/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -421,7 +439,7 @@
 
           
           
-             <span id="/2018/06/17/安装Ubuntu版openpose/" class="leancloud_visitors" data-flag-title="">
+             <span id="/2018/06/18/安装Ubuntu版openpose/" class="leancloud_visitors" data-flag-title="安装Ubuntu版openpose">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -454,8 +472,7 @@
       
         
           
-            <h1 id="安装ubuntu版openpose">安装Ubuntu版openpose</h1>
-<h2 id="ubuntu-下载加速">Ubuntu 下载加速</h2>
+            <h2 id="ubuntu-下载加速">Ubuntu 下载加速</h2>
 <ul>
 <li>apt使用清华源 <code>sudo vi /etc/apt/sources.list</code></li>
 </ul>
@@ -473,7 +490,7 @@
 <ol type="1">
 <li>查找域名对应的ip地址，并修改hosts文件 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nslookup github.global.ssl.fastly.Net</span><br><span class="line">nslookup github.com</span><br></pre></td></tr></table></figure></li>
 </ol>
-<p><img src="https://img-blog.csdn.net/20180112135533032?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHp3d3BnbXd5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"> 将下列内容加入<figure class="highlight plain"><figcaption><span>vi</span><a href="/etc/hosts```文件中">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">```plan</span><br><span class="line">151.101.76.249 http://global-ssl.fastly.net</span><br><span class="line">192.30.255.113 http://github.com  #此处112还是113根据自己的情况调整？</span><br><span class="line">151.101.197.194 http://global-ssl.fastly.net</span><br><span class="line">13.250.177.223 http://github.com</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://img-blog.csdn.net/20180112135533032?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHp3d3BnbXd5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"> 将下列内容加入<figure class="highlight plain"><figcaption><span>vi</span><a href="/etc/hosts```文件中">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```plan</span><br><span class="line">151.101.76.249 http://global-ssl.fastly.net</span><br><span class="line">192.30.255.113 http://github.com  #此处112还是113根据自己的情况调整？</span><br></pre></td></tr></table></figure></p>
 <p>刷新dns缓存 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/networking restart</span><br></pre></td></tr></table></figure></p>
 <h2 id="安装openpose">安装openpose</h2>
 <h3 id="克隆openpose">克隆openpose</h3>
@@ -481,8 +498,10 @@
 <h3 id="准备工作">准备工作</h3>
 <ul>
 <li><p>安装Cmake GUI <figure class="highlight plain"><figcaption><span>apt-get install cmake-qt-gui```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- 安装OpenCV</span><br><span class="line">	``` sudo apt-get install libopencv-dev</span><br></pre></td></tr></table></figure></p></li>
-<li><p>安装Cafe <code>udo bash ./ubuntu/install_cmake.sh</code> ### 配置 Open CMake GUI and select the OpenPose directory as project source directory, and a non-existing or empty sub-directory (e.g., build) where the Makefile files (Ubuntu) or Visual Studio solution (Windows) will be generated. If build does not exist, it will ask you whether to create it. Press Yes.</p></li>
+<li><p>安装Cafe <code>udo bash ./ubuntu/install_cmake.sh</code></p></li>
 </ul>
+<h3 id="配置">配置</h3>
+<p>Open CMake GUI and select the OpenPose directory as project source directory, and a non-existing or empty sub-directory (e.g., build) where the Makefile files (Ubuntu) or Visual Studio solution (Windows) will be generated. If build does not exist, it will ask you whether to create it. Press Yes.</p>
 <p>Press the Configure button, keep the generator in Unix Makefile (Ubuntu) or set it to Visual Studio 14 2015 Win64 (Windows), and press Finish.</p>
 <p>If this step is successful, the Configuring done text will appear in the bottom box in the last line. Otherwise, some red text will appear in that same bottom box.</p>
 <p>Press the Generate button and proceed to OpenPose Building. You can now close CMake. Note: If you prefer to use your own custom Caffe or OpenCV versions, see Custom Caffe or Custom OpenCV respectively.</p>
@@ -2085,7 +2104,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -2842,9 +2863,9 @@
   
     
       
-    
-      
         
+      
+    
       
     
       
