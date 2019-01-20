@@ -2,58 +2,100 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://gaomm.top/data/%E6%88%91%E7%9A%84%E4%B8%80%E4%BA%9B%E8%B5%84%E6%96%99--%E4%B8%8D%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%B1%95%E7%A4%BA.html</loc>
-    
-    <lastmod>2019-01-19T09:39:03.870Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://gaomm.top/2018/06/18/%E5%AE%89%E8%A3%85Ubuntu%E7%89%88openpose/</loc>
-    
-    <lastmod>2019-01-19T07:24:54.657Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://gaomm.top/2018/11/05/pose%20estimate/</loc>
-    
-    <lastmod>2018-11-08T14:13:47.652Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://gaomm.top/2018/08/15/Deep%20Learning%20With%20Python:%20Step%20By%20Step%20Guide%20With%20Keras%20and%20Pytorch%E7%AC%94%E8%AE%B0/</loc>
     
-    <lastmod>2018-08-19T04:45:02.214Z</lastmod>
+    <lastmod>2019-01-20T16:38:58.926Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://gaomm.top/2018/07/11/%E8%BF%90%E5%8A%A8%E4%B8%8E%E5%81%A5%E5%BA%B7CiteSpace/</loc>
     
-    <lastmod>2018-07-11T16:00:00.566Z</lastmod>
+    <lastmod>2019-01-20T16:14:56.523Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/2017/08/30/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2019-01-20T16:14:56.521Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/2018/06/18/%E5%AE%89%E8%A3%85Ubuntu%E7%89%88openpose/</loc>
+    
+    <lastmod>2019-01-20T16:14:56.520Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/2018/11/05/pose%20estimate/</loc>
+    
+    <lastmod>2019-01-20T16:14:56.519Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/2017/06/16/pandoc_maneul(CN)/</loc>
+    
+    <lastmod>2019-01-20T16:14:56.518Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/2018/02/21/new%20themes/</loc>
+    
+    <lastmod>2019-01-20T16:14:56.515Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/2017/08/26/markdown-%E8%AF%AD%E6%B3%95%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/</loc>
+    
+    <lastmod>2019-01-20T16:14:56.514Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/2017/08/23/marothron/</loc>
+    
+    <lastmod>2019-01-20T16:14:56.514Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://gaomm.top/2018/05/05/discus-data-analysis-use-R/</loc>
     
-    <lastmod>2018-05-11T16:38:27.417Z</lastmod>
+    <lastmod>2019-01-20T16:14:56.513Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/2017/12/23/discus%20throwing%20reference%20note/</loc>
+    
+    <lastmod>2019-01-20T16:14:56.511Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://gaomm.top/2018/05/05/R%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/</loc>
     
-    <lastmod>2018-05-06T17:06:15.644Z</lastmod>
+    <lastmod>2019-01-20T16:14:56.509Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://gaomm.top/2018/03/08/Communicate-with-CL/</loc>
     
-    <lastmod>2018-03-08T08:53:39.410Z</lastmod>
+    <lastmod>2019-01-20T16:14:56.507Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/data/%E6%88%91%E7%9A%84%E4%B8%80%E4%BA%9B%E8%B5%84%E6%96%99--%E4%B8%8D%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%B1%95%E7%A4%BA.html</loc>
+    
+    <lastmod>2019-01-19T09:39:03.870Z</lastmod>
     
   </url>
   
@@ -65,51 +107,9 @@
   </url>
   
   <url>
-    <loc>http://gaomm.top/2018/02/21/new%20themes/</loc>
-    
-    <lastmod>2018-03-07T18:10:01.757Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://gaomm.top/2017/12/23/discus%20throwing%20reference%20note/</loc>
-    
-    <lastmod>2018-03-07T18:07:16.772Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://gaomm.top/images/20180308020413511/communicate%20with%20CL.html</loc>
     
     <lastmod>2018-03-07T18:04:18.167Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://gaomm.top/2017/08/26/markdown-%E8%AF%AD%E6%B3%95%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/</loc>
-    
-    <lastmod>2018-02-21T14:08:57.714Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://gaomm.top/2017/08/30/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C%E7%AC%94%E8%AE%B0/</loc>
-    
-    <lastmod>2018-02-21T14:08:12.740Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://gaomm.top/2017/08/23/marothron/</loc>
-    
-    <lastmod>2018-02-21T14:06:10.620Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://gaomm.top/2017/06/16/pandoc_maneul(CN)/</loc>
-    
-    <lastmod>2018-02-21T13:51:07.485Z</lastmod>
     
   </url>
   

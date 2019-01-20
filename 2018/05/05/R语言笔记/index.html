@@ -147,11 +147,11 @@
 <meta property="og:url" content="http://gaomm.top/2018/05/05/R语言笔记/index.html">
 <meta property="og:site_name" content="gazelle">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://ov3jxphpw.bkt.clouddn.com/R语言笔记/20180505073303955.png">
-<meta property="og:updated_time" content="2018-05-06T17:06:15.644Z">
+<meta property="og:image" content="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/R语言笔记/20180505073303955.png">
+<meta property="og:updated_time" content="2019-01-20T16:14:56.509Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="R语言笔记">
-<meta name="twitter:image" content="http://ov3jxphpw.bkt.clouddn.com/R语言笔记/20180505073303955.png">
+<meta name="twitter:image" content="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/R语言笔记/20180505073303955.png">
 
 
 
@@ -468,11 +468,11 @@
       
 
       
-        <p><img src="http://ov3jxphpw.bkt.clouddn.com/R语言笔记/20180505073303955.png"> <a id="more"></a> ## 1 Rstudio快捷键 &gt; <span style="background:#C1FFC1">Alt + -</span> 快捷输入 <span style="background:#C1FFC1"> &lt;- </span></p>
+        <p><img src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/R语言笔记/20180505073303955.png"> <a id="more"></a> ## 1 Rstudio快捷键 &gt; <span style="background:#C1FFC1">Alt + -</span> 快捷输入 <span style="background:#C1FFC1"> &lt;- </span></p>
 <h2 id="r中字符串操作">2 R中字符串操作</h2>
 <h3 id="字符串链接-paste">字符串链接 paste( )</h3>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paste(<span class="keyword">...</span>, sep = <span class="string">" "</span>, collapse = <span class="literal">NULL</span>)</span><br></pre></td></tr></table></figure>
-<p>用法： <span style="background:#C1FFC1 ">...</span> 为字符； <span style="background:#C1FFC1   ">sep=&quot; &quot; </span>中的 &quot; &quot; 为分隔符； <span style="background:#C1FFC1   ">collaspse= NULL</span>表示连成一个字符串，如果将NULL修改成 &quot;,&quot; 则将字符连接成一个字符，并用 ，分隔。<br>
+<p>用法： <span style="background:#C1FFC1 ">…</span> 为字符； <span style="background:#C1FFC1   ">sep=&quot; &quot; </span>中的 &quot; &quot; 为分隔符； <span style="background:#C1FFC1   ">collaspse= NULL</span>表示连成一个字符串，如果将NULL修改成 “,” 则将字符连接成一个字符，并用 ，分隔。<br>
 例： <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; paste(<span class="string">"A"</span>,<span class="string">"B"</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"A B"</span></span><br><span class="line"></span><br><span class="line">&gt; paste(<span class="string">"A"</span>,<span class="string">"B"</span>,sep=<span class="string">","</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"A,B"</span></span><br><span class="line"></span><br><span class="line">&gt; paste(<span class="string">"A"</span>,<span class="number">1</span>:<span class="number">3</span>,sep=<span class="string">""</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"A1"</span> <span class="string">"A2"</span> <span class="string">"A3"</span></span><br><span class="line"></span><br><span class="line">&gt; paste(<span class="string">"A"</span>, <span class="number">1</span>:<span class="number">3</span> ,sep = <span class="string">""</span> ,collapse = <span class="string">","</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"A1,A2,A3"</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="字符串替换-gsub">字符串替换 gsub( )</h3>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gsub(pattern, replacement, x, ignore.case = <span class="literal">FALSE</span>, perl = <span class="literal">FALSE</span>,</span><br><span class="line">     fixed = <span class="literal">FALSE</span>, useBytes = <span class="literal">FALSE</span>)</span><br></pre></td></tr></table></figure>
