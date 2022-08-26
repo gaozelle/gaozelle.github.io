@@ -457,19 +457,13 @@
 
       
         <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">chapters: false</span><br><span class="line">figureTitle: &quot;图&quot;</span><br><span class="line">figPrefix: &quot;图&quot;</span><br><span class="line">tableTitle: &quot;表&quot;</span><br><span class="line">tablePrefix: &quot;表&quot;</span><br><span class="line">tableTemplate: |</span><br><span class="line">  *$$tableTitle$$ $$i$$*$$titleDelim$$ $$t$$</span><br><span class="line">bibliography: &quot;/Users/macgazelle/Academic/bib/EEG.bib&quot;</span><br><span class="line">csl: /Users/macgazelle/Academic/cls/chinese-gb7714-2005-numeric.csl </span><br><span class="line">reference-section-title: 参考文献</span><br><span class="line">tableTemplate: |</span><br><span class="line">  *$$tableTitle$$ $$i$$*$$titleDelim$$ $$t$$</span><br><span class="line">link-citations: true</span><br><span class="line">lang: en-GB</span><br><span class="line">papersize: a4</span><br><span class="line">colorlinks: true</span><br><span class="line">links-as-notes: true</span><br><span class="line">fontsize: 11.5pt</span><br></pre></td></tr></table></figure>
-<h1 id="lme线性混合模型处理erp">LME线性混合模型处理ERP</h1>
-<h2 id="处理流程">处理流程</h2>
-<p>根据论文《线性混合效应模型在婴儿和儿童事件相关潜力研究中的效用》<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>的处理过程找到了GitHub上的<a
-target="_blank" rel="noopener" href="https://github.com/basclab/LME_MixedEffectsERPTutorial/tree/main/LMETutorialScripts">数据处理脚本</a>。脚本共有7个，其中1-5是Matlab从Continues
-EEG到ERP的处理过程，脚本6-7是R语言对ERP进行LME混合线性模型的处理过程，如下图。</p>
+<h1 id="LME线性混合模型处理ERP"><a href="#LME线性混合模型处理ERP" class="headerlink" title="LME线性混合模型处理ERP"></a>LME线性混合模型处理ERP</h1><h2 id="处理流程"><a href="#处理流程" class="headerlink" title="处理流程"></a>处理流程</h2><p>根据论文《线性混合效应模型在婴儿和儿童事件相关潜力研究中的效用》<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>的处理过程找到了GitHub上的<a target="_blank" rel="noopener" href="https://github.com/basclab/LME_MixedEffectsERPTutorial/tree/main/LMETutorialScripts">数据处理脚本</a>。脚本共有7个，其中1-5是Matlab从Continues EEG到ERP的处理过程，脚本6-7是R语言对ERP进行LME混合线性模型的处理过程，如下图。</p>
 <p><img src="https://user-images.githubusercontent.com/49215489/148004509-6a02682d-62da-42e5-8828-5feb35ea8ff6.png" style="zoom: 33%;" /></p>
-<p>测试引用<span class="citation"
-data-cites="marusicNeuralBasesAgeRelated2022 tenbrinkeEffectsComputerizedCognitive2019 Julia-2017">(Marusic
-et al. 2022; ten Brinke et al. 2019; Bezanson et al. 2017)</span></p>
+<p>测试引用[@marusicNeuralBasesAgeRelated2022; @tenbrinkeEffectsComputerizedCognitive2019; @Julia-2017]</p>
+<div class="table-container">
 <table>
-<caption>我是表</caption>
 <thead>
-<tr class="header">
+<tr>
 <th>a</th>
 <th>b</th>
 <th>c</th>
@@ -477,13 +471,13 @@ et al. 2022; ten Brinke et al. 2019; Bezanson et al. 2017)</span></p>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>1</td>
 <td>2</td>
 <td>3</td>
 <td>2</td>
 </tr>
-<tr class="even">
+<tr>
 <td>3</td>
 <td>2</td>
 <td>1</td>
@@ -491,35 +485,8 @@ et al. 2022; ten Brinke et al. 2019; Bezanson et al. 2017)</span></p>
 </tr>
 </tbody>
 </table>
-<div id="refs" class="references csl-bib-body hanging-indent"
-role="doc-bibliography">
-<div id="ref-Julia-2017" class="csl-entry" role="doc-biblioentry">
-Bezanson, Jeff, Alan Edelman, Stefan Karpinski, and Viral B Shah. 2017.
-<span>“Julia: A Fresh Approach to Numerical Computing.”</span> <em>SIAM
-<span>R</span>eview</em> 59 (1): 65–98. <a
-target="_blank" rel="noopener" href="https://doi.org/10.1137/141000671">https://doi.org/10.1137/141000671</a>.
 </div>
-<div id="ref-tenbrinkeEffectsComputerizedCognitive2019"
-class="csl-entry" role="doc-biblioentry">
-Brinke, Lisanne F ten, John R Best, Joey L C Chan, Cheyenne Ghag, Kirk I
-Erickson, Todd C Handy, and Teresa Liu-Ambrose. 2019. <span>“The
-<span>Effects</span> of <span>Computerized Cognitive Training
-With</span> and <span>Without Physical Exercise</span> on
-<span>Cognitive Function</span> in <span>Older Adults</span>:
-<span>An</span> 8-<span>Week Randomized Controlled Trial</span>.”</span>
-<em>The Journals of Gerontology: Series A</em>, May, glz115. <a
-target="_blank" rel="noopener" href="https://doi.org/10.1093/gerona/glz115">https://doi.org/10.1093/gerona/glz115</a>.
-</div>
-<div id="ref-marusicNeuralBasesAgeRelated2022" class="csl-entry"
-role="doc-biblioentry">
-Marusic, Uros, Manca Peskar, Kevin De Pauw, Nina Omejc, Gorazd
-Drevensek, Bojan Rojc, Rado Pisot, and Voyko Kavcic. 2022. <span>“Neural
-<span>Bases</span> of <span>Age-Related Sensorimotor Slowing</span> in
-the <span>Upper</span> and <span>Lower Limbs</span>.”</span>
-<em>Frontiers in Aging Neuroscience</em> 14: 819576. <a
-target="_blank" rel="noopener" href="https://doi.org/10.3389/fnagi.2022.819576">https://doi.org/10.3389/fnagi.2022.819576</a>.
-</div>
-</div>
+<p>: 我是表 </p>
 
       
     </div>
@@ -585,6 +552,10 @@ target="_blank" rel="noopener" href="https://doi.org/10.3389/fnagi.2022.819576">
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/08/26/Kistler%E9%87%87%E9%9B%86%E8%BD%AF%E4%BB%B6bioware%E5%AE%89%E8%A3%85/" rel="prev" title="Kistler采集软件Bioware安装">
+                Kistler采集软件Bioware安装 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -671,7 +642,7 @@ target="_blank" rel="noopener" href="https://doi.org/10.3389/fnagi.2022.819576">
                 
                   <a href="/archives/%20%7C%7C%20archive">
                 
-                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -729,7 +700,11 @@ target="_blank" rel="noopener" href="https://doi.org/10.3389/fnagi.2022.819576">
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -807,7 +782,7 @@ target="_blank" rel="noopener" href="https://doi.org/10.3389/fnagi.2022.819576">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lme%E7%BA%BF%E6%80%A7%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B%E5%A4%84%E7%90%86erp"><span class="nav-number">1.</span> <span class="nav-text">LME线性混合模型处理ERP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">处理流程</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LME%E7%BA%BF%E6%80%A7%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B%E5%A4%84%E7%90%86ERP"><span class="nav-number">1.</span> <span class="nav-text">LME线性混合模型处理ERP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">处理流程</span></a></li></ol></li></ol></div>
             
 
           </div>

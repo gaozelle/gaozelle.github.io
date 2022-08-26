@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://gaomm.top/2022/08/26/Kistler%E9%87%87%E9%9B%86%E8%BD%AF%E4%BB%B6bioware%E5%AE%89%E8%A3%85/</loc>
+    
+    <lastmod>2022-08-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://gaomm.top/2022/08/22/pandoc-crossref%20demo%20document/</loc>
     
     <lastmod>2022-08-24</lastmod>
@@ -65,15 +74,6 @@
   </url>
   
   <url>
-    <loc>http://gaomm.top/2017/12/23/discus%20throwing%20reference%20note/</loc>
-    
-    <lastmod>2019-01-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://gaomm.top/2018/05/05/discus-data-analysis-use-R/</loc>
     
     <lastmod>2019-01-20</lastmod>
@@ -84,6 +84,15 @@
   
   <url>
     <loc>http://gaomm.top/2017/08/26/markdown-%E8%AF%AD%E6%B3%95%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/</loc>
+    
+    <lastmod>2019-01-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/2017/12/23/discus%20throwing%20reference%20note/</loc>
     
     <lastmod>2019-01-20</lastmod>
     
@@ -119,7 +128,7 @@
   </url>
   
   <url>
-    <loc>http://gaomm.top/2017/08/30/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C%E7%AC%94%E8%AE%B0/</loc>
+    <loc>http://gaomm.top/2017/06/16/pandoc_maneul(CN)/</loc>
     
     <lastmod>2019-01-20</lastmod>
     
@@ -128,7 +137,7 @@
   </url>
   
   <url>
-    <loc>http://gaomm.top/2017/06/16/pandoc_maneul(CN)/</loc>
+    <loc>http://gaomm.top/2017/08/30/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C%E7%AC%94%E8%AE%B0/</loc>
     
     <lastmod>2019-01-20</lastmod>
     
@@ -281,6 +290,20 @@
   
   <url>
     <loc>http://gaomm.top/tags/OpenSim/</loc>
+    <lastmod>2022-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/tags/%E8%AE%BE%E5%A4%87/</loc>
+    <lastmod>2022-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/tags/%E6%B5%8B%E5%8A%9B%E5%8F%B0%EF%BC%8C%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2022-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
