@@ -112,7 +112,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Muse',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -141,17 +141,16 @@
   <meta name="keywords" content="笔记," />
 
 
-<meta name="keywords" content="笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="R语言笔记">
-<meta property="og:url" content="http://gaomm.top/2018/05/05/R语言笔记/index.html">
+<meta property="og:url" content="http://gaomm.top/2018/05/05/R%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="gazelle">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/R语言笔记/20180505073303955.png">
-<meta property="og:updated_time" content="2019-01-20T16:14:56.000Z">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-05-05T11:18:48.000Z">
+<meta property="article:modified_time" content="2019-01-20T16:14:56.000Z">
+<meta property="article:author" content="gazelle©">
+<meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="R语言笔记">
-<meta name="twitter:image" content="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/R语言笔记/20180505073303955.png">
 
 
 
@@ -215,9 +214,13 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
@@ -263,31 +266,31 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
+          <a href="/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+          <a href="/about/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
         </li>
       
@@ -363,10 +366,10 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://gaomm.top/2018/05/05/R语言笔记/">
+    <link itemprop="mainEntityOfPage" href="http://gaomm.top/2018/05/05/R%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gazelle©">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
@@ -428,8 +431,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/05/05/R语言笔记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/05/R语言笔记/" itemprop="commentCount"></span>
+                <a href="/2018/05/05/R%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/05/R%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -437,7 +440,7 @@
 
           
           
-             <span id="/2018/05/05/R语言笔记/" class="leancloud_visitors" data-flag-title="R语言笔记">
+             <span id="/2018/05/05/R%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/" class="leancloud_visitors" data-flag-title="R语言笔记">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -468,16 +471,25 @@
       
 
       
-        <p><img src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/R语言笔记/20180505073303955.png" alt=""><br><a id="more"></a></p>
-<h2 id="1-Rstudio快捷键"><a href="#1-Rstudio快捷键" class="headerlink" title="1 Rstudio快捷键"></a>1 Rstudio快捷键</h2><blockquote>
-<p><span style="background:#C1FFC1">Alt + -</span>  快捷输入 <span style="background:#C1FFC1"> &lt;- </span>   </p>
-</blockquote>
-<h2 id="2-R中字符串操作"><a href="#2-R中字符串操作" class="headerlink" title="2 R中字符串操作"></a>2 R中字符串操作</h2><h3 id="字符串链接-paste"><a href="#字符串链接-paste" class="headerlink" title="字符串链接 paste( )"></a>字符串链接 paste( )</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paste(<span class="keyword">...</span>, sep = <span class="string">" "</span>, collapse = <span class="literal">NULL</span>)</span><br></pre></td></tr></table></figure>
-<p>用法：<br><span style="background:#C1FFC1    ">…</span> 为字符； <span style="background:#C1FFC1    ">sep=” “ </span>中的 “ “ 为分隔符； <span style="background:#C1FFC1    ">collaspse= NULL</span>表示连成一个字符串，如果将NULL修改成 “,” 则将字符连接成一个字符，并用 ，分隔。<br>例：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; paste(<span class="string">"A"</span>,<span class="string">"B"</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"A B"</span></span><br><span class="line"></span><br><span class="line">&gt; paste(<span class="string">"A"</span>,<span class="string">"B"</span>,sep=<span class="string">","</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"A,B"</span></span><br><span class="line"></span><br><span class="line">&gt; paste(<span class="string">"A"</span>,<span class="number">1</span>:<span class="number">3</span>,sep=<span class="string">""</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"A1"</span> <span class="string">"A2"</span> <span class="string">"A3"</span></span><br><span class="line"></span><br><span class="line">&gt; paste(<span class="string">"A"</span>, <span class="number">1</span>:<span class="number">3</span> ,sep = <span class="string">""</span> ,collapse = <span class="string">","</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="string">"A1,A2,A3"</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="字符串替换-gsub"><a href="#字符串替换-gsub" class="headerlink" title="字符串替换 gsub( )"></a>字符串替换 gsub( )</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gsub(pattern, replacement, x, ignore.case = <span class="literal">FALSE</span>, perl = <span class="literal">FALSE</span>,</span><br><span class="line">     fixed = <span class="literal">FALSE</span>, useBytes = <span class="literal">FALSE</span>)</span><br></pre></td></tr></table></figure>
-<p>用法：<br><span style="background:#C1FFC1    ">pattern</span> 为需要替换的字符；<span style="background:#C1FFC1">replacement</span>为替换后的字符；<span style="background:#C1FFC1">x</span>为包含字符的向量。<br>例：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; a &lt;- <span class="string">"abc,d"</span></span><br><span class="line">&gt; a</span><br><span class="line">[<span class="number">1</span>] <span class="string">"abc,d"</span></span><br><span class="line"></span><br><span class="line">&gt; b &lt;- gsub(<span class="string">"a"</span>,<span class="string">"x"</span>,a)</span><br><span class="line">&gt; b</span><br><span class="line">[<span class="number">1</span>] <span class="string">"xbc,d"</span></span><br><span class="line"></span><br><span class="line">&gt; b &lt;- gsub(<span class="string">","</span>, <span class="string">"x"</span>, a, fixed = <span class="literal">TRUE</span>)</span><br><span class="line">&gt; b</span><br><span class="line">[<span class="number">1</span>] <span class="string">"abcxd"</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="3-批量赋值-assign"><a href="#3-批量赋值-assign" class="headerlink" title="3 批量赋值 assign( )"></a>3 批量赋值 assign( )</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">assign(x, value, pos = -<span class="number">1</span>, envir = as.environment(pos),</span><br><span class="line">       inherits = <span class="literal">FALSE</span>, immediate = <span class="literal">TRUE</span>)</span><br></pre></td></tr></table></figure>
-<p>用法：<br>将<span style="background:#C1FFC1    ">value</span> 的值赋给<span style="background:#C1FFC1    ">x</span><br>例：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; value &lt;-  c(<span class="number">1</span>:<span class="number">3</span>)</span><br><span class="line">&gt; x &lt;- c(<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>)</span><br><span class="line">&gt; &gt; <span class="keyword">for</span> (i <span class="keyword">in</span> x) &#123;</span><br><span class="line">+     assign(i,value)</span><br><span class="line">+ &#125;</span><br><span class="line">&gt;a</span><br><span class="line">[<span class="number">1</span>] <span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line">&gt;b</span><br><span class="line">[<span class="number">1</span>] <span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line">&gt;c</span><br><span class="line">[<span class="number">1</span>] <span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br></pre></td></tr></table></figure></p>
+        <p><img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/R语言笔记/20180505073303955.png" />
+<span id="more"></span> ## 1 Rstudio快捷键 &gt; <span style="background:#C1FFC1">Alt
++ -</span> 快捷输入 <span style="background:#C1FFC1"> &lt;- </span></p>
+<h2 id="r中字符串操作">2 R中字符串操作</h2>
+<h3 id="字符串链接-paste">字符串链接 paste( )</h3>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paste<span class="punctuation">(</span>...<span class="punctuation">,</span> sep <span class="operator">=</span> <span class="string">&quot; &quot;</span><span class="punctuation">,</span> collapse <span class="operator">=</span> <span class="literal">NULL</span><span class="punctuation">)</span> </span><br></pre></td></tr></table></figure>
+<p>用法： <span style="background:#C1FFC1 ">...</span> 为字符； <span
+style="background:#C1FFC1   ">sep=" " </span>中的 " " 为分隔符； <span
+style="background:#C1FFC1   ">collaspse=
+NULL</span>表示连成一个字符串，如果将NULL修改成 ","
+则将字符连接成一个字符，并用 ，分隔。<br />
+例： <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">&gt;</span> paste<span class="punctuation">(</span><span class="string">&quot;A&quot;</span><span class="punctuation">,</span><span class="string">&quot;B&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="string">&quot;A B&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="operator">&gt;</span> paste<span class="punctuation">(</span><span class="string">&quot;A&quot;</span><span class="punctuation">,</span><span class="string">&quot;B&quot;</span><span class="punctuation">,</span>sep<span class="operator">=</span><span class="string">&quot;,&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="string">&quot;A,B&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="operator">&gt;</span> paste<span class="punctuation">(</span><span class="string">&quot;A&quot;</span><span class="punctuation">,</span><span class="number">1</span><span class="operator">:</span><span class="number">3</span><span class="punctuation">,</span>sep<span class="operator">=</span><span class="string">&quot;&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="string">&quot;A1&quot;</span> <span class="string">&quot;A2&quot;</span> <span class="string">&quot;A3&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="operator">&gt;</span> paste<span class="punctuation">(</span><span class="string">&quot;A&quot;</span><span class="punctuation">,</span> <span class="number">1</span><span class="operator">:</span><span class="number">3</span> <span class="punctuation">,</span>sep <span class="operator">=</span> <span class="string">&quot;&quot;</span> <span class="punctuation">,</span>collapse <span class="operator">=</span> <span class="string">&quot;,&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="string">&quot;A1,A2,A3&quot;</span></span><br></pre></td></tr></table></figure> ### 字符串替换 gsub( ) <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gsub<span class="punctuation">(</span>pattern<span class="punctuation">,</span> replacement<span class="punctuation">,</span> x<span class="punctuation">,</span> ignore.case <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">,</span> perl <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">,</span></span><br><span class="line">     fixed <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">,</span> useBytes <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure> 用法： <span
+style="background:#C1FFC1 ">pattern</span> 为需要替换的字符；<span
+style="background:#C1FFC1">replacement</span>为替换后的字符；<span
+style="background:#C1FFC1">x</span>为包含字符的向量。 例： <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">&gt;</span> a <span class="operator">&lt;-</span> <span class="string">&quot;abc,d&quot;</span></span><br><span class="line"><span class="operator">&gt;</span> a</span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="string">&quot;abc,d&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="operator">&gt;</span> b <span class="operator">&lt;-</span> gsub<span class="punctuation">(</span><span class="string">&quot;a&quot;</span><span class="punctuation">,</span><span class="string">&quot;x&quot;</span><span class="punctuation">,</span>a<span class="punctuation">)</span></span><br><span class="line"><span class="operator">&gt;</span> b</span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="string">&quot;xbc,d&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="operator">&gt;</span> b <span class="operator">&lt;-</span> gsub<span class="punctuation">(</span><span class="string">&quot;,&quot;</span><span class="punctuation">,</span> <span class="string">&quot;x&quot;</span><span class="punctuation">,</span> a<span class="punctuation">,</span> fixed <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">)</span></span><br><span class="line"><span class="operator">&gt;</span> b</span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="string">&quot;abcxd&quot;</span></span><br></pre></td></tr></table></figure>
+## 3 批量赋值 assign( ) <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">assign<span class="punctuation">(</span>x<span class="punctuation">,</span> value<span class="punctuation">,</span> pos <span class="operator">=</span> <span class="operator">-</span><span class="number">1</span><span class="punctuation">,</span> envir <span class="operator">=</span> <span class="built_in">as.environment</span><span class="punctuation">(</span>pos<span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">       inherits <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">,</span> immediate <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure> 用法： 将<span
+style="background:#C1FFC1    ">value</span> 的值赋给<span
+style="background:#C1FFC1  ">x</span> 例： <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">&gt;</span> value <span class="operator">&lt;-</span>  <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="operator">:</span><span class="number">3</span><span class="punctuation">)</span></span><br><span class="line"><span class="operator">&gt;</span> x <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;a&quot;</span><span class="punctuation">,</span><span class="string">&quot;b&quot;</span><span class="punctuation">,</span><span class="string">&quot;c&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="operator">&gt;</span> <span class="operator">&gt;</span> <span class="keyword">for</span> <span class="punctuation">(</span>i <span class="keyword">in</span> x<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line"><span class="operator">+</span>     assign<span class="punctuation">(</span>i<span class="punctuation">,</span>value<span class="punctuation">)</span></span><br><span class="line"><span class="operator">+</span> <span class="punctuation">&#125;</span></span><br><span class="line"><span class="operator">&gt;</span>a</span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line"><span class="operator">&gt;</span>b</span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line"><span class="operator">&gt;</span><span class="built_in">c</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -501,14 +513,14 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="http://ov3jxphpw.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20170823013308.jpg" alt="gazelle© WeChat Pay"/>
+        <img id="wechat_qr" src="http://ov3jxphpw.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20170823013308.jpg" alt=" WeChat Pay"/>
         <p>WeChat Pay</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="http://ov3jxphpw.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20170823013259.jpg" alt="gazelle© Alipay"/>
+        <img id="alipay_qr" src="http://ov3jxphpw.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20170823013259.jpg" alt=" Alipay"/>
         <p>Alipay</p>
       </div>
     
@@ -527,7 +539,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+            <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
           
         </div>
       
@@ -626,10 +638,10 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/images/avatar.png"
-                alt="gazelle©" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">gazelle©</p>
-              <p class="site-description motion-element" itemprop="description">Keep Writing Will Be Better</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -637,9 +649,9 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -775,7 +787,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Rstudio快捷键"><span class="nav-number">1.</span> <span class="nav-text">1 Rstudio快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-R中字符串操作"><span class="nav-number">2.</span> <span class="nav-text">2 R中字符串操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串链接-paste"><span class="nav-number">2.1.</span> <span class="nav-text">字符串链接 paste( )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串替换-gsub"><span class="nav-number">2.2.</span> <span class="nav-text">字符串替换 gsub( )</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-批量赋值-assign"><span class="nav-number">3.</span> <span class="nav-text">3 批量赋值 assign( )</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#r%E4%B8%AD%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">2 R中字符串操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%93%BE%E6%8E%A5-paste"><span class="nav-number">1.1.</span> <span class="nav-text">字符串链接 paste( )</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -795,7 +807,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -1470,24 +1482,7 @@
         }
     });
 </script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
     
   

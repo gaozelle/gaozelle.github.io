@@ -2,171 +2,360 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://gaomm.top/2022/08/22/pandoc-crossref%20demo%20document/</loc>
+    
+    <lastmod>2022-08-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/2022/08/23/LME%E7%BA%BF%E6%80%A7%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B%E5%A4%84%E7%90%86ERP(test)/</loc>
+    
+    <lastmod>2022-08-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://gaomm.top/2020/03/07/%E6%95%99%E7%A8%8B1--%E8%82%8C%E8%82%89%E9%AA%A8%E9%AA%BC%E5%BB%BA%E6%A8%A1%E5%85%A5%E9%97%A8%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89/</loc>
     
-    <lastmod>2020-03-07T11:32:53.000Z</lastmod>
+    <lastmod>2020-03-07</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://gaomm.top/2018/11/05/pose%20estimate/</loc>
     
-    <lastmod>2019-01-20T17:03:34.000Z</lastmod>
+    <lastmod>2019-01-20</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://gaomm.top/2018/08/15/Deep%20Learning%20With%20Python:%20Step%20By%20Step%20Guide%20With%20Keras%20and%20Pytorch%E7%AC%94%E8%AE%B0/</loc>
     
-    <lastmod>2019-01-20T16:38:58.000Z</lastmod>
+    <lastmod>2019-01-20</lastmod>
     
-  </url>
-  
-  <url>
-    <loc>http://gaomm.top/2018/07/11/%E8%BF%90%E5%8A%A8%E4%B8%8E%E5%81%A5%E5%BA%B7CiteSpace/</loc>
-    
-    <lastmod>2019-01-20T16:14:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://gaomm.top/2017/12/23/discus%20throwing%20reference%20note/</loc>
-    
-    <lastmod>2019-01-20T16:14:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://gaomm.top/2017/08/23/marothron/</loc>
-    
-    <lastmod>2019-01-20T16:14:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://gaomm.top/2018/02/21/new%20themes/</loc>
-    
-    <lastmod>2019-01-20T16:14:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://gaomm.top/2017/08/26/markdown-%E8%AF%AD%E6%B3%95%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/</loc>
-    
-    <lastmod>2019-01-20T16:14:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://gaomm.top/2018/05/05/R%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/</loc>
-    
-    <lastmod>2019-01-20T16:14:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://gaomm.top/2018/06/18/%E5%AE%89%E8%A3%85Ubuntu%E7%89%88openpose/</loc>
-    
-    <lastmod>2019-01-20T16:14:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://gaomm.top/2018/05/05/discus-data-analysis-use-R/</loc>
-    
-    <lastmod>2019-01-20T16:14:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://gaomm.top/2017/08/30/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C%E7%AC%94%E8%AE%B0/</loc>
-    
-    <lastmod>2019-01-20T16:14:56.000Z</lastmod>
-    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://gaomm.top/2018/03/08/Communicate-with-CL/</loc>
     
-    <lastmod>2019-01-20T16:14:56.000Z</lastmod>
+    <lastmod>2019-01-20</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/2018/05/05/R%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2019-01-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/2017/12/23/discus%20throwing%20reference%20note/</loc>
+    
+    <lastmod>2019-01-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/2018/05/05/discus-data-analysis-use-R/</loc>
+    
+    <lastmod>2019-01-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/2017/08/26/markdown-%E8%AF%AD%E6%B3%95%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/</loc>
+    
+    <lastmod>2019-01-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/2017/08/23/marothron/</loc>
+    
+    <lastmod>2019-01-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/2018/02/21/new%20themes/</loc>
+    
+    <lastmod>2019-01-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/2018/06/18/%E5%AE%89%E8%A3%85Ubuntu%E7%89%88openpose/</loc>
+    
+    <lastmod>2019-01-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/2017/08/30/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2019-01-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://gaomm.top/2017/06/16/pandoc_maneul(CN)/</loc>
     
-    <lastmod>2019-01-20T16:14:56.000Z</lastmod>
+    <lastmod>2019-01-20</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/2018/07/11/%E8%BF%90%E5%8A%A8%E4%B8%8E%E5%81%A5%E5%BA%B7CiteSpace/</loc>
+    
+    <lastmod>2019-01-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://gaomm.top/data/%E6%88%91%E7%9A%84%E4%B8%80%E4%BA%9B%E8%B5%84%E6%96%99--%E4%B8%8D%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%B1%95%E7%A4%BA.html</loc>
     
-    <lastmod>2019-01-19T09:39:03.000Z</lastmod>
+    <lastmod>2019-01-19</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://gaomm.top/tags/index.html</loc>
     
-    <lastmod>2018-03-07T18:29:45.000Z</lastmod>
+    <lastmod>2018-03-07</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://gaomm.top/images/20180308020413511/communicate%20with%20CL.html</loc>
     
-    <lastmod>2018-03-07T18:04:18.000Z</lastmod>
+    <lastmod>2018-03-07</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://gaomm.top/about/index.html</loc>
     
-    <lastmod>2018-02-21T12:05:46.000Z</lastmod>
+    <lastmod>2018-02-21</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://gaomm.top/baidu_verify_ouOG9DS4PT.html</loc>
     
-    <lastmod>2018-02-21T09:48:27.000Z</lastmod>
+    <lastmod>2018-02-21</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://gaomm.top/baidu_verify_HG5KqMrI2C.html</loc>
     
-    <lastmod>2018-02-21T09:44:02.000Z</lastmod>
+    <lastmod>2018-02-21</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://gaomm.top/google4d91e2818c8c596e.html</loc>
     
-    <lastmod>2018-02-21T09:05:25.000Z</lastmod>
+    <lastmod>2018-02-21</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://gaomm.top/categories/index.html</loc>
     
-    <lastmod>2018-02-20T16:34:27.000Z</lastmod>
+    <lastmod>2018-02-20</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://gaomm.top/data/list/list.html</loc>
     
-    <lastmod>2018-02-17T20:49:39.000Z</lastmod>
+    <lastmod>2018-02-17</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://gaomm.top/data/list/%E5%9B%BE%EF%BC%9A%E7%94%9F%E7%89%A9%E5%8A%9B%E5%AD%A6%E7%A0%94%E7%A9%B6%E8%B7%91%E6%AD%A5%E5%9C%B0%E5%9F%9F%E5%88%86%E5%B8%83.html</loc>
     
-    <lastmod>2018-02-17T20:36:11.000Z</lastmod>
+    <lastmod>2018-02-17</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+
+  <url>
+    <loc>http://gaomm.top/</loc>
+    <lastmod>2022-08-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  
+  <url>
+    <loc>http://gaomm.top/tags/me/</loc>
+    <lastmod>2022-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/tags/%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2022-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/tags/Discus/</loc>
+    <lastmod>2022-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/tags/blog/</loc>
+    <lastmod>2022-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/tags/themes/</loc>
+    <lastmod>2022-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/tags/OpenSim/</loc>
+    <lastmod>2022-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+
+  
+  <url>
+    <loc>http://gaomm.top/categories/Mood/</loc>
+    <lastmod>2022-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2022-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/categories/r/</loc>
+    <lastmod>2022-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/categories/biomechanics/</loc>
+    <lastmod>2022-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/categories/markdown/</loc>
+    <lastmod>2022-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/categories/new/</loc>
+    <lastmod>2022-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/categories/openpose/</loc>
+    <lastmod>2022-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/categories/OpenSim/</loc>
+    <lastmod>2022-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/categories/papers/</loc>
+    <lastmod>2022-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/categories/citespace/</loc>
+    <lastmod>2022-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
   </url>
   
 </urlset>

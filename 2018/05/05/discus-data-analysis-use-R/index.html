@@ -112,7 +112,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Muse',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -141,25 +141,16 @@
   <meta name="keywords" content="笔记," />
 
 
-<meta name="keywords" content="笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="discus data analysis use R">
 <meta property="og:url" content="http://gaomm.top/2018/05/05/discus-data-analysis-use-R/index.html">
 <meta property="og:site_name" content="gazelle">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505082516169.png">
-<meta property="og:image" content="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505092338739.png">
-<meta property="og:image" content="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505094328289.png">
-<meta property="og:image" content="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505092438883.png">
-<meta property="og:image" content="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505094203220.png">
-<meta property="og:image" content="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505093917987.png">
-<meta property="og:image" content="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505093937692.png">
-<meta property="og:image" content="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505093833300.png">
-<meta property="og:image" content="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/Screen%20Shot%202018-05-05%20at%2010.46.14.png">
-<meta property="og:updated_time" content="2019-01-20T16:14:56.000Z">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-05-05T12:18:48.000Z">
+<meta property="article:modified_time" content="2019-01-20T16:14:56.000Z">
+<meta property="article:author" content="gazelle©">
+<meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="discus data analysis use R">
-<meta name="twitter:image" content="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505082516169.png">
 
 
 
@@ -223,9 +214,13 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
@@ -271,31 +266,31 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
+          <a href="/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+          <a href="/about/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
         </li>
       
@@ -374,7 +369,7 @@
     <link itemprop="mainEntityOfPage" href="http://gaomm.top/2018/05/05/discus-data-analysis-use-R/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gazelle©">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
@@ -476,63 +471,112 @@
       
 
       
-        <p><img src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505082516169.png" alt="">  </p>
-<div class="video-container"><iframe src="//player.vimeo.com/video/239619482" frameborder="0" allowfullscreen></iframe></div>
-<a id="more"></a>
-<p>在生物力学中，会对运动员进行动作分析。由于比赛场地不允许带入分析设备，通常会使用两台（或多台）摄像机拍摄运动员的录像对运动员的动作进行三维解析。三维解析的过程比较繁琐，需要人工将人体的关节位置识别出。而在国内，分析运动员的动作是将少数的一两个运动员的解析数据进行比较，很少有多名运动员的数据进行统计分析和对比。原因是并没有统计三维解析的工具。但binyu的文章中有许多的测试对象，一方面是他们多年的积累，另一方面他们也更为脚踏实地。所以写一个对三维数据进行统计分析的程序，对于我国的运动员技术分析，应该有一定的作用；如果他们数据真实，并且脚踏实地分析的话。  </p>
-<blockquote>
-<p><span style="background:#AEEEEE"><a href="https://github.com/gaozelle/discus-analysis" target="_blank" rel="noopener">我使用R语言处理分析解析三维坐标的代码</a></span>  </p>
-</blockquote>
-<h2 id="idea"><a href="#idea" class="headerlink" title="idea"></a><strong><em>idea</em></strong></h2><ul>
-<li>从三维解析软件中提取各个帧的关节点三维坐标 → 生成txt → Encode=UTF-8<br><img src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505092338739.png" alt=""><center>⬇️</center></li>
-<li>读取路径下的所有txt格式数据，并根据各个文件名生成相同名称的dataframe<center>⬇️</center></li>
-<li>计算速度<br><img src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505094328289.png" alt=""><center>⬇️</center></li>
-<li>计算角度<center>⬇️</center></li>
-<li>人工进行每个运动员的阶段划分，铁饼为6个关键时刻T1-T6，5个时相F1-F5，保存为 phase.xlsx<br><img src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505092438883.png" alt=""><center>⬇️</center></li>
-<li>提取phase.xlsx中的阶段划分提取各个关键时刻的数据<br><img src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505094203220.png" alt=""><center>⬇️</center></li>
-<li>选取特定的数据进行作图，包括空间运动图和线图等<br><img src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505093917987.png" alt=""><br><img src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505093937692.png" alt=""><br><img src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505093833300.png" alt=""><center>⬇️</center></li>
-<li>使用运动员的关键数据进行统计分析，如T检验，建立回归方程等  </li>
+        <p><img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505082516169.png" /></p>
+<div class="video-container"><iframe src="https://player.vimeo.com/video/239619482" frameborder="0" loading="lazy" allowfullscreen></iframe></div>
+<span id="more"></span>
+<p>在生物力学中，会对运动员进行动作分析。由于比赛场地不允许带入分析设备，通常会使用两台（或多台）摄像机拍摄运动员的录像对运动员的动作进行三维解析。三维解析的过程比较繁琐，需要人工将人体的关节位置识别出。而在国内，分析运动员的动作是将少数的一两个运动员的解析数据进行比较，很少有多名运动员的数据进行统计分析和对比。原因是并没有统计三维解析的工具。但binyu的文章中有许多的测试对象，一方面是他们多年的积累，另一方面他们也更为脚踏实地。所以写一个对三维数据进行统计分析的程序，对于我国的运动员技术分析，应该有一定的作用；如果他们数据真实，并且脚踏实地分析的话。<br />
+&gt; <span style="background:#AEEEEE"><a
+target="_blank" rel="noopener" href="https://github.com/gaozelle/discus-analysis">我使用R语言处理分析解析三维坐标的代码</a></span></p>
+<h2 id="idea"><strong><em>idea</em></strong></h2>
+<ul>
+<li>从三维解析软件中提取各个帧的关节点三维坐标 → 生成txt → Encode=UTF-8
+<img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505092338739.png" />
+<center>
+⬇️
+</center></li>
+<li>读取路径下的所有txt格式数据，并根据各个文件名生成相同名称的dataframe
+<center>
+⬇️
+</center></li>
+<li>计算速度 <img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505094328289.png" />
+<center>
+⬇️
+</center></li>
+<li>计算角度
+<center>
+⬇️
+</center></li>
+<li>人工进行每个运动员的阶段划分，铁饼为6个关键时刻T1-T6，5个时相F1-F5，保存为
+phase.xlsx <img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505092438883.png" />
+<center>
+⬇️
+</center></li>
+<li>提取phase.xlsx中的阶段划分提取各个关键时刻的数据 <img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505094203220.png" />
+<center>
+⬇️
+</center></li>
+<li>选取特定的数据进行作图，包括空间运动图和线图等 <img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505093917987.png" />
+<img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505093937692.png" />
+<img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505093833300.png" />
+<center>
+⬇️
+</center></li>
+<li>使用运动员的关键数据进行统计分析，如T检验，建立回归方程等</li>
 </ul>
-<h2 id="function"><a href="#function" class="headerlink" title="function"></a>function</h2><ul>
-<li><p>定义拍摄频率</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义拍摄频率</span></span><br><span class="line">fhz &lt;- <span class="number">60</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>计算量点之间的距离<br>两点之间的距离通过空间坐标计算<br>公式为：</p>
-<script type="math/tex; mode=display">
-distansce=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2}</script><p>R语言实现</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 求两点的距离</span></span><br><span class="line">distance &lt;- <span class="keyword">function</span>(x,y)&#123;</span><br><span class="line">  l &lt;- sqrt((y[<span class="number">1</span>]-x[<span class="number">1</span>])^<span class="number">2</span>+(y[<span class="number">2</span>]-x[<span class="number">2</span>])^<span class="number">2</span>+(y[<span class="number">3</span>]-x[<span class="number">3</span>])^<span class="number">2</span>)</span><br><span class="line">  <span class="keyword">return</span>(l)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>  已知两个向量A，B，用distance(A,B)计算向量直线距离，返回距离值<br>  例：</p>
-  <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; distance(c(<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>),c(<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>))</span><br><span class="line">[<span class="number">1</span>] <span class="number">4.582576</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>计算空间速度<br>提取运动员dataframe中的特定三个向量n,m,l; 每个向量包含每个时刻的三个坐标X,Y,Z; 行代表坐标，列代表不同的时刻。<br><img src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/Screen%20Shot%202018-05-05%20at%2010.46.14.png" alt=""></p>
-<script type="math/tex; mode=display">
-velocity=\sum_{i=2}^{i_{length}}\sqrt{(n_{[i-1]}-n_{[i+1]})^2+(m_{[i-1]}-m_{[i+1]})^2+(l_{[i-1]}-l_{[i+1]})^2}  \bullet fhz</script><p>$i$ 表示帧数，$i_{length}$ 表示总共的帧数，$fhz$ 表示拍摄频率<br>空间速度计算的是 $i$ 帧前后两帧的平均速度，没有插值，从第二帧开始计算。没有第一帧的速度和最后一帧的速度。</p>
-<p>R语言实现</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">vel &lt;- <span class="keyword">function</span>(n,m,l)&#123;</span><br><span class="line">    <span class="keyword">if</span> (!is.numeric(n)&amp;!is.numeric(m)&amp;!is.numeric(l))&#123;</span><br><span class="line">      <span class="keyword">stop</span>(<span class="string">"输入的n,m,l变量要数值型，大锅！"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="comment"># 验证变量是否为数值变量，如果不是报错</span></span><br><span class="line">    <span class="keyword">if</span> ( !is.null(ncol(n)) &amp;&amp; (ncol(n) &gt; <span class="number">1</span>) )&#123;</span><br><span class="line">      <span class="keyword">stop</span>(<span class="string">"需要连续的变量，大锅！"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="comment"># 验证变量是否有空变量，如果有报错</span></span><br><span class="line">  v &lt;- c()</span><br><span class="line">  <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">2</span>:length(n)-<span class="number">1</span>)</span><br><span class="line">  &#123;</span><br><span class="line"></span><br><span class="line">    v[i] &lt;- c((sqrt((n[i-<span class="number">1</span>]-n[i+<span class="number">1</span>])^<span class="number">2</span>+(m[i-<span class="number">1</span>]-m[i+<span class="number">1</span>])^<span class="number">2</span>+(l[i-<span class="number">1</span>]-l[i+<span class="number">1</span>])^<span class="number">2</span>))*fhz)</span><br><span class="line">    <span class="comment">#acc &lt;- diff(vel,differences = 2)</span></span><br><span class="line">    v[length(v)+<span class="number">1</span>] &lt;- <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">return</span>(v)</span><br><span class="line">rm(v)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>已知某点（X,Y,Z）的各个时刻坐标三个向量X, Y ,Z ，计算空间速度 vel(X, Y, Z) ,返回一个速度向量<br>例：</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> &gt; vel(no1tk57.91$discusX,no1tk57.91$discusY,no1tk57.91$discusZ)</span><br><span class="line">  [<span class="number">1</span>]  <span class="number">0.0000000</span>  <span class="number">6.9633613</span>  <span class="number">6.7320428</span>  <span class="number">6.4110218</span>  <span class="number">6.1205882</span>  <span class="number">5.8252554</span></span><br><span class="line">  [<span class="number">7</span>]  <span class="number">5.5111886</span>  <span class="number">5.0677806</span>  <span class="number">4.4795535</span>  <span class="number">3.8385935</span>  <span class="number">3.2025615</span>  <span class="number">2.6959970</span></span><br><span class="line"> [<span class="number">13</span>]  <span class="number">2.2665392</span>  <span class="number">1.9699746</span>  <span class="number">1.7285832</span>  <span class="number">1.4623269</span>  <span class="number">1.0816654</span>  <span class="number">0.7868926</span></span><br><span class="line"> [<span class="number">19</span>]  <span class="number">0.9486833</span>  <span class="number">1.5059880</span>  <span class="number">2.1424285</span>  <span class="number">2.6420447</span>  <span class="number">2.9522195</span>  <span class="number">3.2333265</span></span><br><span class="line"> [<span class="number">25</span>]  <span class="number">3.5236912</span>  <span class="number">3.8615023</span>  <span class="number">4.4172390</span>  <span class="number">5.0961162</span>  <span class="number">5.8153590</span>  <span class="number">6.4499302</span></span><br><span class="line"> [<span class="number">31</span>]  <span class="number">6.8822380</span>  <span class="number">7.1932468</span>  <span class="number">7.4535361</span>  <span class="number">7.6811718</span>  <span class="number">7.8828675</span>  <span class="number">8.0931082</span></span><br><span class="line"> [<span class="number">37</span>]  <span class="number">8.1956574</span>  <span class="number">8.3428053</span>  <span class="number">8.5396253</span>  <span class="number">8.8850661</span>  <span class="number">9.2649015</span>  <span class="number">9.5866783</span></span><br><span class="line"> [<span class="number">43</span>]  <span class="number">9.9415492</span> <span class="number">10.2424411</span> <span class="number">10.4620457</span> <span class="number">10.5923369</span> <span class="number">10.7000374</span> <span class="number">10.8959075</span></span><br><span class="line"> [<span class="number">49</span>] <span class="number">11.3241159</span> <span class="number">11.8833329</span> <span class="number">12.1415156</span> <span class="number">12.0522363</span> <span class="number">11.8621077</span> <span class="number">11.7469826</span></span><br><span class="line"> [<span class="number">55</span>] <span class="number">12.0444676</span> <span class="number">12.7214150</span> <span class="number">13.3389055</span> <span class="number">13.5621237</span> <span class="number">13.2296939</span> <span class="number">12.4766823</span></span><br><span class="line"> [<span class="number">61</span>] <span class="number">11.5961545</span> <span class="number">11.1453129</span> <span class="number">11.3406349</span> <span class="number">11.8930232</span> <span class="number">12.3901090</span> <span class="number">12.6256881</span></span><br><span class="line"> [<span class="number">67</span>] <span class="number">12.6077119</span> <span class="number">12.4691780</span> <span class="number">12.2602773</span> <span class="number">12.1533699</span> <span class="number">12.1091536</span> <span class="number">12.1058829</span></span><br><span class="line"> [<span class="number">73</span>] <span class="number">12.1094509</span> <span class="number">11.9888949</span> <span class="number">11.9354765</span> <span class="number">12.0768539</span> <span class="number">12.5839898</span> <span class="number">13.3736756</span></span><br><span class="line"> [<span class="number">79</span>] <span class="number">14.2615848</span> <span class="number">14.9932785</span> <span class="number">15.3010588</span> <span class="number">15.2506262</span> <span class="number">15.0438559</span> <span class="number">14.7266697</span></span><br><span class="line"> [<span class="number">85</span>] <span class="number">14.4974205</span> <span class="number">14.4217336</span> <span class="number">14.5066054</span> <span class="number">14.7781596</span> <span class="number">15.2836383</span> <span class="number">15.9636086</span></span><br><span class="line"> [<span class="number">91</span>] <span class="number">16.4855937</span> <span class="number">16.5887793</span> <span class="number">16.2121066</span> <span class="number">15.5390733</span> <span class="number">14.9656406</span> <span class="number">14.8984966</span></span><br><span class="line"> [<span class="number">97</span>] <span class="number">15.3601172</span> <span class="number">16.2497015</span> <span class="number">17.3907907</span> <span class="number">18.8016489</span> <span class="number">20.5660011</span> <span class="number">22.3033809</span></span><br><span class="line">[<span class="number">103</span>] <span class="number">23.6642008</span> <span class="number">24.8453617</span> <span class="number">26.5705175</span> <span class="number">29.4282721</span> <span class="number">33.3662584</span> <span class="number">37.9821326</span></span><br><span class="line">[<span class="number">109</span>] <span class="number">42.0537941</span> <span class="number">44.6746237</span> <span class="number">45.5234357</span> <span class="number">44.7429056</span> <span class="number">43.0321322</span> <span class="number">41.1617930</span></span><br><span class="line">[<span class="number">115</span>] <span class="number">39.6629500</span> <span class="number">38.6514114</span> <span class="number">38.0660636</span> <span class="number">37.3920366</span> <span class="number">35.9510167</span> <span class="number">33.1914447</span></span><br><span class="line">[<span class="number">121</span>] <span class="number">29.2155643</span> <span class="number">24.6554010</span> <span class="number">20.8339147</span>  <span class="number">0.0000000</span></span><br></pre></td></tr></table></figure>
-</li>
+<h2 id="function">function</h2>
+<ul>
+<li><p>定义拍摄频率 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义拍摄频率</span></span><br><span class="line">fhz <span class="operator">&lt;-</span> 60 </span><br></pre></td></tr></table></figure></p></li>
+<li><p>计算量点之间的距离 两点之间的距离通过空间坐标计算 公式为： <span
+class="math display">\[
+distansce=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2}
+\]</span> R语言实现 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 求两点的距离</span></span><br><span class="line">distance <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>x<span class="punctuation">,</span>y<span class="punctuation">)</span><span class="punctuation">&#123;</span></span><br><span class="line">  l <span class="operator">&lt;-</span> <span class="built_in">sqrt</span><span class="punctuation">(</span><span class="punctuation">(</span>y<span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span><span class="operator">-</span>x<span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="operator">^</span><span class="number">2</span><span class="operator">+</span><span class="punctuation">(</span>y<span class="punctuation">[</span><span class="number">2</span><span class="punctuation">]</span><span class="operator">-</span>x<span class="punctuation">[</span><span class="number">2</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="operator">^</span><span class="number">2</span><span class="operator">+</span><span class="punctuation">(</span>y<span class="punctuation">[</span><span class="number">3</span><span class="punctuation">]</span><span class="operator">-</span>x<span class="punctuation">[</span><span class="number">3</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="operator">^</span><span class="number">2</span><span class="punctuation">)</span></span><br><span class="line">  <span class="built_in">return</span><span class="punctuation">(</span>l<span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>已知两个向量A，B，用distance(A,B)计算向量直线距离，返回距离值 例：
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">&gt;</span> distance<span class="punctuation">(</span><span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span><span class="number">3</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">)</span><span class="punctuation">,</span><span class="built_in">c</span><span class="punctuation">(</span><span class="number">3</span><span class="punctuation">,</span><span class="number">4</span><span class="punctuation">,</span><span class="number">6</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="number">4.582576</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>计算空间速度<br />
+提取运动员dataframe中的特定三个向量n,m,l;
+每个向量包含每个时刻的三个坐标X,Y,Z;
+行代表坐标，列代表不同的时刻。<br />
+<img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/Screen%20Shot%202018-05-05%20at%2010.46.14.png" />
+<span class="math display">\[
+velocity=\sum_{i=2}^{i_{length}}\sqrt{(n_{[i-1]}-n_{[i+1]})^2+(m_{[i-1]}-m_{[i+1]})^2+(l_{[i-1]}-l_{[i+1]})^2}  \bullet
+fhz
+\]</span></p></li>
 </ul>
+<p><span class="math inline">\(i\)</span> 表示帧数，<span
+class="math inline">\(i_{length}\)</span> 表示总共的帧数，<span
+class="math inline">\(fhz\)</span> 表示拍摄频率 空间速度计算的是 <span
+class="math inline">\(i\)</span>
+帧前后两帧的平均速度，没有插值，从第二帧开始计算。没有第一帧的速度和最后一帧的速度。</p>
+<p>R语言实现 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">vel <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>n<span class="punctuation">,</span>m<span class="punctuation">,</span>l<span class="punctuation">)</span><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="punctuation">(</span><span class="operator">!</span><span class="built_in">is.numeric</span><span class="punctuation">(</span>n<span class="punctuation">)</span><span class="operator">&amp;</span><span class="operator">!</span><span class="built_in">is.numeric</span><span class="punctuation">(</span>m<span class="punctuation">)</span><span class="operator">&amp;</span><span class="operator">!</span><span class="built_in">is.numeric</span><span class="punctuation">(</span>l<span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">&#123;</span></span><br><span class="line">      stop<span class="punctuation">(</span><span class="string">&quot;输入的n,m,l变量要数值型，大锅！&quot;</span><span class="punctuation">)</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="comment"># 验证变量是否为数值变量，如果不是报错</span></span><br><span class="line">    <span class="keyword">if</span> <span class="punctuation">(</span> <span class="operator">!</span><span class="built_in">is.null</span><span class="punctuation">(</span>ncol<span class="punctuation">(</span>n<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">&amp;&amp;</span> <span class="punctuation">(</span>ncol<span class="punctuation">(</span>n<span class="punctuation">)</span> <span class="operator">&gt;</span> <span class="number">1</span><span class="punctuation">)</span> <span class="punctuation">)</span><span class="punctuation">&#123;</span></span><br><span class="line">      stop<span class="punctuation">(</span><span class="string">&quot;需要连续的变量，大锅！&quot;</span><span class="punctuation">)</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="comment"># 验证变量是否有空变量，如果有报错</span></span><br><span class="line">  v <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="punctuation">)</span></span><br><span class="line">  <span class="keyword">for</span> <span class="punctuation">(</span>i <span class="keyword">in</span> <span class="number">2</span><span class="operator">:</span><span class="built_in">length</span><span class="punctuation">(</span>n<span class="punctuation">)</span><span class="operator">-</span><span class="number">1</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#123;</span></span><br><span class="line"></span><br><span class="line">    v<span class="punctuation">[</span>i<span class="punctuation">]</span> <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="punctuation">(</span><span class="built_in">sqrt</span><span class="punctuation">(</span><span class="punctuation">(</span>n<span class="punctuation">[</span>i<span class="operator">-</span><span class="number">1</span><span class="punctuation">]</span><span class="operator">-</span>n<span class="punctuation">[</span>i<span class="operator">+</span><span class="number">1</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="operator">^</span><span class="number">2</span><span class="operator">+</span><span class="punctuation">(</span>m<span class="punctuation">[</span>i<span class="operator">-</span><span class="number">1</span><span class="punctuation">]</span><span class="operator">-</span>m<span class="punctuation">[</span>i<span class="operator">+</span><span class="number">1</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="operator">^</span><span class="number">2</span><span class="operator">+</span><span class="punctuation">(</span>l<span class="punctuation">[</span>i<span class="operator">-</span><span class="number">1</span><span class="punctuation">]</span><span class="operator">-</span>l<span class="punctuation">[</span>i<span class="operator">+</span><span class="number">1</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="operator">^</span><span class="number">2</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">*</span>fhz<span class="punctuation">)</span></span><br><span class="line">    <span class="comment">#acc &lt;- diff(vel,differences = 2)</span></span><br><span class="line">    v<span class="punctuation">[</span><span class="built_in">length</span><span class="punctuation">(</span>v<span class="punctuation">)</span><span class="operator">+</span><span class="number">1</span><span class="punctuation">]</span> <span class="operator">&lt;-</span> <span class="number">0</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="built_in">return</span><span class="punctuation">(</span>v<span class="punctuation">)</span></span><br><span class="line">rm<span class="punctuation">(</span>v<span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure> 已知某点（X,Y,Z）的各个时刻坐标三个向量X, Y
+,Z ，计算空间速度 vel(X, Y, Z) ,返回一个速度向量 例： <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> <span class="operator">&gt;</span> vel<span class="punctuation">(</span>no1tk57.91<span class="operator">$</span>discusX<span class="punctuation">,</span>no1tk57.91<span class="operator">$</span>discusY<span class="punctuation">,</span>no1tk57.91<span class="operator">$</span>discusZ<span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span>  <span class="number">0.0000000</span>  <span class="number">6.9633613</span>  <span class="number">6.7320428</span>  <span class="number">6.4110218</span>  <span class="number">6.1205882</span>  <span class="number">5.8252554</span></span><br><span class="line">  <span class="punctuation">[</span><span class="number">7</span><span class="punctuation">]</span>  <span class="number">5.5111886</span>  <span class="number">5.0677806</span>  <span class="number">4.4795535</span>  <span class="number">3.8385935</span>  <span class="number">3.2025615</span>  <span class="number">2.6959970</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">13</span><span class="punctuation">]</span>  <span class="number">2.2665392</span>  <span class="number">1.9699746</span>  <span class="number">1.7285832</span>  <span class="number">1.4623269</span>  <span class="number">1.0816654</span>  <span class="number">0.7868926</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">19</span><span class="punctuation">]</span>  <span class="number">0.9486833</span>  <span class="number">1.5059880</span>  <span class="number">2.1424285</span>  <span class="number">2.6420447</span>  <span class="number">2.9522195</span>  <span class="number">3.2333265</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">25</span><span class="punctuation">]</span>  <span class="number">3.5236912</span>  <span class="number">3.8615023</span>  <span class="number">4.4172390</span>  <span class="number">5.0961162</span>  <span class="number">5.8153590</span>  <span class="number">6.4499302</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">31</span><span class="punctuation">]</span>  <span class="number">6.8822380</span>  <span class="number">7.1932468</span>  <span class="number">7.4535361</span>  <span class="number">7.6811718</span>  <span class="number">7.8828675</span>  <span class="number">8.0931082</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">37</span><span class="punctuation">]</span>  <span class="number">8.1956574</span>  <span class="number">8.3428053</span>  <span class="number">8.5396253</span>  <span class="number">8.8850661</span>  <span class="number">9.2649015</span>  <span class="number">9.5866783</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">43</span><span class="punctuation">]</span>  <span class="number">9.9415492</span> <span class="number">10.2424411</span> <span class="number">10.4620457</span> <span class="number">10.5923369</span> <span class="number">10.7000374</span> <span class="number">10.8959075</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">49</span><span class="punctuation">]</span> <span class="number">11.3241159</span> <span class="number">11.8833329</span> <span class="number">12.1415156</span> <span class="number">12.0522363</span> <span class="number">11.8621077</span> <span class="number">11.7469826</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">55</span><span class="punctuation">]</span> <span class="number">12.0444676</span> <span class="number">12.7214150</span> <span class="number">13.3389055</span> <span class="number">13.5621237</span> <span class="number">13.2296939</span> <span class="number">12.4766823</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">61</span><span class="punctuation">]</span> <span class="number">11.5961545</span> <span class="number">11.1453129</span> <span class="number">11.3406349</span> <span class="number">11.8930232</span> <span class="number">12.3901090</span> <span class="number">12.6256881</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">67</span><span class="punctuation">]</span> <span class="number">12.6077119</span> <span class="number">12.4691780</span> <span class="number">12.2602773</span> <span class="number">12.1533699</span> <span class="number">12.1091536</span> <span class="number">12.1058829</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">73</span><span class="punctuation">]</span> <span class="number">12.1094509</span> <span class="number">11.9888949</span> <span class="number">11.9354765</span> <span class="number">12.0768539</span> <span class="number">12.5839898</span> <span class="number">13.3736756</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">79</span><span class="punctuation">]</span> <span class="number">14.2615848</span> <span class="number">14.9932785</span> <span class="number">15.3010588</span> <span class="number">15.2506262</span> <span class="number">15.0438559</span> <span class="number">14.7266697</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">85</span><span class="punctuation">]</span> <span class="number">14.4974205</span> <span class="number">14.4217336</span> <span class="number">14.5066054</span> <span class="number">14.7781596</span> <span class="number">15.2836383</span> <span class="number">15.9636086</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">91</span><span class="punctuation">]</span> <span class="number">16.4855937</span> <span class="number">16.5887793</span> <span class="number">16.2121066</span> <span class="number">15.5390733</span> <span class="number">14.9656406</span> <span class="number">14.8984966</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">97</span><span class="punctuation">]</span> <span class="number">15.3601172</span> <span class="number">16.2497015</span> <span class="number">17.3907907</span> <span class="number">18.8016489</span> <span class="number">20.5660011</span> <span class="number">22.3033809</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">103</span><span class="punctuation">]</span> <span class="number">23.6642008</span> <span class="number">24.8453617</span> <span class="number">26.5705175</span> <span class="number">29.4282721</span> <span class="number">33.3662584</span> <span class="number">37.9821326</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">109</span><span class="punctuation">]</span> <span class="number">42.0537941</span> <span class="number">44.6746237</span> <span class="number">45.5234357</span> <span class="number">44.7429056</span> <span class="number">43.0321322</span> <span class="number">41.1617930</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">115</span><span class="punctuation">]</span> <span class="number">39.6629500</span> <span class="number">38.6514114</span> <span class="number">38.0660636</span> <span class="number">37.3920366</span> <span class="number">35.9510167</span> <span class="number">33.1914447</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">121</span><span class="punctuation">]</span> <span class="number">29.2155643</span> <span class="number">24.6554010</span> <span class="number">20.8339147</span>  <span class="number">0.0000000</span></span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>计算空间夹角</li>
 </ul>
 <p>运动员在空间中需要计算关节角度，或者环节与环节之间的夹角</p>
-<p>用4个关节点形成两个空间向量，计算两个空间向量的夹角  </p>
-<p>已知，点$A(x_a,y_a,z_a)B(x_b,y_b,z_b)$和点$C(x_c,y_c,z_c),D(x_d,y_d,z_d)$  </p>
-<p>则： </p>
-<p>$\vec{ab}=(x_b-x_a,y_b-y_a,z_b-z_a)$  </p>
-<p>$\vec{cd}=(x_d-x_c,y_d-y_c,z_d-z_c)$  </p>
-<p>向量的积：  </p>
-<p>$\vec{ab}\bullet\vec{cd}=|ab|\bullet|cd|\bullet\cos\theta $  </p>
-<p>$\theta=\arccos\frac{\vec{ab}\bullet\vec{cd}}{|ab|\bullet|cd|}$  </p>
-<p>向量的模：  </p>
-<p>$|ab|=\sqrt{x_{ab}^2+y_{ab}^2+z_{ab}^2}$  </p>
-<p>$|cd|=\sqrt{x_{cd}^2+y_{cd}^2+z_{cd}^2}$  </p>
-<p>向量的夹角  </p>
-<p>因为关节点数据是三维坐标数据，R中以dataframe的格式保存，所以每个点的数据在R中也是向量的数据结构（dataframe$point)  </p>
-<script type="math/tex; mode=display">
-\theta=\sum_{i=1}^{i_{length}}\arccos\frac{\vec{a_ib_i}\bullet\vec{c_id_i}}{|a_ib_i|\bullet|c_id_i|}</script><p>R语言实现<br>R中的求积与求模<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt; a &lt;- c(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">&gt; b &lt;- c(<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>)</span><br><span class="line"><span class="comment"># 平方</span></span><br><span class="line">&gt; a^<span class="number">2</span></span><br><span class="line">[<span class="number">1</span>] <span class="number">1</span> <span class="number">4</span> <span class="number">9</span></span><br><span class="line"><span class="comment"># 计算向量元素的和</span></span><br><span class="line">&gt; sum(a)</span><br><span class="line">[<span class="number">1</span>] <span class="number">6</span></span><br><span class="line"><span class="comment"># 计算向量的模（元素平方后求和）</span></span><br><span class="line">&gt; sum(a^<span class="number">2</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="number">14</span></span><br><span class="line"><span class="comment"># 向量的积（a,b向量中各个元素相乘）</span></span><br><span class="line">&gt; a*b</span><br><span class="line">[<span class="number">1</span>]  <span class="number">4</span> <span class="number">10</span> <span class="number">18</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
-<p> 四个点，形成两个向量，通过向量计算角度<br> <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">angle &lt;- <span class="keyword">function</span>(a,b,c,d)&#123;</span><br><span class="line"> ab &lt;- b-a</span><br><span class="line"> cd &lt;- d-c</span><br><span class="line"> cj&lt;-acos(sum(ab*cd)/sqrt(sum(ab^<span class="number">2</span>)*sum(cd^<span class="number">2</span>)))</span><br><span class="line"> cj &lt;- rtod(cj)</span><br><span class="line"> <span class="keyword">return</span>(cj)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>用4个关节点形成两个空间向量，计算两个空间向量的夹角</p>
+<p>已知，点<span
+class="math inline">\(A(x_a,y_a,z_a)B(x_b,y_b,z_b)\)</span>和点<span
+class="math inline">\(C(x_c,y_c,z_c),D(x_d,y_d,z_d)\)</span></p>
+<p>则：</p>
+<p><span
+class="math inline">\(\vec{ab}=(x_b-x_a,y_b-y_a,z_b-z_a)\)</span></p>
+<p><span
+class="math inline">\(\vec{cd}=(x_d-x_c,y_d-y_c,z_d-z_c)\)</span></p>
+<p>向量的积：</p>
+<p>$=|ab||cd|$</p>
+<p><span
+class="math inline">\(\theta=\arccos\frac{\vec{ab}\bullet\vec{cd}}{|ab|\bullet|cd|}\)</span></p>
+<p>向量的模：</p>
+<p><span
+class="math inline">\(|ab|=\sqrt{x_{ab}^2+y_{ab}^2+z_{ab}^2}\)</span></p>
+<p><span
+class="math inline">\(|cd|=\sqrt{x_{cd}^2+y_{cd}^2+z_{cd}^2}\)</span></p>
+<p>向量的夹角</p>
+<p>因为关节点数据是三维坐标数据，R中以dataframe的格式保存，所以每个点的数据在R中也是向量的数据结构（dataframe$point)</p>
+<p><span class="math display">\[
+\theta=\sum_{i=1}^{i_{length}}\arccos\frac{\vec{a_ib_i}\bullet\vec{c_id_i}}{|a_ib_i|\bullet|c_id_i|}
+\]</span> R语言实现 R中的求积与求模 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">&gt;</span> a <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">,</span><span class="number">3</span><span class="punctuation">)</span></span><br><span class="line"><span class="operator">&gt;</span> b <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">4</span><span class="punctuation">,</span><span class="number">5</span><span class="punctuation">,</span><span class="number">6</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment"># 平方</span></span><br><span class="line"><span class="operator">&gt;</span> a<span class="operator">^</span><span class="number">2</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="number">1</span> <span class="number">4</span> <span class="number">9</span></span><br><span class="line"><span class="comment"># 计算向量元素的和</span></span><br><span class="line"><span class="operator">&gt;</span> <span class="built_in">sum</span><span class="punctuation">(</span>a<span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="number">6</span></span><br><span class="line"><span class="comment"># 计算向量的模（元素平方后求和）</span></span><br><span class="line"><span class="operator">&gt;</span> <span class="built_in">sum</span><span class="punctuation">(</span>a<span class="operator">^</span><span class="number">2</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="number">14</span></span><br><span class="line"><span class="comment"># 向量的积（a,b向量中各个元素相乘）</span></span><br><span class="line"><span class="operator">&gt;</span> a<span class="operator">*</span>b</span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span>  <span class="number">4</span> <span class="number">10</span> <span class="number">18</span></span><br><span class="line"><span class="operator">&gt;</span> </span><br></pre></td></tr></table></figure>
+四个点，形成两个向量，通过向量计算角度<br />
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">angle <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>a<span class="punctuation">,</span>b<span class="punctuation">,</span><span class="built_in">c</span><span class="punctuation">,</span>d<span class="punctuation">)</span><span class="punctuation">&#123;</span></span><br><span class="line"> ab <span class="operator">&lt;-</span> b<span class="operator">-</span>a</span><br><span class="line"> cd <span class="operator">&lt;-</span> d<span class="operator">-</span><span class="built_in">c</span></span><br><span class="line"> cj<span class="operator">&lt;-</span><span class="built_in">acos</span><span class="punctuation">(</span><span class="built_in">sum</span><span class="punctuation">(</span>ab<span class="operator">*</span>cd<span class="punctuation">)</span><span class="operator">/</span><span class="built_in">sqrt</span><span class="punctuation">(</span><span class="built_in">sum</span><span class="punctuation">(</span>ab<span class="operator">^</span><span class="number">2</span><span class="punctuation">)</span><span class="operator">*</span><span class="built_in">sum</span><span class="punctuation">(</span>cd<span class="operator">^</span><span class="number">2</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"> cj <span class="operator">&lt;-</span> rtod<span class="punctuation">(</span>cj<span class="punctuation">)</span></span><br><span class="line"> <span class="built_in">return</span><span class="punctuation">(</span>cj<span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -556,14 +600,14 @@ velocity=\sum_{i=2}^{i_{length}}\sqrt{(n_{[i-1]}-n_{[i+1]})^2+(m_{[i-1]}-m_{[i+1
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="http://ov3jxphpw.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20170823013308.jpg" alt="gazelle© WeChat Pay"/>
+        <img id="wechat_qr" src="http://ov3jxphpw.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20170823013308.jpg" alt=" WeChat Pay"/>
         <p>WeChat Pay</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="http://ov3jxphpw.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20170823013259.jpg" alt="gazelle© Alipay"/>
+        <img id="alipay_qr" src="http://ov3jxphpw.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20170823013259.jpg" alt=" Alipay"/>
         <p>Alipay</p>
       </div>
     
@@ -582,7 +626,7 @@ velocity=\sum_{i=2}^{i_{length}}\sqrt{(n_{[i-1]}-n_{[i+1]})^2+(m_{[i-1]}-m_{[i+1
       
         <div class="post-tags">
           
-            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+            <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
           
         </div>
       
@@ -595,7 +639,7 @@ velocity=\sum_{i=2}^{i_{length}}\sqrt{(n_{[i-1]}-n_{[i+1]})^2+(m_{[i-1]}-m_{[i+1
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/05/R语言笔记/" rel="next" title="R语言笔记">
+              <a href="/2018/05/05/R%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/" rel="next" title="R语言笔记">
                 <i class="fa fa-chevron-left"></i> R语言笔记
               </a>
             
@@ -605,7 +649,7 @@ velocity=\sum_{i=2}^{i_{length}}\sqrt{(n_{[i-1]}-n_{[i+1]})^2+(m_{[i-1]}-m_{[i+1
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/18/安装Ubuntu版openpose/" rel="prev" title="安装Ubuntu版openpose">
+              <a href="/2018/06/18/%E5%AE%89%E8%A3%85Ubuntu%E7%89%88openpose/" rel="prev" title="安装Ubuntu版openpose">
                 安装Ubuntu版openpose <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -681,10 +725,10 @@ velocity=\sum_{i=2}^{i_{length}}\sqrt{(n_{[i-1]}-n_{[i+1]})^2+(m_{[i-1]}-m_{[i+1
             
               <img class="site-author-image" itemprop="image"
                 src="/images/avatar.png"
-                alt="gazelle©" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">gazelle©</p>
-              <p class="site-description motion-element" itemprop="description">Keep Writing Will Be Better</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -692,9 +736,9 @@ velocity=\sum_{i=2}^{i_{length}}\sqrt{(n_{[i-1]}-n_{[i+1]})^2+(m_{[i-1]}-m_{[i+1
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -850,7 +894,7 @@ velocity=\sum_{i=2}^{i_{length}}\sqrt{(n_{[i-1]}-n_{[i+1]})^2+(m_{[i-1]}-m_{[i+1
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -1525,24 +1569,7 @@ velocity=\sum_{i=2}^{i_{length}}\sqrt{(n_{[i-1]}-n_{[i+1]})^2+(m_{[i-1]}-m_{[i+1
         }
     });
 </script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
     
   

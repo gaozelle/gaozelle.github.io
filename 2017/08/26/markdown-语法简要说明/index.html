@@ -112,7 +112,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Muse',
     version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
@@ -141,17 +141,18 @@
   <meta name="keywords" content="笔记," />
 
 
-<meta name="keywords" content="笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mrakdown 常用语法简要说明">
-<meta property="og:url" content="http://gaomm.top/2017/08/26/markdown-语法简要说明/index.html">
+<meta property="og:url" content="http://gaomm.top/2017/08/26/markdown-%E8%AF%AD%E6%B3%95%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/index.html">
 <meta property="og:site_name" content="gazelle">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2018/02/21/5a8d71a965d64.png">
 <meta property="og:image" content="https://i.loli.net/2017/08/28/59a38521b5b53.png">
-<meta property="og:updated_time" content="2019-01-20T16:14:56.000Z">
+<meta property="article:published_time" content="2017-08-26T02:26:48.000Z">
+<meta property="article:modified_time" content="2019-01-20T16:14:56.000Z">
+<meta property="article:author" content="gazelle©">
+<meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mrakdown 常用语法简要说明">
 <meta name="twitter:image" content="https://i.loli.net/2018/02/21/5a8d71a965d64.png">
 
 
@@ -216,9 +217,13 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
@@ -264,31 +269,31 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
+          <a href="/categories/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+          <a href="/about/%20" rel="section">
             <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
         </li>
       
@@ -364,10 +369,10 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://gaomm.top/2017/08/26/markdown-语法简要说明/">
+    <link itemprop="mainEntityOfPage" href="http://gaomm.top/2017/08/26/markdown-%E8%AF%AD%E6%B3%95%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gazelle©">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
@@ -426,7 +431,7 @@
 
           
           
-             <span id="/2017/08/26/markdown-语法简要说明/" class="leancloud_visitors" data-flag-title="Mrakdown 常用语法简要说明">
+             <span id="/2017/08/26/markdown-%E8%AF%AD%E6%B3%95%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/" class="leancloud_visitors" data-flag-title="Mrakdown 常用语法简要说明">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -457,19 +462,24 @@
       
 
       
-        <p><img src="https://i.loli.net/2018/02/21/5a8d71a965d64.png" class="full-image"></p>
-<a id="more"></a>
-<h1 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h1><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 这是 &lt;h1&gt; 一级标题</span></span><br><span class="line"><span class="section">## 这是 &lt;h2&gt; 二级标题</span></span><br><span class="line"><span class="section">### 这是 &lt;h3&gt; 三级标题</span></span><br><span class="line"><span class="section">#### 这是 &lt;h4&gt; 四级标题</span></span><br><span class="line"><span class="section">##### 这是 &lt;h5&gt; 五级标题</span></span><br><span class="line"><span class="section">###### 这是 &lt;h6&gt; 六级标题</span></span><br></pre></td></tr></table></figure>
-<h1 id="强调符号"><a href="#强调符号" class="headerlink" title="强调符号"></a>强调符号</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*斜体*        _斜体_</span><br><span class="line">**粗体**     __粗体__</span><br><span class="line">~~这个文字将会被横线删除~~</span><br><span class="line">` 高亮文本 ·</span><br><span class="line">` ~~_也可以**组合** 这些符号_~~ `</span><br></pre></td></tr></table></figure>
+        <p><img src="https://i.loli.net/2018/02/21/5a8d71a965d64.png" class="full-image" /></p>
+<span id="more"></span>
+<h1 id="标题">标题</h1>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 这是 <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span></span> 一级标题</span></span><br><span class="line"><span class="section">## 这是 <span class="language-xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span></span> 二级标题</span></span><br><span class="line"><span class="section">### 这是 <span class="language-xml"><span class="tag">&lt;<span class="name">h3</span>&gt;</span></span> 三级标题</span></span><br><span class="line"><span class="section">#### 这是 <span class="language-xml"><span class="tag">&lt;<span class="name">h4</span>&gt;</span></span> 四级标题</span></span><br><span class="line"><span class="section">##### 这是 <span class="language-xml"><span class="tag">&lt;<span class="name">h5</span>&gt;</span></span> 五级标题</span></span><br><span class="line"><span class="section">###### 这是 <span class="language-xml"><span class="tag">&lt;<span class="name">h6</span>&gt;</span></span> 六级标题</span></span><br></pre></td></tr></table></figure>
+<h1 id="强调符号">强调符号</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*斜体*        _斜体_</span><br><span class="line">**粗体**     __粗体__</span><br><span class="line">~~这个文字将会被横线删除~~</span><br><span class="line">` 高亮文本 ·</span><br><span class="line">` ~~_也可以**组合** 这些符号_~~ `</span><br></pre></td></tr></table></figure>
 <p>效果：</p>
 <blockquote>
-<p><em>斜体</em>        _斜体_<br><strong>粗体</strong>     <strong>粗体</strong><br><del>这个文字将会被横线删除</del><br><code>高亮文本</code><br><del>_也可以<strong><code>组合</code></strong>这些符号_</del>  </p>
+<p><em>斜体</em> <em>斜体</em><br />
+<strong>粗体</strong> <strong>粗体</strong><br />
+<del>这个文字将会被横线删除</del><br />
+<code>高亮文本</code><br />
+<del><em>也可以<strong><code>组合</code></strong>这些符号</em></del></p>
 </blockquote>
-<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><h2 id="外部链接"><a href="#外部链接" class="headerlink" title="外部链接"></a>外部链接</h2><p>文档中的文字链接外部网站的</p>
-<ul>
-<li>样式：<code>[输入文字](网址)</code></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这是我的网站：[gazelle](gaozelle.github.io) 的链接</span><br></pre></td></tr></table></figure>
+<h1 id="链接">链接</h1>
+<h2 id="外部链接">外部链接</h2>
+<p>文档中的文字链接外部网站的 + 样式：<code>[输入文字](网址)</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这是我的网站：[gazelle](gaozelle.github.io) 的链接</span><br></pre></td></tr></table></figure>
 <p>效果：</p>
 <blockquote>
 <p>这是我的网站：<a href="gaozelle.github.io">gazelle</a> 的链接</p>
@@ -477,35 +487,59 @@
 <p>但是这样书写会造成阅读的不方便，所以可以使用另外一种样式。</p>
 <ul>
 <li>样式：<code>[输入文字]</code></li>
-<li>样式：<code>[输入文字]: 网址</code><br>（可以放在文档中其他任意地方，例如文档中或者结尾。并且链接网址不会出现在文档中。）</li>
+<li>样式：<code>[输入文字]: 网址</code>
+（可以放在文档中其他任意地方，例如文档中或者结尾。并且链接网址不会出现在文档中。）</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">点击名称访问同网站 ：[Google][] ，</span><br><span class="line">[Yahoo][] ， [MSN][]。</span><br><span class="line"></span><br><span class="line">  [google]: http://google.com/  </span><br><span class="line">  [yahoo]:  http://search.yahoo.com/   </span><br><span class="line">  [msn]:    http://search.msn.com/</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">点击名称访问同网站 ：[Google][] ，</span><br><span class="line">[Yahoo][] ， [MSN][]。</span><br><span class="line"></span><br><span class="line">  [google]: http://google.com/  </span><br><span class="line">  [yahoo]:  http://search.yahoo.com/   </span><br><span class="line">  [msn]:    http://search.msn.com/   </span><br></pre></td></tr></table></figure>
 <p>效果:</p>
 <blockquote>
-<p>点击名称访同网站 ：<a href="http://google.com/" target="_blank" rel="noopener">Google</a> ,<a href="http://search.yahoo.com/" target="_blank" rel="noopener">Yahoo</a> ,<a href="http://search.msn.com/" target="_blank" rel="noopener">MSN</a>。</p>
+<p>点击名称访同网站 ：<a target="_blank" rel="noopener" href="http://google.com/">Google</a> ,<a
+target="_blank" rel="noopener" href="http://search.yahoo.com/">Yahoo</a> ,<a
+target="_blank" rel="noopener" href="http://search.msn.com/">MSN</a>。</p>
 </blockquote>
-<h2 id="内部链接"><a href="#内部链接" class="headerlink" title="内部链接"></a>内部链接</h2><p>在文档中，跳转到其他位置。</p>
+<h2 id="内部链接">内部链接</h2>
+<p>在文档中，跳转到其他位置。</p>
 <ul>
 <li>样式：<code>[输入文字](# 标号)</code></li>
 </ul>
-<h1 id="脚注"><a href="#脚注" class="headerlink" title="脚注"></a>脚注</h1><p>脚注功能需要Pandoc的支持。  </p>
+<h1 id="脚注">脚注</h1>
+<p>脚注功能需要Pandoc的支持。</p>
 <ul>
-<li>样式：输入的文字[\^1]输入的文字</li>
-<li>样式：[\^1]: 我是脚注</li>
+<li>样式：输入的文字[^1]输入的文字</li>
+<li>样式：[^1]: 我是脚注</li>
 </ul>
-<p>效果：  </p>
+<p>效果：</p>
 <blockquote>
 <p>输入的文字<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>输入的文字</p>
 </blockquote>
-<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><p>@+.bib的文章引用名称，字YAML中插入，—Bibliographies=xxx.bib 也可以在YAML中声明Meta data，编译完于文章后标注。[@Pugh1971]</p>
+<h1 id="引用">引用</h1>
+<p>@+.bib的文章引用名称，字YAML中插入，--Bibliographies=xxx.bib
+也可以在YAML中声明Meta data，编译完于文章后标注。<span class="citation"
+data-cites="Pugh1971">(<strong>Pugh1971?</strong>)</span></p>
 <p><code>马拉松的脚注@Hausswirth1997</code></p>
-<h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-------------------------------------------------------------</span><br><span class="line"> Centered   Default           Right Left</span><br><span class="line">  Header    Aligned         Aligned Aligned</span><br><span class="line">----------- ------- --------------- -------------------------</span><br><span class="line">   First    row                12.0 Example of a row that</span><br><span class="line"><span class="code">                                    spans multiple lines.</span></span><br><span class="line"></span><br><span class="line">  Second    row                 5.0 Here's another one. Note</span><br><span class="line"><span class="code">                                    the blank line between</span></span><br><span class="line"><span class="code">                                    rows.</span></span><br><span class="line">-------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">Table: Here's the caption. It, too, may span</span><br><span class="line">multiple lines.</span><br></pre></td></tr></table></figure>
-<h1 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h1><p>插入gazelle的图片：先把图片放到图床，然后使用网络连接。或者直接使用本地的Path。</p>
+<h1 id="表格">表格</h1>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-------------------------------------------------------------</span><br><span class="line"> Centered   Default           Right Left</span><br><span class="line">  Header    Aligned         Aligned Aligned</span><br><span class="line">----------- ------- --------------- -------------------------</span><br><span class="line">   First    row                12.0 Example of a row that</span><br><span class="line"><span class="code">                                    spans multiple lines.</span></span><br><span class="line"><span class="code"></span></span><br><span class="line">  Second    row                 5.0 Here&#x27;s another one. Note</span><br><span class="line"><span class="code">                                    the blank line between</span></span><br><span class="line"><span class="code">                                    rows.</span></span><br><span class="line"><span class="code">-------------------------------------------------------------</span></span><br><span class="line"><span class="code"></span></span><br><span class="line">Table: Here&#x27;s the caption. It, too, may span</span><br><span class="line">multiple lines.</span><br></pre></td></tr></table></figure>
+<h1 id="图片">图片</h1>
+<p>插入gazelle的图片：先把图片放到图床，然后使用网络连接。或者直接使用本地的Path。</p>
 <blockquote>
 <p><code>![2b9dec9acd63fc9aab58b6a1119ce08b](https://i.loli.net/2017/08/28/59a38521b5b53.png)</code></p>
 </blockquote>
-<p><img src="https://i.loli.net/2017/08/28/59a38521b5b53.png" alt=""></p>
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">我是脚注</span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
+<p><img src="https://i.loli.net/2017/08/28/59a38521b5b53.png" /></p>
+<h1 id="references">References</h1>
+<div id="footnotes">
+<hr>
+<div id="footnotelist">
+<ol style="list-style:none; padding-left: 0;">
+<li id="fn:1">
+<span
+style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span
+style="display: inline-block; vertical-align: top;">我是脚注</span><a href="#fnref:1" rev="footnote">
+↩︎</a>
+</li>
+</ol>
+</div>
+</div>
+
       
     </div>
 
@@ -528,14 +562,14 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="http://ov3jxphpw.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20170823013308.jpg" alt="gazelle© WeChat Pay"/>
+        <img id="wechat_qr" src="http://ov3jxphpw.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20170823013308.jpg" alt=" WeChat Pay"/>
         <p>WeChat Pay</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="http://ov3jxphpw.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20170823013259.jpg" alt="gazelle© Alipay"/>
+        <img id="alipay_qr" src="http://ov3jxphpw.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20170823013259.jpg" alt=" Alipay"/>
         <p>Alipay</p>
       </div>
     
@@ -554,7 +588,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+            <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
           
         </div>
       
@@ -577,7 +611,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/30/论文写作笔记/" rel="prev" title="论文写作笔记">
+              <a href="/2017/08/30/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C%E7%AC%94%E8%AE%B0/" rel="prev" title="论文写作笔记">
                 论文写作笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -646,10 +680,10 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/images/avatar.png"
-                alt="gazelle©" />
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">gazelle©</p>
-              <p class="site-description motion-element" itemprop="description">Keep Writing Will Be Better</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -657,9 +691,9 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -795,7 +829,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#标题"><span class="nav-number">1.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#强调符号"><span class="nav-number">2.</span> <span class="nav-text">强调符号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#链接"><span class="nav-number">3.</span> <span class="nav-text">链接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#外部链接"><span class="nav-number">3.1.</span> <span class="nav-text">外部链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内部链接"><span class="nav-number">3.2.</span> <span class="nav-text">内部链接</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#脚注"><span class="nav-number">4.</span> <span class="nav-text">脚注</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表格"><span class="nav-number">6.</span> <span class="nav-text">表格</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图片"><span class="nav-number">7.</span> <span class="nav-text">图片</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">8.</span> <span class="nav-text">References</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%87%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%BA%E8%B0%83%E7%AC%A6%E5%8F%B7"><span class="nav-number">2.</span> <span class="nav-text">强调符号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5"><span class="nav-number">3.</span> <span class="nav-text">链接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%96%E9%83%A8%E9%93%BE%E6%8E%A5"><span class="nav-number">3.1.</span> <span class="nav-text">外部链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E9%83%A8%E9%93%BE%E6%8E%A5"><span class="nav-number">3.2.</span> <span class="nav-text">内部链接</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%84%9A%E6%B3%A8"><span class="nav-number">4.</span> <span class="nav-text">脚注</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E7%94%A8"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A1%A8%E6%A0%BC"><span class="nav-number">6.</span> <span class="nav-text">表格</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E7%89%87"><span class="nav-number">7.</span> <span class="nav-text">图片</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#references"><span class="nav-number">8.</span> <span class="nav-text">References</span></a></li></ol></div>
             
 
           </div>
@@ -815,7 +849,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -1462,24 +1496,7 @@
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(bp, s);
 })();
-</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
   
   
