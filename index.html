@@ -692,311 +692,6 @@ alt="fZQ53d" />
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://gaomm.top/2022/08/22/pandoc-crossref%20demo%20document/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gazelle">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2022/08/22/pandoc-crossref%20demo%20document/" itemprop="url">pandoc-crossref demo document</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-08-22T16:48:25+08:00">2022-08-22</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2022/08/22/pandoc-crossref%20demo%20document/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2022/08/22/pandoc-crossref%20demo%20document/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2022/08/22/pandoc-crossref%20demo%20document/" class="leancloud_visitors" data-flag-title="pandoc-crossref demo document">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>This is a demo file for pandoc-crossref. With this filter, you can
-cross-reference figures (see Figure 2-4), display equations (see
-Equation 1), tables (see Table 1) and sections
-(secs. <strong>¿sec:wrapping-div?</strong>, 1, 2, 4.1, 4.2)</p>
-<p>For immediate example, see Figure 1</p>
-<figure>
-<img src="img1.jpg" id="fig:figure0" alt="Figure 1. A figure" />
-<figcaption aria-hidden="true">Figure 1. A figure</figcaption>
-</figure>
-<p>There is also support for code blocks, for example,
-lsts. <strong>¿lst:captionAttr?</strong>,
-<strong>¿lst:tableCaption?</strong>,
-<strong>¿lst:wrappingDiv?</strong></p>
-<p>It's possible to capitalize reference prefixes, like this:
-Figure 2.</p>
-<p>In case of multiple references, capitalization is determined by first
-reference. Figure 2, 3 is capitalized, while Figure 2, 3 is not.</p>
-<p>It is also possible to mix different references, like Figure 2,
-Table 1, lsts. <strong>¿lst:captionAttr?</strong>,
-<strong>¿lst:tableCaption?</strong>, Figure 3, 4, which will be grouped
-in order they are specified. You can even intermix this with regular
-citations, although it's not recommended: Figure 2, Table 1,<span
-class="citation" data-cites="unprocessedCitation"><sup>[<a
-href="#ref-unprocessedCitation"
-role="doc-biblioref"><strong>unprocessedCitation?</strong></a>]</sup></span></p>
-<p>You can also have custom chapter reference labels, like
-sec. AppA.CustLab</p>
-<p>Subfigures are supported, see Figure 5, 5 (b)</p>
-<h1 id="sec:sec1">Chapter 1. Figures</h1>
-<figure>
-<img src="https://s2.loli.net/2022/07/27/HKG6QcCpNwXn7dY.png"
-id="fig:figure1" alt="Figure 2. First figure" />
-<figcaption aria-hidden="true">Figure 2. First figure</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/07/27/HKG6QcCpNwXn7dY.png"
-id="fig:figure2" alt="Figure 3. Second figure" />
-<figcaption aria-hidden="true">Figure 3. Second figure</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/07/27/HKG6QcCpNwXn7dY.png"
-id="fig:figure3" alt="Figure 4. Third figure" />
-<figcaption aria-hidden="true">Figure 4. Third figure</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/07/27/HKG6QcCpNwXn7dY.png"
-alt="Unlabelled image" />
-<figcaption aria-hidden="true">Unlabelled image</figcaption>
-</figure>
-<div id="fig:subfigures" class="subfigures">
-<figure>
-<img src="img1.jpg" alt="a" />
-<figcaption aria-hidden="true">a</figcaption>
-</figure>
-<figure>
-<img src="img1.jpg" id="fig:subfigureB" alt="b" />
-<figcaption aria-hidden="true">b</figcaption>
-</figure>
-<p>Figure 5. Subfigures caption. a — Subfigure a, b — Subfigure b</p>
-</div>
-<h1 id="sec:sec2">Chapter 2. Equations</h1>
-<p>Display equations are labelled and numbered</p>
-<p><span id="eq:eqn1"><span class="math display">\[ P_i(x) = \sum_i a_i
-x^i \qquad{(1)}\]</span></span></p>
-<p>Since 0.1.6.0 those can also appear in the middle of paragraph <span
-id="eq:quadr"><span class="math display">\[a x^2 + b x^2 + c =
-0\qquad{(2)}\]</span></span> like this.</p>
-<h1 id="chapter-3.-tables">Chapter 3. Tables</h1>
-<div id="tbl:table1">
-<table>
-<caption>Table 1. Table example</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">First Header</th>
-<th style="text-align: left;">Second Header</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Content Cell</td>
-<td style="text-align: left;">Content Cell</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Content Cell</td>
-<td style="text-align: left;">Content Cell</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Table without caption:</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">First Header</th>
-<th style="text-align: left;">Second Header</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Content Cell</td>
-<td style="text-align: left;">Content Cell</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Content Cell</td>
-<td style="text-align: left;">Content Cell</td>
-</tr>
-</tbody>
-</table>
-<h1 id="chapter-4.-code-blocks">Chapter 4. Code blocks</h1>
-<p>There are a couple options for code block labels. Those work only if
-code block id starts with <code>lst:</code>, e.g.
-<code>{#lst:label}</code></p>
-<h2 id="sec:caption-attr"><code>caption</code> attribute</h2>
-<p><code>caption</code> attribute will be treated as code block caption.
-If code block has both id and <code>caption</code> attributes, it will
-be treated as numbered code block.</p>
-<figure class="highlight plaintext"><figcaption><span>.haskell caption</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">main :: IO ()</span><br><span class="line">main = putStrLn &quot;Hello World!&quot;</span><br></pre></td></tr></table></figure>
-<h2 id="sec:table-capts">Table-style captions</h2>
-<p>Enabled with <code>codeBlockCaptions</code> metadata option. If code
-block is immediately adjacent to paragraph, starting with
-<code>Listing:</code> or <code>:</code>, said paragraph will be treated
-as code block caption.</p>
-<p>Listing: Listing caption</p>
-<figure class="highlight plaintext"><figcaption><span>.haskell&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">main :: IO ()</span><br><span class="line">main = putStrLn &quot;Hello World!&quot;</span><br></pre></td></tr></table></figure>
-<h2 id="wrapping-div">Wrapping div</h2>
-<p>Wrapping code block without label in a div with id
-<code>lst:...</code> and class, starting with <code>listing</code>, and
-adding paragraph before code block, but inside div, will treat said
-paragraph as code block caption.</p>
-<div id="lst:wrappingDiv" class="listing">
-<p>Listing caption <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">main :: IO ()</span><br><span class="line">main = putStrLn &quot;Hello World!&quot;</span><br></pre></td></tr></table></figure></p>
-</div>
-<h1 class="unnumbered" id="unnumbered-chapter.">Unnumbered chapter.</h1>
-<p>This chapter doesn't change chapter prefix of referenced elements,
-instead keeping number of previous chapter, e.g. <span
-id="eq:eqn2"><span class="math display">\[ S(x) = \int_{x_1}^{x_2} a x+b
-\  \mathrm{d}x \qquad{(3)}\]</span></span></p>
-<h1 id="chapter-5.-reference-lists">Chapter 5. Reference lists</h1>
-<p>It's also possible to show lists of figures and tables, like
-this:</p>
-<h1>List of Figures</h1>
-<ol>
-<li>A figure</li>
-<li>First figure</li>
-<li>Second figure</li>
-<li>Third figure</li>
-<li>Subfigure a</li>
-<li>Subfigure b</li>
-<li>Subfigures caption</li>
-</ol>
-<h1>List of Tables</h1>
-<ol>
-<li>Table example</li>
-</ol>
-<h1>List of Listings</h1>
-<ol>
-</ol>
-<h1 label="AppA" id="appendix-a.-custom-labels">Appendix A. Custom
-labels</h1>
-<h2 label="CustLab" id="sec:custlabs">This section will have custom
-label</h2>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://gaomm.top/2020/03/07/%E6%95%99%E7%A8%8B1--%E8%82%8C%E8%82%89%E9%AA%A8%E9%AA%BC%E5%BB%BA%E6%A8%A1%E5%85%A5%E9%97%A8%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2176,6 +1871,176 @@ src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/R语言笔记/2018
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gaomm.top/2018/03/08/Communicate-with-CL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gazelle">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/08/Communicate-with-CL/" itemprop="url">Communicate with CL</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-08T00:26:48+08:00">2018-03-08</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Mood/" itemprop="url" rel="index"><span itemprop="name">Mood</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/08/Communicate-with-CL/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/08/Communicate-with-CL/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/08/Communicate-with-CL/" class="leancloud_visitors" data-flag-title="Communicate with CL">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/20180307132927858/20180308121819204.png" /></p>
+<h2 id="为啥要写这个">为啥要写这个？</h2>
+<p>因为好久没有写过流水账了。当初折腾这个博客为的是给自己一个空间，写写自己的笔记什么的反正也不会有人看。事实也是如此，真没有人看。反而忽略了博客的一个原始功能--<code>抒发一下自己的小情绪</code>。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/08/Communicate-with-CL/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -2227,7 +2092,7 @@ src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/R语言笔记/2018
                 
                   <a href="/archives/%7C%7C%20archive">
                 
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

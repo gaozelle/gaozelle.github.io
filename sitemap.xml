@@ -29,15 +29,6 @@
   </url>
   
   <url>
-    <loc>http://gaomm.top/2022/08/22/pandoc-crossref%20demo%20document/</loc>
-    
-    <lastmod>2022-08-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://gaomm.top/2020/03/07/%E6%95%99%E7%A8%8B1--%E8%82%8C%E8%82%89%E9%AA%A8%E9%AA%BC%E5%BB%BA%E6%A8%A1%E5%85%A5%E9%97%A8%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89/</loc>
     
     <lastmod>2022-08-26</lastmod>
@@ -146,7 +137,7 @@
   </url>
   
   <url>
-    <loc>http://gaomm.top/2018/07/11/%E8%BF%90%E5%8A%A8%E4%B8%8E%E5%81%A5%E5%BA%B7CiteSpace/</loc>
+    <loc>http://gaomm.top/2017/06/16/pandoc_maneul(CN)/</loc>
     
     <lastmod>2019-01-20</lastmod>
     
@@ -155,7 +146,7 @@
   </url>
   
   <url>
-    <loc>http://gaomm.top/2017/06/16/pandoc_maneul(CN)/</loc>
+    <loc>http://gaomm.top/2018/07/11/%E8%BF%90%E5%8A%A8%E4%B8%8E%E5%81%A5%E5%BA%B7CiteSpace/</loc>
     
     <lastmod>2019-01-20</lastmod>
     
@@ -254,14 +245,14 @@
 
   
   <url>
-    <loc>http://gaomm.top/tags/me/</loc>
+    <loc>http://gaomm.top/tags/%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2022-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://gaomm.top/tags/%E7%AC%94%E8%AE%B0/</loc>
+    <loc>http://gaomm.top/tags/me/</loc>
     <lastmod>2022-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -312,14 +303,14 @@
 
   
   <url>
-    <loc>http://gaomm.top/categories/Mood/</loc>
+    <loc>http://gaomm.top/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2022-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://gaomm.top/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>http://gaomm.top/categories/Mood/</loc>
     <lastmod>2022-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
