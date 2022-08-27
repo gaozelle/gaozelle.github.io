@@ -421,10 +421,9 @@ table>tbody>tr:hover {
   background-color: #f5f5f5;
 }
 caption,
-th,
-td {
+figcaption {
   padding: 8px;
-  text-align: left;
+  text-align: center;
   vertical-align: middle;
   font-weight: normal;
 }
@@ -432,6 +431,10 @@ th,
 td {
   border-bottom: 3px solid #ddd;
   border-right: 1px solid #eee;
+  padding: 8px;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: normal;
 }
 th {
   padding-bottom: 10px;
@@ -1945,7 +1948,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #da0940;
+  background: #fff;
 }
 .links-of-blogroll {
   font-size: 13px;
