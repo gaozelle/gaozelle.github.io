@@ -4,7 +4,7 @@
   <url>
     <loc>http://gaomm.top/2022/08/25/%E5%86%99%E4%BD%9C%E6%A8%A1%E6%9D%BF/</loc>
     
-    <lastmod>2022-08-27</lastmod>
+    <lastmod>2022-08-29</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -101,7 +101,7 @@
   </url>
   
   <url>
-    <loc>http://gaomm.top/2018/02/21/new%20themes/</loc>
+    <loc>http://gaomm.top/2017/08/23/marothron/</loc>
     
     <lastmod>2019-01-20</lastmod>
     
@@ -110,7 +110,7 @@
   </url>
   
   <url>
-    <loc>http://gaomm.top/2017/08/23/marothron/</loc>
+    <loc>http://gaomm.top/2018/02/21/new%20themes/</loc>
     
     <lastmod>2019-01-20</lastmod>
     
@@ -294,6 +294,13 @@
   </url>
   
   <url>
+    <loc>http://gaomm.top/tags/%E6%A8%A1%E6%9D%BF/</loc>
+    <lastmod>2022-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://gaomm.top/tags/OpenSim/</loc>
     <lastmod>2022-08-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -352,14 +359,14 @@
   </url>
   
   <url>
-    <loc>http://gaomm.top/categories/OpenSim/</loc>
+    <loc>http://gaomm.top/categories/papers/</loc>
     <lastmod>2022-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://gaomm.top/categories/papers/</loc>
+    <loc>http://gaomm.top/categories/OpenSim/</loc>
     <lastmod>2022-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
