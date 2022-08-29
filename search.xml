@@ -36,6 +36,94 @@ CL说起写文章都已经是一套一套的了，“如果我有好的数据，
       </tags>
   </entry>
   <entry>
+    <title>Kistler采集软件Bioware安装</title>
+    <url>/2022/08/26/Kistler%E9%87%87%E9%9B%86%E8%BD%AF%E4%BB%B6bioware%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h2 id="bioware下载地址">Bioware下载地址</h2>
+<p><a
+href="https://www.kistler.com/zh/product/type-5695b/">下载地址</a></p>
+<p>进入下载地址下载最新版本。</p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/fZQ53d.jpg"
+alt="fZQ53d" />
+<figcaption aria-hidden="true">fZQ53d</figcaption>
+</figure>
+<span id="more"></span>
+<blockquote>
+<p>之前的Bioware需要加密狗，现在不需要加密狗直接安装使用。</p>
+</blockquote>
+<h2 id="测力台设置">测力台设置</h2>
+<h3 id="设置方法">设置方法</h3>
+<ol type="1">
+<li><p>新建测力台<br />
+在Bioware中点击--&gt;Setup--&gt;Hardware--&gt;Devies <img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/RxOerQ.jpg"
+alt="RxOerQ" /> 选择New，新建立一个测力台，根据选择相应的型号。</p></li>
+<li><p>测力台校准<br />
+选择相应的测力台，点击Properties--&gt;Sensitivites <img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/xakCKB.jpg"
+alt="xakCKB" /><br />
+根据校准报告上的参数填写到Sensitivites的表格中，填写依据是序号（1，2，3，4）和channel括号中（如Fx(1+2)）的数字对应。
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/M3hPin.png"
+alt="M3hPin" /><br />
+需要填写的表格 <img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/q8PsBt.jpg"
+alt="q8PsBt" /> 校准报告<br />
+完成后点击Add to Active List，将测力台信息添加到Active
+Devices窗口中激活，点击OK，测力台才可以使用。</p></li>
+<li><p>多测力台校准<br />
+多个测力台是否都要校准，如何校准？未校准是否有影响？（<strong>待解决</strong>）</p></li>
+<li><p>有一个测力台数据不对<br />
+连接后有一个测力台数据连续，看起来没有问题，有一个测力台数据不连续有问题。（<strong>待解决</strong>）</p></li>
+</ol>
+<h3 id="可能遇到的问题">可能遇到的问题</h3>
+<ol type="1">
+<li><p>无法激活测力台 新的测力台无法添加到Active
+Devices窗口中，无法激活测力台。</p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/lggzG9.png"
+alt="lggzG9" />
+<figcaption aria-hidden="true">lggzG9</figcaption>
+</figure>
+<p>这个情况是系统没有找到采集卡，需要安装采集卡驱动程序Instacal。</p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/nzuQNq.jpg"
+alt="nzuQNq" />
+<figcaption aria-hidden="true">nzuQNq</figcaption>
+</figure>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/BzjINF.jpg"
+alt="BzjINF" />
+<figcaption aria-hidden="true">BzjINF</figcaption>
+</figure></li>
+<li><p>在win11下Instacal不能自动找到采集卡<br />
+Instacal不是Kistler公司的软件，所以目前下载的Bioware还没有适配到win11，在win11中不能自动找到采集卡的
+USB。</p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/XhCVBw.png"
+alt="XhCVBw" />
+<figcaption aria-hidden="true">XhCVBw</figcaption>
+</figure>
+<p>所以需要安装最新的采集卡驱动（icalsetup.exe）。在全选默认安装后，奇迹发生了，Instacal找到了采集卡。</p>
+<blockquote>
+<p>记录一下全中国第一在win11上安装Bioware成功！！</p>
+</blockquote></li>
+</ol>
+]]></content>
+      <categories>
+        <category>biomechanics</category>
+      </categories>
+      <tags>
+        <tag>设备</tag>
+        <tag>测力台，笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Deep Learning With Python笔记</title>
     <url>/2018/08/15/Deep%20Learning%20With%20Python:%20Step%20By%20Step%20Guide%20With%20Keras%20and%20Pytorch%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p><img
@@ -125,94 +213,6 @@ layers）。前馈神经网络的隐藏层是真实学习发生的地方，因�
       </categories>
       <tags>
         <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Kistler采集软件Bioware安装</title>
-    <url>/2022/08/26/Kistler%E9%87%87%E9%9B%86%E8%BD%AF%E4%BB%B6bioware%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<h2 id="bioware下载地址">Bioware下载地址</h2>
-<p><a
-href="https://www.kistler.com/zh/product/type-5695b/">下载地址</a></p>
-<p>进入下载地址下载最新版本。</p>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/fZQ53d.jpg"
-alt="fZQ53d" />
-<figcaption aria-hidden="true">fZQ53d</figcaption>
-</figure>
-<span id="more"></span>
-<blockquote>
-<p>之前的Bioware需要加密狗，现在不需要加密狗直接安装使用。</p>
-</blockquote>
-<h2 id="测力台设置">测力台设置</h2>
-<h3 id="设置方法">设置方法</h3>
-<ol type="1">
-<li><p>新建测力台<br />
-在Bioware中点击--&gt;Setup--&gt;Hardware--&gt;Devies <img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/RxOerQ.jpg"
-alt="RxOerQ" /> 选择New，新建立一个测力台，根据选择相应的型号。</p></li>
-<li><p>测力台校准<br />
-选择相应的测力台，点击Properties--&gt;Sensitivites <img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/xakCKB.jpg"
-alt="xakCKB" /><br />
-根据校准报告上的参数填写到Sensitivites的表格中，填写依据是序号（1，2，3，4）和channel括号中（如Fx(1+2)）的数字对应。
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/M3hPin.png"
-alt="M3hPin" /><br />
-需要填写的表格 <img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/q8PsBt.jpg"
-alt="q8PsBt" /> 校准报告<br />
-完成后点击Add to Active List，将测力台信息添加到Active
-Devices窗口中激活，点击OK，测力台才可以使用。</p></li>
-<li><p>多测力台校准<br />
-多个测力台是否都要校准，如何校准？未校准是否有影响？（<strong>待解决</strong>）</p></li>
-<li><p>有一个测力台数据不对<br />
-连接后有一个测力台数据连续，看起来没有问题，有一个测力台数据不连续有问题。（<strong>待解决</strong>）</p></li>
-</ol>
-<h3 id="可能遇到的问题">可能遇到的问题</h3>
-<ol type="1">
-<li><p>无法激活测力台 新的测力台无法添加到Active
-Devices窗口中，无法激活测力台。</p>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/lggzG9.png"
-alt="lggzG9" />
-<figcaption aria-hidden="true">lggzG9</figcaption>
-</figure>
-<p>这个情况是系统没有找到采集卡，需要安装采集卡驱动程序Instacal。</p>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/nzuQNq.jpg"
-alt="nzuQNq" />
-<figcaption aria-hidden="true">nzuQNq</figcaption>
-</figure>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/BzjINF.jpg"
-alt="BzjINF" />
-<figcaption aria-hidden="true">BzjINF</figcaption>
-</figure></li>
-<li><p>在win11下Instacal不能自动找到采集卡<br />
-Instacal不是Kistler公司的软件，所以目前下载的Bioware还没有适配到win11，在win11中不能自动找到采集卡的
-USB。</p>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/XhCVBw.png"
-alt="XhCVBw" />
-<figcaption aria-hidden="true">XhCVBw</figcaption>
-</figure>
-<p>所以需要安装最新的采集卡驱动（icalsetup.exe）。在全选默认安装后，奇迹发生了，Instacal找到了采集卡。</p>
-<blockquote>
-<p>记录一下全中国第一在win11上安装Bioware成功！！</p>
-</blockquote></li>
-</ol>
-]]></content>
-      <categories>
-        <category>biomechanics</category>
-      </categories>
-      <tags>
-        <tag>设备</tag>
-        <tag>测力台，笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -1010,53 +1010,6 @@ I will keep writing fighting !!!</p>
       </tags>
   </entry>
   <entry>
-    <title>pose estimate 收集</title>
-    <url>/2018/11/05/pose%20estimate/</url>
-    <content><![CDATA[<p>pose estimate
-如今发展迅速，在github中有很多开源code。商业应用中我只了解到有simi的motion
-capture系统中有无标志点的方式，依靠剪影来估计标志点。由于近期希望能应用pose
-estimate对人体的简单运动进行分析，现在将自己知道的相关项目记录在这里。</p>
-<h1 id="openpose">openpose</h1>
-<h3 id="检测人脸姿势手势">检测人脸，姿势，手势</h3>
-<p>美国卡耐基梅隆大学（Carnegie Mellon University）<br />
-<img
-src="https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/media/pose_face_hands.gif?raw=true" /><br />
-<span id="more"></span> GitHub:<a
-href="https://github.com/CMU-Perceptual-Computing-Lab/openposec">click</a><br />
-<strong>值得注意的是项目中有一个中国人，叫zhe
-cao（曹哲）。</strong><br />
-他的主页：<a
-href="https://people.eecs.berkeley.edu/~zhecao/">click</a><br />
-他的openpose的口头报告（需要翻墙）：<a
-href="https://youtu.be/OgQLDEAjAZ8?list=PLvsYSxrlO0Cl4J_fgMhj2ElVmGR5UWKpB">click</a><br />
-以及他在b站的讲解：<a
-href="https://www.bilibili.com/video/av19506719?from=search&amp;seid=17626811217559880734">click</a>（<em>b站是个好站</em>）</p>
-<h1 id="alphapose">AlphaPose</h1>
-<p>上海交通大学<br />
-需要Install Torch and TensorFlow(verson &gt;= 1.2)</p>
-<p><img
-src="https://github.com/MVIG-SJTU/AlphaPose/raw/master/doc/pose.gif" /></p>
-<p>项目主页：<a
-href="http://mvig.org/research/alphapose.html">click</a><br />
-GitHub：<a href="https://github.com/MVIG-SJTU/AlphaPose">click</a></p>
-<p>最新文献：Efficient Online Pose Tracking(BMVC'18)，线上姿势跟踪。</p>
-<h1 id="pose-detection-in-the-browser-posenet-model">Pose Detection in
-the Browser: PoseNet Model</h1>
-<p>这是一个基于浏览器的实时姿势识别<br />
-作者叫Siraj
-Raval，在YouTube上面有很多关于机器学习和计算机视觉的视频教学！ <img
-src="https://raw.githubusercontent.com/irealva/tfjs-models/master/posenet/demos/camera.gif"
-alt="演示" /> 地址：<a
-href="https://storage.googleapis.com/tfjs-models/demos/posenet/camera.html">click</a></p>
-]]></content>
-      <categories>
-        <category>openpose</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Zotero+Vim+Markdown</title>
     <url>/2022/08/30/zotero+vim+markdown/</url>
     <content><![CDATA[<h2 id="zotero">Zotero</h2>
@@ -1193,6 +1146,177 @@ href="https://gaomm.top/2022/08/25/%E5%86%99%E4%BD%9C%E6%A8%A1%E6%9D%BF/">写作
       </categories>
       <tags>
         <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>pose estimate 收集</title>
+    <url>/2018/11/05/pose%20estimate/</url>
+    <content><![CDATA[<p>pose estimate
+如今发展迅速，在github中有很多开源code。商业应用中我只了解到有simi的motion
+capture系统中有无标志点的方式，依靠剪影来估计标志点。由于近期希望能应用pose
+estimate对人体的简单运动进行分析，现在将自己知道的相关项目记录在这里。</p>
+<h1 id="openpose">openpose</h1>
+<h3 id="检测人脸姿势手势">检测人脸，姿势，手势</h3>
+<p>美国卡耐基梅隆大学（Carnegie Mellon University）<br />
+<img
+src="https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/media/pose_face_hands.gif?raw=true" /><br />
+<span id="more"></span> GitHub:<a
+href="https://github.com/CMU-Perceptual-Computing-Lab/openposec">click</a><br />
+<strong>值得注意的是项目中有一个中国人，叫zhe
+cao（曹哲）。</strong><br />
+他的主页：<a
+href="https://people.eecs.berkeley.edu/~zhecao/">click</a><br />
+他的openpose的口头报告（需要翻墙）：<a
+href="https://youtu.be/OgQLDEAjAZ8?list=PLvsYSxrlO0Cl4J_fgMhj2ElVmGR5UWKpB">click</a><br />
+以及他在b站的讲解：<a
+href="https://www.bilibili.com/video/av19506719?from=search&amp;seid=17626811217559880734">click</a>（<em>b站是个好站</em>）</p>
+<h1 id="alphapose">AlphaPose</h1>
+<p>上海交通大学<br />
+需要Install Torch and TensorFlow(verson &gt;= 1.2)</p>
+<p><img
+src="https://github.com/MVIG-SJTU/AlphaPose/raw/master/doc/pose.gif" /></p>
+<p>项目主页：<a
+href="http://mvig.org/research/alphapose.html">click</a><br />
+GitHub：<a href="https://github.com/MVIG-SJTU/AlphaPose">click</a></p>
+<p>最新文献：Efficient Online Pose Tracking(BMVC'18)，线上姿势跟踪。</p>
+<h1 id="pose-detection-in-the-browser-posenet-model">Pose Detection in
+the Browser: PoseNet Model</h1>
+<p>这是一个基于浏览器的实时姿势识别<br />
+作者叫Siraj
+Raval，在YouTube上面有很多关于机器学习和计算机视觉的视频教学！ <img
+src="https://raw.githubusercontent.com/irealva/tfjs-models/master/posenet/demos/camera.gif"
+alt="演示" /> 地址：<a
+href="https://storage.googleapis.com/tfjs-models/demos/posenet/camera.html">click</a></p>
+]]></content>
+      <categories>
+        <category>openpose</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>写作模板</title>
+    <url>/2022/08/25/%E5%86%99%E4%BD%9C%E6%A8%A1%E6%9D%BF/</url>
+    <content><![CDATA[<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">chapters:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">figureTitle:</span> <span class="string">&quot;图&quot;</span></span><br><span class="line"><span class="attr">figPrefix:</span> <span class="string">&quot;图&quot;</span></span><br><span class="line"><span class="attr">tableTitle:</span> <span class="string">&quot;表&quot;</span></span><br><span class="line"><span class="attr">tablePrefix:</span> <span class="string">&quot;表&quot;</span></span><br><span class="line"><span class="attr">tableTemplate:</span> <span class="string">|</span></span><br><span class="line"><span class="string">  *$$tableTitle$$ $$i$$*$$titleDelim$$ $$t$$</span></span><br><span class="line"><span class="string"></span><span class="attr">bibliography:</span> <span class="string">&quot;path/EEG.bib&quot;</span></span><br><span class="line"><span class="attr">csl:</span> <span class="string">chinese-gb7714-2005-numeric.csl</span> </span><br><span class="line"><span class="attr">reference-section-title:</span> <span class="string">Reference</span></span><br><span class="line"><span class="attr">tableTemplate:</span> <span class="string">|</span></span><br><span class="line"><span class="string">  *$$tableTitle$$ $$i$$*$$titleDelim$$ $$t$$</span></span><br><span class="line"><span class="string"></span><span class="attr">link-citations:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">lang:</span> <span class="string">en-GB</span></span><br><span class="line"><span class="attr">papersize:</span> <span class="string">a4</span></span><br><span class="line"><span class="attr">colorlinks:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">links-as-notes:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">fontsize:</span> <span class="number">11.</span><span class="string">5pt</span></span><br></pre></td></tr></table></figure>
+<p><span id="more"></span></p>
+<h1 id="lme线性混合模型处理erp">LME线性混合模型处理ERP</h1>
+<h2 id="处理流程">处理流程</h2>
+<p>根据论文《线性混合效应模型在婴儿和儿童事件相关潜力研究中的效用》<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>的处理过程找到了GitHub上的<a
+href="https://github.com/basclab/LME_MixedEffectsERPTutorial/tree/main/LMETutorialScripts">数据处理脚本</a>。脚本共有7个，其中1-5是Matlab从Continues
+EEG到ERP的处理过程，脚本6-7是R语言对ERP进行LME混合线性模型的处理过程，如下图。</p>
+<p>测试引用<span class="citation"
+data-cites="marusicNeuralBasesAgeRelated2022 tenbrinkeEffectsComputerizedCognitive2019 heiseUtilityLinearMixed2022"><sup>[<a
+href="#ref-marusicNeuralBasesAgeRelated2022"
+role="doc-biblioref">1</a>–<a href="#ref-heiseUtilityLinearMixed2022"
+role="doc-biblioref">3</a>]</sup></span></p>
+<p>吧啦吧啦吧啦，见Table 1</p>
+<div id="tbl:表头">
+<table>
+<caption>Table 1. 我是表</caption>
+<thead>
+<tr class="header">
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>引用一个图Figure 1, 2</p>
+<figure>
+<img src="https://s2.loli.net/2022/07/27/HKG6QcCpNwXn7dY.png"
+id="fig:重复测量流程图2" style="width:50.0%" alt="Figure 1. 图的标题" />
+<figcaption aria-hidden="true">Figure 1. 图的标题</figcaption>
+</figure>
+<p>测试公式：见公式Equation 1 <span id="eq:eqn1"><span
+class="math display">\[P_i(x) = \sum_i a_i
+x^i\qquad{(1)}\]</span></span></p>
+<figure>
+<img
+src="https://pic1.zhimg.com/80/v2-4ac4078f118ecadd756cd639c5862768_1440w.jpg"
+id="fig:重复测量流程图" style="width:50.0%"
+alt="Figure 2. 重复测量流程图" />
+<figcaption aria-hidden="true">Figure 2. 重复测量流程图</figcaption>
+</figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pandoc -i <span class="string">&#x27;.\LME线性混合模型处理ERP(test).md&#x27;</span> -o test.docx --filter pandoc-crossref --cite</span><br></pre></td></tr></table></figure>
+<h2 id="hexo中使用pandoc">hexo中使用pandoc</h2>
+<ol type="1">
+<li><p>安装<code>hexo-renderer-pandoc</code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure></p></li>
+<li><p>修改hexo文件夹下的<code>_config.yml</code> <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">pandoc:</span></span><br><span class="line"><span class="attr">filters:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">pandoc-crossref</span></span><br><span class="line"><span class="attr">extra:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">citeproc:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">bibliography:</span> <span class="string">&quot;/Users/macgazelle/blog/hexo/source/_posts/EEG.bib&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">csl:</span> <span class="string">&quot;/Users/macgazelle/blog/hexo/source/_posts/chinese-gb7714-2005-numeric.csl&quot;</span> </span><br><span class="line"><span class="attr">meta:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">link-citations:</span> <span class="literal">true</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">reference-section-title:</span> <span class="string">Reference</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">colorlinks:</span> <span class="literal">true</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">lang:</span> <span class="string">en-GB</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">figPrefix:</span> <span class="string">&quot;Figure&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">tblPrefix:</span> <span class="string">&quot;Table&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">tableTitle:</span> <span class="string">&quot;Table&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">figureTitle:</span> <span class="string">&quot;Figure&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">titleDelim:</span> <span class="string">.</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">eqnPrefix:</span> <span class="string">&quot;Equation&quot;</span></span><br><span class="line"><span class="attr">template:</span></span><br><span class="line"><span class="attr">mathEngine:</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>头文件yml记得要加两句<br />
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">disableNunjucks:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>hexo部署的时候，记得clean一下，用下面的命令 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure></p>
+<div id="footnotes">
+<hr>
+<div id="footnotelist">
+<ol style="list-style:none; padding-left: 0;">
+<li id="fn:1">
+<span
+style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span
+style="display: inline-block; vertical-align: top;">Mjha B , Skma B ,
+Lcba B . Utility of Linear Mixed Effects Models for Event-Related
+Potential Research with Infants and Children. 2022.
+https://www.sciencedirect.com/science/article/pii/S1878929322000147</span><a href="#fnref:1" rev="footnote">
+↩︎</a>
+</li>
+</ol>
+</div>
+</div></li>
+</ol>
+<h1 class="unnumbered" id="bibliography">Reference</h1>
+<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="ref-marusicNeuralBasesAgeRelated2022" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[1] </div><div
+class="csl-right-inline">MARUSIC U. PESKAR M. DE PAUW K. et al. Neural
+<span>Bases</span> of <span>Age-Related Sensorimotor Slowing</span> in
+the <span>Upper</span> and <span>Lower Limbs</span>[J/OL]. Frontiers in
+Aging Neuroscience, 2022, 14: 819576. <a
+href="https://doi.org/10.3389/fnagi.2022.819576">https://doi.org/10.3389/fnagi.2022.819576</a>.</div>
+</div>
+<div id="ref-tenbrinkeEffectsComputerizedCognitive2019"
+class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">TEN
+BRINKE L F. BEST J R. CHAN J L C. et al. The <span>Effects</span> of
+<span>Computerized Cognitive Training With</span> and <span>Without
+Physical Exercise</span> on <span>Cognitive Function</span> in
+<span>Older Adults</span>: <span>An</span> 8-<span>Week Randomized
+Controlled Trial</span>[J/OL]. The Journals of Gerontology: Series A,
+2019: glz115[2022-08-17]. <a
+href="https://academic.oup.com/biomedgerontology/advance-article/doi/10.1093/gerona/glz115/5485711">https://academic.oup.com/biomedgerontology/advance-article/doi/10.1093/gerona/glz115/5485711</a>.</div>
+</div>
+<div id="ref-heiseUtilityLinearMixed2022" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[3] </div><div
+class="csl-right-inline">HEISE M J. MON S K. BOWMAN L C. Utility of
+linear mixed effects models for event-related potential research with
+infants and children[J/OL]. Developmental Cognitive Neuroscience, 2022,
+54: 101070[2022-08-27]. <a
+href="https://www.sciencedirect.com/science/article/pii/S1878929322000147">https://www.sciencedirect.com/science/article/pii/S1878929322000147</a>.</div>
+</div>
+</div>
+]]></content>
+      <categories>
+        <category>papers</category>
+      </categories>
+      <tags>
+        <tag>模板</tag>
       </tags>
   </entry>
   <entry>
@@ -2205,279 +2329,6 @@ OpenCV</a> respectively.</p>
 ]]></content>
       <categories>
         <category>openpose</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>写作模板</title>
-    <url>/2022/08/25/%E5%86%99%E4%BD%9C%E6%A8%A1%E6%9D%BF/</url>
-    <content><![CDATA[<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">chapters:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">figureTitle:</span> <span class="string">&quot;图&quot;</span></span><br><span class="line"><span class="attr">figPrefix:</span> <span class="string">&quot;图&quot;</span></span><br><span class="line"><span class="attr">tableTitle:</span> <span class="string">&quot;表&quot;</span></span><br><span class="line"><span class="attr">tablePrefix:</span> <span class="string">&quot;表&quot;</span></span><br><span class="line"><span class="attr">tableTemplate:</span> <span class="string">|</span></span><br><span class="line"><span class="string">  *$$tableTitle$$ $$i$$*$$titleDelim$$ $$t$$</span></span><br><span class="line"><span class="string"></span><span class="attr">bibliography:</span> <span class="string">&quot;path/EEG.bib&quot;</span></span><br><span class="line"><span class="attr">csl:</span> <span class="string">chinese-gb7714-2005-numeric.csl</span> </span><br><span class="line"><span class="attr">reference-section-title:</span> <span class="string">Reference</span></span><br><span class="line"><span class="attr">tableTemplate:</span> <span class="string">|</span></span><br><span class="line"><span class="string">  *$$tableTitle$$ $$i$$*$$titleDelim$$ $$t$$</span></span><br><span class="line"><span class="string"></span><span class="attr">link-citations:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">lang:</span> <span class="string">en-GB</span></span><br><span class="line"><span class="attr">papersize:</span> <span class="string">a4</span></span><br><span class="line"><span class="attr">colorlinks:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">links-as-notes:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">fontsize:</span> <span class="number">11.</span><span class="string">5pt</span></span><br></pre></td></tr></table></figure>
-<p><span id="more"></span></p>
-<h1 id="lme线性混合模型处理erp">LME线性混合模型处理ERP</h1>
-<h2 id="处理流程">处理流程</h2>
-<p>根据论文《线性混合效应模型在婴儿和儿童事件相关潜力研究中的效用》<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>的处理过程找到了GitHub上的<a
-href="https://github.com/basclab/LME_MixedEffectsERPTutorial/tree/main/LMETutorialScripts">数据处理脚本</a>。脚本共有7个，其中1-5是Matlab从Continues
-EEG到ERP的处理过程，脚本6-7是R语言对ERP进行LME混合线性模型的处理过程，如下图。</p>
-<p>测试引用<span class="citation"
-data-cites="marusicNeuralBasesAgeRelated2022 tenbrinkeEffectsComputerizedCognitive2019 heiseUtilityLinearMixed2022"><sup>[<a
-href="#ref-marusicNeuralBasesAgeRelated2022"
-role="doc-biblioref">1</a>–<a href="#ref-heiseUtilityLinearMixed2022"
-role="doc-biblioref">3</a>]</sup></span></p>
-<p>吧啦吧啦吧啦，见Table 1</p>
-<div id="tbl:表头">
-<table>
-<caption>Table 1. 我是表</caption>
-<thead>
-<tr class="header">
-<th>a</th>
-<th>b</th>
-<th>c</th>
-<th>b</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td>3</td>
-<td>2</td>
-<td>1</td>
-<td>2</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>引用一个图Figure 1, 2</p>
-<figure>
-<img src="https://s2.loli.net/2022/07/27/HKG6QcCpNwXn7dY.png"
-id="fig:重复测量流程图2" style="width:50.0%" alt="Figure 1. 图的标题" />
-<figcaption aria-hidden="true">Figure 1. 图的标题</figcaption>
-</figure>
-<p>测试公式：见公式Equation 1 <span id="eq:eqn1"><span
-class="math display">\[P_i(x) = \sum_i a_i
-x^i\qquad{(1)}\]</span></span></p>
-<figure>
-<img
-src="https://pic1.zhimg.com/80/v2-4ac4078f118ecadd756cd639c5862768_1440w.jpg"
-id="fig:重复测量流程图" style="width:50.0%"
-alt="Figure 2. 重复测量流程图" />
-<figcaption aria-hidden="true">Figure 2. 重复测量流程图</figcaption>
-</figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pandoc -i <span class="string">&#x27;.\LME线性混合模型处理ERP(test).md&#x27;</span> -o test.docx --filter pandoc-crossref --cite</span><br></pre></td></tr></table></figure>
-<h2 id="hexo中使用pandoc">hexo中使用pandoc</h2>
-<ol type="1">
-<li>安装<code>hexo-renderer-pandoc</code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure></li>
-<li>修改hexo文件夹下的<code>_config.yml</code> <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">pandoc:</span></span><br><span class="line"><span class="attr">filters:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">pandoc-crossref</span></span><br><span class="line"><span class="attr">extra:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">citeproc:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">bibliography:</span> <span class="string">&quot;/Users/macgazelle/blog/hexo/source/_posts/EEG.bib&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">csl:</span> <span class="string">&quot;/Users/macgazelle/blog/hexo/source/_posts/chinese-gb7714-2005-numeric.csl&quot;</span> </span><br><span class="line"><span class="attr">meta:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">link-citations:</span> <span class="literal">true</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">reference-section-title:</span> <span class="string">Reference</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">colorlinks:</span> <span class="literal">true</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">lang:</span> <span class="string">en-GB</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">figPrefix:</span> <span class="string">&quot;Figure&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">tblPrefix:</span> <span class="string">&quot;Table&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">tableTitle:</span> <span class="string">&quot;Table&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">figureTitle:</span> <span class="string">&quot;Figure&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">titleDelim:</span> <span class="string">.</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">eqnPrefix:</span> <span class="string">&quot;Equation&quot;</span></span><br><span class="line"><span class="attr">template:</span></span><br><span class="line"><span class="attr">mathEngine:</span></span><br></pre></td></tr></table></figure></li>
-<li>头文件yml记得要加两句<br />
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">disableNunjucks:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<div id="footnotes">
-<hr>
-<div id="footnotelist">
-<ol style="list-style:none; padding-left: 0;">
-<li id="fn:1">
-<span
-style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span
-style="display: inline-block; vertical-align: top;">Mjha B , Skma B ,
-Lcba B . Utility of Linear Mixed Effects Models for Event-Related
-Potential Research with Infants and Children. 2022.
-https://www.sciencedirect.com/science/article/pii/S1878929322000147</span><a href="#fnref:1" rev="footnote">
-↩︎</a>
-</li>
-</ol>
-</div>
-</div></li>
-</ol>
-<h1 class="unnumbered" id="bibliography">Reference</h1>
-<div id="refs" class="references csl-bib-body" role="doc-bibliography">
-<div id="ref-marusicNeuralBasesAgeRelated2022" class="csl-entry"
-role="doc-biblioentry">
-<div class="csl-left-margin">[1] </div><div
-class="csl-right-inline">MARUSIC U. PESKAR M. DE PAUW K. et al. Neural
-<span>Bases</span> of <span>Age-Related Sensorimotor Slowing</span> in
-the <span>Upper</span> and <span>Lower Limbs</span>[J/OL]. Frontiers in
-Aging Neuroscience, 2022, 14: 819576. <a
-href="https://doi.org/10.3389/fnagi.2022.819576">https://doi.org/10.3389/fnagi.2022.819576</a>.</div>
-</div>
-<div id="ref-tenbrinkeEffectsComputerizedCognitive2019"
-class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">[2] </div><div class="csl-right-inline">TEN
-BRINKE L F. BEST J R. CHAN J L C. et al. The <span>Effects</span> of
-<span>Computerized Cognitive Training With</span> and <span>Without
-Physical Exercise</span> on <span>Cognitive Function</span> in
-<span>Older Adults</span>: <span>An</span> 8-<span>Week Randomized
-Controlled Trial</span>[J/OL]. The Journals of Gerontology: Series A,
-2019: glz115[2022-08-17]. <a
-href="https://academic.oup.com/biomedgerontology/advance-article/doi/10.1093/gerona/glz115/5485711">https://academic.oup.com/biomedgerontology/advance-article/doi/10.1093/gerona/glz115/5485711</a>.</div>
-</div>
-<div id="ref-heiseUtilityLinearMixed2022" class="csl-entry"
-role="doc-biblioentry">
-<div class="csl-left-margin">[3] </div><div
-class="csl-right-inline">HEISE M J. MON S K. BOWMAN L C. Utility of
-linear mixed effects models for event-related potential research with
-infants and children[J/OL]. Developmental Cognitive Neuroscience, 2022,
-54: 101070[2022-08-27]. <a
-href="https://www.sciencedirect.com/science/article/pii/S1878929322000147">https://www.sciencedirect.com/science/article/pii/S1878929322000147</a>.</div>
-</div>
-</div>
-]]></content>
-      <categories>
-        <category>papers</category>
-      </categories>
-      <tags>
-        <tag>模板</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>论文写作笔记</title>
-    <url>/2017/08/30/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p><img src="https://i.loli.net/2018/02/21/5a8d7cffba1e3.png" class="full-image" /></p>
-<p>想要搞好学术研究，就离不开写论文。现在随着网络和计算机技术的发展，论文也就不单单是paper，几张纸，那么简单。<span id="more"></span>文献已经成为一个系统，所以文献的收集和整理也变成了一个系统的工作。而利用网络和计算机技术来收集整理文献，在论文写作的时候可以起到事倍功半的作用，从而提高工作效率，空余出时间来提升生活质量。</p>
-<blockquote>
-<p>————一些废话可以略过</p>
-<p>我知道有个朋友，下载了好几个G的文献，用几十个文件夹分类。这种精神我很敬佩，但是这样的方式非常不方便，如果突然想要看一篇文章又忘记了在哪个文件夹，题目是什么，要把它找出来就非常不方便了。还有一个朋友，想搞好学术，开始下载国外学术论文软件，发现可以有交流的功能，自诩要与国外学者侃侃而谈。然而轮到自己写论文时连文献下载都有困难重重，看两篇文献后开始百度百科。。。</p>
-<p>可见平时的积累很重要，科学的方法也很重要。</p>
-</blockquote>
-<p>这几天学习整理这方面的资料也是搞神经了，国外也有很多科研工具<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>我把我的一些方法放在这里。之后随时更新。</p>
-<h2 id="文献收集整理">文献收集整理</h2>
-<h3 id="国内文献资料收集">国内文献资料收集</h3>
-<p>国内文献下载就<a
-href="http://www.cnki.net/">知网</a>，其他的我都没有用，怎么下载我也不太清楚（我都是用的学校的图书馆），反正用<a
-href="http://xueshu.baidu.com/">百度学术</a>就好了。</p>
-<h3 id="国外文献资料收集">国外文献资料收集</h3>
-<p>其实国内的学术态度大家都懂，论文大多都比较翔。前端的，有价值的文献还是在外文期刊中。
-外文期刊搜索引擎可以使用：</p>
-<ul>
-<li><p><a
-href="http://xueshu.baidu.com/">百度学术</a>——在这里我要给百度学术点个赞，有可以直接下载的连接，感觉比Google好用。</p></li>
-<li><p><a
-href="scholar.google.com/">Google学术</a>(打不开的同学请科学上网)</p></li>
-<li><p><a
-href="http://sci-hub.io/">SciHub</a>——SCI文献下载第一站,扫除一切学术障碍，俄国朋友真心牛逼。</p></li>
-<li><p><a
-href="https://www.ncbi.nlm.nih.gov/pubmed">PubMed</a>——医学文献数据库（这里吐槽一下学校图书馆的PubMed连接出问题了，竟然好久都不知道，直到一个外聘的教授查文献才发现。。。）</p></li>
-<li><p><a
-href="http://scholar.chongbuluo.com/">虫部落学术搜索</a>——国内做的包含许多文献库，界面丑陋无比。</p></li>
-<li><p><a
-href="https://www.researchgate.net/home">Researchgate</a>——相当于学术界的Facebook，大家把自己的文章发布到上面可以相互讨论，有些文章提供下载。</p></li>
-</ul>
-<h3 id="文献资料整理">文献资料整理</h3>
-<p>文献资料整理主要是方便文献的查找阅读和引用。利用文献管理软件来完成。在写作时，把你的文献导出bib.格式可以很方便的插入到你的文章参考文献处。如果一个一个的插入会手残的吧。</p>
-<ul>
-<li><p><a
-href="http://www.inoteexpress.com/aegean/">NoteExpress</a>——国内的文献管理系统，因为国外的文献管理系统大多不支持中文所以，校园网内可以免费使用。管理国内的文献还是支持中文的好用。</p></li>
-<li><p><a
-href="http://endnote.com/">EndNote</a>——国外的文献管理软件，在国内很多人用，但是我不喜欢。</p></li>
-<li><p><a
-href="https://www.mendeley.com/">Mendeley</a>——本人使用感觉良好，界面美丽。有2G的云同步，支持Windows，IOS，电脑手机可以同步在线看文献，导出文献，做笔记。只是不能下载文献，需要上传自己的文献PDF到云，但是我有<a
-href="http://sci-hub.io/">SciHub</a>怕什么呢？</p></li>
-<li><p><a
-href="https://www.zotero.org/">Zotero</a>——国外的很多同志喜欢，我没有用过。</p></li>
-</ul>
-<h3 id="论文写作">论文写作</h3>
-<p>如果就是喜欢用word写作完了后改格式我也没有什么好说的，但是一边修改格式一边写作的话就会使效率非常低下。</p>
-<p>我的方法是使用Markdown+Pandoc+GitHub。Markdown本身的哲学思想就是专注于写作，这是
-一种非常好的写作方式，去除格式的干扰，只用码字。另外Markdown也可以快速插入数学公式、表格、图片、和参考文献（.bib）。Pandoc是和Markdown相配套，让Markdown用于生成其他的文本格式，如HTML，Docx，LaTex，Pdf等等。这样的好处在与写完之后在各种平台上相互转化。比如文章写好后要修改，就转成Docx；上传到博客就用Markdown，或者HTML；有些时候有LaTex的模板，就转为Pdf（但是LaTex制作起来就不那么容易了）。GitHub是用于分享代码的网页，但是现在越来越强大，连这个博客都是建立在GitHub上。GitHub在对于论文写作的好处在于可以实现合作编写文档并能够很好的进行版本控制。</p>
-<blockquote>
-<ul>
-<li><p><em>Conversion</em>. I am still chasing the « One file to rule
-them all » dream: one master file for all kind of outputs, from PDF to
-html, xml, and so on. I became of big fan of <a
-href="http://blog.martinfenner.org/2013/06/17/what-is-scholarly-markdown/">Markdown</a>
-(a <a href="http://en.wikipedia.org/wiki/Markdown">very simple markup
-language</a>) for the first draft, and am seriously considering it as my
-master format, relying on <a
-href="http://johnmacfarlane.net/pandoc/">Pandoc</a> (free) for all the
-conversions.</p></li>
-<li><p><em>Solutions for collaborative writing</em>. As soon as you are
-not alone on a writing project, you have several options to collaborate.
-And no, emailing the files back and forth to your colleagues is not a
-suitable option. Depending on your colleagues and your geekiness level,
-you have many options, including Google Docs (excellent for comments and
-review mode), <a
-href="https://github.com/blog/1840-improving-github-for-science">GitHub</a>
-<a
-href="http://inundata.org/2012/06/01/markdown-and-the-future-of-collaborative-manuscript-writing/">in
-combination</a> with <a
-href="http://en.wikipedia.org/wiki/Markdown">Markdown</a>, <a
-href="https://www.overleaf.com/">Overleaf</a> (free)(for LaTeX fans),
-etc. Bonus point for Mendeley for automatically populating your library
-with the references cited in the file you received and not in your
-library yet. Very useful.</p></li>
-</ul>
-</blockquote>
-<p>参阅Sylvain Deville
-的blog有详细的介绍<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>，也可以看看杨志平的网站<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>。</p>
-<p>在这里我推荐两个Windows的Markdown编辑器（因为我只有Windows(ㄒoㄒ)）。</p>
-<ul>
-<li><a href="https://atom.io/">Atom</a>
-——在Github上使用最多的编辑器，非常多的插件。其中Markdown的插件也是非常的厉害。</li>
-</ul>
-<figure>
-<img src="https://ooo.0o0.ooo/2017/08/30/59a5d1527a1f1.gif"
-alt="Atom" />
-<figcaption aria-hidden="true">Atom</figcaption>
-</figure>
-<ul>
-<li><a href="https://www.typora.io/">Typora</a>——界面简洁美观，有Focus
-Modle和Typewriter
-Modle并且可以直接导入Docx，导出Docx、Pdf、LaLex。"</li>
-</ul>
-<figure>
-<img src="https://i.loli.net/2017/08/30/59a5d13190696.gif"
-alt="Typora" />
-<figcaption aria-hidden="true">Typora</figcaption>
-</figure>
-<p>还有两个写论文非常好的在线工具：</p>
-<ul>
-<li><p><a
-href="https://www.madoko.net/">Madoko</a>——非常像Markdown版本的word，功能很强，可以类似word操作排版！</p></li>
-<li><p><a
-href="https://www.authorea.com">authorea</a>——一个使用Markdown写作，类似GitHub分享后让大家审阅修订的网站，可惜没有几个中国人。</p></li>
-</ul>
-<h2 id="写作流程">写作流程</h2>
-<p>运用这个流程现在已经可以运作了。使用Markdown可以实现多种格式的转换，当然用的最多就是Docx，不过要Pdf的话不能直接转换，因为Pdf排版是很麻烦的一件事，Latex虽然是排版之王但是还是太复杂了，因为还要用到code。想要用，好除非安心花一点时间去学习。</p>
-<figure>
-<img src="https://i.loli.net/2017/08/30/59a5ece882a9a.png"
-alt="写作流程图.PNG" />
-<figcaption aria-hidden="true">写作流程图.PNG</figcaption>
-</figure>
-<h2 id="总结一下">总结一下</h2>
-<p>但是毕竟用Markdown来进行论文写作的人还是不多，用GitHub来进行版本控制的人也不多。大多数人都是word一直用到底，毕竟是小众啊，毕竟是Geek啊。其实word能用好也是很快速的，Markdown的好处就是代码，更加简洁，不要想排版，让写作更加专注于内容。其实我的初衷是找一个写论文和写post可以相互转化的平台，所以找到了Markdown。</p>
-<div id="footnotes">
-<hr>
-<div id="footnotelist">
-<ol style="list-style:none; padding-left: 0;">
-<li id="fn:1">
-<span
-style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span
-style="display: inline-block; vertical-align: top;">这里有个科研工具翻译的网站：http://www.jianshu.com/p/851100273d7a</span><a href="#fnref:1" rev="footnote">
-↩︎</a>
-</li>
-<li id="fn:2">
-<span
-style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span
-style="display: inline-block; vertical-align: top;">Sylvain
-Deville的博客地址：https://sylvaindeville.net/</span><a href="#fnref:2" rev="footnote">
-↩︎</a>
-</li>
-<li id="fn:3">
-<span
-style="display: inline-block; vertical-align: top; padding-right: 10px;">3.</span><span
-style="display: inline-block; vertical-align: top;">杨志平的网志地址：http://www.yangzhiping.com/</span><a href="#fnref:3" rev="footnote">
-↩︎</a>
-</li>
-</ol>
-</div>
-</div>
-]]></content>
-      <categories>
-        <category>papers</category>
       </categories>
       <tags>
         <tag>笔记</tag>
@@ -4378,6 +4229,156 @@ gait, Gait and Posture, vol. 23, pp. 273-281,
       </categories>
       <tags>
         <tag>OpenSim</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>论文写作笔记</title>
+    <url>/2017/08/30/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p><img src="https://i.loli.net/2018/02/21/5a8d7cffba1e3.png" class="full-image" /></p>
+<p>想要搞好学术研究，就离不开写论文。现在随着网络和计算机技术的发展，论文也就不单单是paper，几张纸，那么简单。<span id="more"></span>文献已经成为一个系统，所以文献的收集和整理也变成了一个系统的工作。而利用网络和计算机技术来收集整理文献，在论文写作的时候可以起到事倍功半的作用，从而提高工作效率，空余出时间来提升生活质量。</p>
+<blockquote>
+<p>————一些废话可以略过</p>
+<p>我知道有个朋友，下载了好几个G的文献，用几十个文件夹分类。这种精神我很敬佩，但是这样的方式非常不方便，如果突然想要看一篇文章又忘记了在哪个文件夹，题目是什么，要把它找出来就非常不方便了。还有一个朋友，想搞好学术，开始下载国外学术论文软件，发现可以有交流的功能，自诩要与国外学者侃侃而谈。然而轮到自己写论文时连文献下载都有困难重重，看两篇文献后开始百度百科。。。</p>
+<p>可见平时的积累很重要，科学的方法也很重要。</p>
+</blockquote>
+<p>这几天学习整理这方面的资料也是搞神经了，国外也有很多科研工具<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>我把我的一些方法放在这里。之后随时更新。</p>
+<h2 id="文献收集整理">文献收集整理</h2>
+<h3 id="国内文献资料收集">国内文献资料收集</h3>
+<p>国内文献下载就<a
+href="http://www.cnki.net/">知网</a>，其他的我都没有用，怎么下载我也不太清楚（我都是用的学校的图书馆），反正用<a
+href="http://xueshu.baidu.com/">百度学术</a>就好了。</p>
+<h3 id="国外文献资料收集">国外文献资料收集</h3>
+<p>其实国内的学术态度大家都懂，论文大多都比较翔。前端的，有价值的文献还是在外文期刊中。
+外文期刊搜索引擎可以使用：</p>
+<ul>
+<li><p><a
+href="http://xueshu.baidu.com/">百度学术</a>——在这里我要给百度学术点个赞，有可以直接下载的连接，感觉比Google好用。</p></li>
+<li><p><a
+href="scholar.google.com/">Google学术</a>(打不开的同学请科学上网)</p></li>
+<li><p><a
+href="http://sci-hub.io/">SciHub</a>——SCI文献下载第一站,扫除一切学术障碍，俄国朋友真心牛逼。</p></li>
+<li><p><a
+href="https://www.ncbi.nlm.nih.gov/pubmed">PubMed</a>——医学文献数据库（这里吐槽一下学校图书馆的PubMed连接出问题了，竟然好久都不知道，直到一个外聘的教授查文献才发现。。。）</p></li>
+<li><p><a
+href="http://scholar.chongbuluo.com/">虫部落学术搜索</a>——国内做的包含许多文献库，界面丑陋无比。</p></li>
+<li><p><a
+href="https://www.researchgate.net/home">Researchgate</a>——相当于学术界的Facebook，大家把自己的文章发布到上面可以相互讨论，有些文章提供下载。</p></li>
+</ul>
+<h3 id="文献资料整理">文献资料整理</h3>
+<p>文献资料整理主要是方便文献的查找阅读和引用。利用文献管理软件来完成。在写作时，把你的文献导出bib.格式可以很方便的插入到你的文章参考文献处。如果一个一个的插入会手残的吧。</p>
+<ul>
+<li><p><a
+href="http://www.inoteexpress.com/aegean/">NoteExpress</a>——国内的文献管理系统，因为国外的文献管理系统大多不支持中文所以，校园网内可以免费使用。管理国内的文献还是支持中文的好用。</p></li>
+<li><p><a
+href="http://endnote.com/">EndNote</a>——国外的文献管理软件，在国内很多人用，但是我不喜欢。</p></li>
+<li><p><a
+href="https://www.mendeley.com/">Mendeley</a>——本人使用感觉良好，界面美丽。有2G的云同步，支持Windows，IOS，电脑手机可以同步在线看文献，导出文献，做笔记。只是不能下载文献，需要上传自己的文献PDF到云，但是我有<a
+href="http://sci-hub.io/">SciHub</a>怕什么呢？</p></li>
+<li><p><a
+href="https://www.zotero.org/">Zotero</a>——国外的很多同志喜欢，我没有用过。</p></li>
+</ul>
+<h3 id="论文写作">论文写作</h3>
+<p>如果就是喜欢用word写作完了后改格式我也没有什么好说的，但是一边修改格式一边写作的话就会使效率非常低下。</p>
+<p>我的方法是使用Markdown+Pandoc+GitHub。Markdown本身的哲学思想就是专注于写作，这是
+一种非常好的写作方式，去除格式的干扰，只用码字。另外Markdown也可以快速插入数学公式、表格、图片、和参考文献（.bib）。Pandoc是和Markdown相配套，让Markdown用于生成其他的文本格式，如HTML，Docx，LaTex，Pdf等等。这样的好处在与写完之后在各种平台上相互转化。比如文章写好后要修改，就转成Docx；上传到博客就用Markdown，或者HTML；有些时候有LaTex的模板，就转为Pdf（但是LaTex制作起来就不那么容易了）。GitHub是用于分享代码的网页，但是现在越来越强大，连这个博客都是建立在GitHub上。GitHub在对于论文写作的好处在于可以实现合作编写文档并能够很好的进行版本控制。</p>
+<blockquote>
+<ul>
+<li><p><em>Conversion</em>. I am still chasing the « One file to rule
+them all » dream: one master file for all kind of outputs, from PDF to
+html, xml, and so on. I became of big fan of <a
+href="http://blog.martinfenner.org/2013/06/17/what-is-scholarly-markdown/">Markdown</a>
+(a <a href="http://en.wikipedia.org/wiki/Markdown">very simple markup
+language</a>) for the first draft, and am seriously considering it as my
+master format, relying on <a
+href="http://johnmacfarlane.net/pandoc/">Pandoc</a> (free) for all the
+conversions.</p></li>
+<li><p><em>Solutions for collaborative writing</em>. As soon as you are
+not alone on a writing project, you have several options to collaborate.
+And no, emailing the files back and forth to your colleagues is not a
+suitable option. Depending on your colleagues and your geekiness level,
+you have many options, including Google Docs (excellent for comments and
+review mode), <a
+href="https://github.com/blog/1840-improving-github-for-science">GitHub</a>
+<a
+href="http://inundata.org/2012/06/01/markdown-and-the-future-of-collaborative-manuscript-writing/">in
+combination</a> with <a
+href="http://en.wikipedia.org/wiki/Markdown">Markdown</a>, <a
+href="https://www.overleaf.com/">Overleaf</a> (free)(for LaTeX fans),
+etc. Bonus point for Mendeley for automatically populating your library
+with the references cited in the file you received and not in your
+library yet. Very useful.</p></li>
+</ul>
+</blockquote>
+<p>参阅Sylvain Deville
+的blog有详细的介绍<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>，也可以看看杨志平的网站<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>。</p>
+<p>在这里我推荐两个Windows的Markdown编辑器（因为我只有Windows(ㄒoㄒ)）。</p>
+<ul>
+<li><a href="https://atom.io/">Atom</a>
+——在Github上使用最多的编辑器，非常多的插件。其中Markdown的插件也是非常的厉害。</li>
+</ul>
+<figure>
+<img src="https://ooo.0o0.ooo/2017/08/30/59a5d1527a1f1.gif"
+alt="Atom" />
+<figcaption aria-hidden="true">Atom</figcaption>
+</figure>
+<ul>
+<li><a href="https://www.typora.io/">Typora</a>——界面简洁美观，有Focus
+Modle和Typewriter
+Modle并且可以直接导入Docx，导出Docx、Pdf、LaLex。"</li>
+</ul>
+<figure>
+<img src="https://i.loli.net/2017/08/30/59a5d13190696.gif"
+alt="Typora" />
+<figcaption aria-hidden="true">Typora</figcaption>
+</figure>
+<p>还有两个写论文非常好的在线工具：</p>
+<ul>
+<li><p><a
+href="https://www.madoko.net/">Madoko</a>——非常像Markdown版本的word，功能很强，可以类似word操作排版！</p></li>
+<li><p><a
+href="https://www.authorea.com">authorea</a>——一个使用Markdown写作，类似GitHub分享后让大家审阅修订的网站，可惜没有几个中国人。</p></li>
+</ul>
+<h2 id="写作流程">写作流程</h2>
+<p>运用这个流程现在已经可以运作了。使用Markdown可以实现多种格式的转换，当然用的最多就是Docx，不过要Pdf的话不能直接转换，因为Pdf排版是很麻烦的一件事，Latex虽然是排版之王但是还是太复杂了，因为还要用到code。想要用，好除非安心花一点时间去学习。</p>
+<figure>
+<img src="https://i.loli.net/2017/08/30/59a5ece882a9a.png"
+alt="写作流程图.PNG" />
+<figcaption aria-hidden="true">写作流程图.PNG</figcaption>
+</figure>
+<h2 id="总结一下">总结一下</h2>
+<p>但是毕竟用Markdown来进行论文写作的人还是不多，用GitHub来进行版本控制的人也不多。大多数人都是word一直用到底，毕竟是小众啊，毕竟是Geek啊。其实word能用好也是很快速的，Markdown的好处就是代码，更加简洁，不要想排版，让写作更加专注于内容。其实我的初衷是找一个写论文和写post可以相互转化的平台，所以找到了Markdown。</p>
+<div id="footnotes">
+<hr>
+<div id="footnotelist">
+<ol style="list-style:none; padding-left: 0;">
+<li id="fn:1">
+<span
+style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span
+style="display: inline-block; vertical-align: top;">这里有个科研工具翻译的网站：http://www.jianshu.com/p/851100273d7a</span><a href="#fnref:1" rev="footnote">
+↩︎</a>
+</li>
+<li id="fn:2">
+<span
+style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span
+style="display: inline-block; vertical-align: top;">Sylvain
+Deville的博客地址：https://sylvaindeville.net/</span><a href="#fnref:2" rev="footnote">
+↩︎</a>
+</li>
+<li id="fn:3">
+<span
+style="display: inline-block; vertical-align: top; padding-right: 10px;">3.</span><span
+style="display: inline-block; vertical-align: top;">杨志平的网志地址：http://www.yangzhiping.com/</span><a href="#fnref:3" rev="footnote">
+↩︎</a>
+</li>
+</ol>
+</div>
+</div>
+]]></content>
+      <categories>
+        <category>papers</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
       </tags>
   </entry>
 </search>
