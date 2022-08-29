@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//gapis.geekzu.org/g-fonts//css?family=Lato:300,300italic,400,400italic,700,700italic|Leckerli One:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="OpenSim," />
+
+
+<meta name="description" content="intro1-2.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenSim教程 1--肌肉骨骼建模入门">
+<meta property="og:url" content="http://gaomm.top/2020/03/07/%E6%95%99%E7%A8%8B1--%E8%82%8C%E8%82%89%E9%AA%A8%E9%AA%BC%E5%BB%BA%E6%A8%A1%E5%85%A5%E9%97%A8%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89/index.html">
+<meta property="og:site_name" content="gazelle">
+<meta property="og:description" content="intro1-2.png">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/FfsZM7vPzVOkjKb.png">
+<meta property="og:image" content="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/FfsZM7vPzVOkjKb-20220826233816745.png">
+<meta property="og:image" content="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/EPpLMJ7RImYs29O.png">
+<meta property="og:image" content="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/oJGbgi4cC9VNw1B.png">
+<meta property="og:image" content="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/sFZGlY8vfNcOw2V.png">
+<meta property="article:published_time" content="2020-03-07T08:18:48.000Z">
+<meta property="article:modified_time" content="2022-08-26T15:38:48.447Z">
+<meta property="article:author" content="gazelle">
+<meta property="article:tag" content="OpenSim">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/FfsZM7vPzVOkjKb.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="gazelle" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://gaomm.top/2020/03/07/教程1--肌肉骨骼建模入门（网络版）/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>OpenSim教程 1--肌肉骨骼建模入门 | gazelle</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?27d87237bbdc1119f3dd0601694252f2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gazelle</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">A Biomechanics Note and Life</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gaomm.top/2020/03/07/%E6%95%99%E7%A8%8B1--%E8%82%8C%E8%82%89%E9%AA%A8%E9%AA%BC%E5%BB%BA%E6%A8%A1%E5%85%A5%E9%97%A8%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gazelle">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">OpenSim教程 1--肌肉骨骼建模入门</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-07T16:18:48+08:00">2020-03-07</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/OpenSim/" itemprop="url" rel="index"><span itemprop="name">OpenSim</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/03/07/%E6%95%99%E7%A8%8B1--%E8%82%8C%E8%82%89%E9%AA%A8%E9%AA%BC%E5%BB%BA%E6%A8%A1%E5%85%A5%E9%97%A8%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/03/07/%E6%95%99%E7%A8%8B1--%E8%82%8C%E8%82%89%E9%AA%A8%E9%AA%BC%E5%BB%BA%E6%A8%A1%E5%85%A5%E9%97%A8%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/03/07/%E6%95%99%E7%A8%8B1--%E8%82%8C%E8%82%89%E9%AA%A8%E9%AA%BC%E5%BB%BA%E6%A8%A1%E5%85%A5%E9%97%A8%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89/" class="leancloud_visitors" data-flag-title="OpenSim教程 1--肌肉骨骼建模入门">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/t1SPZlBWLExdYmH.png"
+alt="intro1-2.png" />
+<figcaption aria-hidden="true">intro1-2.png</figcaption>
+</figure>
+<span id="more"></span>
+<h2 id="i.-目标">I. 目标</h2>
+<h3 id="opensim-介绍">OpenSim 介绍</h3>
+<p>骨骼肌肉模型使我们可以去学习神经肌肉协调，分析运动员表笑和估计骨骼肌肉负荷。OpenSim是一款开源软件，它允许用户开发、分析和可视化模型并生成动作的动力学模拟<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>。在OpenSim中，骨骼肌肉模型由关节链接的环节刚体构成。肌肉跨过关节产生力并驱使关节运动。一旦骨骼肌肉模型创建，OpenSim用户可以在其中进行研究，包括调查骨骼肌肉的几何学影响、关节运动学、肌肉-肌腱在作用力下的性质以及在肌力作用下关节的运动。在OpenSim中，我们的目标是提供一个允许生物力学团体去创造、分享、扩展模型库以及动力学仿真工具的框架来用于研究和量化人体与动物的动作。</p>
+<h3 id="目标">目标</h3>
+<p>本教程的目标是通过展示图形化骨骼肌肉模型框架工具调查下肢肌肉-肌腱长度和动量矩变化来向用户介绍OpenSim。在本教程中：</p>
+<ul>
+<li>熟悉OpenSim的操作图形界面</li>
+<li>发现一些骨骼肌肉模型的局限</li>
+<li>探索单关节与双关节肌肉的不同</li>
+<li>使用OpenSim接触重要的临床问题</li>
+</ul>
+<h3 id="格式">格式</h3>
+<p>教程的每一个部分都会通过确定的OpenSim
+GUI工具指导你和回答你的一些问题。菜单的名称、选项名称、需要选择的命令以及在OpenSim中的输入都会粗体显示。问题会被基于OpenSim的人体肌肉骨骼模型系统的基本知识来回答。当你完成所有部分的教程你可以自由探索OpenSim和下肢模型。根据你所做的探索，本教程可能耗时1-2小时完成。</p>
+<h3 id="opensim-gui-简介">OpenSim GUI 简介</h3>
+<p>这里有OpenSim GUI的主要组成。下表将介绍GUI。</p>
+<p><em>注意：打开OpenSim时具有如下显示，但并没有载入模型。</em></p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/JbnwW9jZqmkELUa.png"
+alt="GUI_components.png" />
+<figcaption aria-hidden="true">GUI_components.png</figcaption>
+</figure>
+<p>关于GUI的文档可以在用户手册中找到--&gt; <a
+target="_blank" rel="noopener" href="https://simtk-confluence.stanford.edu/display/OpenSim/Graphical+User+Interface">Graphical
+User Interface</a></p>
+<h2 id="ii.-下肢骨骼肌肉模型">II. 下肢骨骼肌肉模型</h2>
+<p>在这个部分，你将载入一个下肢模型<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>到OpenSim中然后使它“行走”。这个模型代表一位身高约1.8m、体重约75KG的成人受试者。模型包含13个刚体环节和92条代表肌肉的直线（43条位于下肢和6条位于躯干）。</p>
+<h3 id="加载模型">加载模型</h3>
+<p>第一个分析的模型为<strong>gait2392.osim</strong>。加载这个模型到OpenSim中。</p>
+<ul>
+<li>点击<strong>File</strong>菜单选择<strong>OpenModel</strong></li>
+<li>在你的文件夹<em>Documents/OpenSim/4.0</em>中找到<strong>Models</strong>文件夹（Windows用，根据安装位置路径可能不同）。可能还有其他的模型文件，教程中所有的模型（Model）和动作（Motion）文件都在<strong>Models</strong>文件夹下</li>
+<li>打开<strong>Gait2392_simbody</strong>文件夹，选择<strong>gait2392_simbody.osim</strong>双击打开</li>
+</ul>
+<p>打开模型后导航窗口将会显示模型的名称，如果你有多个模型你你可以修改每个模型的名称。导航窗口会提供模型的身体（bodies）、肌肉（muscles）、关机（joints）的特殊信息。如果导航窗口不可见，点击<strong>Window</strong>菜单再选择导航（Navigator）。使用左键来打开。</p>
+<p><em>注意：如果已经打开，也可以点击标题栏看到导航窗口</em></p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/QrT7KsPBuJeNlVk.png"
+alt="gait2392_Navigator40.png" />
+<figcaption aria-hidden="true">gait2392_Navigator40.png</figcaption>
+</figure>
+<h3 id="观察模型">观察模型</h3>
+<p>OpenSim允许使用鼠标定位模型。</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Camera Action <br/>摄像机动作</th>
+<th>Windows</th>
+<th>Mac</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>Rotate</em> <em>旋转</em></td>
+<td><strong>left-click and hold</strong> (PC or mouse)<br/>
+<strong>左键点击再保持</strong></td>
+<td><strong>single-finger click and hold</strong> (Mac trackpad) <br/>
+<strong>单指点击再保持</strong></td>
+</tr>
+<tr class="even">
+<td><em>Translate</em> <em>平移</em></td>
+<td><strong>right-click and hold</strong> (PC or mouse)<br/>
+<strong>右键点击再保持</strong></td>
+<td><strong>two-finger click and hold</strong> (Mac trackpad) <br/>
+<strong>双指点击再保持</strong></td>
+</tr>
+<tr class="odd">
+<td><em>Zoom</em> <em>缩放</em></td>
+<td><strong>scroll up or down</strong> (PC or mouse) <br/>
+<strong>滚轮上下</strong></td>
+<td><strong>pinch or expand</strong> (Mac trackpad).<br/>
+<strong>双指张开或回收</strong></td>
+</tr>
+</tbody>
+</table>
+<p>另外，有6个定位图标在可视化窗口中。</p>
+<ul>
+<li><p>改变摄像头视角于X方向，单击<nobr><img src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/FfsZM7vPzVOkjKb.png" alt="worddavd0fb176a5d7ca390fefafaed1f4dc686.png"  /></nobr>图标。</p></li>
+<li><p>相似的，点击其他按钮来观察另外的方向</p></li>
+<li><p>双击使身体位于屏幕中间</p></li>
+</ul>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/GaArTuktEbc1XRj.png"
+alt="view40.png" />
+<figcaption aria-hidden="true">view40.png</figcaption>
+</figure>
+<p>在继续之前，请点击<img src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/FfsZM7vPzVOkjKb-20220826233816745.png" alt="worddavd0fb176a5d7ca390fefafaed1f4dc686.png"  />图标重制你的视角。</p>
+<h3 id="模型坐标">模型坐标</h3>
+<p>坐标窗口（<em>Coordinates
+window</em>）包含模型关节对应的坐标、自由度的滑块。点击窗口（<strong>Window</strong>）菜单选择坐标（<strong>Coordinates</strong>）来显示坐标窗口。在当前模型下，盆骨的方向相对于模型，模型的方向相对于地面。</p>
+<p>*注意：如果已经打开，可以点击标题栏显示坐标窗口。</p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/51PcihsKCxAFwlp.png"
+alt="coordinates_in_gui.png" />
+<figcaption aria-hidden="true">coordinates_in_gui.png</figcaption>
+</figure>
+<ul>
+<li><p>前三个滑块--骨盆倾斜（tilt）、侧倾（list）和旋转（rotation）与
+<strong><em>“骨盆”</em></strong>
+的Z轴、X轴和Y轴的旋转相对应。要使盆骨绕z轴旋转，可拖动盆骨倾斜滑块。同样地，若要将盆骨绕另外两个轴旋转，可拖动相应的滑块。</p></li>
+<li><p>接下来的三个滑块--骨盆tx，ty和tz--对应于骨盆沿
+<strong><em>“地面”</em></strong> 参考系的X，Y和Z轴的平移。</p>
+<p><em>注意：以这种方式旋转和平移模型会更改模型相对于地面的方向和位置，这与在可视化器中旋转或平移模型视图不同。</em></p></li>
+<li><p>其余滑块对应于关节旋转并控制单个自由度。要旋转关节，请拖动滑块或在相邻的文本框中键入所需的关节角度。</p></li>
+<li><p>使用姿势（<strong>Poses</strong>）菜单中的工具，你可以恢复模型的默认姿势，保存当前姿势或将当前姿势设置为模型的新默认姿势。</p>
+<ul>
+<li>现在，通过单击姿势（<strong>Poses</strong>）按钮并选择默认（<strong>Default</strong>）来恢复默认坐标。</li>
+<li>在本教程的后面，您将保存一个新的姿势。为此，在设置好模型姿势后，在<strong>Poses</strong>菜单中选择新建（<strong>New</strong>），输入姿势的名称，然后单击OK。单击姿势（<strong>Poses</strong>）时，要保存的姿势将保存在默认（Default）下。</li>
+<li>若要设置新的模型默认姿势，请在根据需要设置好模型后，在姿势（<strong>Poses</strong>）菜单中选择默认设置（<strong>Set
+Default</strong>）。您需要保存模型以保存新的默认姿势。</li>
+</ul></li>
+</ul>
+<h3 id="模型中的肌肉">模型中的肌肉</h3>
+<p>肌肉--肌腱的路径在OpenSim中由线段连接的一系列点表示。要查看所有肌肉的列表：</p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/kKSfPBt5AmxN2Vb.png"
+alt="motion_in_muscles.png" />
+<figcaption aria-hidden="true">motion_in_muscles.png</figcaption>
+</figure>
+<ul>
+<li>在导航中，展开<strong><em>3DGaitModel2392</em></strong>（模型名称）中的力（<strong><em>Forces</em></strong>），肌肉（<strong><em>Muscles</em></strong>）以及所有标题。</li>
+<li>要展示单个肌肉，右键单击指定肌肉名称下的所有组别，如
+<em>glut_med1_r</em>，然后从弹出菜单中选择<strong><em>显示&gt;只显示</em></strong>（<strong><em>Display&gt;Show
+Olny</em></strong>）</li>
+<li>要切换所有肌肉的显示，请右键单击肌肉（<strong>Muscles</strong>）或所有（<strong>all</strong>）标题，然后选择显示&gt;显示
+或 显示&gt;隐藏（<strong>Display &gt; Show</strong> or <strong>Display
+&gt; Hide</strong> ）</li>
+<li>某些肌肉可以用多条线代表，而不是单一的作用线。在这个模型中，臀中肌是由多个作用线代表的肌肉的一个例子(如,
+glut_med1_r, glut_med2_r, glut_med3_r)</li>
+</ul>
+<p>对于某些肌肉，肌肉起点与止点的两点足以描述肌肉路径。对于那些包裹了骨或者被筋膜包裹的肌肉，中间包裹（<em>intermediate
+wrapping</em>）或者通过点（<em>via points</em>）。要查看这些包装点：</p>
+<ul>
+<li>通过单击姿势（<strong>Poses</strong>）按钮并选择默认（<strong>Default</strong>）来恢复默认模型姿势。然后放大右膝关节</li>
+<li>右键单击<strong><em>R_knee_ext</em></strong>
+肌肉组，然后选择仅显示（<strong><em>Show only</em></strong>）</li>
+<li>使用<strong>knee_angle_r</strong> 坐标滑块完全弯曲右膝盖</li>
+<li>注意，一定的膝角时包裹点在某些膝盖伸直器中以引入，从而使肌肉路径发展为扭结然后出现在骨骼周围并将其包裹</li>
+<li>下肢模型中的某些肌肉会在极限运动范围内穿过骨骼或深层肌肉</li>
+</ul>
+<h3 id="问题">问题</h3>
+<ol type="1">
+<li><p><strong>自由度</strong></p>
+<ol type="a">
+<li><p>使用坐标面板（Coordinates panel
+）查看模型的自由度。该模型总共有多少个自由度？列出右腿的自由度。</p></li>
+<li><p>所有模型均为近似值。将模型中的自由度与下肢中的自由度进行比较。举例说明已简化的关节运动。举例说明该模型未包含的动作</p></li>
+</ol></li>
+<li><p><strong>肌肉</strong></p>
+<ol type="a">
+<li>模型中有多少肌肉？这与模型中的自由度数相比如何？完全驱动模型所需的最少肌肉数量是多少？</li>
+</ol>
+<p>提示：例如完全驱动膝，意味着膝关节的屈和伸</p>
+<ol start="2" type="a">
+<li>在模型中命名两条肌肉（臀肌以外），这些肌肉由多条线代表其行动。为什么认为这些肌肉以这种方式代表？</li>
+</ol>
+<p>提示：具有多个作用线的其他肌肉使用与臀中肌相同的命名约定。</p>
+<ol start="3" type="a">
+<li>哪些膝盖伸肌有包裹点？每个膝伸肌器的包裹点在什么角度出现？一块肌肉可能有多个包裹点。</li>
+</ol></li>
+<li><p><strong>建模限制</strong></p>
+<ol type="a">
+<li>放大右髋部，仅显示glut_max3_r肌肉（右臀部伸肌群）。检查此肌肉的整个髋关节屈曲角度。在运动范围内看到glut_max3_r的路径有什么问题？肌肉路径的点对点表示以什么方式简化了骨骼肌肉的几何结构？</li>
+</ol></li>
+</ol>
+<h2 id="iii.-关节角度肌腱长度和力臂">III. 关节角度，肌腱长度和力臂</h2>
+<p>在此部分，你将何根据肢体配置（limb
+configuration）来调查肌肉--肌腱以及力臂。骨骼肌肉的几何形态对于肌肉的功能和发展骨骼肌肉模型非常重要。肌肉--肌腱力量取决于肌肉--肌腱的长度，而关节的动量取决于肌肉--肌腱力量和力臂。因此，在开发用于预测肌肉肌腱力和关节力矩的精确模型时，准确确定肌肉骨骼的几何形状至关重要。</p>
+<h3 id="使用绘图">使用绘图</h3>
+<p>OpenSim的绘图允许你绘制肌肉--肌腱属性，如长度，力臂，力和关节动量。生成骨直肌和股中间肌的纤维长度与膝关节角度图：</p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/K9QtSZRPXTMNIVn.png"
+alt="PlotterTutorial1_40.png" />
+<figcaption aria-hidden="true">PlotterTutorial1_40.png</figcaption>
+</figure>
+<ul>
+<li><p>点击坐标窗口姿势&gt;默认（<strong>Poses&gt;Default</strong>）回到模型的初始姿势</p>
+<p><em>注意：绘图是基于当前模型配置而生成的。你的绘图将以默认的姿势生成</em></p></li>
+<li><p>要打开一个新的绘图，请点击工具（<strong>Tools</strong>）菜单然后选择绘图（<strong>Plot</strong>）。在绘图窗口，点击<strong>Y-Quantity</strong>按钮然后选择<strong>fiber-length</strong>。这个变量将在Y轴显示</p></li>
+<li><p>在选择万Y-Quantity后，如果想生成曲线还需要选择Muscles变量。点击<strong>Muscles</strong>按钮将出现一个菜单。</p></li>
+<li><p>为更快的找到肌肉，你可以筛选肌肉组中的肌肉。选择<strong>model</strong>选项然后使用<strong>Group</strong>下拉菜单来选择<strong>R_knee_ext</strong>。现在的肌肉列表中只会显示右膝伸肌器组。</p></li>
+<li><p>从列表中点击选择框（<strong>checkbox</strong>）中的<strong>rect_fem_r
+</strong>和<strong>vas_int_r</strong>标签来选择骨直肌（<em>recus
+femoris</em>）和骨中间肌（<em>vastus intermedius</em>）</p>
+<p><em>注意：在绘图窗口打开的时候不必去关掉肌肉窗口，你的选择会立刻在肌肉文字框中更新。这有助于在图中创建多条曲线，下一步会做。</em></p></li>
+<li><p>点击<strong>X-Quantity</strong>然后选择<strong>knee_angle_r</strong>。此变量将出现在x轴中。</p></li>
+<li><p>为给图增加一个标题，点击属性（<strong>properties</strong>）按钮然后在标题下的文字框中输入<strong>Fiber-Length
+vs. Knee Angle</strong>。点击OK。</p></li>
+<li><p>为增加一条曲线，点击增加（<strong>Add</strong>）</p>
+<p>*注意：图将使用以下单位：米（长度）、牛顿（力）、牛米（动量）。</p></li>
+<li><p>不要关闭绘图窗口，你将会在后面增加更多的图</p></li>
+</ul>
+<h3 id="问题-1">问题</h3>
+<ol start="4" type="1">
+<li><p><strong>肌纤维长度 vs 关节角度</strong></p>
+<ol type="a">
+<li><p>研究肌纤维长度与膝关节角度的关系图。对于股直肌和中间股直肌，如果右髋屈曲，您是否期望纤维长度曲线不同？为什么或者为什么不？</p></li>
+<li><p>在坐标窗口中，将模型的<strong><em>右髋屈曲调整至45度</em></strong>（将姿势保存为<strong>r_hip_flex_45</strong>），添加股直肌和中间股肌的纤维长度曲线以使髋屈曲45°。将模型的肌肉曲线与您先前绘制的未弯曲臀部的曲线与刚刚绘制的模型的曲线进行比较。曲线如何变化？解释您的发现。双关节肌肉如何使复杂化分析？</p></li>
+</ol>
+<p><em>注意：要选择多个曲线名称，请在选择时按住Ctrl（PC）或Command（Mac）。要打印或保存绘图，请在绘图上单击鼠标右键，然后选择“打印或导出图像”。</em></p></li>
+<li><p><strong>肌肉力矩臂 vs 关节角度</strong></p>
+<p>将模型恢复到初始位置且不屈曲髋（单击姿势&gt;默认，<strong>Poses&gt;Default</strong>）。现在绘制右股直肌和股中间肌肉的膝盖伸展力臂与膝关节角度的关系图。</p>
+<ul>
+<li>新建一个绘图窗口，点击<strong>Y-Quantity</strong> &gt;
+<strong>moment arm</strong> &gt; <strong>knee_angle_r</strong>
+然后点击<strong>X-Quantity</strong> &gt;
+<strong>knee_angle_r</strong></li>
+<li>与之前相同，选择右股直肌（<strong>rect_fem_r</strong>）和股中间肌（<strong>vas_int_r</strong>）</li>
+<li>设定图的名称为<strong>Knee Extension Moment Arm vs. Knee
+Angle</strong></li>
+<li>加入曲线到图中</li>
+</ul></li>
+</ol>
+<ol type="a">
+<li>每个肌肉的峰值力臂是什么，它们出现在什么膝关节角度？</li>
+</ol>
+<p><em>注意：如果将光标悬停在曲线上，工具提示将给出该特定点的坐标。</em></p>
+<ol start="2" type="a">
+<li>膝关节角度多少时力臂曲线不平滑（导数不连续的点）？你认为什么原因造成的？</li>
+</ol>
+<p><em>提示：看问题2.c</em></p>
+<p>随意绘制其他肢体位置，肌肉和/或关节的图。当您准备继续学习本教程时，请关闭绘图窗口并通过单击文件(<strong>File</strong>)菜单并选择关闭模型(<strong>Close
+Model</strong>)来关闭3DGaitModel2392模型。不要将模型设置保存到文件中，我们关闭模型以确保在浏览时进行的任何先前修改不会影响本教程的其余部分。</p>
+<h2 id="iv.-蹲伏步态腘绳肌长度的评估">IV. 蹲伏步态腘绳肌长度的评估</h2>
+<p>在教程的最后部分，你将使用OpenSim调查蹲伏步态形成的原因，一种脑瘫患者中最常见的行走异常步态。它的特征是在站立阶段膝过度屈曲，通常伴随着屈曲过度和髋关节内部旋转。造成蹲伏步态原因的一种假设是腘绳肌过短，骨科医生有时会为改善病人的姿态和步态来增加腘绳肌的长度。然而，其他导致膝过度屈的原因也有可能（如足屈肌薄弱），增加腘绳肌长度会降低肌肉产生力量的能力<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>。外科医生如何确定是否需要进行腘绳肌的增长呢？</p>
+<p>判别病人的腘绳肌是否比“正常”短的一种可能的方法是开发一个骨骼肌肉模型来比较正常步态的腘绳肌长度和病人的蹲伏步态腘绳肌长度。假设骨科医生已经给你一些病人的蹲伏步态运动学数据。医生考虑是否手术需要你的意见。</p>
+<h3 id="加载模型-1">加载模型</h3>
+<p>重新打开<strong>gait2392.osim</strong>模型。在动画模式，你需要加载一个动作文件（motion
+file）到OpenSim中。</p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/758kQhAuERY2zra.png"
+alt="gait2392_Normal40_side.png" />
+<figcaption aria-hidden="true">gait2392_Normal40_side.png</figcaption>
+</figure>
+<ul>
+<li><p>点击文件（<strong>File</strong>）菜单然后选择加载动作（<strong>Load
+Motion</strong>），确保你在<strong>Gait2392
+</strong>路径，选择<strong>normal.mot</strong>文件，点击打开（<strong>Open</strong>）。此文件包含了一个正常步态的运动学数据。在打开的模型中右键点击导航，弹出窗口选择重命名（<strong>Rename</strong>），为模型命名为<strong>Normal</strong>。</p>
+<p><em>注意：导航中重命名模型只会改变显示的名称，而不会修改模型文件的名称</em></p></li>
+</ul>
+<p>载入模型后，它的名称将会显示在工具栏中。另外，导航栏会出现一个名为动作（<strong>Motion</strong>）的分支。展开此分支可看到特定模型中加载的动作。模型加载成功后肌肉的颜色将变为蓝色。</p>
+<h3 id="动作滑块">动作滑块</h3>
+<p>动作滑块对应当前的动作文件。拖动动作滑块来播放当前动作。在动画模式下，使用视频控制（<strong>video
+control</strong>）按钮，例如点击<img src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/EPpLMJ7RImYs29O.png" alt="worddavd88b5fae75ecfddb6389263e1d251e5f.png"  />来播放（<strong>play</strong>），<img src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/oJGbgi4cC9VNw1B.png" alt="worddava5ed57bb58373fb4d13ea6067383680c.png"  />按钮来循环（<strong>loop</strong>），<img src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/sFZGlY8vfNcOw2V.png" alt="worddavf305a09a00c14e6014eb454b9af8ac62.png"  />按钮来暂停（<strong>pause</strong>），控制速度（<strong>speed</strong>）。</p>
+<h3 id="多个模型和动作">多个模型和动作</h3>
+<p>OpenSim可以对多个模型进行模拟。跟随一下步骤打开第二个模型和加载动作。</p>
+<ul>
+<li><p>导航中已经包含一个Normal模型，同样再打开一个<strong>gait2392.osim</strong>模型文件，在导航中重命名为<strong>Crouch</strong>。第二个加载的文件会自动变为<strong>Crouch</strong>模型。其他如加载动作等，将会应用到crouch模型中。从路径<strong>Gait2392
+</strong>加载动作文件<strong>crouch1.mot</strong>。</p>
+<p>*注意：如果没有看到两个模型被加载，请缩放视角。在教程的后续中，两个模型将会被称作<strong>Normal</strong>和<strong>Crouch</strong>。</p></li>
+<li><p>OpenSim能同步多个动作，允许同时播放多个动画。为此，在导航中展开每个模型的动作分支，按住<strong>Ctrl</strong>
+(Windows) 或<strong>Command</strong>
+(Mac)，再选择两个模型的名称使其高亮。右键点击每个模型名称，再选择同步（<strong>Sync</strong>）。弹出的动作（<strong>Motions</strong>）将会显示。</p></li>
+</ul>
+<h3 id="问题-2">问题</h3>
+<ol start="6" type="1">
+<li><p><strong>动作的范围</strong></p>
+<ol type="a">
+<li>同步播放normal步态和crouch步态。确认是在循环播放，调整播放速度和旋转角度。观察比较两模型。根据你的观察，用数量描述两个模型的一般运动学区别（关节坐标）。</li>
+</ol>
+<p>现在在数量上比较normal步态和crouch步态膝关节伸角度的区别。</p>
+<ul>
+<li>打开一个新的绘图（<strong>plot</strong>）窗口</li>
+<li>导航窗口中双击<em>Normal</em>模型的名称，使其变为粗体。</li>
+<li>在绘图窗口中，点击<strong>Y-Quantity</strong>，选择<strong>normal_gait(Deg.)</strong>
+，再选择<strong>knee_angle_r. </strong>，点击OK</li>
+<li>点击<strong>X-Quantity</strong>再选择<strong>normal_gait.
+</strong>，点击OK</li>
+<li>在曲线名称（<strong>Curve
+Name</strong>）文本框中编辑文字来读取正常步态（<strong>Normal
+Gait</strong>）</li>
+<li>要增加一条右膝关节角度vs步态周期的曲线，点击增加（<strong>Add</strong>）</li>
+<li>双击选中导航窗口已存在的模型<em>Crouch</em>，使其变为粗体</li>
+<li>在同一个绘图窗口中点击<strong>Y-Quantity</strong>，选择<strong>normal_gait(Deg.)
+</strong>，再选择<strong>knee_angle_r. </strong>，点击OK</li>
+<li>点击<strong>X-Quantity</strong>再选择<strong>normal_gait.
+</strong>，点击OK</li>
+<li>在曲线名称（<strong>Curve
+Name</strong>）文本框中编辑文字来读取正常步态（<strong>Crouch
+Gait</strong>）</li>
+</ul>
+<ol start="2" type="a">
+<li><p>从正常步态周期中画出膝关节角度曲线。标注后跟着地和脚尖离地的时间点以及站立和摆动的间隔。</p></li>
+<li><p>什么是正常步态站立时相的膝关节伸范围？</p></li>
+<li><p>如何让蹲伏步态的膝关节伸范围和正常步态相比较？</p></li>
+</ol></li>
+<li><p><strong>腘绳肌长度</strong></p>
+<p>骨外科医生相信病人可以从增长腘绳肌长度中受益。你可以做一个病人蹲伏步态周期和正常步态周期中腘绳肌（半腱肌）长度的比较。</p>
+<p>画一个半腱肌肌肉--肌腱长度在蹲伏步态周期中的图</p>
+<ul>
+<li><p>为删除之前的曲线，选择所有曲线名称列表然后点击删除（<strong>Delete</strong>）</p></li>
+<li><p>在模型（<strong>Model</strong>）下拉菜单中选择<em>normal</em>模型</p></li>
+<li><p>点击<strong>Y-Quantity</strong>然后选择肌肉--肌腱长度（<strong>muscle-tendon
+length</strong>）</p></li>
+<li><p>点击肌肉（<strong>Muscles</strong>）在列表中选择<strong>semiten_r</strong>
+。点击关闭（<strong>Close</strong>）</p>
+<p><em>注意：要快速选择</em>semiten_r<em>，在<strong>Pattern</strong>文本栏输入<strong>semi</strong></em></p></li>
+<li><p>点击<strong>X-Quantity</strong>然后选择<strong>normal_gait
+(Deg.)</strong></p></li>
+<li><p>在曲线名称（<strong>Curve
+Name</strong>）文本框中编辑文字来读取正常步态（<strong>Normal
+Gait</strong>）</p></li>
+<li><p>要增加一条腘绳肌长度vs步态周期的曲线，点击增加（<strong>Add</strong>）</p></li>
+<li><p>为做一个与蹲伏步态相似的曲线，请使蹲伏模型为当前模型。然后点击<strong>Y-Quantity</strong>并重新选择肌肉--肌腱长度（<strong>muscle-tendon
+length</strong>）</p></li>
+<li><p>点击肌肉（<strong>Muscles</strong>）选择<strong>semiten_r</strong></p></li>
+<li><p>点击<strong>X-Quantity</strong>然后选择<strong>crouch1_gait
+(Deg.)</strong></p></li>
+<li><p>在曲线名称（<strong>Curve
+Name</strong>）文本框中编辑文字来读取正常步态（<strong>Crouch
+Gait</strong>），然后点击增加（<strong>Add</strong>）</p></li>
+</ul>
+<ol type="a">
+<li><p>研究这些曲线。基于绘图，正常步态和蹲伏步态腘绳肌长度的峰值有何不同？对于病人，你是否建议腘绳肌增长手术？</p></li>
+<li><p>你分析的局限在哪里？</p></li>
+</ol></li>
+<li><p><strong>其他蹲伏步态文件（可选）</strong></p>
+<p>骨科医生治疗其他三名有蹲伏步态的病人。重复分析动作文件
+<em>crouch2.mot,
+crouch3.mot,</em>和<em>crouch4.mot</em>。注意你现在能用一个模型关联不止一种动作。对于这些病人你是否会建议手术会有一些区别？如果你想了解更多此类型的分析，请阅读文献<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>
+。</p></li>
+</ol>
+<p><strong><em>原文地址：</em></strong><a
+target="_blank" rel="noopener" href="https://simtk-confluence.stanford.edu/display/OpenSim/Tutorial+1+-+Intro+to+Musculoskeletal+Modeling">点击这里跳转到原文（速度较慢）</a></p>
+<h2 id="参考">参考</h2>
+<div id="footnotes">
+<hr>
+<div id="footnotelist">
+<ol style="list-style:none; padding-left: 0;">
+<li id="fn:1">
+<span
+style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span
+style="display: inline-block; vertical-align: top;">Delp, S.L.,
+Anderson, F.C., Arnold, A.S., Loan, P., Habib, A., John, C.T.,
+Guendelman, E., Thelen, D.G. OpenSim: Open-source software to create and
+analyze dynamic simulations of movement. IEEE Transactions on Biomedical
+Engineering, vol. 55, pp. 1940-1950,
+2007.</span><a href="#fnref:1" rev="footnote"> ↩︎</a>
+</li>
+<li id="fn:2">
+<span
+style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span
+style="display: inline-block; vertical-align: top;">Delp, S.L., Loan,
+J.P., Hoy, M.G., Zajac, F.E., Topp E.L., Rosen, J.M. An interactive
+graphics-based model of the lower extremity to study orthopaedic
+surgical procedures. IEEE Transactions on Biomedical Engineering, vol.
+37, pp. 757-767, 1990.</span><a href="#fnref:2" rev="footnote"> ↩︎</a>
+</li>
+<li id="fn:3">
+<span
+style="display: inline-block; vertical-align: top; padding-right: 10px;">3.</span><span
+style="display: inline-block; vertical-align: top;">Arnold, A.S., Liu,
+M., Ounpuu, S., Swartz, M., Delp, S.L., The role of estimating
+hamstrings lengths and velocities in planning treatments for crouch
+gait, Gait and Posture, vol. 23, pp. 273-281,
+2006.</span><a href="#fnref:3" rev="footnote"> ↩︎</a>
+</li>
+</ol>
+</div>
+</div>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您扫一扫将鼓励我继续写作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/dMHcc0.jpg" alt=" WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/qdkPlf.jpg" alt=" Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/OpenSim/" rel="tag"># OpenSim</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/05/pose%20estimate/" rel="next" title="pose estimate 收集">
+                <i class="fa fa-chevron-left"></i> pose estimate 收集
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/08/25/%E5%86%99%E4%BD%9C%E6%A8%A1%E6%9D%BF/" rel="prev" title="写作模板">
+                写作模板 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/%7C%7C%20archive">
+                
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/gaozelle" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mail.zhanle9090950@163.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://plus.google.com/100588889629843434453" target="_blank" title="Google"><i class="fa fa-fw fa-google"></i>Google</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/gaozhanle" target="_blank" title="微博"><i class="fa fa-fw fa-weibo"></i>微博</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/gao-zhan-le/activities" target="_blank" title="知乎"><i class="fa fa-fw fa-globe"></i>知乎</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#i.-%E7%9B%AE%E6%A0%87"><span class="nav-number">1.</span> <span class="nav-text">I. 目标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#opensim-%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">OpenSim 介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87"><span class="nav-number">1.2.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#opensim-gui-%E7%AE%80%E4%BB%8B"><span class="nav-number">1.4.</span> <span class="nav-text">OpenSim GUI 简介</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ii.-%E4%B8%8B%E8%82%A2%E9%AA%A8%E9%AA%BC%E8%82%8C%E8%82%89%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">II. 下肢骨骼肌肉模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">加载模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%82%E5%AF%9F%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">观察模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E5%9D%90%E6%A0%87"><span class="nav-number">2.3.</span> <span class="nav-text">模型坐标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E8%82%8C%E8%82%89"><span class="nav-number">2.4.</span> <span class="nav-text">模型中的肌肉</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">2.5.</span> <span class="nav-text">问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iii.-%E5%85%B3%E8%8A%82%E8%A7%92%E5%BA%A6%E8%82%8C%E8%85%B1%E9%95%BF%E5%BA%A6%E5%92%8C%E5%8A%9B%E8%87%82"><span class="nav-number">3.</span> <span class="nav-text">III. 关节角度，肌腱长度和力臂</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%BB%98%E5%9B%BE"><span class="nav-number">3.1.</span> <span class="nav-text">使用绘图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98-1"><span class="nav-number">3.2.</span> <span class="nav-text">问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iv.-%E8%B9%B2%E4%BC%8F%E6%AD%A5%E6%80%81%E8%85%98%E7%BB%B3%E8%82%8C%E9%95%BF%E5%BA%A6%E7%9A%84%E8%AF%84%E4%BC%B0"><span class="nav-number">4.</span> <span class="nav-text">IV. 蹲伏步态腘绳肌长度的评估</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9E%8B-1"><span class="nav-number">4.1.</span> <span class="nav-text">加载模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E4%BD%9C%E6%BB%91%E5%9D%97"><span class="nav-number">4.2.</span> <span class="nav-text">动作滑块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%8A%A8%E4%BD%9C"><span class="nav-number">4.3.</span> <span class="nav-text">多个模型和动作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98-2"><span class="nav-number">4.4.</span> <span class="nav-text">问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gazelle</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+  
+    
+  
+  <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'vEQObuONundpbA7re8wVXrwL-gzGzoHsz',
+        appKey: '2BWd8uFuB8VxfTj9O7oVEpfp',
+        placeholder: 'say something baby...please',
+        avatar:'identicon',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  <script>AV.initialize("vEQObuONundpbA7re8wVXrwL-gzGzoHsz", "2BWd8uFuB8VxfTj9O7oVEpfp");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
