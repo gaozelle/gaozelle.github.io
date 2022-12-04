@@ -234,156 +234,6 @@ aria-hidden="true">Win11安装Instacal后还是找不到测力台USB</figcaption
       </tags>
   </entry>
   <entry>
-    <title>R语言笔记</title>
-    <url>/2018/05/05/R%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p><img
-src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/R语言笔记/20180505073303955.png" />
-<span id="more"></span> ## 1 Rstudio快捷键 &gt; <span style="background:#C1FFC1">Alt
-+ -</span> 快捷输入 <span style="background:#C1FFC1"> &lt;- </span></p>
-<h2 id="r中字符串操作">2 R中字符串操作</h2>
-<h3 id="字符串链接-paste">字符串链接 paste( )</h3>
-<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">paste<span class="punctuation">(</span>...<span class="punctuation">,</span> sep <span class="operator">=</span> <span class="string">&quot; &quot;</span><span class="punctuation">,</span> collapse <span class="operator">=</span> <span class="literal">NULL</span><span class="punctuation">)</span> </span><br></pre></td></tr></table></figure>
-<p>用法： <span style="background:#C1FFC1 ">...</span> 为字符； <span
-style="background:#C1FFC1   ">sep=" " </span>中的 " " 为分隔符； <span
-style="background:#C1FFC1   ">collaspse=
-NULL</span>表示连成一个字符串，如果将NULL修改成 ","
-则将字符连接成一个字符，并用 ，分隔。<br />
-例： <figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="operator">&gt;</span> paste<span class="punctuation">(</span><span class="string">&quot;A&quot;</span><span class="punctuation">,</span><span class="string">&quot;B&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="string">&quot;A B&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="operator">&gt;</span> paste<span class="punctuation">(</span><span class="string">&quot;A&quot;</span><span class="punctuation">,</span><span class="string">&quot;B&quot;</span><span class="punctuation">,</span>sep<span class="operator">=</span><span class="string">&quot;,&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="string">&quot;A,B&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="operator">&gt;</span> paste<span class="punctuation">(</span><span class="string">&quot;A&quot;</span><span class="punctuation">,</span><span class="number">1</span><span class="operator">:</span><span class="number">3</span><span class="punctuation">,</span>sep<span class="operator">=</span><span class="string">&quot;&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="string">&quot;A1&quot;</span> <span class="string">&quot;A2&quot;</span> <span class="string">&quot;A3&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="operator">&gt;</span> paste<span class="punctuation">(</span><span class="string">&quot;A&quot;</span><span class="punctuation">,</span> <span class="number">1</span><span class="operator">:</span><span class="number">3</span> <span class="punctuation">,</span>sep <span class="operator">=</span> <span class="string">&quot;&quot;</span> <span class="punctuation">,</span>collapse <span class="operator">=</span> <span class="string">&quot;,&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="string">&quot;A1,A2,A3&quot;</span></span><br></pre></td></tr></table></figure> ### 字符串替换 gsub( ) <figure class="highlight r"><table><tr><td class="code"><pre><span class="line">gsub<span class="punctuation">(</span>pattern<span class="punctuation">,</span> replacement<span class="punctuation">,</span> x<span class="punctuation">,</span> ignore.case <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">,</span> perl <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">,</span></span><br><span class="line">     fixed <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">,</span> useBytes <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure> 用法： <span
-style="background:#C1FFC1 ">pattern</span> 为需要替换的字符；<span
-style="background:#C1FFC1">replacement</span>为替换后的字符；<span
-style="background:#C1FFC1">x</span>为包含字符的向量。 例： <figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="operator">&gt;</span> a <span class="operator">&lt;-</span> <span class="string">&quot;abc,d&quot;</span></span><br><span class="line"><span class="operator">&gt;</span> a</span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="string">&quot;abc,d&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="operator">&gt;</span> b <span class="operator">&lt;-</span> gsub<span class="punctuation">(</span><span class="string">&quot;a&quot;</span><span class="punctuation">,</span><span class="string">&quot;x&quot;</span><span class="punctuation">,</span>a<span class="punctuation">)</span></span><br><span class="line"><span class="operator">&gt;</span> b</span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="string">&quot;xbc,d&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="operator">&gt;</span> b <span class="operator">&lt;-</span> gsub<span class="punctuation">(</span><span class="string">&quot;,&quot;</span><span class="punctuation">,</span> <span class="string">&quot;x&quot;</span><span class="punctuation">,</span> a<span class="punctuation">,</span> fixed <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">)</span></span><br><span class="line"><span class="operator">&gt;</span> b</span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="string">&quot;abcxd&quot;</span></span><br></pre></td></tr></table></figure>
-## 3 批量赋值 assign( ) <figure class="highlight r"><table><tr><td class="code"><pre><span class="line">assign<span class="punctuation">(</span>x<span class="punctuation">,</span> value<span class="punctuation">,</span> pos <span class="operator">=</span> <span class="operator">-</span><span class="number">1</span><span class="punctuation">,</span> envir <span class="operator">=</span> <span class="built_in">as.environment</span><span class="punctuation">(</span>pos<span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">       inherits <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">,</span> immediate <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure> 用法： 将<span
-style="background:#C1FFC1    ">value</span> 的值赋给<span
-style="background:#C1FFC1  ">x</span> 例： <figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="operator">&gt;</span> value <span class="operator">&lt;-</span>  <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="operator">:</span><span class="number">3</span><span class="punctuation">)</span></span><br><span class="line"><span class="operator">&gt;</span> x <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;a&quot;</span><span class="punctuation">,</span><span class="string">&quot;b&quot;</span><span class="punctuation">,</span><span class="string">&quot;c&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="operator">&gt;</span> <span class="operator">&gt;</span> <span class="keyword">for</span> <span class="punctuation">(</span>i <span class="keyword">in</span> x<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line"><span class="operator">+</span>     assign<span class="punctuation">(</span>i<span class="punctuation">,</span>value<span class="punctuation">)</span></span><br><span class="line"><span class="operator">+</span> <span class="punctuation">&#125;</span></span><br><span class="line"><span class="operator">&gt;</span>a</span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line"><span class="operator">&gt;</span>b</span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line"><span class="operator">&gt;</span><span class="built_in">c</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>r</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>discus data analysis use R</title>
-    <url>/2018/05/05/discus-data-analysis-use-R/</url>
-    <content><![CDATA[<p><img
-src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505082516169.png" /></p>
-<span id="more"></span>
-<p>在生物力学中，会对运动员进行动作分析。由于比赛场地不允许带入分析设备，通常会使用两台（或多台）摄像机拍摄运动员的录像对运动员的动作进行三维解析。三维解析的过程比较繁琐，需要人工将人体的关节位置识别出。而在国内，分析运动员的动作是将少数的一两个运动员的解析数据进行比较，很少有多名运动员的数据进行统计分析和对比。原因是并没有统计三维解析的工具。但binyu的文章中有许多的测试对象，一方面是他们多年的积累，另一方面他们也更为脚踏实地。所以写一个对三维数据进行统计分析的程序，对于我国的运动员技术分析，应该有一定的作用；如果他们数据真实，并且脚踏实地分析的话。<br />
-&gt; <span style="background:#AEEEEE"><a
-href="https://github.com/gaozelle/discus-analysis">我使用R语言处理分析解析三维坐标的代码</a></span></p>
-<h2 id="idea"><strong><em>idea</em></strong></h2>
-<ul>
-<li>从三维解析软件中提取各个帧的关节点三维坐标 → 生成txt → Encode=UTF-8
-<img
-src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505092338739.png" />
-<center>
-⬇️
-</center></li>
-<li>读取路径下的所有txt格式数据，并根据各个文件名生成相同名称的dataframe
-<center>
-⬇️
-</center></li>
-<li>计算速度 <img
-src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505094328289.png" />
-<center>
-⬇️
-</center></li>
-<li>计算角度
-<center>
-⬇️
-</center></li>
-<li>人工进行每个运动员的阶段划分，铁饼为6个关键时刻T1-T6，5个时相F1-F5，保存为
-phase.xlsx <img
-src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505092438883.png" />
-<center>
-⬇️
-</center></li>
-<li>提取phase.xlsx中的阶段划分提取各个关键时刻的数据 <img
-src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505094203220.png" />
-<center>
-⬇️
-</center></li>
-<li>选取特定的数据进行作图，包括空间运动图和线图等 <img
-src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505093917987.png" />
-<img
-src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505093937692.png" />
-<img
-src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505093833300.png" />
-<center>
-⬇️
-</center></li>
-<li>使用运动员的关键数据进行统计分析，如T检验，建立回归方程等</li>
-</ul>
-<h2 id="function">function</h2>
-<ul>
-<li><p>定义拍摄频率 <figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment">#定义拍摄频率</span></span><br><span class="line">fhz <span class="operator">&lt;-</span> 60 </span><br></pre></td></tr></table></figure></p></li>
-<li><p>计算量点之间的距离 两点之间的距离通过空间坐标计算 公式为： <span
-class="math display">\[
-distansce=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2}
-\]</span> R语言实现 <figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 求两点的距离</span></span><br><span class="line">distance <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>x<span class="punctuation">,</span>y<span class="punctuation">)</span><span class="punctuation">&#123;</span></span><br><span class="line">  l <span class="operator">&lt;-</span> <span class="built_in">sqrt</span><span class="punctuation">(</span><span class="punctuation">(</span>y<span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span><span class="operator">-</span>x<span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="operator">^</span><span class="number">2</span><span class="operator">+</span><span class="punctuation">(</span>y<span class="punctuation">[</span><span class="number">2</span><span class="punctuation">]</span><span class="operator">-</span>x<span class="punctuation">[</span><span class="number">2</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="operator">^</span><span class="number">2</span><span class="operator">+</span><span class="punctuation">(</span>y<span class="punctuation">[</span><span class="number">3</span><span class="punctuation">]</span><span class="operator">-</span>x<span class="punctuation">[</span><span class="number">3</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="operator">^</span><span class="number">2</span><span class="punctuation">)</span></span><br><span class="line">  <span class="built_in">return</span><span class="punctuation">(</span>l<span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>已知两个向量A，B，用distance(A,B)计算向量直线距离，返回距离值 例：
-<figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="operator">&gt;</span> distance<span class="punctuation">(</span><span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span><span class="number">3</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">)</span><span class="punctuation">,</span><span class="built_in">c</span><span class="punctuation">(</span><span class="number">3</span><span class="punctuation">,</span><span class="number">4</span><span class="punctuation">,</span><span class="number">6</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="number">4.582576</span></span><br></pre></td></tr></table></figure></p></li>
-<li><p>计算空间速度<br />
-提取运动员dataframe中的特定三个向量n,m,l;
-每个向量包含每个时刻的三个坐标X,Y,Z;
-行代表坐标，列代表不同的时刻。<br />
-<img
-src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/Screen%20Shot%202018-05-05%20at%2010.46.14.png" />
-<span class="math display">\[
-velocity=\sum_{i=2}^{i_{length}}\sqrt{(n_{[i-1]}-n_{[i+1]})^2+(m_{[i-1]}-m_{[i+1]})^2+(l_{[i-1]}-l_{[i+1]})^2}  \bullet
-fhz
-\]</span></p></li>
-</ul>
-<p><span class="math inline">\(i\)</span> 表示帧数，<span
-class="math inline">\(i_{length}\)</span> 表示总共的帧数，<span
-class="math inline">\(fhz\)</span> 表示拍摄频率 空间速度计算的是 <span
-class="math inline">\(i\)</span>
-帧前后两帧的平均速度，没有插值，从第二帧开始计算。没有第一帧的速度和最后一帧的速度。</p>
-<p>R语言实现 <figure class="highlight r"><table><tr><td class="code"><pre><span class="line">vel <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>n<span class="punctuation">,</span>m<span class="punctuation">,</span>l<span class="punctuation">)</span><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="punctuation">(</span><span class="operator">!</span><span class="built_in">is.numeric</span><span class="punctuation">(</span>n<span class="punctuation">)</span><span class="operator">&amp;</span><span class="operator">!</span><span class="built_in">is.numeric</span><span class="punctuation">(</span>m<span class="punctuation">)</span><span class="operator">&amp;</span><span class="operator">!</span><span class="built_in">is.numeric</span><span class="punctuation">(</span>l<span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">&#123;</span></span><br><span class="line">      stop<span class="punctuation">(</span><span class="string">&quot;输入的n,m,l变量要数值型，大锅！&quot;</span><span class="punctuation">)</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="comment"># 验证变量是否为数值变量，如果不是报错</span></span><br><span class="line">    <span class="keyword">if</span> <span class="punctuation">(</span> <span class="operator">!</span><span class="built_in">is.null</span><span class="punctuation">(</span>ncol<span class="punctuation">(</span>n<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">&amp;&amp;</span> <span class="punctuation">(</span>ncol<span class="punctuation">(</span>n<span class="punctuation">)</span> <span class="operator">&gt;</span> <span class="number">1</span><span class="punctuation">)</span> <span class="punctuation">)</span><span class="punctuation">&#123;</span></span><br><span class="line">      stop<span class="punctuation">(</span><span class="string">&quot;需要连续的变量，大锅！&quot;</span><span class="punctuation">)</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="comment"># 验证变量是否有空变量，如果有报错</span></span><br><span class="line">  v <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="punctuation">)</span></span><br><span class="line">  <span class="keyword">for</span> <span class="punctuation">(</span>i <span class="keyword">in</span> <span class="number">2</span><span class="operator">:</span><span class="built_in">length</span><span class="punctuation">(</span>n<span class="punctuation">)</span><span class="operator">-</span><span class="number">1</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#123;</span></span><br><span class="line"></span><br><span class="line">    v<span class="punctuation">[</span>i<span class="punctuation">]</span> <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="punctuation">(</span><span class="built_in">sqrt</span><span class="punctuation">(</span><span class="punctuation">(</span>n<span class="punctuation">[</span>i<span class="operator">-</span><span class="number">1</span><span class="punctuation">]</span><span class="operator">-</span>n<span class="punctuation">[</span>i<span class="operator">+</span><span class="number">1</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="operator">^</span><span class="number">2</span><span class="operator">+</span><span class="punctuation">(</span>m<span class="punctuation">[</span>i<span class="operator">-</span><span class="number">1</span><span class="punctuation">]</span><span class="operator">-</span>m<span class="punctuation">[</span>i<span class="operator">+</span><span class="number">1</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="operator">^</span><span class="number">2</span><span class="operator">+</span><span class="punctuation">(</span>l<span class="punctuation">[</span>i<span class="operator">-</span><span class="number">1</span><span class="punctuation">]</span><span class="operator">-</span>l<span class="punctuation">[</span>i<span class="operator">+</span><span class="number">1</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="operator">^</span><span class="number">2</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">*</span>fhz<span class="punctuation">)</span></span><br><span class="line">    <span class="comment">#acc &lt;- diff(vel,differences = 2)</span></span><br><span class="line">    v<span class="punctuation">[</span><span class="built_in">length</span><span class="punctuation">(</span>v<span class="punctuation">)</span><span class="operator">+</span><span class="number">1</span><span class="punctuation">]</span> <span class="operator">&lt;-</span> <span class="number">0</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="built_in">return</span><span class="punctuation">(</span>v<span class="punctuation">)</span></span><br><span class="line">rm<span class="punctuation">(</span>v<span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure> 已知某点（X,Y,Z）的各个时刻坐标三个向量X, Y
-,Z ，计算空间速度 vel(X, Y, Z) ,返回一个速度向量 例： <figure class="highlight r"><table><tr><td class="code"><pre><span class="line"> <span class="operator">&gt;</span> vel<span class="punctuation">(</span>no1tk57.91<span class="operator">$</span>discusX<span class="punctuation">,</span>no1tk57.91<span class="operator">$</span>discusY<span class="punctuation">,</span>no1tk57.91<span class="operator">$</span>discusZ<span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span>  <span class="number">0.0000000</span>  <span class="number">6.9633613</span>  <span class="number">6.7320428</span>  <span class="number">6.4110218</span>  <span class="number">6.1205882</span>  <span class="number">5.8252554</span></span><br><span class="line">  <span class="punctuation">[</span><span class="number">7</span><span class="punctuation">]</span>  <span class="number">5.5111886</span>  <span class="number">5.0677806</span>  <span class="number">4.4795535</span>  <span class="number">3.8385935</span>  <span class="number">3.2025615</span>  <span class="number">2.6959970</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">13</span><span class="punctuation">]</span>  <span class="number">2.2665392</span>  <span class="number">1.9699746</span>  <span class="number">1.7285832</span>  <span class="number">1.4623269</span>  <span class="number">1.0816654</span>  <span class="number">0.7868926</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">19</span><span class="punctuation">]</span>  <span class="number">0.9486833</span>  <span class="number">1.5059880</span>  <span class="number">2.1424285</span>  <span class="number">2.6420447</span>  <span class="number">2.9522195</span>  <span class="number">3.2333265</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">25</span><span class="punctuation">]</span>  <span class="number">3.5236912</span>  <span class="number">3.8615023</span>  <span class="number">4.4172390</span>  <span class="number">5.0961162</span>  <span class="number">5.8153590</span>  <span class="number">6.4499302</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">31</span><span class="punctuation">]</span>  <span class="number">6.8822380</span>  <span class="number">7.1932468</span>  <span class="number">7.4535361</span>  <span class="number">7.6811718</span>  <span class="number">7.8828675</span>  <span class="number">8.0931082</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">37</span><span class="punctuation">]</span>  <span class="number">8.1956574</span>  <span class="number">8.3428053</span>  <span class="number">8.5396253</span>  <span class="number">8.8850661</span>  <span class="number">9.2649015</span>  <span class="number">9.5866783</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">43</span><span class="punctuation">]</span>  <span class="number">9.9415492</span> <span class="number">10.2424411</span> <span class="number">10.4620457</span> <span class="number">10.5923369</span> <span class="number">10.7000374</span> <span class="number">10.8959075</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">49</span><span class="punctuation">]</span> <span class="number">11.3241159</span> <span class="number">11.8833329</span> <span class="number">12.1415156</span> <span class="number">12.0522363</span> <span class="number">11.8621077</span> <span class="number">11.7469826</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">55</span><span class="punctuation">]</span> <span class="number">12.0444676</span> <span class="number">12.7214150</span> <span class="number">13.3389055</span> <span class="number">13.5621237</span> <span class="number">13.2296939</span> <span class="number">12.4766823</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">61</span><span class="punctuation">]</span> <span class="number">11.5961545</span> <span class="number">11.1453129</span> <span class="number">11.3406349</span> <span class="number">11.8930232</span> <span class="number">12.3901090</span> <span class="number">12.6256881</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">67</span><span class="punctuation">]</span> <span class="number">12.6077119</span> <span class="number">12.4691780</span> <span class="number">12.2602773</span> <span class="number">12.1533699</span> <span class="number">12.1091536</span> <span class="number">12.1058829</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">73</span><span class="punctuation">]</span> <span class="number">12.1094509</span> <span class="number">11.9888949</span> <span class="number">11.9354765</span> <span class="number">12.0768539</span> <span class="number">12.5839898</span> <span class="number">13.3736756</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">79</span><span class="punctuation">]</span> <span class="number">14.2615848</span> <span class="number">14.9932785</span> <span class="number">15.3010588</span> <span class="number">15.2506262</span> <span class="number">15.0438559</span> <span class="number">14.7266697</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">85</span><span class="punctuation">]</span> <span class="number">14.4974205</span> <span class="number">14.4217336</span> <span class="number">14.5066054</span> <span class="number">14.7781596</span> <span class="number">15.2836383</span> <span class="number">15.9636086</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">91</span><span class="punctuation">]</span> <span class="number">16.4855937</span> <span class="number">16.5887793</span> <span class="number">16.2121066</span> <span class="number">15.5390733</span> <span class="number">14.9656406</span> <span class="number">14.8984966</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">97</span><span class="punctuation">]</span> <span class="number">15.3601172</span> <span class="number">16.2497015</span> <span class="number">17.3907907</span> <span class="number">18.8016489</span> <span class="number">20.5660011</span> <span class="number">22.3033809</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">103</span><span class="punctuation">]</span> <span class="number">23.6642008</span> <span class="number">24.8453617</span> <span class="number">26.5705175</span> <span class="number">29.4282721</span> <span class="number">33.3662584</span> <span class="number">37.9821326</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">109</span><span class="punctuation">]</span> <span class="number">42.0537941</span> <span class="number">44.6746237</span> <span class="number">45.5234357</span> <span class="number">44.7429056</span> <span class="number">43.0321322</span> <span class="number">41.1617930</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">115</span><span class="punctuation">]</span> <span class="number">39.6629500</span> <span class="number">38.6514114</span> <span class="number">38.0660636</span> <span class="number">37.3920366</span> <span class="number">35.9510167</span> <span class="number">33.1914447</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">121</span><span class="punctuation">]</span> <span class="number">29.2155643</span> <span class="number">24.6554010</span> <span class="number">20.8339147</span>  <span class="number">0.0000000</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>计算空间夹角</li>
-</ul>
-<p>运动员在空间中需要计算关节角度，或者环节与环节之间的夹角</p>
-<p>用4个关节点形成两个空间向量，计算两个空间向量的夹角</p>
-<p>已知，点<span
-class="math inline">\(A(x_a,y_a,z_a)B(x_b,y_b,z_b)\)</span>和点<span
-class="math inline">\(C(x_c,y_c,z_c),D(x_d,y_d,z_d)\)</span></p>
-<p>则：</p>
-<p><span
-class="math inline">\(\vec{ab}=(x_b-x_a,y_b-y_a,z_b-z_a)\)</span></p>
-<p><span
-class="math inline">\(\vec{cd}=(x_d-x_c,y_d-y_c,z_d-z_c)\)</span></p>
-<p>向量的积：</p>
-<p><span
-class="math inline">\(\vec{ab}\bullet\vec{cd}=|ab|\bullet|cd|\bullet\cos\theta\)</span></p>
-<p><span
-class="math inline">\(\theta=\arccos\frac{\vec{ab}\bullet\vec{cd}}{|ab|\bullet|cd|}\)</span></p>
-<p>向量的模：</p>
-<p><span
-class="math inline">\(|ab|=\sqrt{x_{ab}^2+y_{ab}^2+z_{ab}^2}\)</span></p>
-<p><span
-class="math inline">\(|cd|=\sqrt{x_{cd}^2+y_{cd}^2+z_{cd}^2}\)</span></p>
-<p>向量的夹角</p>
-<p>因为关节点数据是三维坐标数据，R中以dataframe的格式保存，所以每个点的数据在R中也是向量的数据结构（dataframe$point)</p>
-<p><span class="math display">\[
-\theta=\sum_{i=1}^{i_{length}}\arccos\frac{\vec{a_ib_i}\bullet\vec{c_id_i}}{|a_ib_i|\bullet|c_id_i|}
-\]</span></p>
-<p>R语言实现</p>
-<p>R中的求积与求模</p>
-<figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="operator">&gt;</span> a <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">,</span><span class="number">3</span><span class="punctuation">)</span></span><br><span class="line"><span class="operator">&gt;</span> b <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">4</span><span class="punctuation">,</span><span class="number">5</span><span class="punctuation">,</span><span class="number">6</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment"># 平方</span></span><br><span class="line"><span class="operator">&gt;</span> a<span class="operator">^</span><span class="number">2</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="number">1</span> <span class="number">4</span> <span class="number">9</span></span><br><span class="line"><span class="comment"># 计算向量元素的和</span></span><br><span class="line"><span class="operator">&gt;</span> <span class="built_in">sum</span><span class="punctuation">(</span>a<span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="number">6</span></span><br><span class="line"><span class="comment"># 计算向量的模（元素平方后求和）</span></span><br><span class="line"><span class="operator">&gt;</span> <span class="built_in">sum</span><span class="punctuation">(</span>a<span class="operator">^</span><span class="number">2</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="number">14</span></span><br><span class="line"><span class="comment"># 向量的积（a,b向量中各个元素相乘）</span></span><br><span class="line"><span class="operator">&gt;</span> a<span class="operator">*</span>b</span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span>  <span class="number">4</span> <span class="number">10</span> <span class="number">18</span></span><br><span class="line"><span class="operator">&gt;</span> </span><br></pre></td></tr></table></figure>
-<p>四个点，形成两个向量，通过向量计算角度</p>
-<p><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">angle <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>a<span class="punctuation">,</span>b<span class="punctuation">,</span><span class="built_in">c</span><span class="punctuation">,</span>d<span class="punctuation">)</span><span class="punctuation">&#123;</span></span><br><span class="line"> ab <span class="operator">&lt;-</span> b<span class="operator">-</span>a</span><br><span class="line"> cd <span class="operator">&lt;-</span> d<span class="operator">-</span><span class="built_in">c</span></span><br><span class="line"> cj<span class="operator">&lt;-</span><span class="built_in">acos</span><span class="punctuation">(</span><span class="built_in">sum</span><span class="punctuation">(</span>ab<span class="operator">*</span>cd<span class="punctuation">)</span><span class="operator">/</span><span class="built_in">sqrt</span><span class="punctuation">(</span><span class="built_in">sum</span><span class="punctuation">(</span>ab<span class="operator">^</span><span class="number">2</span><span class="punctuation">)</span><span class="operator">*</span><span class="built_in">sum</span><span class="punctuation">(</span>cd<span class="operator">^</span><span class="number">2</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"> cj <span class="operator">&lt;-</span> rtod<span class="punctuation">(</span>cj<span class="punctuation">)</span></span><br><span class="line"> <span class="built_in">return</span><span class="punctuation">(</span>cj<span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>biomechanics</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LME线性混合模型处理ERP</title>
     <url>/2022/09/03/LME%E7%BA%BF%E6%80%A7%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B%E5%A4%84%E7%90%86ERP(test)/</url>
     <content><![CDATA[<h1 id="lme线性混合模型处理erp">LME线性混合模型处理ERP</h1>
@@ -902,6 +752,156 @@ href="https://www.sciencedirect.com/science/article/pii/S0031938415002036">https
       </tags>
   </entry>
   <entry>
+    <title>R语言笔记</title>
+    <url>/2018/05/05/R%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p><img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/R语言笔记/20180505073303955.png" />
+<span id="more"></span> ## 1 Rstudio快捷键 &gt; <span style="background:#C1FFC1">Alt
++ -</span> 快捷输入 <span style="background:#C1FFC1"> &lt;- </span></p>
+<h2 id="r中字符串操作">2 R中字符串操作</h2>
+<h3 id="字符串链接-paste">字符串链接 paste( )</h3>
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">paste<span class="punctuation">(</span>...<span class="punctuation">,</span> sep <span class="operator">=</span> <span class="string">&quot; &quot;</span><span class="punctuation">,</span> collapse <span class="operator">=</span> <span class="literal">NULL</span><span class="punctuation">)</span> </span><br></pre></td></tr></table></figure>
+<p>用法： <span style="background:#C1FFC1 ">...</span> 为字符； <span
+style="background:#C1FFC1   ">sep=" " </span>中的 " " 为分隔符； <span
+style="background:#C1FFC1   ">collaspse=
+NULL</span>表示连成一个字符串，如果将NULL修改成 ","
+则将字符连接成一个字符，并用 ，分隔。<br />
+例： <figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="operator">&gt;</span> paste<span class="punctuation">(</span><span class="string">&quot;A&quot;</span><span class="punctuation">,</span><span class="string">&quot;B&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="string">&quot;A B&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="operator">&gt;</span> paste<span class="punctuation">(</span><span class="string">&quot;A&quot;</span><span class="punctuation">,</span><span class="string">&quot;B&quot;</span><span class="punctuation">,</span>sep<span class="operator">=</span><span class="string">&quot;,&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="string">&quot;A,B&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="operator">&gt;</span> paste<span class="punctuation">(</span><span class="string">&quot;A&quot;</span><span class="punctuation">,</span><span class="number">1</span><span class="operator">:</span><span class="number">3</span><span class="punctuation">,</span>sep<span class="operator">=</span><span class="string">&quot;&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="string">&quot;A1&quot;</span> <span class="string">&quot;A2&quot;</span> <span class="string">&quot;A3&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="operator">&gt;</span> paste<span class="punctuation">(</span><span class="string">&quot;A&quot;</span><span class="punctuation">,</span> <span class="number">1</span><span class="operator">:</span><span class="number">3</span> <span class="punctuation">,</span>sep <span class="operator">=</span> <span class="string">&quot;&quot;</span> <span class="punctuation">,</span>collapse <span class="operator">=</span> <span class="string">&quot;,&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="string">&quot;A1,A2,A3&quot;</span></span><br></pre></td></tr></table></figure> ### 字符串替换 gsub( ) <figure class="highlight r"><table><tr><td class="code"><pre><span class="line">gsub<span class="punctuation">(</span>pattern<span class="punctuation">,</span> replacement<span class="punctuation">,</span> x<span class="punctuation">,</span> ignore.case <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">,</span> perl <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">,</span></span><br><span class="line">     fixed <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">,</span> useBytes <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure> 用法： <span
+style="background:#C1FFC1 ">pattern</span> 为需要替换的字符；<span
+style="background:#C1FFC1">replacement</span>为替换后的字符；<span
+style="background:#C1FFC1">x</span>为包含字符的向量。 例： <figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="operator">&gt;</span> a <span class="operator">&lt;-</span> <span class="string">&quot;abc,d&quot;</span></span><br><span class="line"><span class="operator">&gt;</span> a</span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="string">&quot;abc,d&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="operator">&gt;</span> b <span class="operator">&lt;-</span> gsub<span class="punctuation">(</span><span class="string">&quot;a&quot;</span><span class="punctuation">,</span><span class="string">&quot;x&quot;</span><span class="punctuation">,</span>a<span class="punctuation">)</span></span><br><span class="line"><span class="operator">&gt;</span> b</span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="string">&quot;xbc,d&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="operator">&gt;</span> b <span class="operator">&lt;-</span> gsub<span class="punctuation">(</span><span class="string">&quot;,&quot;</span><span class="punctuation">,</span> <span class="string">&quot;x&quot;</span><span class="punctuation">,</span> a<span class="punctuation">,</span> fixed <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">)</span></span><br><span class="line"><span class="operator">&gt;</span> b</span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="string">&quot;abcxd&quot;</span></span><br></pre></td></tr></table></figure>
+## 3 批量赋值 assign( ) <figure class="highlight r"><table><tr><td class="code"><pre><span class="line">assign<span class="punctuation">(</span>x<span class="punctuation">,</span> value<span class="punctuation">,</span> pos <span class="operator">=</span> <span class="operator">-</span><span class="number">1</span><span class="punctuation">,</span> envir <span class="operator">=</span> <span class="built_in">as.environment</span><span class="punctuation">(</span>pos<span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">       inherits <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">,</span> immediate <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure> 用法： 将<span
+style="background:#C1FFC1    ">value</span> 的值赋给<span
+style="background:#C1FFC1  ">x</span> 例： <figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="operator">&gt;</span> value <span class="operator">&lt;-</span>  <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="operator">:</span><span class="number">3</span><span class="punctuation">)</span></span><br><span class="line"><span class="operator">&gt;</span> x <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;a&quot;</span><span class="punctuation">,</span><span class="string">&quot;b&quot;</span><span class="punctuation">,</span><span class="string">&quot;c&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="operator">&gt;</span> <span class="operator">&gt;</span> <span class="keyword">for</span> <span class="punctuation">(</span>i <span class="keyword">in</span> x<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line"><span class="operator">+</span>     assign<span class="punctuation">(</span>i<span class="punctuation">,</span>value<span class="punctuation">)</span></span><br><span class="line"><span class="operator">+</span> <span class="punctuation">&#125;</span></span><br><span class="line"><span class="operator">&gt;</span>a</span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line"><span class="operator">&gt;</span>b</span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line"><span class="operator">&gt;</span><span class="built_in">c</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>r</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>discus data analysis use R</title>
+    <url>/2018/05/05/discus-data-analysis-use-R/</url>
+    <content><![CDATA[<p><img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505082516169.png" /></p>
+<span id="more"></span>
+<p>在生物力学中，会对运动员进行动作分析。由于比赛场地不允许带入分析设备，通常会使用两台（或多台）摄像机拍摄运动员的录像对运动员的动作进行三维解析。三维解析的过程比较繁琐，需要人工将人体的关节位置识别出。而在国内，分析运动员的动作是将少数的一两个运动员的解析数据进行比较，很少有多名运动员的数据进行统计分析和对比。原因是并没有统计三维解析的工具。但binyu的文章中有许多的测试对象，一方面是他们多年的积累，另一方面他们也更为脚踏实地。所以写一个对三维数据进行统计分析的程序，对于我国的运动员技术分析，应该有一定的作用；如果他们数据真实，并且脚踏实地分析的话。<br />
+&gt; <span style="background:#AEEEEE"><a
+href="https://github.com/gaozelle/discus-analysis">我使用R语言处理分析解析三维坐标的代码</a></span></p>
+<h2 id="idea"><strong><em>idea</em></strong></h2>
+<ul>
+<li>从三维解析软件中提取各个帧的关节点三维坐标 → 生成txt → Encode=UTF-8
+<img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505092338739.png" />
+<center>
+⬇️
+</center></li>
+<li>读取路径下的所有txt格式数据，并根据各个文件名生成相同名称的dataframe
+<center>
+⬇️
+</center></li>
+<li>计算速度 <img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505094328289.png" />
+<center>
+⬇️
+</center></li>
+<li>计算角度
+<center>
+⬇️
+</center></li>
+<li>人工进行每个运动员的阶段划分，铁饼为6个关键时刻T1-T6，5个时相F1-F5，保存为
+phase.xlsx <img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505092438883.png" />
+<center>
+⬇️
+</center></li>
+<li>提取phase.xlsx中的阶段划分提取各个关键时刻的数据 <img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505094203220.png" />
+<center>
+⬇️
+</center></li>
+<li>选取特定的数据进行作图，包括空间运动图和线图等 <img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505093917987.png" />
+<img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505093937692.png" />
+<img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/discus-data-analysis-use-R/20180505093833300.png" />
+<center>
+⬇️
+</center></li>
+<li>使用运动员的关键数据进行统计分析，如T检验，建立回归方程等</li>
+</ul>
+<h2 id="function">function</h2>
+<ul>
+<li><p>定义拍摄频率 <figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment">#定义拍摄频率</span></span><br><span class="line">fhz <span class="operator">&lt;-</span> 60 </span><br></pre></td></tr></table></figure></p></li>
+<li><p>计算量点之间的距离 两点之间的距离通过空间坐标计算 公式为： <span
+class="math display">\[
+distansce=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2}
+\]</span> R语言实现 <figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 求两点的距离</span></span><br><span class="line">distance <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>x<span class="punctuation">,</span>y<span class="punctuation">)</span><span class="punctuation">&#123;</span></span><br><span class="line">  l <span class="operator">&lt;-</span> <span class="built_in">sqrt</span><span class="punctuation">(</span><span class="punctuation">(</span>y<span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span><span class="operator">-</span>x<span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="operator">^</span><span class="number">2</span><span class="operator">+</span><span class="punctuation">(</span>y<span class="punctuation">[</span><span class="number">2</span><span class="punctuation">]</span><span class="operator">-</span>x<span class="punctuation">[</span><span class="number">2</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="operator">^</span><span class="number">2</span><span class="operator">+</span><span class="punctuation">(</span>y<span class="punctuation">[</span><span class="number">3</span><span class="punctuation">]</span><span class="operator">-</span>x<span class="punctuation">[</span><span class="number">3</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="operator">^</span><span class="number">2</span><span class="punctuation">)</span></span><br><span class="line">  <span class="built_in">return</span><span class="punctuation">(</span>l<span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>已知两个向量A，B，用distance(A,B)计算向量直线距离，返回距离值 例：
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="operator">&gt;</span> distance<span class="punctuation">(</span><span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span><span class="number">3</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">)</span><span class="punctuation">,</span><span class="built_in">c</span><span class="punctuation">(</span><span class="number">3</span><span class="punctuation">,</span><span class="number">4</span><span class="punctuation">,</span><span class="number">6</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="number">4.582576</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>计算空间速度<br />
+提取运动员dataframe中的特定三个向量n,m,l;
+每个向量包含每个时刻的三个坐标X,Y,Z;
+行代表坐标，列代表不同的时刻。<br />
+<img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/Screen%20Shot%202018-05-05%20at%2010.46.14.png" />
+<span class="math display">\[
+velocity=\sum_{i=2}^{i_{length}}\sqrt{(n_{[i-1]}-n_{[i+1]})^2+(m_{[i-1]}-m_{[i+1]})^2+(l_{[i-1]}-l_{[i+1]})^2}  \bullet
+fhz
+\]</span></p></li>
+</ul>
+<p><span class="math inline">\(i\)</span> 表示帧数，<span
+class="math inline">\(i_{length}\)</span> 表示总共的帧数，<span
+class="math inline">\(fhz\)</span> 表示拍摄频率 空间速度计算的是 <span
+class="math inline">\(i\)</span>
+帧前后两帧的平均速度，没有插值，从第二帧开始计算。没有第一帧的速度和最后一帧的速度。</p>
+<p>R语言实现 <figure class="highlight r"><table><tr><td class="code"><pre><span class="line">vel <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>n<span class="punctuation">,</span>m<span class="punctuation">,</span>l<span class="punctuation">)</span><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="punctuation">(</span><span class="operator">!</span><span class="built_in">is.numeric</span><span class="punctuation">(</span>n<span class="punctuation">)</span><span class="operator">&amp;</span><span class="operator">!</span><span class="built_in">is.numeric</span><span class="punctuation">(</span>m<span class="punctuation">)</span><span class="operator">&amp;</span><span class="operator">!</span><span class="built_in">is.numeric</span><span class="punctuation">(</span>l<span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">&#123;</span></span><br><span class="line">      stop<span class="punctuation">(</span><span class="string">&quot;输入的n,m,l变量要数值型，大锅！&quot;</span><span class="punctuation">)</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="comment"># 验证变量是否为数值变量，如果不是报错</span></span><br><span class="line">    <span class="keyword">if</span> <span class="punctuation">(</span> <span class="operator">!</span><span class="built_in">is.null</span><span class="punctuation">(</span>ncol<span class="punctuation">(</span>n<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">&amp;&amp;</span> <span class="punctuation">(</span>ncol<span class="punctuation">(</span>n<span class="punctuation">)</span> <span class="operator">&gt;</span> <span class="number">1</span><span class="punctuation">)</span> <span class="punctuation">)</span><span class="punctuation">&#123;</span></span><br><span class="line">      stop<span class="punctuation">(</span><span class="string">&quot;需要连续的变量，大锅！&quot;</span><span class="punctuation">)</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="comment"># 验证变量是否有空变量，如果有报错</span></span><br><span class="line">  v <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="punctuation">)</span></span><br><span class="line">  <span class="keyword">for</span> <span class="punctuation">(</span>i <span class="keyword">in</span> <span class="number">2</span><span class="operator">:</span><span class="built_in">length</span><span class="punctuation">(</span>n<span class="punctuation">)</span><span class="operator">-</span><span class="number">1</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#123;</span></span><br><span class="line"></span><br><span class="line">    v<span class="punctuation">[</span>i<span class="punctuation">]</span> <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="punctuation">(</span><span class="built_in">sqrt</span><span class="punctuation">(</span><span class="punctuation">(</span>n<span class="punctuation">[</span>i<span class="operator">-</span><span class="number">1</span><span class="punctuation">]</span><span class="operator">-</span>n<span class="punctuation">[</span>i<span class="operator">+</span><span class="number">1</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="operator">^</span><span class="number">2</span><span class="operator">+</span><span class="punctuation">(</span>m<span class="punctuation">[</span>i<span class="operator">-</span><span class="number">1</span><span class="punctuation">]</span><span class="operator">-</span>m<span class="punctuation">[</span>i<span class="operator">+</span><span class="number">1</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="operator">^</span><span class="number">2</span><span class="operator">+</span><span class="punctuation">(</span>l<span class="punctuation">[</span>i<span class="operator">-</span><span class="number">1</span><span class="punctuation">]</span><span class="operator">-</span>l<span class="punctuation">[</span>i<span class="operator">+</span><span class="number">1</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="operator">^</span><span class="number">2</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">*</span>fhz<span class="punctuation">)</span></span><br><span class="line">    <span class="comment">#acc &lt;- diff(vel,differences = 2)</span></span><br><span class="line">    v<span class="punctuation">[</span><span class="built_in">length</span><span class="punctuation">(</span>v<span class="punctuation">)</span><span class="operator">+</span><span class="number">1</span><span class="punctuation">]</span> <span class="operator">&lt;-</span> <span class="number">0</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="built_in">return</span><span class="punctuation">(</span>v<span class="punctuation">)</span></span><br><span class="line">rm<span class="punctuation">(</span>v<span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure> 已知某点（X,Y,Z）的各个时刻坐标三个向量X, Y
+,Z ，计算空间速度 vel(X, Y, Z) ,返回一个速度向量 例： <figure class="highlight r"><table><tr><td class="code"><pre><span class="line"> <span class="operator">&gt;</span> vel<span class="punctuation">(</span>no1tk57.91<span class="operator">$</span>discusX<span class="punctuation">,</span>no1tk57.91<span class="operator">$</span>discusY<span class="punctuation">,</span>no1tk57.91<span class="operator">$</span>discusZ<span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span>  <span class="number">0.0000000</span>  <span class="number">6.9633613</span>  <span class="number">6.7320428</span>  <span class="number">6.4110218</span>  <span class="number">6.1205882</span>  <span class="number">5.8252554</span></span><br><span class="line">  <span class="punctuation">[</span><span class="number">7</span><span class="punctuation">]</span>  <span class="number">5.5111886</span>  <span class="number">5.0677806</span>  <span class="number">4.4795535</span>  <span class="number">3.8385935</span>  <span class="number">3.2025615</span>  <span class="number">2.6959970</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">13</span><span class="punctuation">]</span>  <span class="number">2.2665392</span>  <span class="number">1.9699746</span>  <span class="number">1.7285832</span>  <span class="number">1.4623269</span>  <span class="number">1.0816654</span>  <span class="number">0.7868926</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">19</span><span class="punctuation">]</span>  <span class="number">0.9486833</span>  <span class="number">1.5059880</span>  <span class="number">2.1424285</span>  <span class="number">2.6420447</span>  <span class="number">2.9522195</span>  <span class="number">3.2333265</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">25</span><span class="punctuation">]</span>  <span class="number">3.5236912</span>  <span class="number">3.8615023</span>  <span class="number">4.4172390</span>  <span class="number">5.0961162</span>  <span class="number">5.8153590</span>  <span class="number">6.4499302</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">31</span><span class="punctuation">]</span>  <span class="number">6.8822380</span>  <span class="number">7.1932468</span>  <span class="number">7.4535361</span>  <span class="number">7.6811718</span>  <span class="number">7.8828675</span>  <span class="number">8.0931082</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">37</span><span class="punctuation">]</span>  <span class="number">8.1956574</span>  <span class="number">8.3428053</span>  <span class="number">8.5396253</span>  <span class="number">8.8850661</span>  <span class="number">9.2649015</span>  <span class="number">9.5866783</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">43</span><span class="punctuation">]</span>  <span class="number">9.9415492</span> <span class="number">10.2424411</span> <span class="number">10.4620457</span> <span class="number">10.5923369</span> <span class="number">10.7000374</span> <span class="number">10.8959075</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">49</span><span class="punctuation">]</span> <span class="number">11.3241159</span> <span class="number">11.8833329</span> <span class="number">12.1415156</span> <span class="number">12.0522363</span> <span class="number">11.8621077</span> <span class="number">11.7469826</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">55</span><span class="punctuation">]</span> <span class="number">12.0444676</span> <span class="number">12.7214150</span> <span class="number">13.3389055</span> <span class="number">13.5621237</span> <span class="number">13.2296939</span> <span class="number">12.4766823</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">61</span><span class="punctuation">]</span> <span class="number">11.5961545</span> <span class="number">11.1453129</span> <span class="number">11.3406349</span> <span class="number">11.8930232</span> <span class="number">12.3901090</span> <span class="number">12.6256881</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">67</span><span class="punctuation">]</span> <span class="number">12.6077119</span> <span class="number">12.4691780</span> <span class="number">12.2602773</span> <span class="number">12.1533699</span> <span class="number">12.1091536</span> <span class="number">12.1058829</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">73</span><span class="punctuation">]</span> <span class="number">12.1094509</span> <span class="number">11.9888949</span> <span class="number">11.9354765</span> <span class="number">12.0768539</span> <span class="number">12.5839898</span> <span class="number">13.3736756</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">79</span><span class="punctuation">]</span> <span class="number">14.2615848</span> <span class="number">14.9932785</span> <span class="number">15.3010588</span> <span class="number">15.2506262</span> <span class="number">15.0438559</span> <span class="number">14.7266697</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">85</span><span class="punctuation">]</span> <span class="number">14.4974205</span> <span class="number">14.4217336</span> <span class="number">14.5066054</span> <span class="number">14.7781596</span> <span class="number">15.2836383</span> <span class="number">15.9636086</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">91</span><span class="punctuation">]</span> <span class="number">16.4855937</span> <span class="number">16.5887793</span> <span class="number">16.2121066</span> <span class="number">15.5390733</span> <span class="number">14.9656406</span> <span class="number">14.8984966</span></span><br><span class="line"> <span class="punctuation">[</span><span class="number">97</span><span class="punctuation">]</span> <span class="number">15.3601172</span> <span class="number">16.2497015</span> <span class="number">17.3907907</span> <span class="number">18.8016489</span> <span class="number">20.5660011</span> <span class="number">22.3033809</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">103</span><span class="punctuation">]</span> <span class="number">23.6642008</span> <span class="number">24.8453617</span> <span class="number">26.5705175</span> <span class="number">29.4282721</span> <span class="number">33.3662584</span> <span class="number">37.9821326</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">109</span><span class="punctuation">]</span> <span class="number">42.0537941</span> <span class="number">44.6746237</span> <span class="number">45.5234357</span> <span class="number">44.7429056</span> <span class="number">43.0321322</span> <span class="number">41.1617930</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">115</span><span class="punctuation">]</span> <span class="number">39.6629500</span> <span class="number">38.6514114</span> <span class="number">38.0660636</span> <span class="number">37.3920366</span> <span class="number">35.9510167</span> <span class="number">33.1914447</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">121</span><span class="punctuation">]</span> <span class="number">29.2155643</span> <span class="number">24.6554010</span> <span class="number">20.8339147</span>  <span class="number">0.0000000</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>计算空间夹角</li>
+</ul>
+<p>运动员在空间中需要计算关节角度，或者环节与环节之间的夹角</p>
+<p>用4个关节点形成两个空间向量，计算两个空间向量的夹角</p>
+<p>已知，点<span
+class="math inline">\(A(x_a,y_a,z_a)B(x_b,y_b,z_b)\)</span>和点<span
+class="math inline">\(C(x_c,y_c,z_c),D(x_d,y_d,z_d)\)</span></p>
+<p>则：</p>
+<p><span
+class="math inline">\(\vec{ab}=(x_b-x_a,y_b-y_a,z_b-z_a)\)</span></p>
+<p><span
+class="math inline">\(\vec{cd}=(x_d-x_c,y_d-y_c,z_d-z_c)\)</span></p>
+<p>向量的积：</p>
+<p><span
+class="math inline">\(\vec{ab}\bullet\vec{cd}=|ab|\bullet|cd|\bullet\cos\theta\)</span></p>
+<p><span
+class="math inline">\(\theta=\arccos\frac{\vec{ab}\bullet\vec{cd}}{|ab|\bullet|cd|}\)</span></p>
+<p>向量的模：</p>
+<p><span
+class="math inline">\(|ab|=\sqrt{x_{ab}^2+y_{ab}^2+z_{ab}^2}\)</span></p>
+<p><span
+class="math inline">\(|cd|=\sqrt{x_{cd}^2+y_{cd}^2+z_{cd}^2}\)</span></p>
+<p>向量的夹角</p>
+<p>因为关节点数据是三维坐标数据，R中以dataframe的格式保存，所以每个点的数据在R中也是向量的数据结构（dataframe$point)</p>
+<p><span class="math display">\[
+\theta=\sum_{i=1}^{i_{length}}\arccos\frac{\vec{a_ib_i}\bullet\vec{c_id_i}}{|a_ib_i|\bullet|c_id_i|}
+\]</span></p>
+<p>R语言实现</p>
+<p>R中的求积与求模</p>
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="operator">&gt;</span> a <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">,</span><span class="number">3</span><span class="punctuation">)</span></span><br><span class="line"><span class="operator">&gt;</span> b <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">4</span><span class="punctuation">,</span><span class="number">5</span><span class="punctuation">,</span><span class="number">6</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment"># 平方</span></span><br><span class="line"><span class="operator">&gt;</span> a<span class="operator">^</span><span class="number">2</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="number">1</span> <span class="number">4</span> <span class="number">9</span></span><br><span class="line"><span class="comment"># 计算向量元素的和</span></span><br><span class="line"><span class="operator">&gt;</span> <span class="built_in">sum</span><span class="punctuation">(</span>a<span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="number">6</span></span><br><span class="line"><span class="comment"># 计算向量的模（元素平方后求和）</span></span><br><span class="line"><span class="operator">&gt;</span> <span class="built_in">sum</span><span class="punctuation">(</span>a<span class="operator">^</span><span class="number">2</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="number">14</span></span><br><span class="line"><span class="comment"># 向量的积（a,b向量中各个元素相乘）</span></span><br><span class="line"><span class="operator">&gt;</span> a<span class="operator">*</span>b</span><br><span class="line"><span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span>  <span class="number">4</span> <span class="number">10</span> <span class="number">18</span></span><br><span class="line"><span class="operator">&gt;</span> </span><br></pre></td></tr></table></figure>
+<p>四个点，形成两个向量，通过向量计算角度</p>
+<p><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">angle <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>a<span class="punctuation">,</span>b<span class="punctuation">,</span><span class="built_in">c</span><span class="punctuation">,</span>d<span class="punctuation">)</span><span class="punctuation">&#123;</span></span><br><span class="line"> ab <span class="operator">&lt;-</span> b<span class="operator">-</span>a</span><br><span class="line"> cd <span class="operator">&lt;-</span> d<span class="operator">-</span><span class="built_in">c</span></span><br><span class="line"> cj<span class="operator">&lt;-</span><span class="built_in">acos</span><span class="punctuation">(</span><span class="built_in">sum</span><span class="punctuation">(</span>ab<span class="operator">*</span>cd<span class="punctuation">)</span><span class="operator">/</span><span class="built_in">sqrt</span><span class="punctuation">(</span><span class="built_in">sum</span><span class="punctuation">(</span>ab<span class="operator">^</span><span class="number">2</span><span class="punctuation">)</span><span class="operator">*</span><span class="built_in">sum</span><span class="punctuation">(</span>cd<span class="operator">^</span><span class="number">2</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"> cj <span class="operator">&lt;-</span> rtod<span class="punctuation">(</span>cj<span class="punctuation">)</span></span><br><span class="line"> <span class="built_in">return</span><span class="punctuation">(</span>cj<span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>biomechanics</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Discus Throwing Reference Note</title>
     <url>/2017/12/23/discus%20throwing%20reference%20note/</url>
     <content><![CDATA[<p><img src="https://i.loli.net/2018/02/21/5a8d7ee56907c.png" /></p>
@@ -1370,59 +1370,6 @@ Journal of Biomechanics<br>
       </tags>
   </entry>
   <entry>
-    <title>marothron 笔记</title>
-    <url>/2017/08/23/marothron/</url>
-    <content><![CDATA[<p><img src="https://i.loli.net/2018/02/21/5a8d7b38a31fc.jpg" class="full-image" /></p>
-<h2 id="background"># Background</h2>
-<p>马拉松跑的技术大致和长跑技术相似。由于它的距离长，并且是在地形不一的公路上进行，因此在技术上有其独有特点。在跑步时，上体微向前倾或正直。后蹬的力量较小，大腿向前上方的摆动比较低。
-<span id="more"></span>
-从外形上看，蹬地后小腿向上摆的动作比长跑小些。脚的落点离身体重心投影点较近，并且用全脚掌或脚的外侧先着地，再过渡到全脚掌，着地时应柔和而有弹性，脚应很好地弯曲、缓冲。<br />
-但目前对马拉松赛跑的成绩与跑步技术动作的科学研究偏少，很大程度上阻碍了该项运动的发展，因此，探索马拉松运动跑步动作技术的最有效方法对普及与提高我国马拉松运动的发展具有重要的意义。</p>
-<blockquote>
-<p>Abstract：Running economy (RE) has a strong relationship with running
-performance, and modifiable running biomechanics are a determining
-factor of RE. The purposes of this review were to (1) examine the
-intrinsic and extrinsic modifiable biomechanical factors affecting RE;
-(2) assess training-induced changes in RE and running biomechanics; (3)
-evaluate whether an economical running technique can be recommended and;
-(4) discuss potential areas for future research. Based on current
-evidence, the intrinsic factors that appeared beneficial for RE were
-using a preferred stride length range, which allows for stride length
-deviations up to 3 % shorter than preferred stride length; lower
-vertical oscillation; greater leg stiffness; low lower limb moment of
-inertia; less leg extension at toe-off; larger stride angles; alignment
-of the ground reaction force and leg axis during propulsion; maintaining
-arm swing; low thigh antagonist–agonist muscular coactivation; and low
-activation of lower limb muscles during propulsion.</p>
-</blockquote>
-<blockquote>
-<p>Extrinsic factors associated with a better RE were a firm, compliant
-shoe–surface interaction and being barefoot or wearing lightweight
-shoes. Several other modifiable biomechanical factors presented
-inconsistent relationships with RE. Running biomechanics during ground
-contact appeared to play an important role, specifically those during
-propulsion. Therefore, this phase has the strongest direct links with
-RE. Recurring methodological problems exist within the literature, such
-as cross-comparisons, assessing variables in isolation, and acute to
-short-term interventions. Therefore, recommending a general economical
-running technique should be approached with caution. Future work should
-focus on interdisciplinary longitudinal investigations combining RE,
-kinematics, kinetics, and neuromuscular and anatomical aspects, as well
-as applying a synergistic approach to understanding the role of
-kinetics.</p>
-</blockquote>
-<p>摘要:
-跑步经济性（RE）与跑步成绩有着密切的关系，而可改变的跑步生物力学又是决定跑步成绩的决定性因素。本综述的目的是（1）检查影响生物力学的内在和外在的可改变的生物力学因素；（2）评估训练引起的RE和跑步生物力学的变化；（3）评估一种经济的跑步技术是否可以。建议和（4）讨论未来研究的潜在领域。根据现有的证据，对RE有利的内在因素是使用一个优选的步长范围。步幅长度偏差比步行长度短3%；低垂直振动；腿部更大的刚度；下肢低转动惯量；脚尖伸展时腿部伸展较少；洛杉矶大跨步的角；地面反力和腿在推进轴对齐；保持摆臂；大腿肌肉共同作用的–激动剂拮抗剂低；和下肢M低活化她的肌肉在推进。<br />
-与一个更好的RE相关的外在因素是一个坚定的，兼容的鞋-表面互动，赤脚或穿轻鞋。几个其他的生物力学因素再不一致的关系。在地面接触的运行生物力学似乎起着重要的作用，特别是在推进过程中。因此，这一阶段具有最强的直接与RE的链接。文献中存在反复出现的方法学问题，如交叉比较、孤立评估变量和急性至短期干预。因此，recommendin一般经济运行技术应谨慎处理。今后的工作重点应放在跨学科的纵向调查研究，结合运动学、动力学，并重新neuromuscu在解剖学和解剖学方面，以及应用协同的方法来理解动力学的作用。</p>
-]]></content>
-      <categories>
-        <category>biomechanics</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Mrakdown 常用语法简要说明</title>
     <url>/2017/08/26/markdown-%E8%AF%AD%E6%B3%95%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/</url>
     <content><![CDATA[<p><img src="https://i.loli.net/2018/02/21/5a8d71a965d64.png" class="full-image" /></p>
@@ -1506,6 +1453,59 @@ style="display: inline-block; vertical-align: top;">我是脚注</span><a href="
 ]]></content>
       <categories>
         <category>markdown</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>marothron 笔记</title>
+    <url>/2017/08/23/marothron/</url>
+    <content><![CDATA[<p><img src="https://i.loli.net/2018/02/21/5a8d7b38a31fc.jpg" class="full-image" /></p>
+<h2 id="background"># Background</h2>
+<p>马拉松跑的技术大致和长跑技术相似。由于它的距离长，并且是在地形不一的公路上进行，因此在技术上有其独有特点。在跑步时，上体微向前倾或正直。后蹬的力量较小，大腿向前上方的摆动比较低。
+<span id="more"></span>
+从外形上看，蹬地后小腿向上摆的动作比长跑小些。脚的落点离身体重心投影点较近，并且用全脚掌或脚的外侧先着地，再过渡到全脚掌，着地时应柔和而有弹性，脚应很好地弯曲、缓冲。<br />
+但目前对马拉松赛跑的成绩与跑步技术动作的科学研究偏少，很大程度上阻碍了该项运动的发展，因此，探索马拉松运动跑步动作技术的最有效方法对普及与提高我国马拉松运动的发展具有重要的意义。</p>
+<blockquote>
+<p>Abstract：Running economy (RE) has a strong relationship with running
+performance, and modifiable running biomechanics are a determining
+factor of RE. The purposes of this review were to (1) examine the
+intrinsic and extrinsic modifiable biomechanical factors affecting RE;
+(2) assess training-induced changes in RE and running biomechanics; (3)
+evaluate whether an economical running technique can be recommended and;
+(4) discuss potential areas for future research. Based on current
+evidence, the intrinsic factors that appeared beneficial for RE were
+using a preferred stride length range, which allows for stride length
+deviations up to 3 % shorter than preferred stride length; lower
+vertical oscillation; greater leg stiffness; low lower limb moment of
+inertia; less leg extension at toe-off; larger stride angles; alignment
+of the ground reaction force and leg axis during propulsion; maintaining
+arm swing; low thigh antagonist–agonist muscular coactivation; and low
+activation of lower limb muscles during propulsion.</p>
+</blockquote>
+<blockquote>
+<p>Extrinsic factors associated with a better RE were a firm, compliant
+shoe–surface interaction and being barefoot or wearing lightweight
+shoes. Several other modifiable biomechanical factors presented
+inconsistent relationships with RE. Running biomechanics during ground
+contact appeared to play an important role, specifically those during
+propulsion. Therefore, this phase has the strongest direct links with
+RE. Recurring methodological problems exist within the literature, such
+as cross-comparisons, assessing variables in isolation, and acute to
+short-term interventions. Therefore, recommending a general economical
+running technique should be approached with caution. Future work should
+focus on interdisciplinary longitudinal investigations combining RE,
+kinematics, kinetics, and neuromuscular and anatomical aspects, as well
+as applying a synergistic approach to understanding the role of
+kinetics.</p>
+</blockquote>
+<p>摘要:
+跑步经济性（RE）与跑步成绩有着密切的关系，而可改变的跑步生物力学又是决定跑步成绩的决定性因素。本综述的目的是（1）检查影响生物力学的内在和外在的可改变的生物力学因素；（2）评估训练引起的RE和跑步生物力学的变化；（3）评估一种经济的跑步技术是否可以。建议和（4）讨论未来研究的潜在领域。根据现有的证据，对RE有利的内在因素是使用一个优选的步长范围。步幅长度偏差比步行长度短3%；低垂直振动；腿部更大的刚度；下肢低转动惯量；脚尖伸展时腿部伸展较少；洛杉矶大跨步的角；地面反力和腿在推进轴对齐；保持摆臂；大腿肌肉共同作用的–激动剂拮抗剂低；和下肢M低活化她的肌肉在推进。<br />
+与一个更好的RE相关的外在因素是一个坚定的，兼容的鞋-表面互动，赤脚或穿轻鞋。几个其他的生物力学因素再不一致的关系。在地面接触的运行生物力学似乎起着重要的作用，特别是在推进过程中。因此，这一阶段具有最强的直接与RE的链接。文献中存在反复出现的方法学问题，如交叉比较、孤立评估变量和急性至短期干预。因此，recommendin一般经济运行技术应谨慎处理。今后的工作重点应放在跨学科的纵向调查研究，结合运动学、动力学，并重新neuromuscu在解剖学和解剖学方面，以及应用协同的方法来理解动力学的作用。</p>
+]]></content>
+      <categories>
+        <category>biomechanics</category>
       </categories>
       <tags>
         <tag>笔记</tag>
@@ -1599,9 +1599,12 @@ href="https://storage.googleapis.com/tfjs-models/demos/posenet/camera.html">clic
 <hr />
 <h2 id="官网">官网</h2>
 <h3 id="bob">1. BOB</h3>
-<p><img
-src="https://www.bob-biomechanics.com/wp-content/uploads/2020/11/cropped-logo-no-background-new-2048x829.png" />{width
-= 60%}</p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20221205005224.png"
+style="width:60.0%" alt="20221205005224" />
+<figcaption aria-hidden="true">20221205005224</figcaption>
+</figure>
 <p>BOB(Biomechanics of
 Bodies)是一个包含易用肌骨模型的软件，用于分析功能和量化模型。</p>
 <p>网站地址: <strong><a
@@ -1643,8 +1646,8 @@ href="https://biomch-l.isbweb.org/">点我</a></strong> - 生物力学讨论帖�
 - 工作招聘 - <strong>每个月的生物力学文献更新📜</strong></p>
 <h3 id="the-biomechanist">7. The Biomechanist</h3>
 <p><img
-src="https://www.biomechanist.net/wp-content/uploads/2020/09/cropped-Logo-6-e1601280454906-4.png" />{width
-= 40%}</p>
+src="https://www.biomechanist.net/wp-content/uploads/2020/09/cropped-Logo-6-e1601280454906-4.png"
+style="width:40.0%" /></p>
 <p>我们是德国科隆体育大学“运动与医学中的人类技术”硕士课程的五名学生。我们每个人都来自一个完全不同的运动领域，但我们有一个共同点：对运动和生物力学的迷恋。我们认为这是体育和运动科学中被低估的一部分，并希望这个网站将有助于引起对这个令人兴奋的话题的更多关注。</p>
 <ul>
 <li>有关于生物力学基础教学</li>
@@ -1654,15 +1657,13 @@ src="https://www.biomechanist.net/wp-content/uploads/2020/09/cropped-Logo-6-e160
 <h3 id="simtk">8. SimTK</h3>
 <p>生物医学仿真工具，包含了生物学建模，生物力学建模等工具。 -
 Opensim</p>
-<p><img
-src="https://simtk.org/logos/opensim?dummy_value=509697024" />{width =
-40%}</p>
+<p><img src="https://simtk.org/logos/opensim?dummy_value=509697024"
+style="width:40.0%" /></p>
 <p>提供易于使用、可扩展的软件，用于对神经肌肉骨骼系统进行建模、模拟、控制和分析。</p>
 <ul>
 <li><p>OpenCap</p>
-<p><img
-src="https://simtk.org/logos/opencap?dummy_value=2104624939" />{width =
-40%}</p>
+<p><img src="https://simtk.org/logos/opencap?dummy_value=2104624939"
+style="width:40.0%" /></p>
 <p>OpenCap是一个软件包，用于从智能手机视频中估计3D人体运动动态。</p></li>
 <li><p>还有很多</p></li>
 </ul>
@@ -1937,6 +1938,130 @@ href="https://gaomm.top/2022/08/25/%E5%86%99%E4%BD%9C%E6%A8%A1%E6%9D%BF/">写作
       </categories>
       <tags>
         <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>写作模板</title>
+    <url>/2022/08/25/%E5%86%99%E4%BD%9C%E6%A8%A1%E6%9D%BF/</url>
+    <content><![CDATA[<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">chapters:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">figureTitle:</span> <span class="string">&quot;图&quot;</span></span><br><span class="line"><span class="attr">figPrefix:</span> <span class="string">&quot;图&quot;</span></span><br><span class="line"><span class="attr">tableTitle:</span> <span class="string">&quot;表&quot;</span></span><br><span class="line"><span class="attr">tablePrefix:</span> <span class="string">&quot;表&quot;</span></span><br><span class="line"><span class="attr">tableTemplate:</span> <span class="string">|</span></span><br><span class="line"><span class="string">  *$$tableTitle$$ $$i$$*$$titleDelim$$ $$t$$</span></span><br><span class="line"><span class="string"></span><span class="attr">bibliography:</span> <span class="string">&quot;path/EEG.bib&quot;</span></span><br><span class="line"><span class="attr">csl:</span> <span class="string">chinese-gb7714-2005-numeric.csl</span> </span><br><span class="line"><span class="attr">reference-section-title:</span> <span class="string">Reference</span></span><br><span class="line"><span class="attr">tableTemplate:</span> <span class="string">|</span></span><br><span class="line"><span class="string">  *$$tableTitle$$ $$i$$*$$titleDelim$$ $$t$$</span></span><br><span class="line"><span class="string"></span><span class="attr">link-citations:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">lang:</span> <span class="string">en-GB</span></span><br><span class="line"><span class="attr">papersize:</span> <span class="string">a4</span></span><br><span class="line"><span class="attr">colorlinks:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">links-as-notes:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">fontsize:</span> <span class="number">11.</span><span class="string">5pt</span></span><br></pre></td></tr></table></figure>
+<p><span id="more"></span></p>
+<h1 id="lme线性混合模型处理erp">LME线性混合模型处理ERP</h1>
+<h2 id="处理流程">处理流程</h2>
+<p>根据论文《线性混合效应模型在婴儿和儿童事件相关潜力研究中的效用》<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>的处理过程找到了GitHub上的<a
+href="https://github.com/basclab/LME_MixedEffectsERPTutorial/tree/main/LMETutorialScripts">数据处理脚本</a>。脚本共有7个，其中1-5是Matlab从Continues
+EEG到ERP的处理过程，脚本6-7是R语言对ERP进行LME混合线性模型的处理过程，如下图。</p>
+<p>测试引用<span class="citation"
+data-cites="marusicNeuralBasesAgeRelated2022 tenbrinkeEffectsComputerizedCognitive2019 heiseUtilityLinearMixed2022"><sup>[<a
+href="#ref-marusicNeuralBasesAgeRelated2022"
+role="doc-biblioref">1</a>–<a href="#ref-heiseUtilityLinearMixed2022"
+role="doc-biblioref">3</a>]</sup></span></p>
+<p>吧啦吧啦吧啦，见Table 1</p>
+<div id="tbl:表头">
+<table>
+<caption>Table 1. 我是表</caption>
+<thead>
+<tr class="header">
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>引用一个图Figure 1, 2</p>
+<figure>
+<img src="https://s2.loli.net/2022/07/27/HKG6QcCpNwXn7dY.png"
+id="fig:重复测量流程图2" style="width:50.0%" alt="Figure 1. 图的标题" />
+<figcaption aria-hidden="true">Figure 1. 图的标题</figcaption>
+</figure>
+<p>测试公式：见公式Equation 1 <span id="eq:eqn1"><span
+class="math display">\[P_i(x) = \sum_i a_i
+x^i\qquad{(1)}\]</span></span></p>
+<figure>
+<img
+src="https://pic1.zhimg.com/80/v2-4ac4078f118ecadd756cd639c5862768_1440w.jpg"
+id="fig:重复测量流程图" style="width:50.0%"
+alt="Figure 2. 重复测量流程图" />
+<figcaption aria-hidden="true">Figure 2. 重复测量流程图</figcaption>
+</figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pandoc -i <span class="string">&#x27;.\LME线性混合模型处理ERP(test).md&#x27;</span> -o test.docx --filter pandoc-crossref --cite</span><br></pre></td></tr></table></figure>
+<h2 id="hexo中使用pandoc">hexo中使用pandoc</h2>
+<ol type="1">
+<li><p>安装<code>hexo-renderer-pandoc</code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure></p></li>
+<li><p>修改hexo文件夹下的<code>_config.yml</code> <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">pandoc:</span></span><br><span class="line"><span class="attr">filters:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">pandoc-crossref</span></span><br><span class="line"><span class="attr">extra:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">citeproc:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">bibliography:</span> <span class="string">&quot;/Users/macgazelle/blog/hexo/source/_posts/EEG.bib&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">csl:</span> <span class="string">&quot;/Users/macgazelle/blog/hexo/source/_posts/chinese-gb7714-2015-numeric.csl&quot;</span> </span><br><span class="line"><span class="attr">meta:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">link-citations:</span> <span class="literal">true</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">reference-section-title:</span> <span class="string">Reference</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">colorlinks:</span> <span class="literal">true</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">lang:</span> <span class="string">en-GB</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">figPrefix:</span> <span class="string">&quot;Figure&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">tblPrefix:</span> <span class="string">&quot;Table&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">tableTitle:</span> <span class="string">&quot;Table&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">figureTitle:</span> <span class="string">&quot;Figure&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">titleDelim:</span> <span class="string">.</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">eqnPrefix:</span> <span class="string">&quot;Equation&quot;</span></span><br><span class="line"><span class="attr">template:</span></span><br><span class="line"><span class="attr">mathEngine:</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>头文件yml记得要加两句<br />
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">disableNunjucks:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>hexo部署的时候，记得clean一下，用下面的命令 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure></p>
+<div id="footnotes">
+<hr>
+<div id="footnotelist">
+<ol style="list-style:none; padding-left: 0;">
+<li id="fn:1">
+<span
+style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span
+style="display: inline-block; vertical-align: top;">Mjha B , Skma B ,
+Lcba B . Utility of Linear Mixed Effects Models for Event-Related
+Potential Research with Infants and Children. 2022.
+https://www.sciencedirect.com/science/article/pii/S1878929322000147</span><a href="#fnref:1" rev="footnote">
+↩︎</a>
+</li>
+</ol>
+</div>
+</div></li>
+</ol>
+<h1 class="unnumbered" id="bibliography">Reference</h1>
+<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="ref-marusicNeuralBasesAgeRelated2022" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[1] </div><div
+class="csl-right-inline">MARUSIC U. PESKAR M. DE PAUW K. et al. Neural
+<span>Bases</span> of <span>Age-Related Sensorimotor Slowing</span> in
+the <span>Upper</span> and <span>Lower Limbs</span>[J/OL]. Frontiers in
+Aging Neuroscience, 2022, 14: 819576. <a
+href="https://doi.org/10.3389/fnagi.2022.819576">https://doi.org/10.3389/fnagi.2022.819576</a>.</div>
+</div>
+<div id="ref-tenbrinkeEffectsComputerizedCognitive2019"
+class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">TEN
+BRINKE L F. BEST J R. CHAN J L C. et al. The <span>Effects</span> of
+<span>Computerized Cognitive Training With</span> and <span>Without
+Physical Exercise</span> on <span>Cognitive Function</span> in
+<span>Older Adults</span>: <span>An</span> 8-<span>Week Randomized
+Controlled Trial</span>[J/OL]. The Journals of Gerontology: Series A,
+2019: glz115[2022-08-17]. <a
+href="https://academic.oup.com/biomedgerontology/advance-article/doi/10.1093/gerona/glz115/5485711">https://academic.oup.com/biomedgerontology/advance-article/doi/10.1093/gerona/glz115/5485711</a>.</div>
+</div>
+<div id="ref-heiseUtilityLinearMixed2022" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[3] </div><div
+class="csl-right-inline">HEISE M J. MON S K. BOWMAN L C. Utility of
+linear mixed effects models for event-related potential research with
+infants and children[J/OL]. Developmental Cognitive Neuroscience, 2022,
+54: 101070[2022-08-27]. <a
+href="https://www.sciencedirect.com/science/article/pii/S1878929322000147">https://www.sciencedirect.com/science/article/pii/S1878929322000147</a>.</div>
+</div>
+</div>
+]]></content>
+      <categories>
+        <category>papers</category>
+      </categories>
+      <tags>
+        <tag>模板</tag>
       </tags>
   </entry>
   <entry>
@@ -2872,130 +2997,6 @@ class="line">isn't indented.</span><br>
       </categories>
       <tags>
         <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>写作模板</title>
-    <url>/2022/08/25/%E5%86%99%E4%BD%9C%E6%A8%A1%E6%9D%BF/</url>
-    <content><![CDATA[<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">chapters:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">figureTitle:</span> <span class="string">&quot;图&quot;</span></span><br><span class="line"><span class="attr">figPrefix:</span> <span class="string">&quot;图&quot;</span></span><br><span class="line"><span class="attr">tableTitle:</span> <span class="string">&quot;表&quot;</span></span><br><span class="line"><span class="attr">tablePrefix:</span> <span class="string">&quot;表&quot;</span></span><br><span class="line"><span class="attr">tableTemplate:</span> <span class="string">|</span></span><br><span class="line"><span class="string">  *$$tableTitle$$ $$i$$*$$titleDelim$$ $$t$$</span></span><br><span class="line"><span class="string"></span><span class="attr">bibliography:</span> <span class="string">&quot;path/EEG.bib&quot;</span></span><br><span class="line"><span class="attr">csl:</span> <span class="string">chinese-gb7714-2005-numeric.csl</span> </span><br><span class="line"><span class="attr">reference-section-title:</span> <span class="string">Reference</span></span><br><span class="line"><span class="attr">tableTemplate:</span> <span class="string">|</span></span><br><span class="line"><span class="string">  *$$tableTitle$$ $$i$$*$$titleDelim$$ $$t$$</span></span><br><span class="line"><span class="string"></span><span class="attr">link-citations:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">lang:</span> <span class="string">en-GB</span></span><br><span class="line"><span class="attr">papersize:</span> <span class="string">a4</span></span><br><span class="line"><span class="attr">colorlinks:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">links-as-notes:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">fontsize:</span> <span class="number">11.</span><span class="string">5pt</span></span><br></pre></td></tr></table></figure>
-<p><span id="more"></span></p>
-<h1 id="lme线性混合模型处理erp">LME线性混合模型处理ERP</h1>
-<h2 id="处理流程">处理流程</h2>
-<p>根据论文《线性混合效应模型在婴儿和儿童事件相关潜力研究中的效用》<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>的处理过程找到了GitHub上的<a
-href="https://github.com/basclab/LME_MixedEffectsERPTutorial/tree/main/LMETutorialScripts">数据处理脚本</a>。脚本共有7个，其中1-5是Matlab从Continues
-EEG到ERP的处理过程，脚本6-7是R语言对ERP进行LME混合线性模型的处理过程，如下图。</p>
-<p>测试引用<span class="citation"
-data-cites="marusicNeuralBasesAgeRelated2022 tenbrinkeEffectsComputerizedCognitive2019 heiseUtilityLinearMixed2022"><sup>[<a
-href="#ref-marusicNeuralBasesAgeRelated2022"
-role="doc-biblioref">1</a>–<a href="#ref-heiseUtilityLinearMixed2022"
-role="doc-biblioref">3</a>]</sup></span></p>
-<p>吧啦吧啦吧啦，见Table 1</p>
-<div id="tbl:表头">
-<table>
-<caption>Table 1. 我是表</caption>
-<thead>
-<tr class="header">
-<th>a</th>
-<th>b</th>
-<th>c</th>
-<th>b</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td>3</td>
-<td>2</td>
-<td>1</td>
-<td>2</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>引用一个图Figure 1, 2</p>
-<figure>
-<img src="https://s2.loli.net/2022/07/27/HKG6QcCpNwXn7dY.png"
-id="fig:重复测量流程图2" style="width:50.0%" alt="Figure 1. 图的标题" />
-<figcaption aria-hidden="true">Figure 1. 图的标题</figcaption>
-</figure>
-<p>测试公式：见公式Equation 1 <span id="eq:eqn1"><span
-class="math display">\[P_i(x) = \sum_i a_i
-x^i\qquad{(1)}\]</span></span></p>
-<figure>
-<img
-src="https://pic1.zhimg.com/80/v2-4ac4078f118ecadd756cd639c5862768_1440w.jpg"
-id="fig:重复测量流程图" style="width:50.0%"
-alt="Figure 2. 重复测量流程图" />
-<figcaption aria-hidden="true">Figure 2. 重复测量流程图</figcaption>
-</figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pandoc -i <span class="string">&#x27;.\LME线性混合模型处理ERP(test).md&#x27;</span> -o test.docx --filter pandoc-crossref --cite</span><br></pre></td></tr></table></figure>
-<h2 id="hexo中使用pandoc">hexo中使用pandoc</h2>
-<ol type="1">
-<li><p>安装<code>hexo-renderer-pandoc</code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure></p></li>
-<li><p>修改hexo文件夹下的<code>_config.yml</code> <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">pandoc:</span></span><br><span class="line"><span class="attr">filters:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">pandoc-crossref</span></span><br><span class="line"><span class="attr">extra:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">citeproc:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">bibliography:</span> <span class="string">&quot;/Users/macgazelle/blog/hexo/source/_posts/EEG.bib&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">csl:</span> <span class="string">&quot;/Users/macgazelle/blog/hexo/source/_posts/chinese-gb7714-2015-numeric.csl&quot;</span> </span><br><span class="line"><span class="attr">meta:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">link-citations:</span> <span class="literal">true</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">reference-section-title:</span> <span class="string">Reference</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">colorlinks:</span> <span class="literal">true</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">lang:</span> <span class="string">en-GB</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">figPrefix:</span> <span class="string">&quot;Figure&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">tblPrefix:</span> <span class="string">&quot;Table&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">tableTitle:</span> <span class="string">&quot;Table&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">figureTitle:</span> <span class="string">&quot;Figure&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">titleDelim:</span> <span class="string">.</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">eqnPrefix:</span> <span class="string">&quot;Equation&quot;</span></span><br><span class="line"><span class="attr">template:</span></span><br><span class="line"><span class="attr">mathEngine:</span></span><br></pre></td></tr></table></figure></p></li>
-<li><p>头文件yml记得要加两句<br />
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">disableNunjucks:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></p></li>
-<li><p>hexo部署的时候，记得clean一下，用下面的命令 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure></p>
-<div id="footnotes">
-<hr>
-<div id="footnotelist">
-<ol style="list-style:none; padding-left: 0;">
-<li id="fn:1">
-<span
-style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span
-style="display: inline-block; vertical-align: top;">Mjha B , Skma B ,
-Lcba B . Utility of Linear Mixed Effects Models for Event-Related
-Potential Research with Infants and Children. 2022.
-https://www.sciencedirect.com/science/article/pii/S1878929322000147</span><a href="#fnref:1" rev="footnote">
-↩︎</a>
-</li>
-</ol>
-</div>
-</div></li>
-</ol>
-<h1 class="unnumbered" id="bibliography">Reference</h1>
-<div id="refs" class="references csl-bib-body" role="doc-bibliography">
-<div id="ref-marusicNeuralBasesAgeRelated2022" class="csl-entry"
-role="doc-biblioentry">
-<div class="csl-left-margin">[1] </div><div
-class="csl-right-inline">MARUSIC U. PESKAR M. DE PAUW K. et al. Neural
-<span>Bases</span> of <span>Age-Related Sensorimotor Slowing</span> in
-the <span>Upper</span> and <span>Lower Limbs</span>[J/OL]. Frontiers in
-Aging Neuroscience, 2022, 14: 819576. <a
-href="https://doi.org/10.3389/fnagi.2022.819576">https://doi.org/10.3389/fnagi.2022.819576</a>.</div>
-</div>
-<div id="ref-tenbrinkeEffectsComputerizedCognitive2019"
-class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">[2] </div><div class="csl-right-inline">TEN
-BRINKE L F. BEST J R. CHAN J L C. et al. The <span>Effects</span> of
-<span>Computerized Cognitive Training With</span> and <span>Without
-Physical Exercise</span> on <span>Cognitive Function</span> in
-<span>Older Adults</span>: <span>An</span> 8-<span>Week Randomized
-Controlled Trial</span>[J/OL]. The Journals of Gerontology: Series A,
-2019: glz115[2022-08-17]. <a
-href="https://academic.oup.com/biomedgerontology/advance-article/doi/10.1093/gerona/glz115/5485711">https://academic.oup.com/biomedgerontology/advance-article/doi/10.1093/gerona/glz115/5485711</a>.</div>
-</div>
-<div id="ref-heiseUtilityLinearMixed2022" class="csl-entry"
-role="doc-biblioentry">
-<div class="csl-left-margin">[3] </div><div
-class="csl-right-inline">HEISE M J. MON S K. BOWMAN L C. Utility of
-linear mixed effects models for event-related potential research with
-infants and children[J/OL]. Developmental Cognitive Neuroscience, 2022,
-54: 101070[2022-08-27]. <a
-href="https://www.sciencedirect.com/science/article/pii/S1878929322000147">https://www.sciencedirect.com/science/article/pii/S1878929322000147</a>.</div>
-</div>
-</div>
-]]></content>
-      <categories>
-        <category>papers</category>
-      </categories>
-      <tags>
-        <tag>模板</tag>
       </tags>
   </entry>
   <entry>
