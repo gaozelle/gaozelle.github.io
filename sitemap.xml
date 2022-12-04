@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://gaomm.top/2022/12/03/quick_search/</loc>
+    
+    <lastmod>2022-12-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://gaomm.top/2022/09/03/LME%E7%BA%BF%E6%80%A7%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B%E5%A4%84%E7%90%86ERP(test)/</loc>
     
     <lastmod>2022-12-04</lastmod>
@@ -137,7 +146,7 @@
   </url>
   
   <url>
-    <loc>http://gaomm.top/2017/06/16/pandoc_maneul(CN)/</loc>
+    <loc>http://gaomm.top/2018/06/18/%E5%AE%89%E8%A3%85Ubuntu%E7%89%88openpose/</loc>
     
     <lastmod>2019-01-20</lastmod>
     
@@ -146,7 +155,7 @@
   </url>
   
   <url>
-    <loc>http://gaomm.top/2018/06/18/%E5%AE%89%E8%A3%85Ubuntu%E7%89%88openpose/</loc>
+    <loc>http://gaomm.top/2017/06/16/pandoc_maneul(CN)/</loc>
     
     <lastmod>2019-01-20</lastmod>
     
@@ -319,6 +328,20 @@
   </url>
   
   <url>
+    <loc>http://gaomm.top/tags/%E8%B5%84%E6%96%99/</loc>
+    <lastmod>2022-12-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://gaomm.top/tags/%E9%80%9F%E6%9F%A5%EF%BC%8C%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2022-12-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://gaomm.top/tags/OpenSim/</loc>
     <lastmod>2022-12-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -391,14 +414,14 @@
   </url>
   
   <url>
-    <loc>http://gaomm.top/categories/OpenSim/</loc>
+    <loc>http://gaomm.top/categories/citespace/</loc>
     <lastmod>2022-12-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://gaomm.top/categories/citespace/</loc>
+    <loc>http://gaomm.top/categories/OpenSim/</loc>
     <lastmod>2022-12-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
