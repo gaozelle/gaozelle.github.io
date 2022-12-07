@@ -141,12 +141,12 @@
   <meta name="keywords" content="笔记," />
 
 
-<meta name="description" content="前言 這份文件是 Pandoc 版本 Markdown語法的中文翻譯。Pandoc 本身是由 John MacFarlane所開發的文件轉換工具，可以在HTML, Markdown, PDF,TeX…等等格式之間進行轉換。有許多喜歡純文字編輯的人，利用 Pandoc來進行論文的撰寫或投影片製作。但除了轉換的功能外，Pandoc 所定義的 Markdown擴充語法也是這套工具的一大亮點，在 Pan">
+<meta name="description" content="前言這份文件是 Pandoc 版本 Markdown語法的中文翻譯。Pandoc 本身是由 John MacFarlane所開發的文件轉換工具，可以在HTML, Markdown, PDF,TeX…等等格式之間進行轉換。有許多喜歡純文字編輯的人，利用 Pandoc來進行論文的撰寫或投影片製作。但除了轉換的功能外，Pandoc 所定義的 Markdown擴充語法也是這套工具的一大亮點，在 Pand">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pandoc&#96;s Markdown 语法中文翻译">
 <meta property="og:url" content="http://gaomm.top/2017/06/16/pandoc_maneul(CN)/index.html">
 <meta property="og:site_name" content="gazelle">
-<meta property="og:description" content="前言 這份文件是 Pandoc 版本 Markdown語法的中文翻譯。Pandoc 本身是由 John MacFarlane所開發的文件轉換工具，可以在HTML, Markdown, PDF,TeX…等等格式之間進行轉換。有許多喜歡純文字編輯的人，利用 Pandoc來進行論文的撰寫或投影片製作。但除了轉換的功能外，Pandoc 所定義的 Markdown擴充語法也是這套工具的一大亮點，在 Pan">
+<meta property="og:description" content="前言這份文件是 Pandoc 版本 Markdown語法的中文翻譯。Pandoc 本身是由 John MacFarlane所開發的文件轉換工具，可以在HTML, Markdown, PDF,TeX…等等格式之間進行轉換。有許多喜歡純文字編輯的人，利用 Pandoc來進行論文的撰寫或投影片製作。但除了轉換的功能外，Pandoc 所定義的 Markdown擴充語法也是這套工具的一大亮點，在 Pand">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2018/02/21/5a8d775f73d87.png">
 <meta property="article:published_time" content="2017-06-16T11:55:01.000Z">
@@ -461,164 +461,95 @@
 
       
         <p><img src="https://i.loli.net/2018/02/21/5a8d775f73d87.png" class="full-image" /></p>
-<h2 id="前言"><a href="前言">前言</a></h2>
-<p>這份文件是 <a target="_blank" rel="noopener" href="http://johnmacfarlane.net/pandoc/">Pandoc</a>
-版本 Markdown語法的中文翻譯。Pandoc 本身是由 <a
-target="_blank" rel="noopener" href="http://johnmacfarlane.net/">John
-MacFarlane</a>所開發的文件轉換工具，可以在HTML, Markdown,
-PDF,TeX…等等格式之間進行轉換。有許多喜歡純文字編輯的人，利用
-Pandoc來進行論文的撰寫或投影片製作。但除了轉換的功能外，Pandoc 所定義的
-Markdown擴充語法也是這套工具的一大亮點，在 Pandoc
-的官方使用說明文件中，光是其針對Markdown
-格式的擴充就佔了整整一半左右的篇幅。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><a href="前言">前言</a></h2><p>這份文件是 <a target="_blank" rel="noopener" href="http://johnmacfarlane.net/pandoc/">Pandoc</a> 版本 Markdown語法的中文翻譯。Pandoc 本身是由 <a target="_blank" rel="noopener" href="http://johnmacfarlane.net/">John MacFarlane</a>所開發的文件轉換工具，可以在HTML, Markdown, PDF,TeX…等等格式之間進行轉換。有許多喜歡純文字編輯的人，利用 Pandoc來進行論文的撰寫或投影片製作。但除了轉換的功能外，Pandoc 所定義的 Markdown擴充語法也是這套工具的一大亮點，在 Pandoc 的官方使用說明文件中，光是其針對Markdown 格式的擴充就佔了整整一半左右的篇幅。  </p>
 <span id="more"></span>
-<p>本文件翻譯自 <a
-target="_blank" rel="noopener" href="http://johnmacfarlane.net/pandoc/README.html#pandocs-markdown">Pandoc
-- Pandoc User’sGuide</a> 中的“Pandoc’s markdown” 一節。你可以看看<a
-target="_blank" rel="noopener" href="https://raw.github.com/tzengyuxio/pages/gh-pages/pandoc/pandoc.markdown">這份文件的原始檔</a>、產生文件<a
-target="_blank" rel="noopener" href="https://github.com/tzengyuxio/pages/blob/gh-pages/pandoc/pm-template.html5">所使用的HTML範本</a>，以及<a
-target="_blank" rel="noopener" href="https://github.com/tzengyuxio/pages/blob/gh-pages/pandoc/convert.sh">轉換時的命令參數</a>。以下翻譯開始。</p>
-<h1 id="pandocs-markdown"><a href="#pandocs-markdown">Pandoc’s
-markdown</a></h1>
-<p>與 John Gruber 的 原始 <a
-target="_blank" rel="noopener" href="http://daringfireball.net/projects/markdown/">markdown</a>
-相比，Pandoc 版本的 markdown
-在語法上有額外的擴充與些許的修正。這份文件解釋了這些語法，並指出其與原始
-markdown 的差異所在。除非特別提到，不然這些差異均可藉由使用
-<code>markdown_strict</code> 而非 <code>markdown</code>
-的格式來關閉。單獨一項擴充也可透過 <code>+EXTENSION</code> 或
-<code>-EXTENSION</code>
-的方式來開啟或關閉。例如，<code>markdown_strict+footnotes</code>
-表示加上腳註擴充的原始 markdown，而
-<code>markdown-footnotes-pipe_tables</code>
-則是拿掉了腳註與管線表格擴充的 pandoc markdown。</p>
-<h2 id="哲學"><a href="#哲學">哲學</a></h2>
-<p>Markdown
-是針對易於書寫與閱讀的目標而設計的，特別是在易於閱讀這點上尤為重要：</p>
+<p>本文件翻譯自 <a target="_blank" rel="noopener" href="http://johnmacfarlane.net/pandoc/README.html#pandocs-markdown">Pandoc - Pandoc User’sGuide</a> 中的“Pandoc’s markdown”<br>一節。你可以看看<a target="_blank" rel="noopener" href="https://raw.github.com/tzengyuxio/pages/gh-pages/pandoc/pandoc.markdown">這份文件的原始檔</a>、產生文件<a target="_blank" rel="noopener" href="https://github.com/tzengyuxio/pages/blob/gh-pages/pandoc/pm-template.html5">所使用的HTML範本</a>，以及<a target="_blank" rel="noopener" href="https://github.com/tzengyuxio/pages/blob/gh-pages/pandoc/convert.sh">轉換時的命令參數</a>。以下翻譯開始。</p>
+<h1 id="Pandoc’s-markdown"><a href="#Pandoc’s-markdown" class="headerlink" title="Pandoc’s markdown"></a><a href="#pandocs-markdown">Pandoc’s markdown</a></h1><p>與 John Gruber 的 原始 <a target="_blank" rel="noopener" href="http://daringfireball.net/projects/markdown/">markdown</a><br>相比，Pandoc 版本的 markdown<br>在語法上有額外的擴充與些許的修正。這份文件解釋了這些語法，並指出其與原始<br>markdown 的差異所在。除非特別提到，不然這些差異均可藉由使用 <code>markdown_strict</code><br>而非 <code>markdown</code> 的格式來關閉。單獨一項擴充也可透過 <code>+EXTENSION</code> 或 <code>-EXTENSION</code><br>的方式來開啟或關閉。例如，<code>markdown_strict+footnotes</code> 表示加上腳註擴充的原始<br>markdown，而 <code>markdown-footnotes-pipe_tables</code> 則是拿掉了腳註與管線表格擴充的<br>pandoc markdown。</p>
+<h2 id="哲學"><a href="#哲學" class="headerlink" title="哲學"></a><a href="#哲學">哲學</a></h2><p>Markdown 是針對易於書寫與閱讀的目標而設計的，特別是在易於閱讀這點上尤為重要：</p>
 <blockquote>
-<p>一份 Markdown
-格式的文件應該要能以純文字形式直接發表，並且一眼看過去不存在任何標記用的標籤或格式指令。
-<a
-target="_blank" rel="noopener" href="http://daringfireball.net/projects/markdown/syntax#philosophy">John
-Gruber</a></p>
+<p>  一份 Markdown<br>  格式的文件應該要能以純文字形式直接發表，並且一眼看過去不存在任何標記用的標籤或格式指令。<br>  <a target="_blank" rel="noopener" href="http://daringfireball.net/projects/markdown/syntax#philosophy">John Gruber</a></p>
 </blockquote>
-<p>這項原則同樣也是 pandoc
-在制訂表格、腳註以及其他擴充的語法時，所依循的規範。</p>
-<p>然而，pandoc 的目標與原始 markdown 的最初目標有著方向性的不同。在
-markdown 原本的設計中，HTML 是其主要輸出對象；然而 pandoc
-則是針對多種輸出格式而設計。因此，雖然 pandoc 同樣也允許直接嵌入 HTML
-標籤，但並不鼓勵這樣的作法，取而代之的是 pandoc 提供了許多非 HTML
-的方式，來讓使用者輸入像是定義清單、表格、數學公式以及腳註等諸如此類的重要文件元素。</p>
-<h2 id="段落"><a href="#段落">段落</a></h2>
-<p>一個段落指的是一行以上的文字，跟在一行以上的空白行之後。換行字元會被當作是空白處理，因此你可以依自己喜好排列段落文字。如果你需要強制換行，在行尾放上兩個以上的空白字元即可。</p>
+<p>這項原則同樣也是 pandoc 在制訂表格、腳註以及其他擴充的語法時，所依循的規範。</p>
+<p>然而，pandoc 的目標與原始 markdown 的最初目標有著方向性的不同。在 markdown<br>原本的設計中，HTML 是其主要輸出對象；然而 pandoc<br>則是針對多種輸出格式而設計。因此，雖然 pandoc 同樣也允許直接嵌入 HTML<br>標籤，但並不鼓勵這樣的作法，取而代之的是 pandoc 提供了許多非 HTML<br>的方式，來讓使用者輸入像是定義清單、表格、數學公式以及腳註等諸如此類的重要文件元素。</p>
+<h2 id="段落"><a href="#段落" class="headerlink" title="段落"></a><a href="#段落">段落</a></h2><p>一個段落指的是一行以上的文字，跟在一行以上的空白行之後。換行字元會被當作是空白處理，因此你可以依自己喜好排列段落文字。如果你需要強制換行，在行尾放上兩個以上的空白字元即可。</p>
 <p><strong>Extension:</strong> <code>escaped_line_breaks</code></p>
 <p>一個反斜線後跟著一個換行字元，同樣也有強制換行的效果。</p>
-<h2 id="標題"><a href="#標題">標題</a></h2>
-<p>有兩種不同形式的標題語法，Setext 以及 atx。</p>
-<h3 id="setext-風格標題"><a href="#setext-風格標題">Setext
-風格標題</a></h3>
-<p>Setext 風格的標題是由一行文字底下接著一行 <code>=</code>
-符號（用於一階標題）或 <code>-</code> 符號（用於二階標題）所構成：</p>
+<h2 id="標題"><a href="#標題" class="headerlink" title="標題"></a><a href="#標題">標題</a></h2><p>有兩種不同形式的標題語法，Setext 以及 atx。</p>
+<h3 id="Setext-風格標題"><a href="#Setext-風格標題" class="headerlink" title="Setext 風格標題"></a><a href="#setext-風格標題">Setext 風格標題</a></h3><p>Setext 風格的標題是由一行文字底下接著一行 <code>=</code> 符號（用於一階標題）或 <code>-</code><br>符號（用於二階標題）所構成：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">A level-one header</span><br><span class="line">==================</span><br><span class="line"></span><br><span class="line">A level-two header</span><br><span class="line">------------------</span><br></pre></td></tr></table></figure>
-<p>標題的文字可以包含行內格式，例如強調（見下方 <a
-href="#行內格式">行內格式</a> 一節）。</p>
-<h3 id="atx-風格標題"><a href="#atx-風格標題">Atx 風格標題</a></h3>
-<p>Atx 風格的標題是由一到六個 <code>#</code>
-符號以及一行文字所組成，你可以在文字後面加上任意數量的 <code>#</code>
-符號。由行首起算的 <code>#</code> 符號數量決定了標題的階層：</p>
+<p>標題的文字可以包含行內格式，例如強調（見下方 <a href="#行內格式">行內格式</a> 一節）。</p>
+<h3 id="Atx-風格標題"><a href="#Atx-風格標題" class="headerlink" title="Atx 風格標題"></a><a href="#atx-風格標題">Atx 風格標題</a></h3><p>Atx 風格的標題是由一到六個 <code>#</code><br>符號以及一行文字所組成，你可以在文字後面加上任意數量的 <code>#</code> 符號。由行首起算的<br><code>#</code> 符號數量決定了標題的階層：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## A level-two header</span><br><span class="line"></span><br><span class="line">### A level-three header ###</span><br></pre></td></tr></table></figure>
 <p>如同 setext 風格標題，這裡的標題文字同樣可包含行內格式：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># A level-one header with a [link](/url) and *emphasis*</span><br></pre></td></tr></table></figure>
 <p><strong>Extension:</strong> <code>blank_before_header</code></p>
-<p>原始 markdown 語法在標題之前並不需要預留空白行。Pandoc
-則需要（除非標題位於文件最開始的地方）。這是因為以 <code>#</code>
-符號開頭的情況在一般文字段落中相當常見，這會導致非預期的標題。例如下面的例子：</p>
+<p>原始 markdown 語法在標題之前並不需要預留空白行。Pandoc<br>則需要（除非標題位於文件最開始的地方）。這是因為以 <code>#</code><br>符號開頭的情況在一般文字段落中相當常見，這會導致非預期的標題。例如下面的例子：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">I like several of their flavors of ice cream:</span><br><span class="line">#22, for example, and #5.</span><br></pre></td></tr></table></figure>
-<h3 id="html-latex-與-context-的標題識別符"><a
-href="#html-latex-與-context-的標題識別符">HTML, LaTeX 與 ConTeXt
-的標題識別符</a></h3>
-<p><strong>Extension:</strong> <code>header_attributes</code></p>
+<h3 id="HTML-LaTeX-與-ConTeXt-的標題識別符"><a href="#HTML-LaTeX-與-ConTeXt-的標題識別符" class="headerlink" title="HTML, LaTeX 與 ConTeXt 的標題識別符"></a><a href="#html-latex-與-context-的標題識別符">HTML, LaTeX 與 ConTeXt 的標題識別符</a></h3><p><strong>Extension:</strong> <code>header_attributes</code></p>
 <p>在標題文字所在行的行尾，可以使用以下語法為標題加上屬性：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;#identifier .class .class key=value key=value&#125;</span><br></pre></td></tr></table></figure>
-<p>雖然這個語法也包含加入類別 (class) 以及鍵／值形式的屬性
-(attribute)，但目前只有識別符 (identifier/ID)
-在輸出時有實際作用（且只在部分格式的輸出，包括：HTML, LaTeX, ConTeXt,
-Textile, AsciiDoc）。舉例來說，下面是將標題加上 <code>foo</code>
-識別符的幾種方法：</p>
+<p>雖然這個語法也包含加入類別 (class) 以及鍵／值形式的屬性<br>(attribute)，但目前只有識別符 (identifier/ID)<br>在輸出時有實際作用（且只在部分格式的輸出，包括：HTML, LaTeX, ConTeXt, Textile,<br>AsciiDoc）。舉例來說，下面是將標題加上 <code>foo</code> 識別符的幾種方法：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># My header &#123;#foo&#125;</span><br><span class="line"></span><br><span class="line">## My header ##    &#123;#foo&#125;</span><br><span class="line"></span><br><span class="line">My other header   &#123;#foo&#125;</span><br><span class="line">---------------</span><br></pre></td></tr></table></figure>
-<p>（此語法與 <a
-target="_blank" rel="noopener" href="http://www.michelf.com/projects/php-markdown/extra/">PHP Markdown
-Extra</a> 相容。）</p>
-<p>具有 <code>unnumbered</code> 類別的標題將不會被編號，即使
-<code>--number-sections</code> 的選項是開啟的。單一連字符號
-(<code>-</code>) 等同於
-<code>.unnumbered</code>，且更適用於非英文文件中。因此，</p>
+<p>（此語法與 <a target="_blank" rel="noopener" href="http://www.michelf.com/projects/php-markdown/extra/">PHP Markdown<br>Extra</a> 相容。）</p>
+<p>具有 <code>unnumbered</code> 類別的標題將不會被編號，即使 <code>--number-sections</code><br>的選項是開啟的。單一連字符號 (<code>-</code>) 等同於<br><code>.unnumbered</code>，且更適用於非英文文件中。因此，</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># My header &#123;-&#125;</span><br></pre></td></tr></table></figure>
 <p>與下面這行是等價的</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># My header &#123;.unnumbered&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>Extension:</strong> <code>auto_identifiers</code></p>
-<p>沒有明確指定
-ID（識別符）的標題將會依據其標題文字，自動指派一個獨一無二的
-ID。由標題文字推導 ID 的規則如下：</p>
+<p>沒有明確指定 ID（識別符）的標題將會依據其標題文字，自動指派一個獨一無二的<br>ID。由標題文字推導 ID 的規則如下：</p>
 <ul>
-<li><p>移除所有格式，連結等。</p></li>
-<li><p>移除所有標點符號，除了底線、連字符號與句號。</p></li>
-<li><p>以連字符號取代所有空白與換行字元。</p></li>
-<li><p>將所有英文字母轉為小寫。</p></li>
-<li><p>移除第一個字元前的所有內容（ID
-不能以數字或標點符號開頭）。</p></li>
-<li><p>如果剩下為空字串，則使用 <code>section</code> 作為 ID。</p></li>
+<li><p>移除所有格式，連結等。</p>
+</li>
+<li><p>移除所有標點符號，除了底線、連字符號與句號。</p>
+</li>
+<li><p>以連字符號取代所有空白與換行字元。</p>
+</li>
+<li><p>將所有英文字母轉為小寫。</p>
+</li>
+<li><p>移除第一個字元前的所有內容（ID 不能以數字或標點符號開頭）。</p>
+</li>
+<li><p>如果剩下為空字串，則使用 <code>section</code> 作為 ID。</p>
+</li>
 </ul>
 <p>以下是一些範例，</p>
+<div class="table-container">
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Header</th>
 <th>Identifier</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>Header identifiers in HTML</td>
 <td><code>header-identifiers-in-html</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td><em>Dogs</em>?–in <em>my</em> house?</td>
 <td><code>dogs--in-my-house</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td>[HTML], [S5], or [RTF]?</td>
 <td><code>html-s5-or-rtf</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td>3. Applications</td>
 <td><code>applications</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td>33</td>
 <td><code>section</code></td>
 </tr>
 </tbody>
 </table>
-<p>在大多數情況下，這些規則應該讓人能夠直接從標題文字推導出
-ID。唯一的例外是當有多個標題具有同樣文字的情況；在這情況下，第一個標題的
-ID 仍舊是透過以上規則推導而得；第二個則是在同樣 ID 後加上
-<code>-1</code>；第三個加上 <code>-2</code>；以此類推。</p>
-<p>在開啟 <code>--toc|--table-of-contents</code> 的選項時，這些 ID
-是用來產生目錄 (Table of Contents) 所需的頁面連結。此外，這些 ID
-也提供了一個簡便的方式來輸入跳到指定章節的連結。一個以 ID
-產生的連結，其使用的語法看起來就像下面的例子：</p>
+</div>
+<p>在大多數情況下，這些規則應該讓人能夠直接從標題文字推導出<br>ID。唯一的例外是當有多個標題具有同樣文字的情況；在這情況下，第一個標題的 ID<br>仍舊是透過以上規則推導而得；第二個則是在同樣 ID 後加上 <code>-1</code>；第三個加上<br><code>-2</code>；以此類推。</p>
+<p>在開啟 <code>--toc|--table-of-contents</code> 的選項時，這些 ID 是用來產生目錄 (Table of<br>Contents) 所需的頁面連結。此外，這些 ID<br>也提供了一個簡便的方式來輸入跳到指定章節的連結。一個以 ID<br>產生的連結，其使用的語法看起來就像下面的例子：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">See the section on</span><br><span class="line">[header identifiers](#header-identifiers-in-html-latex-and-context).</span><br></pre></td></tr></table></figure>
-<p>然而要注意的一點是，只有在以 HTML、LaTeX 與 ConTeXt
-格式輸出時，才能以這種方式產生對應的章節連結。</p>
-<p>如果指定了 <code>--section-divs</code> 選項，則每一個小節都會以
-<code>div</code> 標籤包住（或是 <code>section</code> 標籤，如果有指定
-<code>--html5</code> 選項的話），並且 ID 會被附加在用來包住小節的
-<code>&lt;div&gt;</code>（或是
-<code>&lt;section&gt;</code>）標籤，而非附加在標題上。這使得整個小節都可以透過
-javascript 來操作，或是採用不同的 CSS 設定。</p>
-<p><strong>Extension:</strong>
-<code>implicit_header_references</code></p>
+<p>然而要注意的一點是，只有在以 HTML、LaTeX 與 ConTeXt<br>格式輸出時，才能以這種方式產生對應的章節連結。</p>
+<p>如果指定了 <code>--section-divs</code> 選項，則每一個小節都會以 <code>div</code> 標籤包住（或是<br><code>section</code> 標籤，如果有指定 <code>--html5</code> 選項的話），並且 ID<br>會被附加在用來包住小節的 <code>&lt;div&gt;</code>（或是<br><code>&lt;section&gt;</code>）標籤，而非附加在標題上。這使得整個小節都可以透過 javascript<br>來操作，或是採用不同的 CSS 設定。</p>
+<p><strong>Extension:</strong> <code>implicit_header_references</code></p>
 <p>Pandoc 假設每個標題都定義了其參考連結，因此，相較於以下的連結語法</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[header identifiers](#header-identifiers-in-html)</span><br></pre></td></tr></table></figure>
 <p>你也可以單純只寫</p>
@@ -627,79 +558,44 @@ javascript 來操作，或是採用不同的 CSS 設定。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[header identifiers][]</span><br></pre></td></tr></table></figure>
 <p>或</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[the section on header identifiers][header identifiers]</span><br></pre></td></tr></table></figure>
-<p>如果有多個標題具有同樣文字，對應的參考只會連結到第一個符合的標題，這時若要連結到其他符合的標題，就必須以先前提到的方式，明確指定連結到該標題的
-ID。</p>
+<p>如果有多個標題具有同樣文字，對應的參考只會連結到第一個符合的標題，這時若要連結到其他符合的標題，就必須以先前提到的方式，明確指定連結到該標題的<br>ID。</p>
 <p>與其他一般參考連結不同的是，這些參考連結是大小寫有別的。</p>
-<p>注意：如果你有明確定義了任何一個標題的標示符，那麼選項
-<code>implicit_header_references</code> 就沒有作用。</p>
-<h2 id="區塊引言"><a href="#區塊引言">區塊引言</a></h2>
-<p>Markdown 使用 email
-的習慣來建立引言區塊。一個引言區塊可以由一或多個段落或其他的區塊元素（如清單或標題）組成，並且其行首均是由一個
-<code>&gt;</code> 符號加上一個空白作為開頭。（<code>&gt;</code>
-符號不一定要位在該行最左邊，但也不能縮進超過三個空白）。</p>
+<p>注意：如果你有明確定義了任何一個標題的標示符，那麼選項<br><code>implicit_header_references</code> 就沒有作用。</p>
+<h2 id="區塊引言"><a href="#區塊引言" class="headerlink" title="區塊引言"></a><a href="#區塊引言">區塊引言</a></h2><p>Markdown 使用 email<br>的習慣來建立引言區塊。一個引言區塊可以由一或多個段落或其他的區塊元素（如清單或標題）組成，並且其行首均是由一個<br><code>&gt;</code> 符號加上一個空白作為開頭。（<code>&gt;</code><br>符號不一定要位在該行最左邊，但也不能縮進超過三個空白）。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; This is a block quote. This</span><br><span class="line">&gt; paragraph has two lines.</span><br><span class="line">&gt;</span><br><span class="line">&gt; 1. This is a list inside a block quote.</span><br><span class="line">&gt; 2. Second item.</span><br></pre></td></tr></table></figure>
-<p>有一個「偷懶」的形式：你只需要在引言區塊的第一行行首輸入
-<code>&gt;</code> 即可，後面的行首可以省略符號：</p>
+<p>有一個「偷懶」的形式：你只需要在引言區塊的第一行行首輸入 <code>&gt;</code><br>即可，後面的行首可以省略符號：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; This is a block quote. This</span><br><span class="line">paragraph has two lines.</span><br><span class="line"></span><br><span class="line">&gt; 1. This is a list inside a block quote.</span><br><span class="line">2. Second item.</span><br></pre></td></tr></table></figure>
 <p>由於區塊引言可包含其他區塊元素，而區塊引言本身也是區塊元素，所以，引言是可以嵌套入其他引言的。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; This is a block quote.</span><br><span class="line">&gt;</span><br><span class="line">&gt; &gt; A block quote within a block quote.</span><br></pre></td></tr></table></figure>
 <p><strong>Extension:</strong> <code>blank_before_blockquote</code></p>
-<p>原始 markdown 語法在區塊引言之前並不需要預留空白行。Pandoc
-則需要（除非區塊引言位於文件最開始的地方）。這是因為以 <code>&gt;</code>
-符號開頭的情況在一般文字段落中相當常見（也許由於斷行所致），這會導致非預期的格式。因此，除非是指定為
-<code>markdown_strict</code> 格式，不然以下的語法在 pandoc
-中將不會產生出嵌套區塊引言：</p>
+<p>原始 markdown 語法在區塊引言之前並不需要預留空白行。Pandoc<br>則需要（除非區塊引言位於文件最開始的地方）。這是因為以 <code>&gt;</code><br>符號開頭的情況在一般文字段落中相當常見（也許由於斷行所致），這會導致非預期的格式。因此，除非是指定為<br><code>markdown_strict</code> 格式，不然以下的語法在 pandoc 中將不會產生出嵌套區塊引言：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; This is a block quote.</span><br><span class="line">&gt;&gt; Nested.</span><br></pre></td></tr></table></figure>
-<h2 id="字面代碼區塊"><a href="#字面代碼區塊">字面（代碼）區塊</a></h2>
-<h3 id="縮進代碼區塊"><a href="#縮進代碼區塊">縮進代碼區塊</a></h3>
-<p>一段以四個空白（或一個 tab）縮進的文字區塊會被視為字面區塊 (Verbatim
-Block)：換句話說，特殊字元並不會轉換為任何格式，單純只以字面形式呈現，而所有的空白與換行也都會被保留。例如，</p>
+<h2 id="字面（代碼）區塊"><a href="#字面（代碼）區塊" class="headerlink" title="字面（代碼）區塊"></a><a href="#字面代碼區塊">字面（代碼）區塊</a></h2><h3 id="縮進代碼區塊"><a href="#縮進代碼區塊" class="headerlink" title="縮進代碼區塊"></a><a href="#縮進代碼區塊">縮進代碼區塊</a></h3><p>一段以四個空白（或一個 tab）縮進的文字區塊會被視為字面區塊 (Verbatim<br>Block)：換句話說，特殊字元並不會轉換為任何格式，單純只以字面形式呈現，而所有的空白與換行也都會被保留。例如，</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (a &gt; 3) &#123;</span><br><span class="line">  moveShip(5 * gravity, DOWN);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>位於行首的縮排（四個空白或一個
-tab）並不會被視為字面區塊的一部分，因此在輸出時會被移除掉。</p>
+<p>位於行首的縮排（四個空白或一個<br>tab）並不會被視為字面區塊的一部分，因此在輸出時會被移除掉。</p>
 <p>注意：在字面文字之間的空白行並不需要也以四個空白字元做開頭。</p>
-<h3 id="圍欄代碼區塊"><a href="#圍欄代碼區塊">圍欄代碼區塊</a></h3>
-<p><strong>Extension:</strong> <code>fenced_code_blocks</code></p>
-<p>除了標準的縮進代碼區塊外，Pandoc 也支援了<strong>圍欄</strong>
-(<em>fenced</em>) 代碼區塊的語法。這區塊需以包含三個以上波浪線
-(<code>~</code>) 或反引號 (<code>`</code>)
-的一行作為開始，並以同樣符號且至少同樣長度的一行作為結束。所有介於開始與結束之間的文字行都會視為代碼。不需要額外的縮進：</p>
+<h3 id="圍欄代碼區塊"><a href="#圍欄代碼區塊" class="headerlink" title="圍欄代碼區塊"></a><a href="#圍欄代碼區塊">圍欄代碼區塊</a></h3><p><strong>Extension:</strong> <code>fenced_code_blocks</code></p>
+<p>除了標準的縮進代碼區塊外，Pandoc 也支援了<strong>圍欄</strong> (<em>fenced</em>)<br>代碼區塊的語法。這區塊需以包含三個以上波浪線 (<code>~</code>) 或反引號 (<code>` </code>)<br>的一行作為開始，並以同樣符號且至少同樣長度的一行作為結束。所有介於開始與結束之間的文字行都會視為代碼。不需要額外的縮進：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">​~~~~~~~</span><br><span class="line">if (a &gt; 3) &#123;</span><br><span class="line">  moveShip(5 * gravity, DOWN);</span><br><span class="line">&#125;</span><br><span class="line">​~~~~~~~</span><br></pre></td></tr></table></figure>
 <p>如同一般的代碼區塊，圍欄代碼區塊與其前後的文字之間必須以空白行作間隔。</p>
 <p>如果代碼本身也包含了一整行的波浪線或反引號，那麼只要在區塊首尾處使用更長的波浪線或反引號即可：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">​~~~~~~~~~~~~~~~~</span><br><span class="line">​~~~~~~~~~~</span><br><span class="line">code including tildes</span><br><span class="line">​~~~~~~~~~~</span><br><span class="line">​~~~~~~~~~~~~~~~~</span><br></pre></td></tr></table></figure>
 <p>你也可以選擇性地使用以下語法附加屬性到代碼區塊上：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">​~~~~ &#123;#mycode .haskell .numberLines startFrom=&quot;100&quot;&#125;</span><br><span class="line">qsort []     = []</span><br><span class="line">qsort (x:xs) = qsort (filter (&lt; x) xs) ++ [x] ++</span><br><span class="line">               qsort (filter (&gt;= x) xs)</span><br><span class="line">​~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span><br></pre></td></tr></table></figure>
-<p>這裡的 <code>mycode</code> 為 ID，<code>haskell</code> 與
-<code>numberLines</code> 是類別，而 <code>startsFrom</code> 則是值為
-<code>100</code>
-的屬性。有些輸出格式可以利用這些資訊來作語法高亮。目前有使用到這些資訊的輸出格式僅有
-HTML 與
-LaTeX。如果指定的輸出格式及語言類別有支援語法高亮，那麼上面那段代碼區塊將會以高亮並帶有行號的方式呈現。（要查詢支援的程式語言清單，可在命令列輸入
-<code>pandoc --version</code>。）反之若無支援，則上面那段代碼區塊則會以下面的形式呈現：</p>
+<p>這裡的 <code>mycode</code> 為 ID，<code>haskell</code> 與 <code>numberLines</code> 是類別，而 <code>startsFrom</code><br>則是值為 <code>100</code><br>的屬性。有些輸出格式可以利用這些資訊來作語法高亮。目前有使用到這些資訊的輸出格式僅有<br>HTML 與<br>LaTeX。如果指定的輸出格式及語言類別有支援語法高亮，那麼上面那段代碼區塊將會以高亮並帶有行號的方式呈現。（要查詢支援的程式語言清單，可在命令列輸入<br><code>pandoc --version</code>。）反之若無支援，則上面那段代碼區塊則會以下面的形式呈現：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;pre id=&quot;mycode&quot; class=&quot;haskell numberLines&quot; startFrom=&quot;100&quot;&gt;</span><br><span class="line">  &lt;code&gt;</span><br><span class="line">  ...</span><br><span class="line">  &lt;/code&gt;</span><br><span class="line">&lt;/pre&gt;</span><br></pre></td></tr></table></figure>
 <p>下面這個是針對代碼區塊只有指定程式語言屬性的簡便形式：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">​```haskell</span><br><span class="line">qsort [] = []</span><br><span class="line">​```</span><br></pre></td></tr></table></figure>
 <p>這與下面這行的效果是相同的：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">​``` &#123;.haskell&#125;</span><br><span class="line">qsort [] = []</span><br><span class="line">​```</span><br></pre></td></tr></table></figure>
-<p>要取消所有語法高亮，使用 <code>--no-highlight</code>
-選項。要設定語法高亮的配色，則使用 <code>--highlight-style</code>。</p>
-<h2 id="行區塊"><a href="#行區塊">行區塊</a></h2>
-<p><strong>Extension:</strong> <code>line_blocks</code></p>
-<p>行區塊是一連串以豎線 (<code>|</code>)
-加上一個空格所構成的連續行。行與行間的區隔在輸出時將會以原樣保留，行首的空白字元數目也一樣會被保留；反之，這些行將會以
-markdown 的格式處理。這個語法在輸入詩句或地址時很有幫助。</p>
+<p>要取消所有語法高亮，使用 <code>--no-highlight</code> 選項。要設定語法高亮的配色，則使用<br><code>--highlight-style</code>。</p>
+<h2 id="行區塊"><a href="#行區塊" class="headerlink" title="行區塊"></a><a href="#行區塊">行區塊</a></h2><p><strong>Extension:</strong> <code>line_blocks</code></p>
+<p>行區塊是一連串以豎線 (<code>|</code>)<br>加上一個空格所構成的連續行。行與行間的區隔在輸出時將會以原樣保留，行首的空白字元數目也一樣會被保留；反之，這些行將會以<br>markdown 的格式處理。這個語法在輸入詩句或地址時很有幫助。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">| The limerick packs laughs anatomical</span><br><span class="line">| In space that is quite economical.</span><br><span class="line">|    But the good ones I&#x27;ve seen</span><br><span class="line">|    So seldom are clean</span><br><span class="line">| And the clean ones so seldom are comical</span><br><span class="line"></span><br><span class="line">| 200 Main St.</span><br><span class="line">| Berkeley, CA 94718</span><br></pre></td></tr></table></figure>
 <p>如果有需要的話，書寫時也可以將完整一行拆成多行，但後續行必須以空白作為開始。下面範例的前兩行在輸出時會被視為一整行：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| The Right Honorable Most Venerable and Righteous Samuel L.</span><br><span class="line">  Constable, Jr.</span><br><span class="line">| 200 Main St.</span><br><span class="line">| Berkeley, CA 94718</span><br></pre></td></tr></table></figure>
-<p>這是從 <a
-target="_blank" rel="noopener" href="http://docutils.sourceforge.net/docs/ref/rst/introduction.html">reStructuredText</a>
-借來的語法。</p>
-<h2 id="清單"><a href="#清單">清單</a></h2>
-<h3 id="無序清單"><a href="#無序清單">無序清單</a></h3>
-<p>無序清單是以項目符號作列舉的清單。每條項目都以項目符號
-(<code>*</code>, <code>+</code> 或 <code>-</code>)
-作開頭。下面是個簡單的例子：</p>
+<p>這是從<br><a target="_blank" rel="noopener" href="http://docutils.sourceforge.net/docs/ref/rst/introduction.html">reStructuredText</a><br>借來的語法。</p>
+<h2 id="清單"><a href="#清單" class="headerlink" title="清單"></a><a href="#清單">清單</a></h2><h3 id="無序清單"><a href="#無序清單" class="headerlink" title="無序清單"></a><a href="#無序清單">無序清單</a></h3><p>無序清單是以項目符號作列舉的清單。每條項目都以項目符號 (<code>*</code>, <code>+</code> 或 <code>-</code>)<br>作開頭。下面是個簡單的例子：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* one</span><br><span class="line">* two</span><br><span class="line">* three</span><br></pre></td></tr></table></figure>
 <p>這會產生一個「緊湊」清單。如果你想要一個「寬鬆」清單，也就是說以段落格式處理每個項目內的文字內容，那麼只要在每個項目間加上空白行即可：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* one</span><br><span class="line"></span><br><span class="line">* two</span><br><span class="line"></span><br><span class="line">* three</span><br></pre></td></tr></table></figure>
@@ -708,482 +604,263 @@ target="_blank" rel="noopener" href="http://docutils.sourceforge.net/docs/ref/rs
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* here is my first</span><br><span class="line">  list item.</span><br><span class="line">* and my second.</span><br></pre></td></tr></table></figure>
 <p>但 markdown 也允許以下「偷懶」的格式：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* here is my first</span><br><span class="line">list item.</span><br><span class="line">* and my second.</span><br></pre></td></tr></table></figure>
-<h3 id="四個空白規則"><a href="#四個空白規則">四個空白規則</a></h3>
-<p>一個清單項目可以包含多個段落以及其他區塊等級的內容。然而，後續的段落必須接在空白行之後，並且以四個空白或一個
-tab
-作縮進。因此，如果項目裡第一個段落與後面段落對齊的話（也就是項目符號前置入兩個空白），看上去會比較整齊美觀：</p>
+<h3 id="四個空白規則"><a href="#四個空白規則" class="headerlink" title="四個空白規則"></a><a href="#四個空白規則">四個空白規則</a></h3><p>一個清單項目可以包含多個段落以及其他區塊等級的內容。然而，後續的段落必須接在空白行之後，並且以四個空白或一個<br>tab<br>作縮進。因此，如果項目裡第一個段落與後面段落對齊的話（也就是項目符號前置入兩個空白），看上去會比較整齊美觀：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* First paragraph.</span><br><span class="line"></span><br><span class="line">  Continued.</span><br><span class="line"></span><br><span class="line">* Second paragraph. With a code block, which must be indented</span><br><span class="line">  eight spaces:</span><br><span class="line"></span><br><span class="line">      &#123; code &#125;</span><br></pre></td></tr></table></figure>
-<p>清單項目也可以包含其他清單。在這情況下前置的空白行是可有可無的。嵌套清單必須以四個空白或一個
-tab 作縮進：</p>
+<p>清單項目也可以包含其他清單。在這情況下前置的空白行是可有可無的。嵌套清單必須以四個空白或一個<br>tab 作縮進：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">* fruits</span><br><span class="line">    + apples</span><br><span class="line">        - macintosh</span><br><span class="line">        - red delicious</span><br><span class="line">    + pears</span><br><span class="line">    + peaches</span><br><span class="line">* vegetables</span><br><span class="line">    + brocolli</span><br><span class="line">    + chard</span><br></pre></td></tr></table></figure>
-<p>上一節提到，markdown
-允許你以「偷懶」的方式書寫，項目的接續行可以不和第一行對齊。不過，如果一個清單項目中包含了多個段落或是其他區塊元素，那麼每個元素的第一行都必須縮進對齊。</p>
+<p>上一節提到，markdown<br>允許你以「偷懶」的方式書寫，項目的接續行可以不和第一行對齊。不過，如果一個清單項目中包含了多個段落或是其他區塊元素，那麼每個元素的第一行都必須縮進對齊。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+ A lazy, lazy, list</span><br><span class="line">item.</span><br><span class="line"></span><br><span class="line">+ Another one; this looks</span><br><span class="line">bad but is legal.</span><br><span class="line"></span><br><span class="line">    Second paragraph of second</span><br><span class="line">list item.</span><br></pre></td></tr></table></figure>
-<p><strong>注意：</strong>儘管針對接續段落的「四個空白規則」是出自於官方的
-<a
-target="_blank" rel="noopener" href="http://daringfireball.net/projects/markdown/syntax#list">markdown
-syntax guide</a>，但是作為對應參考用的 <code>Markdown.pl</code>
-實作版本中並未遵循此一規則。所以當輸入時若接續段落的縮進少於四個空白時，pandoc
-所輸出的結果會與 <code>Markdown.pl</code> 的輸出有所出入。</p>
-<p>在 <a
-target="_blank" rel="noopener" href="http://daringfireball.net/projects/markdown/syntax#list">markdown
-syntax guide</a> 中並未明確表示「四個空白規則」是否一體適用於
-<strong>所有</strong>
-位於清單項目裡的區塊元素上；規範文件中只提及了段落與代碼區塊。但文件暗示了此規則適用於所有區塊等級的內容（包含嵌套清單），並且
-pandoc 以此方向進行解讀與實作。</p>
-<h3 id="有序清單"><a href="#有序清單">有序清單</a></h3>
-<p>有序清單與無序清單相類似，唯一的差別在於清單項目是以列舉編號作開頭，而不是項目符號。</p>
-<p>在原始 markdown
-中，列舉編號是阿拉伯數字後面接著一個句點與空白。數字本身代表的數值會被忽略，因此下面兩個清單並無差別：</p>
+<p><strong>注意：</strong>儘管針對接續段落的「四個空白規則」是出自於官方的 <a target="_blank" rel="noopener" href="http://daringfireball.net/projects/markdown/syntax#list">markdown syntax<br>guide</a>，但是作為對應參考用的<br><code>Markdown.pl</code><br>實作版本中並未遵循此一規則。所以當輸入時若接續段落的縮進少於四個空白時，pandoc<br>所輸出的結果會與 <code>Markdown.pl</code> 的輸出有所出入。</p>
+<p>在 <a target="_blank" rel="noopener" href="http://daringfireball.net/projects/markdown/syntax#list">markdown syntax<br>guide</a><br>中並未明確表示「四個空白規則」是否一體適用於 <strong>所有</strong><br>位於清單項目裡的區塊元素上；規範文件中只提及了段落與代碼區塊。但文件暗示了此規則適用於所有區塊等級的內容（包含嵌套清單），並且<br>pandoc 以此方向進行解讀與實作。</p>
+<h3 id="有序清單"><a href="#有序清單" class="headerlink" title="有序清單"></a><a href="#有序清單">有序清單</a></h3><p>有序清單與無序清單相類似，唯一的差別在於清單項目是以列舉編號作開頭，而不是項目符號。</p>
+<p>在原始 markdown<br>中，列舉編號是阿拉伯數字後面接著一個句點與空白。數字本身代表的數值會被忽略，因此下面兩個清單並無差別：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.  one</span><br><span class="line">2.  two</span><br><span class="line">3.  three</span><br></pre></td></tr></table></figure>
 <p>上下兩個清單的輸出是相同的。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">5.  one</span><br><span class="line">7.  two</span><br><span class="line">1.  three</span><br></pre></td></tr></table></figure>
 <p><strong>Extension:</strong> <code>fancy_lists</code></p>
-<p>與原始 markdown 不同的是，Pandoc
-除了使用阿拉伯數字作為有序清單的編號外，也可以使用大寫或小寫的英文字母，以及羅馬數字。清單標記可以用括號包住，也可以單獨一個右括號，抑或是句號。如果清單標記是大寫字母接著一個句號，句號後請使用至少兩個空白字元。<a
-href="#fn1">1</a></p>
+<p>與原始 markdown 不同的是，Pandoc<br>除了使用阿拉伯數字作為有序清單的編號外，也可以使用大寫或小寫的英文字母，以及羅馬數字。清單標記可以用括號包住，也可以單獨一個右括號，抑或是句號。如果清單標記是大寫字母接著一個句號，句號後請使用至少兩個空白字元。<a href="#fn1">1</a></p>
 <p><strong>Extension:</strong> <code>startnum</code></p>
-<p>除了清單標記外，Pandoc
-也能判讀清單的起始編號，這兩項資訊都會保留於輸出格式中。舉例來說，下面的輸入可以產生一個從編號
-9
-開始，以單括號為編號標記的清單，底下還跟著一個小寫羅馬數字的子清單：</p>
+<p>除了清單標記外，Pandoc<br>也能判讀清單的起始編號，這兩項資訊都會保留於輸出格式中。舉例來說，下面的輸入可以產生一個從編號<br>9 開始，以單括號為編號標記的清單，底下還跟著一個小寫羅馬數字的子清單：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> 9)  Ninth</span><br><span class="line">10)  Tenth</span><br><span class="line">11)  Eleventh</span><br><span class="line">       i. subone</span><br><span class="line">      ii. subtwo</span><br><span class="line">     iii. subthree</span><br></pre></td></tr></table></figure>
-<p>當遇到不同形式的清單標記時，Pandoc
-會重新開始一個新的清單。所以，以下的輸入會產生三份清單：</p>
+<p>當遇到不同形式的清單標記時，Pandoc<br>會重新開始一個新的清單。所以，以下的輸入會產生三份清單：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(2) Two</span><br><span class="line">(5) Three</span><br><span class="line">1.  Four</span><br><span class="line">*   Five</span><br></pre></td></tr></table></figure>
 <p>如果需要預設的有序清單標記符號，可以使用 <code>#.</code>：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#.  one</span><br><span class="line">#.  two</span><br><span class="line">#.  three</span><br></pre></td></tr></table></figure>
-<h3 id="定義清單"><a href="#定義清單">定義清單</a></h3>
-<p><strong>Extension:</strong> <code>definition_lists</code></p>
-<p>Pandoc 支援定義清單，其語法的靈感來自於 <a
-target="_blank" rel="noopener" href="http://www.michelf.com/projects/php-markdown/extra/">PHP Markdown
-Extra</a> 以及 <a
-target="_blank" rel="noopener" href="http://docutils.sourceforge.net/docs/ref/rst/introduction.html">reStructuredText</a>：<a
-href="#fn2">2</a></p>
+<h3 id="定義清單"><a href="#定義清單" class="headerlink" title="定義清單"></a><a href="#定義清單">定義清單</a></h3><p><strong>Extension:</strong> <code>definition_lists</code></p>
+<p>Pandoc 支援定義清單，其語法的靈感來自於 <a target="_blank" rel="noopener" href="http://www.michelf.com/projects/php-markdown/extra/">PHP Markdown<br>Extra</a> 以及<br><a target="_blank" rel="noopener" href="http://docutils.sourceforge.net/docs/ref/rst/introduction.html">reStructuredText</a>：<a href="#fn2">2</a></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Term 1</span><br><span class="line"></span><br><span class="line">:   Definition 1</span><br><span class="line"></span><br><span class="line">Term 2 with *inline markup*</span><br><span class="line"></span><br><span class="line">:   Definition 2</span><br><span class="line"></span><br><span class="line">        &#123; some code, part of Definition 2 &#125;</span><br><span class="line"></span><br><span class="line">    Third paragraph of definition 2.</span><br></pre></td></tr></table></figure>
-<p>每個專有名詞 (term)
-都必須單獨存在於一行，後面可以接著一個空白行，也可以省略，但一定要接上一或多筆定義內容。一筆定義需由一個冒號或波浪線作開頭，可以接上一或兩個空白作為縮進。定義本身的內容主體（包括接在冒號或波浪線後的第一行）應該以四個空白縮進。一個專有名詞可以有多個定義，而每個定義可以包含一或多個區塊元素（段落、代碼區塊、清單等），每個區塊元素都要縮進四個空白或一個
-tab。</p>
+<p>每個專有名詞 (term)<br>都必須單獨存在於一行，後面可以接著一個空白行，也可以省略，但一定要接上一或多筆定義內容。一筆定義需由一個冒號或波浪線作開頭，可以接上一或兩個空白作為縮進。定義本身的內容主體（包括接在冒號或波浪線後的第一行）應該以四個空白縮進。一個專有名詞可以有多個定義，而每個定義可以包含一或多個區塊元素（段落、代碼區塊、清單等），每個區塊元素都要縮進四個空白或一個<br>tab。</p>
 <p>如果你在定義內容後面留下空白行（如同上面的範例），那麼該段定義會被當作段落處理。在某些輸出格式中，這意謂著成對的專有名詞與定義內容間會有較大的空白間距。在定義與定義之間，以及定義與下個專有名詞間不要留空白行，即可產生一個比較緊湊的定義清單：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Term 1</span><br><span class="line">  ~ Definition 1</span><br><span class="line">Term 2</span><br><span class="line">  ~ Definition 2a</span><br><span class="line">  ~ Definition 2b</span><br></pre></td></tr></table></figure>
-<h3 id="編號範例清單"><a href="#編號範例清單">編號範例清單</a></h3>
-<p><strong>Extension:</strong> <code>example_lists</code></p>
-<p>這個特別的清單標記 <code>@</code>
-可以用來產生連續編號的範例清單。清單中第一個以 <code>@</code>
-標記的項目會被編號為 ‘1’，接著編號為
-‘2’，依此類推，直到文件結束。範例項目的編號不會侷限於單一清單中，而是文件中所有以
-<code>@</code>
-為標記的項目均會次序遞增其編號，直到最後一個。舉例如下：</p>
+<h3 id="編號範例清單"><a href="#編號範例清單" class="headerlink" title="編號範例清單"></a><a href="#編號範例清單">編號範例清單</a></h3><p><strong>Extension:</strong> <code>example_lists</code></p>
+<p>這個特別的清單標記 <code>@</code> 可以用來產生連續編號的範例清單。清單中第一個以 <code>@</code><br>標記的項目會被編號為 ‘1’，接著編號為<br>‘2’，依此類推，直到文件結束。範例項目的編號不會侷限於單一清單中，而是文件中所有以<br><code>@</code> 為標記的項目均會次序遞增其編號，直到最後一個。舉例如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(@)  My first example will be numbered (1).</span><br><span class="line">(@)  My second example will be numbered (2).</span><br><span class="line"></span><br><span class="line">Explanation of examples.</span><br><span class="line"></span><br><span class="line">(@)  My third example will be numbered (3).</span><br></pre></td></tr></table></figure>
 <p>編號範例可以加上標籤，並且在文件的其他地方作參照：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(@good)  This is a good example.</span><br><span class="line"></span><br><span class="line">As (@good) illustrates, ...</span><br></pre></td></tr></table></figure>
 <p>標籤可以是由任何英文字母、底線或是連字符號所組成的字串。</p>
-<h3 id="緊湊與寬鬆清單"><a
-href="#緊湊與寬鬆清單">緊湊與寬鬆清單</a></h3>
-<p>在與清單相關的「邊界處理」上，Pandoc 與 <code>Markdown.pl</code>
-有著不同的處理結果。考慮如下代碼：</p>
+<h3 id="緊湊與寬鬆清單"><a href="#緊湊與寬鬆清單" class="headerlink" title="緊湊與寬鬆清單"></a><a href="#緊湊與寬鬆清單">緊湊與寬鬆清單</a></h3><p>在與清單相關的「邊界處理」上，Pandoc 與 <code>Markdown.pl</code><br>有著不同的處理結果。考慮如下代碼：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+   First</span><br><span class="line">+   Second:</span><br><span class="line">    -   Fee</span><br><span class="line">    -   Fie</span><br><span class="line">    -   Foe</span><br><span class="line"></span><br><span class="line">+   Third</span><br></pre></td></tr></table></figure>
-<p>Pandoc 會將以上清單轉換為「緊湊清單」（在 “First”, “Second” 或
-“Third” 之中沒有 <code>&lt;p&gt;</code> 標籤），而 markdown 則會在
-“Second” 與 “Third” （但不包含 “First”）裡面置入 <code>&lt;p&gt;</code>
-標籤，這是因為 “Third” 之前的空白行而造成的結果。Pandoc
-依循著一個簡單規則：如果文字後面跟著空白行，那麼就會被視為段落。既然
-“Second”
-後面是跟著一個清單，而非空白行，那麼就不會被視為段落了。至於子清單的後面是不是跟著空白行，那就無關緊要了。（注意：即使是設定為
-<code>markdown_strict</code> 格式，Pandoc
-仍是依以上方式處理清單項目是否為段落的判定。這個處理方式與 markdown
-官方語法規範裡的描述一致，然而卻與 <code>Markdown.pl</code>
-的處理不同。）</p>
-<h3 id="結束一個清單"><a href="#結束一個清單">結束一個清單</a></h3>
-<p>如果你在清單之後放入一個縮排的代碼區塊，會有什麼結果？</p>
+<p>Pandoc 會將以上清單轉換為「緊湊清單」（在 “First”, “Second” 或 “Third” 之中沒有<br><code>&lt;p&gt;</code> 標籤），而 markdown 則會在 “Second” 與 “Third” （但不包含<br>“First”）裡面置入 <code>&lt;p&gt;</code> 標籤，這是因為 “Third” 之前的空白行而造成的結果。Pandoc<br>依循著一個簡單規則：如果文字後面跟著空白行，那麼就會被視為段落。既然 “Second”<br>後面是跟著一個清單，而非空白行，那麼就不會被視為段落了。至於子清單的後面是不是跟著空白行，那就無關緊要了。（注意：即使是設定為<br><code>markdown_strict</code> 格式，Pandoc<br>仍是依以上方式處理清單項目是否為段落的判定。這個處理方式與 markdown<br>官方語法規範裡的描述一致，然而卻與 <code>Markdown.pl</code> 的處理不同。）</p>
+<h3 id="結束一個清單"><a href="#結束一個清單" class="headerlink" title="結束一個清單"></a><a href="#結束一個清單">結束一個清單</a></h3><p>如果你在清單之後放入一個縮排的代碼區塊，會有什麼結果？</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-   item one</span><br><span class="line">-   item two</span><br><span class="line"></span><br><span class="line">    &#123; my code block &#125;</span><br></pre></td></tr></table></figure>
-<p>問題大了！這邊 pandoc（其他的 markdown 實作也是如此）會將
-<code>&#123; my code block &#125;</code> 視為 <code>item two</code>
-這個清單項目的第二個段落來處理，而不會將其視為一個代碼區塊。</p>
-<p>要在 <code>item two</code>
-之後「切斷」清單，你可以插入一些沒有縮排、輸出時也不可見的內容，例如
-HTML 的註解：</p>
+<p>問題大了！這邊 pandoc（其他的 markdown 實作也是如此）會將 <code>&#123; my code block &#125;</code><br>視為 <code>item two</code> 這個清單項目的第二個段落來處理，而不會將其視為一個代碼區塊。</p>
+<p>要在 <code>item two</code><br>之後「切斷」清單，你可以插入一些沒有縮排、輸出時也不可見的內容，例如 HTML<br>的註解：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-   item one</span><br><span class="line">-   item two</span><br><span class="line"></span><br><span class="line">&lt;!-- end of list --&gt;</span><br><span class="line"></span><br><span class="line">    &#123; my code block &#125;</span><br></pre></td></tr></table></figure>
 <p>當你想要兩個各自獨立的清單，而非一個大且連續的清單時，也可以運用同樣的技巧：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.  one</span><br><span class="line">2.  two</span><br><span class="line">3.  three</span><br><span class="line"></span><br><span class="line">&lt;!-- --&gt;</span><br><span class="line"></span><br><span class="line">1.  uno</span><br><span class="line">2.  dos</span><br><span class="line">3.  tres</span><br></pre></td></tr></table></figure>
-<h2 id="分隔線"><a href="#分隔線">分隔線</a></h2>
-<p>一行中若包含三個以上的 <code>*</code>, <code>-</code> 或
-<code>_</code> 符號（中間可以以空白字元分隔），則會產生一條分隔線：</p>
+<h2 id="分隔線"><a href="#分隔線" class="headerlink" title="分隔線"></a><a href="#分隔線">分隔線</a></h2><p>一行中若包含三個以上的 <code>*</code>, <code>-</code> 或 <code>_</code><br>符號（中間可以以空白字元分隔），則會產生一條分隔線：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*  *  *  *</span><br><span class="line"></span><br><span class="line">---------------</span><br></pre></td></tr></table></figure>
-<h2 id="表格"><a href="#表格">表格</a></h2>
-<p>有四種表格的形式可以使用。前三種適用於等寬字型的編輯環境，例如
-Courier。第四種則不需要直行的對齊，因此可以在比例字型的環境下使用。</p>
-<h3 id="簡單表格"><a href="#簡單表格">簡單表格</a></h3>
-<p><strong>Extension:</strong>
-<code>simple_tables</code><strong>,</strong>
-<code>table_captions</code></p>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a><a href="#表格">表格</a></h2><p>有四種表格的形式可以使用。前三種適用於等寬字型的編輯環境，例如<br>Courier。第四種則不需要直行的對齊，因此可以在比例字型的環境下使用。</p>
+<h3 id="簡單表格"><a href="#簡單表格" class="headerlink" title="簡單表格"></a><a href="#簡單表格">簡單表格</a></h3><p><strong>Extension:</strong> <code>simple_tables</code><strong>,</strong> <code>table_captions</code></p>
 <p>簡單表格看起來像這樣子：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  Right     Left     Center     Default</span><br><span class="line">-------     ------ ----------   -------</span><br><span class="line">     12     12        12            12</span><br><span class="line">    123     123       123          123</span><br><span class="line">      1     1          1             1</span><br><span class="line"></span><br><span class="line">Table:  Demonstration of simple table syntax.</span><br></pre></td></tr></table></figure>
-<p>表頭與資料列分別以一行為單位。直行的對齊則依照表頭的文字和其底下虛線的相對位置來決定：<a
-href="#fn3">3</a></p>
+<p>表頭與資料列分別以一行為單位。直行的對齊則依照表頭的文字和其底下虛線的相對位置來決定：<a href="#fn3">3</a></p>
 <ul>
-<li><p>如果虛線與表頭文字的右側有切齊，而左側比表頭文字還長，則該直行為靠右對齊。</p></li>
-<li><p>如果虛線與表頭文字的左側有切齊，而右側比表頭文字還長，則該直行為靠左對齊。</p></li>
-<li><p>如果虛線的兩側都比表頭文字長，則該直行為置中對齊。</p></li>
-<li><p>如果虛線與表頭文字的兩側都有切齊，則會套用預設的對齊方式（在大多數情況下，這將會是靠左對齊）。</p></li>
+<li><p>如果虛線與表頭文字的右側有切齊，而左側比表頭文字還長，則該直行為靠右對齊。</p>
+</li>
+<li><p>如果虛線與表頭文字的左側有切齊，而右側比表頭文字還長，則該直行為靠左對齊。</p>
+</li>
+<li><p>如果虛線的兩側都比表頭文字長，則該直行為置中對齊。</p>
+</li>
+<li><p>如果虛線與表頭文字的兩側都有切齊，則會套用預設的對齊方式（在大多數情況下，這將會是靠左對齊）。</p>
+</li>
 </ul>
-<p>表格底下必須接著一個空白行，或是一行虛線後再一個空白行。表格標題為可選的（上面的範例中有出現）。標題需是一個以
-<code>Table:</code> （或單純只有
-<code>:</code>）開頭作為前綴的段落，輸出時前綴的這部份會被去除掉。表格標題可以放在表格之前或之後。</p>
+<p>表格底下必須接著一個空白行，或是一行虛線後再一個空白行。表格標題為可選的（上面的範例中有出現）。標題需是一個以<br><code>Table:</code> （或單純只有<br><code>:</code>）開頭作為前綴的段落，輸出時前綴的這部份會被去除掉。表格標題可以放在表格之前或之後。</p>
 <p>表頭也可以省略，在省略表頭的情況下，表格下方必須加上一行虛線以清楚標明表格的範圍。例如：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-------     ------ ----------   -------</span><br><span class="line">     12     12        12             12</span><br><span class="line">    123     123       123           123</span><br><span class="line">      1     1          1              1</span><br><span class="line">-------     ------ ----------   -------</span><br></pre></td></tr></table></figure>
 <p>當省略表頭時，直行的對齊會以表格內容的第一行資料列決定。所以，以上面的表格為例，各直行的對齊依序會是靠右、靠左、置中以及靠右對齊。</p>
-<h3 id="多行表格"><a href="#多行表格">多行表格</a></h3>
-<p><strong>Extension:</strong>
-<code>multiline_tables</code><strong>,</strong>
-<code>table_captions</code></p>
+<h3 id="多行表格"><a href="#多行表格" class="headerlink" title="多行表格"></a><a href="#多行表格">多行表格</a></h3><p><strong>Extension:</strong> <code>multiline_tables</code><strong>,</strong> <code>table_captions</code></p>
 <p>多行表格允許表頭與表格資料格的文字能以複數行呈現（但不支援橫跨多欄或縱跨多列的資料格）。以下為範例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-------------------------------------------------------------</span><br><span class="line"> Centered   Default           Right Left</span><br><span class="line">  Header    Aligned         Aligned Aligned</span><br><span class="line">----------- ------- --------------- -------------------------</span><br><span class="line">   First    row                12.0 Example of a row that</span><br><span class="line">                                    spans multiple lines.</span><br><span class="line"></span><br><span class="line">  Second    row                 5.0 Here&#x27;s another one. Note</span><br><span class="line">                                    the blank line between</span><br><span class="line">                                    rows.</span><br><span class="line">-------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">Table: Here&#x27;s the caption. It, too, may span</span><br><span class="line">multiple lines.</span><br></pre></td></tr></table></figure>
 <p>看起來很像簡單表格，但兩者間有以下差別：</p>
 <ul>
-<li><p>在表頭文字之前，必須以一列虛線作為開頭（除非有省略表頭）。</p></li>
-<li><p>必須以一列虛線作為表格結尾，之後接一個空白行。</p></li>
-<li><p>資料列與資料列之間以空白行隔開。</p></li>
+<li><p>在表頭文字之前，必須以一列虛線作為開頭（除非有省略表頭）。</p>
+</li>
+<li><p>必須以一列虛線作為表格結尾，之後接一個空白行。</p>
+</li>
+<li><p>資料列與資料列之間以空白行隔開。</p>
+</li>
 </ul>
-<p>在多行表格中，表格分析器會計算各直行的欄寬，並在輸出時盡可能維持各直行在原始文件中的相對比例。因此，要是你覺得某些欄位在輸出時不夠寬，你可以在
-markdown 的原始檔中加寬一點。</p>
+<p>在多行表格中，表格分析器會計算各直行的欄寬，並在輸出時盡可能維持各直行在原始文件中的相對比例。因此，要是你覺得某些欄位在輸出時不夠寬，你可以在<br>markdown 的原始檔中加寬一點。</p>
 <p>和簡單表格一樣，表頭在多行表格中也是可以省略的：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">----------- ------- --------------- -------------------------</span><br><span class="line">   First    row                12.0 Example of a row that</span><br><span class="line">                                    spans multiple lines.</span><br><span class="line"></span><br><span class="line">  Second    row                 5.0 Here&#x27;s another one. Note</span><br><span class="line">                                    the blank line between</span><br><span class="line">                                    rows.</span><br><span class="line">----------- ------- --------------- -------------------------</span><br><span class="line"></span><br><span class="line">: Here&#x27;s a multiline table without headers.</span><br></pre></td></tr></table></figure>
 <p>多行表格中可以單只包含一個資料列，但該資料列之後必須接著一個空白行（然後才是標示表格結尾的一行虛線）。如果沒有此空白行，此表格將會被解讀成簡單表格。</p>
-<h3 id="格框表格"><a href="#格框表格">格框表格</a></h3>
-<p><strong>Extension:</strong>
-<code>grid_tables</code><strong>,</strong>
-<code>table_captions</code></p>
+<h3 id="格框表格"><a href="#格框表格" class="headerlink" title="格框表格"></a><a href="#格框表格">格框表格</a></h3><p><strong>Extension:</strong> <code>grid_tables</code><strong>,</strong> <code>table_captions</code></p>
 <p>格框表格看起來像這樣：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">: Sample grid table.</span><br><span class="line"></span><br><span class="line">+---------------+---------------+--------------------+</span><br><span class="line">| Fruit         | Price         | Advantages         |</span><br><span class="line">+===============+===============+====================+</span><br><span class="line">| Bananas       | $1.34         | - built-in wrapper |</span><br><span class="line">|               |               | - bright color     |</span><br><span class="line">+---------------+---------------+--------------------+</span><br><span class="line">| Oranges       | $2.10         | - cures scurvy     |</span><br><span class="line">|               |               | - tasty            |</span><br><span class="line">+---------------+---------------+--------------------+</span><br></pre></td></tr></table></figure>
-<p>以 <code>=</code>
-串成的一行區分了表頭與表格本體，這在沒有表頭的表格中也是可以省略的。在格框表格中的資料格可以包含任意的區塊元素（複數段落、代碼區塊、清單等等）。不支援對齊，也不支援橫跨多欄或縱跨多列的資料格。格框表格可以在
-<a target="_blank" rel="noopener" href="http://table.sourceforge.net/">Emacs table mode</a>
-下輕鬆建立。</p>
-<h3 id="管線表格"><a href="#管線表格">管線表格</a></h3>
-<p><strong>Extension:</strong>
-<code>pipe_tables</code><strong>,</strong>
-<code>table_captions</code></p>
+<p>以 <code>=</code><br>串成的一行區分了表頭與表格本體，這在沒有表頭的表格中也是可以省略的。在格框表格中的資料格可以包含任意的區塊元素（複數段落、代碼區塊、清單等等）。不支援對齊，也不支援橫跨多欄或縱跨多列的資料格。格框表格可以在<br><a target="_blank" rel="noopener" href="http://table.sourceforge.net/">Emacs table mode</a> 下輕鬆建立。</p>
+<h3 id="管線表格"><a href="#管線表格" class="headerlink" title="管線表格"></a><a href="#管線表格">管線表格</a></h3><p><strong>Extension:</strong> <code>pipe_tables</code><strong>,</strong> <code>table_captions</code></p>
 <p>管線表格看起來像這樣：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">| Right | Left | Default | Center |</span><br><span class="line">|------:|:-----|---------|:------:|</span><br><span class="line">|   12  |  12  |    12   |    12  |</span><br><span class="line">|  123  |  123 |   123   |   123  |</span><br><span class="line">|    1  |    1 |     1   |     1  |</span><br><span class="line"></span><br><span class="line">  : Demonstration of simple table syntax.</span><br></pre></td></tr></table></figure>
-<p>這個語法與 <a
-target="_blank" rel="noopener" href="http://michelf.ca/projects/php-markdown/extra/#table">PHP markdown
-extra 中的表格語法</a>
-相同。開始與結尾的管線字元是可選的，但各直行間則必須以管線區隔。上面範例中的冒號表明了對齊方式。表頭可以省略，但表頭下的水平虛線必須保留，因為虛線上定義了資料欄的對齊方式。</p>
+<p>這個語法與 <a target="_blank" rel="noopener" href="http://michelf.ca/projects/php-markdown/extra/#table">PHP markdown extra<br>中的表格語法</a><br>相同。開始與結尾的管線字元是可選的，但各直行間則必須以管線區隔。上面範例中的冒號表明了對齊方式。表頭可以省略，但表頭下的水平虛線必須保留，因為虛線上定義了資料欄的對齊方式。</p>
 <p>因為管線界定了各欄之間的邊界，表格的原始碼並不需要像上面例子中各欄之間保持直行對齊。所以，底下一樣是個完全合法（雖然醜陋）的管線表格：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fruit| price</span><br><span class="line">-----|-----:</span><br><span class="line">apple|2.05</span><br><span class="line">pear|1.37</span><br><span class="line">orange|3.09</span><br></pre></td></tr></table></figure>
 <p>管線表格的資料格不能包含如段落、清單之類的區塊元素，也不能包含複數行文字。</p>
-<p>注意：Pandoc 也可以看得懂以下形式的管線表格，這是由 Emacs 的
-orgtbl-mod 所繪製：</p>
+<p>注意：Pandoc 也可以看得懂以下形式的管線表格，這是由 Emacs 的 orgtbl-mod 所繪製：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| One | Two   |</span><br><span class="line">|-----+-------|</span><br><span class="line">| my  | table |</span><br><span class="line">| is  | nice  |</span><br></pre></td></tr></table></figure>
-<p>主要的差別在於以 <code>+</code> 取代了部分的 <code>|</code>。其他的
-orgtbl
-功能並未支援。如果要指定非預設的直行對齊形式，你仍然需要在上面的表格中自行加入冒號。</p>
-<h2 id="文件標題區塊"><a href="#文件標題區塊">文件標題區塊</a></h2>
-<p>（譯註：本節中提到的「標題」均指 Title，而非 Headers）</p>
+<p>主要的差別在於以 <code>+</code> 取代了部分的 <code>|</code>。其他的 orgtbl<br>功能並未支援。如果要指定非預設的直行對齊形式，你仍然需要在上面的表格中自行加入冒號。</p>
+<h2 id="文件標題區塊"><a href="#文件標題區塊" class="headerlink" title="文件標題區塊"></a><a href="#文件標題區塊">文件標題區塊</a></h2><p>（譯註：本節中提到的「標題」均指 Title，而非 Headers）</p>
 <p><strong>Extension:</strong> <code>pandoc_title_block</code></p>
 <p>如果檔案以文件標題（Title）區塊開頭</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">% title</span><br><span class="line">% author(s) (separated by semicolons)</span><br><span class="line">% date</span><br></pre></td></tr></table></figure>
-<p>這部份將不會作為一般文字處理，而會以書目資訊的方式解析。（這可用在像是單一
-LaTeX 或是 HTML
-輸出文件的書名上。）這個區塊僅能包含標題，或是標題與作者，或是標題、作者與日期。如果你只想包含作者卻不想包含標題，或是只有標題與日期而沒有作者，你得利用空白行：</p>
+<p>這部份將不會作為一般文字處理，而會以書目資訊的方式解析。（這可用在像是單一 LaTeX<br>或是 HTML<br>輸出文件的書名上。）這個區塊僅能包含標題，或是標題與作者，或是標題、作者與日期。如果你只想包含作者卻不想包含標題，或是只有標題與日期而沒有作者，你得利用空白行：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">%</span><br><span class="line">% Author</span><br><span class="line"></span><br><span class="line">% My title</span><br><span class="line">%</span><br><span class="line">% June 15, 2006</span><br></pre></td></tr></table></figure>
 <p>標題可以包含多行文字，但接續行必須以空白字元開頭，像是：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">% My title</span><br><span class="line">  on multiple lines</span><br></pre></td></tr></table></figure>
 <p>如果文件有多個作者，作者也可以分列在不同行並以空白字元作開頭，或是以分號間隔，或是兩者並行。所以，下列各種寫法得到的結果都是相同的：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">% Author One</span><br><span class="line">  Author Two</span><br><span class="line"></span><br><span class="line">% Author One; Author Two</span><br><span class="line"></span><br><span class="line">% Author One;</span><br><span class="line">  Author Two</span><br></pre></td></tr></table></figure>
 <p>日期就只能寫在一行之內。</p>
-<p>所有這三個 metadata
-欄位都可以包含標準的行內格式（斜體、連結、腳註等等）。</p>
-<p>文件標題區塊一定會被分析處理，但只有在 <code>--standaline</code>
-(<code>-s</code>) 選項被設定時才會影響輸出內容。在輸出 HTML
-時，文件標題會出現的地方有兩個：一個是在文件的 <code>&lt;head&gt;</code>
-區塊裡－－這會顯示在瀏覽器的視窗標題上－－另外一個是文件的
-<code>&lt;body&gt;</code> 區塊最前面。位於 <code>&lt;head&gt;</code>
-裡的文件標題可以選擇性地加上前綴文字（透過 <code>--title-prefix</code>
-或 <code>-T</code> 選項）。而在 <code>&lt;body&gt;</code>
-裡的文件標題會以 H1 元素呈現，並附帶 “title” 類別 (class)，這樣就能藉由
-CSS 來隱藏顯示或重新定義格式。如果以 <code>-T</code>
-選項指定了標題前綴文字，卻沒有設定文件標題區塊裡的標題，那麼前綴文字本身就會被當作是
-HTML 的文件標題。</p>
-<p>而 man page 的輸出器會分析文件標題區塊的標題行，以解出標題、man page
-section number，以及其他頁眉 (header) 頁腳 (footer)
-所需要的資訊。一般會假設標題行的第一個單字為標題，標題後也許會緊接著一個以括號包住的單一數字，代表
-section
-number（標題與括號之間沒有空白）。在此之後的其他文字則為頁腳與頁眉文字。頁腳與頁眉文字之間是以單獨的一個管線符號
-(<code>|</code>) 作為區隔。所以，</p>
+<p>所有這三個 metadata 欄位都可以包含標準的行內格式（斜體、連結、腳註等等）。</p>
+<p>文件標題區塊一定會被分析處理，但只有在 <code>--standaline</code> (<code>-s</code>)<br>選項被設定時才會影響輸出內容。在輸出 HTML<br>時，文件標題會出現的地方有兩個：一個是在文件的 <code>&lt;head&gt;</code><br>區塊裡－－這會顯示在瀏覽器的視窗標題上－－另外一個是文件的 <code>&lt;body&gt;</code><br>區塊最前面。位於 <code>&lt;head&gt;</code> 裡的文件標題可以選擇性地加上前綴文字（透過<br><code>--title-prefix</code> 或 <code>-T</code> 選項）。而在 <code>&lt;body&gt;</code> 裡的文件標題會以 H1<br>元素呈現，並附帶 “title” 類別 (class)，這樣就能藉由 CSS<br>來隱藏顯示或重新定義格式。如果以 <code>-T</code><br>選項指定了標題前綴文字，卻沒有設定文件標題區塊裡的標題，那麼前綴文字本身就會被當作是<br>HTML 的文件標題。</p>
+<p>而 man page 的輸出器會分析文件標題區塊的標題行，以解出標題、man page section<br>number，以及其他頁眉 (header) 頁腳 (footer)<br>所需要的資訊。一般會假設標題行的第一個單字為標題，標題後也許會緊接著一個以括號包住的單一數字，代表<br>section<br>number（標題與括號之間沒有空白）。在此之後的其他文字則為頁腳與頁眉文字。頁腳與頁眉文字之間是以單獨的一個管線符號<br>(<code>|</code>) 作為區隔。所以，</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">% PANDOC(1)</span><br></pre></td></tr></table></figure>
-<p>將會產生一份標題為 <code>PANDOC</code> 且 section 為 1 的 man
-page。</p>
+<p>將會產生一份標題為 <code>PANDOC</code> 且 section 為 1 的 man page。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">% PANDOC(1) Pandoc User Manuals</span><br></pre></td></tr></table></figure>
 <p>產生的 man page 會再加上 “Pandoc User Manuals” 在頁腳處。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">% PANDOC(1) Pandoc User Manuals | Version 4.0</span><br></pre></td></tr></table></figure>
 <p>產生的 man page 會再加上 “Version 4.0” 在頁眉處。</p>
-<h2 id="反斜線跳脫字元"><a
-href="#反斜線跳脫字元">反斜線跳脫字元</a></h2>
-<p><strong>Extension:</strong> <code>all_symbols_escapable</code></p>
+<h2 id="反斜線跳脫字元"><a href="#反斜線跳脫字元" class="headerlink" title="反斜線跳脫字元"></a><a href="#反斜線跳脫字元">反斜線跳脫字元</a></h2><p><strong>Extension:</strong> <code>all_symbols_escapable</code></p>
 <p>除了在代碼區塊或行內代碼之外，任何標點符號或空白字元前面只要加上一個反斜線，都能使其保留字面原義，而不會進行格式的轉義解讀。因此，舉例來說，下面的寫法</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*\*hello\**</span><br></pre></td></tr></table></figure>
 <p>輸出後會得到</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;em&gt;*hello*&lt;/em&gt;</span><br></pre></td></tr></table></figure>
 <p>而不是</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;strong&gt;hello&lt;/strong&gt;</span><br></pre></td></tr></table></figure>
-<p>這條規則比原始的 markdown
-規則來得好記許多，原始規則中，只有以下字元才有支援反斜線跳脫，不作進一步轉義：</p>
+<p>這條規則比原始的 markdown<br>規則來得好記許多，原始規則中，只有以下字元才有支援反斜線跳脫，不作進一步轉義：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\`*_&#123;&#125;[]()&gt;#+-.!</span><br></pre></td></tr></table></figure>
-<p>（然而，如果使用了 <code>markdown_strict</code>
-格式，那麼就會採用原始的 markdown 規則）</p>
-<p>一個反斜線之後的空白字元會被解釋為不斷行的空白 (nonbreaking
-space)。這在 TeX 的輸出中會顯示為 <code>~</code>，而在 HTML 與 XML
-則是顯示為 <code>\&amp;#160;</code> 或 <code>\&amp;nbsp;</code>。</p>
-<p>一個反斜線之後的換行字元（例如反斜線符號出現在一行的最尾端）則會被解釋為強制換行。這在
-TeX 的輸出中會顯示為 <code>\\</code>，而在 HTML 裡則是
-<code>&lt;br /&gt;</code>。相對於原始 markdown
-是以在行尾加上兩個空白字元這種「看不見」的方式進行強制換行，反斜線接換行字元會是比較好的替代方案。</p>
+<p>（然而，如果使用了 <code>markdown_strict</code> 格式，那麼就會採用原始的 markdown 規則）</p>
+<p>一個反斜線之後的空白字元會被解釋為不斷行的空白 (nonbreaking space)。這在 TeX<br>的輸出中會顯示為 <code>~</code>，而在 HTML 與 XML 則是顯示為 <code>\&amp;#160;</code> 或 <code>\&amp;nbsp;</code>。</p>
+<p>一個反斜線之後的換行字元（例如反斜線符號出現在一行的最尾端）則會被解釋為強制換行。這在<br>TeX 的輸出中會顯示為 <code>\\</code>，而在 HTML 裡則是 <code>&lt;br /&gt;</code>。相對於原始 markdown<br>是以在行尾加上兩個空白字元這種「看不見」的方式進行強制換行，反斜線接換行字元會是比較好的替代方案。</p>
 <p>反斜線跳脫字元在代碼上下文中不起任何作用。</p>
-<h2 id="智慧型標點符號"><a
-href="#智慧型標點符號">智慧型標點符號</a></h2>
-<p><strong>Extension</strong></p>
-<p>如果指定了 <code>--smart</code> 選項，pandoc
-將會輸出正式印刷用的標點符號，像是將 straight quotes 轉換為 curly
-quotes<a href="#fn4">4</a>、<code>---</code> 轉為破折號
-(em-dashes)，<code>--</code> 轉為連接號 (en-dashes)，以及將
-<code>...</code> 轉為刪節號。不斷行空格 (Nonbreaking spaces)
-將會插入某些縮寫詞之後，例如 “Mr.”。</p>
-<p>注意：如果你的 LaTeX template 使用了 <code>csquotes</code>
-套件，pandoc 會自動偵測並且使用 <code>\enquote&#123;...&#125;</code>
-在引言文字上。</p>
-<h2 id="行內格式"><a href="#行內格式">行內格式</a></h2>
-<h3 id="強調"><a href="#強調">強調</a></h3>
-<p>要 <em>強調</em> 某些文字，只要以 <code>*</code> 或 <code>_</code>
-符號前後包住即可，像這樣：</p>
+<h2 id="智慧型標點符號"><a href="#智慧型標點符號" class="headerlink" title="智慧型標點符號"></a><a href="#智慧型標點符號">智慧型標點符號</a></h2><p><strong>Extension</strong></p>
+<p>如果指定了 <code>--smart</code> 選項，pandoc 將會輸出正式印刷用的標點符號，像是將 straight<br>quotes 轉換為 curly quotes<a href="#fn4">4</a>、<code>---</code> 轉為破折號 (em-dashes)，<code>--</code><br>轉為連接號 (en-dashes)，以及將 <code>...</code> 轉為刪節號。不斷行空格 (Nonbreaking spaces)<br>將會插入某些縮寫詞之後，例如 “Mr.”。</p>
+<p>注意：如果你的 LaTeX template 使用了 <code>csquotes</code> 套件，pandoc 會自動偵測並且使用<br><code>\enquote&#123;...&#125;</code> 在引言文字上。</p>
+<h2 id="行內格式"><a href="#行內格式" class="headerlink" title="行內格式"></a><a href="#行內格式">行內格式</a></h2><h3 id="強調"><a href="#強調" class="headerlink" title="強調"></a><a href="#強調">強調</a></h3><p>要 <em>強調</em> 某些文字，只要以 <code>*</code> 或 <code>_</code> 符號前後包住即可，像這樣：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">This text is _emphasized with underscores_, and this</span><br><span class="line">is *emphasized with asterisks*.</span><br></pre></td></tr></table></figure>
-<p>重複兩個 <code>*</code> 或 <code>_</code> 符號以產生
-<strong>更強烈的強調</strong>：</p>
+<p>重複兩個 <code>*</code> 或 <code>_</code> 符號以產生 <strong>更強烈的強調</strong>：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This is **strong emphasis** and __with underscores__.</span><br></pre></td></tr></table></figure>
-<p>一個前後以空白字元包住，或是前面加上反斜線的 <code>*</code> 或
-<code>_</code> 符號，都不會轉換為強調格式：</p>
+<p>一個前後以空白字元包住，或是前面加上反斜線的 <code>*</code> 或 <code>_</code><br>符號，都不會轉換為強調格式：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This is * not emphasized *, and \*neither is this\*.</span><br></pre></td></tr></table></figure>
 <p><strong>Extension:</strong> <code>intraword_underscores</code></p>
-<p>因為 <code>_</code> 字元有時會使用在單字或是 ID 之中，所以 pandoc
-不會把被字母包住的 <code>_</code>
-解讀為強調標記。如果有需要特別強調單字中的一部分，就用
-<code>*</code>：</p>
+<p>因為 <code>_</code> 字元有時會使用在單字或是 ID 之中，所以 pandoc 不會把被字母包住的 <code>_</code><br>解讀為強調標記。如果有需要特別強調單字中的一部分，就用 <code>*</code>：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">feas*ible*, not feas*able*.</span><br></pre></td></tr></table></figure>
-<h3 id="刪除線"><a href="#刪除線">刪除線</a></h3>
-<p><strong>Extension:</strong> <code>strikeout</code></p>
-<p>要將一段文字加上水平線作為刪除效果，將該段文字前後以 <code>~~</code>
-包住即可。例如，</p>
+<h3 id="刪除線"><a href="#刪除線" class="headerlink" title="刪除線"></a><a href="#刪除線">刪除線</a></h3><p><strong>Extension:</strong> <code>strikeout</code></p>
+<p>要將一段文字加上水平線作為刪除效果，將該段文字前後以 <code>~~</code> 包住即可。例如，</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This ~~is deleted text.~~</span><br></pre></td></tr></table></figure>
-<h3 id="上標與下標"><a href="#上標與下標">上標與下標</a></h3>
-<p><strong>Extension:</strong>
-<code>superscript</code><strong>,</strong> <code>subscript</code></p>
-<p>要輸入上標可以用 <code>^</code>
-字元將要上標的文字包起來；要輸入下標可以用 <code>~</code>
-字元將要下標的文字包起來。直接看範例，</p>
+<h3 id="上標與下標"><a href="#上標與下標" class="headerlink" title="上標與下標"></a><a href="#上標與下標">上標與下標</a></h3><p><strong>Extension:</strong> <code>superscript</code><strong>,</strong> <code>subscript</code></p>
+<p>要輸入上標可以用 <code>^</code> 字元將要上標的文字包起來；要輸入下標可以用 <code>~</code><br>字元將要下標的文字包起來。直接看範例，</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">H~2~O is a liquid.  2^10^ is 1024.</span><br></pre></td></tr></table></figure>
-<p>如果要上標或下標的文字中包含了空白，那麼這個空白字元之前必須加上反斜線。（這是為了避免一般使用下的
-<code>~</code> 和 <code>^</code>
-在非預期的情況下產生出意外的上標或下標。）所以，如果你想要讓字母 P
-後面跟著下標文字 ‘a cat’，那麼就要輸入 <code>P~a\ cat~</code>，而不是
-<code>P~a cat~</code>。</p>
-<h3 id="字面文字"><a href="#字面文字">字面文字</a></h3>
-<p>要讓一小段文字直接以其字面形式呈現，可以用反引號將其包住：</p>
+<p>如果要上標或下標的文字中包含了空白，那麼這個空白字元之前必須加上反斜線。（這是為了避免一般使用下的<br><code>~</code> 和 <code>^</code> 在非預期的情況下產生出意外的上標或下標。）所以，如果你想要讓字母 P<br>後面跟著下標文字 ‘a cat’，那麼就要輸入 <code>P~a\ cat~</code>，而不是 <code>P~a cat~</code>。</p>
+<h3 id="字面文字"><a href="#字面文字" class="headerlink" title="字面文字"></a><a href="#字面文字">字面文字</a></h3><p>要讓一小段文字直接以其字面形式呈現，可以用反引號將其包住：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">What is the difference between `&gt;&gt;=` and `&gt;&gt;`?</span><br></pre></td></tr></table></figure>
 <p>如果字面文字中也包含了反引號，那就使用雙重反引號包住：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Here is a literal backtick `` ` ``.</span><br></pre></td></tr></table></figure>
 <p>（在起始反引號後的空白以及結束反引號前的空白都會被忽略。）</p>
 <p>一般性的規則如下，字面文字區段是以連續的反引號字元作為開始（反引號後的空白字元為可選），一直到同樣數目的反引號字元出現才結束（反引號前的空白字元也為可選）。</p>
-<p>要注意的是，反斜線跳脫字元（以及其他 markdown
-結構）在字面文字的上下文中是沒有效果的：</p>
+<p>要注意的是，反斜線跳脫字元（以及其他 markdown<br>結構）在字面文字的上下文中是沒有效果的：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This is a backslash followed by an asterisk: `\*`.</span><br></pre></td></tr></table></figure>
 <p><strong>Extension:</strong> <code>inline_code_attributes</code></p>
-<p>與<a
-href="#圍欄代碼區塊">圍欄代碼區塊</a>一樣，字面文字也可以附加屬性：</p>
+<p>與<a href="#圍欄代碼區塊">圍欄代碼區塊</a>一樣，字面文字也可以附加屬性：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`&lt;$&gt;`&#123;.haskell&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="數學"><a href="#數學">數學</a></h2>
-<p><strong>Extension:</strong> <code>tex_math_dollars</code></p>
-<p>所有介於兩個 <code>$</code> 字元之間的內容將會被視為 TeX
-數學公式處理。開頭的 <code>$</code> 右側必須立刻接上任意文字，而結尾
-<code>$</code>
-的左側同樣也必須緊挨著文字。這樣一來，<code>$20,000 and $30,000</code>
-就不會被當作數學公式處理了。如果基於某些原因，有必須使用 <code>$</code>
-符號將其他文字括住的需求時，那麼可以在 <code>$</code>
-前使用反斜線跳脫字元，這樣 <code>$</code>
-就不會被當作數學公式的分隔符。</p>
-<p>TeX 數學公式會在所有輸出格式中印出。至於會以什麼方式演算編排 (render)
-則取決於輸出的格式：</p>
-<dl>
-<dt>Markdown, LaTeX, Org-Mode, ConTeXt</dt>
-<dd>
-<p>公式會以字面文字呈現在兩個 <code>$</code> 符號之間。</p>
-</dd>
-<dt>reStructuredText</dt>
-<dd>
-<p>公式會使用 <a
-target="_blank" rel="noopener" href="http://www.american.edu/econ/itex2mml/mathhack.rst">此處</a>
-所描述的 <code>:math:</code> 這個 “interpreted text role”
-來進行演算編排。</p>
-</dd>
-<dt>AsciiDoc</dt>
-<dd>
-<p>公式會以 <code>latexmath:[...]</code> 演算編排。</p>
-</dd>
-<dt>Texinfo</dt>
-<dd>
-<p>公式會在 <code>@math</code> 指令中演算編排。</p>
-</dd>
-<dt>groff man</dt>
-<dd>
-<p>公式會以去掉 <code>$</code> 後的字面文字演算編排。</p>
-</dd>
-<dt>MediaWiki</dt>
-<dd>
-<p>公式會在 <code>&lt;math&gt;</code> 標籤中演算編排。</p>
-</dd>
-<dt>Textile</dt>
-<dd>
-<p>公式會在 <code>&lt;span class="math"&gt;</code> 標籤中演算編排。</p>
-</dd>
-<dt>RTF, OpenDocument, ODT</dt>
-<dd>
-<p>如果可以的話，公式會以 unicode
-字元演算編排，不然就直接使用字面字元。</p>
-</dd>
-<dt>Docbook</dt>
-<dd>
-<p>如果使用了 <code>--mathml</code> 旗標，公式就會在
-<code>inlineequation</code> 或 <code>informalequation</code> 標籤中使用
-mathml 演算編排。否則就會盡可能使用 unicode 字元演算編排。</p>
-</dd>
-<dt>Docx</dt>
-<dd>
-<p>公式會以 OMML 數學標記的方式演算編排。</p>
-</dd>
-<dt>FictionBook2</dt>
-<dd>
-<p>如果有使用 <code>--webtex</code> 選項，公式會以 Google Charts
-或其他相容的網路服務演算編排為圖片，並下載嵌入於電子書中。否則就會以字面文字顯示。</p>
-</dd>
-<dt>HTML, Slidy, DZSlides, S5, EPUB</dt>
-<dd>
-<p>公式會依照以下命令列選項的設置，以不同的方法演算編排為 HTML
-代碼。</p>
-<ol type="1">
-<li><p>預設方式是將 TeX 數學公式盡可能地以 unicode 字元演算編排，如同
-RTF、DocBook 以及 OpenDocument 的輸出。公式會被放在附有屬性
-<code>class="math"</code> 的 <code>span</code>
-標籤內，所以可以在需要時給予不同的樣式，使其突出於周遭的文字內容。</p></li>
-<li><p>如果使用了 <code>--latexmathml</code> 選項，TeX
-數學公式會被顯示於 <code>$</code> 或 <code>$$</code> 字元中，並放在附帶
-<code>LaTeX</code> 類別的 <code>&lt;span&gt;</code> 標籤裡。這段內容會用
-<a target="_blank" rel="noopener" href="http://math.etsu.edu/LaTeXMathML/">LaTeXMathML</a> script
-演算編排為數學公式。（這個方法無法適用於所有瀏覽器，但在 Firefox
-中是有效的。在不支援 LaTeXMathML 的瀏覽器中，TeX 數學公式會單純的以兩個
-<code>$</code> 字元間的字面文字呈現。）</p></li>
-<li><p>如果使用了 <code>--jsmath</code> 選項，TeX數學公式會放在
-<code>&lt;span&gt;</code> 標籤（用於行內數學公式）或
-<code>&lt;div&gt;</code> 標籤（用於區塊數學公式）中，並附帶類別屬性
-<code>math</code>。這段內容會使用 <a
-target="_blank" rel="noopener" href="http://www.math.union.edu/~dpvc/jsmath/">jsMath</a> script
-來演算編排。</p></li>
-<li><p>如果使用了 <code>--mimetex</code> 選項，<a
-target="_blank" rel="noopener" href="http://www.forkosh.com/mimetex.html">mimeTeX</a> CGI script
-會被呼叫來產生每個 TeX
-數學公式的圖片。這適用於所有瀏覽器。<code>--mimetex</code>
-選項有一個可選的 URL 參數。如果沒有指定 URL，它會假設 mimeTeX CGI script
-的位置在 <code>/cgi-bin/mimetex.cig</code>。</p></li>
-<li><p>如果使用了 <code>--gladtex</code> 選項，TeX 數學公式在 HTML
-的輸出中會被 <code>&lt;eq&gt;</code> 標籤包住。產生的 <code>htex</code>
-檔案之後可以透過 <a
-target="_blank" rel="noopener" href="http://ans.hsh.no/home/mgg/gladtex/">gladTeX</a>
-處理，這會針對每個數學公式生成圖片，並於最後生成一個包含這些圖片連結的
-<code>html</code> 檔案。所以，整個處理流程如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pandoc -s --gladtex myfile.txt -o myfile.htex</span><br><span class="line">gladtex -d myfile-images myfile.htex</span><br><span class="line"># produces myfile.html and images in myfile-images</span><br></pre></td></tr></table></figure></li>
-<li><p>如果使用了 <code>--webtex</code> 選項，TeX 數學公式會被轉換為
-<code>&lt;img&gt;</code> 標籤並連結到一個用以轉換公式為圖片的外部
-script。公式將會編碼為 URL 可接受格式並且與指定的 URL
-參數串接。如果沒有指定 URL，那麼將會使用 Google Chart API
-(<code>http://chart.apis.google.com/chart?cht=tx&amp;chl=</code>)。</p></li>
-<li><p>如果使用了 <code>--mathjax</code> 選項，TeX 數學公式將會被包在
-<code>\(...\)</code>（用於行內數學公式）或
-<code>\[...\]</code>（用於區塊數學公式）之間顯示，並且放在附帶類別
-<code>math</code> 的 <code>&lt;span&gt;</code> 標籤之中。這段內容會使用
-<a target="_blank" rel="noopener" href="http://www.mathjax.org/">MathJax</a> script
-演算編排為頁面上的數學公式。</p></li>
-</ol>
-</dd>
-</dl>
-<h2 id="raw-html"><a href="#raw-html">Raw HTML</a></h2>
-<p><strong>Extension:</strong> <code>raw_html</code></p>
-<p>Markdown 允許你在文件中的任何地方插入原始 HTML（或
-DocBook）指令（除了在字面文字上下文處，此時的 <code>&lt;</code>,
-<code>&gt;</code> 和 <code>&amp;</code>
-都會按其字面意義顯示）。（技術上而言這不算擴充功能，因為原始 markdown
-本身就有提供此功能，但做成擴充形式便可以在有特殊需要的時候關閉此功能。）</p>
-<p>輸出 HTML, S5, Slidy, Slideous, DZSlides, EPUB, Markdown 以及 Textile
-等格式時，原始 HTML
-代碼會不作修改地保留至輸出檔案中；而其他格式的輸出內容則會將原始 HTML
-代碼去除掉。</p>
+<h2 id="數學"><a href="#數學" class="headerlink" title="數學"></a><a href="#數學">數學</a></h2><p><strong>Extension:</strong> <code>tex_math_dollars</code></p>
+<p>所有介於兩個 <script type="math/tex">` 字元之間的內容將會被視為 TeX 數學公式處理。開頭的 `</script><br>右側必須立刻接上任意文字，而結尾 <code>$</code><br>的左側同樣也必須緊挨著文字。這樣一來，<code>$20,000 and $30,000</code><br>就不會被當作數學公式處理了。如果基於某些原因，有必須使用 <code>$</code><br>符號將其他文字括住的需求時，那麼可以在 <script type="math/tex">` 前使用反斜線跳脫字元，這樣 `</script><br>就不會被當作數學公式的分隔符。</p>
+<p>TeX 數學公式會在所有輸出格式中印出。至於會以什麼方式演算編排 (render)<br>則取決於輸出的格式：</p>
+<p>Markdown, LaTeX, Org-Mode, ConTeXt</p>
+<p>~   公式會以字面文字呈現在兩個 <code>$</code> 符號之間。</p>
+<p>reStructuredText</p>
+<p>~   公式會使用 <a target="_blank" rel="noopener" href="http://www.american.edu/econ/itex2mml/mathhack.rst">此處</a><br>    所描述的 <code>:math:</code> 這個 “interpreted text role” 來進行演算編排。</p>
+<p>AsciiDoc</p>
+<p>~   公式會以 <code>latexmath:[...]</code> 演算編排。</p>
+<p>Texinfo</p>
+<p>~   公式會在 <code>@math</code> 指令中演算編排。</p>
+<p>groff man</p>
+<p>~   公式會以去掉 <code>$</code> 後的字面文字演算編排。</p>
+<p>MediaWiki</p>
+<p>~   公式會在 <code>&lt;math&gt;</code> 標籤中演算編排。</p>
+<p>Textile</p>
+<p>~   公式會在 <code>&lt;span class=&quot;math&quot;&gt;</code> 標籤中演算編排。</p>
+<p>RTF, OpenDocument, ODT</p>
+<p>~   如果可以的話，公式會以 unicode 字元演算編排，不然就直接使用字面字元。</p>
+<p>Docbook</p>
+<p>~   如果使用了 <code>--mathml</code> 旗標，公式就會在 <code>inlineequation</code> 或<br>    <code>informalequation</code> 標籤中使用 mathml 演算編排。否則就會盡可能使用 unicode<br>    字元演算編排。</p>
+<p>Docx</p>
+<p>~   公式會以 OMML 數學標記的方式演算編排。</p>
+<p>FictionBook2</p>
+<p>~   如果有使用 <code>--webtex</code> 選項，公式會以 Google Charts<br>    或其他相容的網路服務演算編排為圖片，並下載嵌入於電子書中。否則就會以字面文字顯示。</p>
+<p>HTML, Slidy, DZSlides, S5, EPUB</p>
+<p>~   公式會依照以下命令列選項的設置，以不同的方法演算編排為 HTML 代碼。</p>
+<pre><code>1.  預設方式是將 TeX 數學公式盡可能地以 unicode 字元演算編排，如同
+    RTF、DocBook 以及 OpenDocument 的輸出。公式會被放在附有屬性
+    `class=&quot;math&quot;` 的 `span`
+    標籤內，所以可以在需要時給予不同的樣式，使其突出於周遭的文字內容。
+
+2.  如果使用了 `--latexmathml` 選項，TeX 數學公式會被顯示於 $$` 或 `$$$
+    字元中，並放在附帶 `LaTeX` 類別的 `&lt;span&gt;` 標籤裡。這段內容會用
+    [LaTeXMathML](http://math.etsu.edu/LaTeXMathML/) script
+    演算編排為數學公式。（這個方法無法適用於所有瀏覽器，但在 Firefox
+    中是有效的。在不支援 LaTeXMathML 的瀏覽器中，TeX 數學公式會單純的以兩個
+    `$` 字元間的字面文字呈現。）
+
+3.  如果使用了 `--jsmath` 選項，TeX數學公式會放在 `&lt;span&gt;`
+    標籤（用於行內數學公式）或 `&lt;div&gt;`
+    標籤（用於區塊數學公式）中，並附帶類別屬性 `math`。這段內容會使用
+    [jsMath](http://www.math.union.edu/~dpvc/jsmath/) script 來演算編排。
+
+4.  如果使用了 `--mimetex`
+    選項，[mimeTeX](http://www.forkosh.com/mimetex.html) CGI script
+    會被呼叫來產生每個 TeX 數學公式的圖片。這適用於所有瀏覽器。`--mimetex`
+    選項有一個可選的 URL 參數。如果沒有指定 URL，它會假設 mimeTeX CGI script
+    的位置在 `/cgi-bin/mimetex.cig`。
+
+5.  如果使用了 `--gladtex` 選項，TeX 數學公式在 HTML 的輸出中會被 `&lt;eq&gt;`
+    標籤包住。產生的 `htex` 檔案之後可以透過
+    [gladTeX](http://ans.hsh.no/home/mgg/gladtex/)
+    處理，這會針對每個數學公式生成圖片，並於最後生成一個包含這些圖片連結的
+    `html` 檔案。所以，整個處理流程如下：
+
+    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pandoc -s --gladtex myfile.txt -o myfile.htex</span><br><span class="line">gladtex -d myfile-images myfile.htex</span><br><span class="line"># produces myfile.html and images in myfile-images</span><br></pre></td></tr></table></figure>
+
+6.  如果使用了 `--webtex` 選項，TeX 數學公式會被轉換為 `&lt;img&gt;`
+    標籤並連結到一個用以轉換公式為圖片的外部 script。公式將會編碼為 URL
+    可接受格式並且與指定的 URL 參數串接。如果沒有指定 URL，那麼將會使用
+    Google Chart API (`http://chart.apis.google.com/chart?cht=tx&amp;chl=`)。
+
+7.  如果使用了 `--mathjax` 選項，TeX 數學公式將會被包在
+    `\(...\)`（用於行內數學公式）或
+    `\[...\]`（用於區塊數學公式）之間顯示，並且放在附帶類別 `math` 的
+    `&lt;span&gt;` 標籤之中。這段內容會使用 [MathJax](http://www.mathjax.org/)
+    script 演算編排為頁面上的數學公式。
+</code></pre><h2 id="Raw-HTML"><a href="#Raw-HTML" class="headerlink" title="Raw HTML"></a><a href="#raw-html">Raw HTML</a></h2><p><strong>Extension:</strong> <code>raw_html</code></p>
+<p>Markdown 允許你在文件中的任何地方插入原始 HTML（或<br>DocBook）指令（除了在字面文字上下文處，此時的 <code>&lt;</code>, <code>&gt;</code> 和 <code>&amp;</code><br>都會按其字面意義顯示）。（技術上而言這不算擴充功能，因為原始 markdown<br>本身就有提供此功能，但做成擴充形式便可以在有特殊需要的時候關閉此功能。）</p>
+<p>輸出 HTML, S5, Slidy, Slideous, DZSlides, EPUB, Markdown 以及 Textile<br>等格式時，原始 HTML<br>代碼會不作修改地保留至輸出檔案中；而其他格式的輸出內容則會將原始 HTML<br>代碼去除掉。</p>
 <p><strong>Extension:</strong> <code>markdown_in_html_blocks</code></p>
-<p>原始 markdown 允許你插入 HTML「區塊」：所謂的 HTML
-區塊是指，上下各由一個空白行所隔開，開始與結尾均由所在行最左側開始的一連串對稱均衡的
-HTML 標籤。在這個區塊中，任何內容都會當作是 HTML 來分析，而不再視為
-markdown；所以（舉例來說），<code>*</code> 符號就不再代表強調。</p>
-<p>當指定格式為 <code>markdown_strict</code> 時，Pandoc
-會以上述方式處理；但預設情況下，Pandoc 能夠以 markdown 語法解讀 HTML
-區塊標籤中的內容。舉例說明，Pandoc 能夠將底下這段</p>
+<p>原始 markdown 允許你插入 HTML「區塊」：所謂的 HTML<br>區塊是指，上下各由一個空白行所隔開，開始與結尾均由所在行最左側開始的一連串對稱均衡的<br>HTML 標籤。在這個區塊中，任何內容都會當作是 HTML 來分析，而不再視為<br>markdown；所以（舉例來說），<code>*</code> 符號就不再代表強調。</p>
+<p>當指定格式為 <code>markdown_strict</code> 時，Pandoc 會以上述方式處理；但預設情況下，Pandoc<br>能夠以 markdown 語法解讀 HTML 區塊標籤中的內容。舉例說明，Pandoc 能夠將底下這段</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;table&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;*one*&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;[a link](http://google.com)&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
 <p>轉換為</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;table&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;&lt;em&gt;one&lt;/em&gt;&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;&lt;a href=&quot;http://google.com&quot;&gt;a link&lt;/a&gt;&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
 <p>而 <code>Markdown.pl</code> 則是保留該段原樣。</p>
-<p>這個規則只有一個例外：那就是介於 <code>&lt;script&gt;</code> 與
-<code>&lt;style&gt;</code> 之間的文字都不會被拿來當作 markdown
-解讀。</p>
-<p>這邊與原始 markdown 的分歧，主要是為了讓 markdown 能夠更便利地混入
-HTML 區塊元素。比方說，一段 markdown 文字可以用 <code>&lt;div&gt;</code>
-標籤將其前後包住來進行樣式指定，而不用擔心裡面的 markdown
-不會被解譯到。</p>
-<h2 id="raw-tex"><a href="#raw-tex">Raw TeX</a></h2>
-<p><strong>Extension:</strong> <code>raw_tex</code></p>
-<p>除了 HTML 之外，pandoc 也接受文件中嵌入原始 LaTeX, TeX 以及 ConTeXt
-代碼。行內 TeX 指令會被保留並不作修改地輸出至 LaTeX 與 ConTeXt
-格式中。所以，舉例來說，你可以使用 LaTeX 來導入 BibTeX 的引用文獻：</p>
+<p>這個規則只有一個例外：那就是介於 <code>&lt;script&gt;</code> 與 <code>&lt;style&gt;</code><br>之間的文字都不會被拿來當作 markdown 解讀。</p>
+<p>這邊與原始 markdown 的分歧，主要是為了讓 markdown 能夠更便利地混入 HTML<br>區塊元素。比方說，一段 markdown 文字可以用 <code>&lt;div&gt;</code><br>標籤將其前後包住來進行樣式指定，而不用擔心裡面的 markdown 不會被解譯到。</p>
+<h2 id="Raw-TeX"><a href="#Raw-TeX" class="headerlink" title="Raw TeX"></a><a href="#raw-tex">Raw TeX</a></h2><p><strong>Extension:</strong> <code>raw_tex</code></p>
+<p>除了 HTML 之外，pandoc 也接受文件中嵌入原始 LaTeX, TeX 以及 ConTeXt 代碼。行內<br>TeX 指令會被保留並不作修改地輸出至 LaTeX 與 ConTeXt<br>格式中。所以，舉例來說，你可以使用 LaTeX 來導入 BibTeX 的引用文獻：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This result was proved in \cite&#123;jones.1967&#125;.</span><br></pre></td></tr></table></figure>
 <p>請注意在 LaTeX 環境下時，像是底下</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;tabular&#125;&#123;|l|l|&#125;\hline</span><br><span class="line">Age &amp; Frequency \\ \hline</span><br><span class="line">18--25  &amp; 15 \\</span><br><span class="line">26--35  &amp; 33 \\</span><br><span class="line">36--45  &amp; 22 \\ \hline</span><br><span class="line">\end&#123;tabular&#125;</span><br></pre></td></tr></table></figure>
-<p>位在 <code>begin</code> 與 <code>end</code>
-標籤之間的內容，都會被當作是原始 LaTeX 資料解讀，而不會視為
-markdown。</p>
-<p>行內 LaTeX 在輸出至 Markdown, LaTeX 及 ConTeXt
-之外的格式時會被忽略掉。</p>
-<h2 id="latex-巨集"><a href="#latex-巨集">LaTeX 巨集</a></h2>
-<p><strong>Extension:</strong> <code>latex_macros</code></p>
-<p>當輸出格式不是 LaTeX 時，pandoc 會分析 LaTeX 的
-<code>\newcommand</code> 和 <code>\renewcommand</code>
-定義，並套用其產生的巨集到所有 LaTeX
-數學公式中。所以，舉例來說，下列指令對於所有的輸出格式均有作用，而非僅僅作用於
-LaTeX 格式：</p>
+<p>位在 <code>begin</code> 與 <code>end</code> 標籤之間的內容，都會被當作是原始 LaTeX<br>資料解讀，而不會視為 markdown。</p>
+<p>行內 LaTeX 在輸出至 Markdown, LaTeX 及 ConTeXt 之外的格式時會被忽略掉。</p>
+<h2 id="LaTeX-巨集"><a href="#LaTeX-巨集" class="headerlink" title="LaTeX 巨集"></a><a href="#latex-巨集">LaTeX 巨集</a></h2><p><strong>Extension:</strong> <code>latex_macros</code></p>
+<p>當輸出格式不是 LaTeX 時，pandoc 會分析 LaTeX 的 <code>\newcommand</code> 和 <code>\renewcommand</code><br>定義，並套用其產生的巨集到所有 LaTeX<br>數學公式中。所以，舉例來說，下列指令對於所有的輸出格式均有作用，而非僅僅作用於<br>LaTeX 格式：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">\newcommand&#123;\tuple&#125;[1]&#123;\langle #1 \rangle&#125;</span><br><span class="line"></span><br><span class="line">$\tuple&#123;a, b, c&#125;$</span><br></pre></td></tr></table></figure>
-<p>在 LaTeX 的輸出中，<code>\newcommand</code>
-定義會單純不作修改地保留至輸出結果。</p>
-<h2 id="連結"><a href="#連結">連結</a></h2>
-<p>Markdown 接受以下數種指定連結的方式。</p>
-<h3 id="自動連結"><a href="#自動連結">自動連結</a></h3>
-<p>如果你用角括號將一段 URL 或是 email
-位址包起來，它會自動轉換成連結：</p>
+<p>在 LaTeX 的輸出中，<code>\newcommand</code> 定義會單純不作修改地保留至輸出結果。</p>
+<h2 id="連結"><a href="#連結" class="headerlink" title="連結"></a><a href="#連結">連結</a></h2><p>Markdown 接受以下數種指定連結的方式。</p>
+<h3 id="自動連結"><a href="#自動連結" class="headerlink" title="自動連結"></a><a href="#自動連結">自動連結</a></h3><p>如果你用角括號將一段 URL 或是 email 位址包起來，它會自動轉換成連結：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;http://google.com&gt;</span><br><span class="line">&lt;sam@green.eggs.ham&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="行內連結"><a href="#行內連結">行內連結</a></h3>
-<p>一個行內連結包含了位在方括號中的連結文字，以及方括號後以圓括號包起來的
-URL。（你可以選擇性地在 URL
-後面加入連結標題，標題文字要放在引號之中。）</p>
+<h3 id="行內連結"><a href="#行內連結" class="headerlink" title="行內連結"></a><a href="#行內連結">行內連結</a></h3><p>一個行內連結包含了位在方括號中的連結文字，以及方括號後以圓括號包起來的<br>URL。（你可以選擇性地在 URL 後面加入連結標題，標題文字要放在引號之中。）</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">This is an [inline link](/url), and here&#x27;s [one with</span><br><span class="line">a title](http://fsf.org &quot;click here for a good time!&quot;).</span><br></pre></td></tr></table></figure>
 <p>方括號與圓括號之間不能有空白。連結文字可以包含格式（例如強調），但連結標題則否。</p>
-<h3 id="參考連結"><a href="#參考連結">參考連結</a></h3>
-<p>一個 <strong>明確</strong>
-的參考連結包含兩個部分，連結本身以及連結定義，其中連結定義可以放在文件的任何地方（不論是放在連結所在處之前或之後）。</p>
-<p>連結本身是由兩組方括號所組成，第一組方括號中為連結文字，第二組為連結標籤。（在兩個方括號間可以有空白。）連結定義則是以方括號框住的連結標籤作開頭，後面跟著一個冒號一個空白，再接著一個
-URL，最後可以選擇性地（在一個空白之後）加入由引號或是圓括號包住的連結標題。</p>
+<h3 id="參考連結"><a href="#參考連結" class="headerlink" title="參考連結"></a><a href="#參考連結">參考連結</a></h3><p>一個 <strong>明確</strong><br>的參考連結包含兩個部分，連結本身以及連結定義，其中連結定義可以放在文件的任何地方（不論是放在連結所在處之前或之後）。</p>
+<p>連結本身是由兩組方括號所組成，第一組方括號中為連結文字，第二組為連結標籤。（在兩個方括號間可以有空白。）連結定義則是以方括號框住的連結標籤作開頭，後面跟著一個冒號一個空白，再接著一個<br>URL，最後可以選擇性地（在一個空白之後）加入由引號或是圓括號包住的連結標題。</p>
 <p>以下是一些範例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[my label 1]: /foo/bar.html  &quot;My title, optional&quot;</span><br><span class="line">[my label 2]: /foo</span><br><span class="line">[my label 3]: http://fsf.org (The free software foundation)</span><br><span class="line">[my label 4]: /bar#special  &#x27;A title in single quotes&#x27;</span><br></pre></td></tr></table></figure>
 <p>連結的 URL 也可以選擇性地以角括號包住：</p>
@@ -1192,42 +869,23 @@ URL，最後可以選擇性地（在一個空白之後）加入由引號或是�
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[my label 3]: http://fsf.org</span><br><span class="line">  &quot;The free software foundation&quot;</span><br></pre></td></tr></table></figure>
 <p>需注意連結標籤並不區分大小寫。所以下面的例子會建立合法的連結：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Here is [my link][FOO]</span><br><span class="line"></span><br><span class="line">[Foo]: /bar/baz</span><br></pre></td></tr></table></figure>
-<p>在一個 <strong>隱性</strong>
-參考連結中，第二組方括號的內容是空的，甚至可以完全地略去：</p>
+<p>在一個 <strong>隱性</strong> 參考連結中，第二組方括號的內容是空的，甚至可以完全地略去：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">See [my website][], or [my website].</span><br><span class="line"></span><br><span class="line">[my website]: http://foo.bar.baz</span><br></pre></td></tr></table></figure>
-<p>注意：在 <code>Markdown.pl</code> 以及大多數其他 markdown
-實作中，參考連結的定義不能存在於嵌套結構中，例如清單項目或是區塊引言。Pandoc
-lifts this arbitrary seeming
-restriction。所以雖然下面的語法在幾乎所有其他實作中都是錯誤的，但在
-pandoc 中可以正確處理：</p>
+<p>注意：在 <code>Markdown.pl</code> 以及大多數其他 markdown<br>實作中，參考連結的定義不能存在於嵌套結構中，例如清單項目或是區塊引言。Pandoc<br>lifts this arbitrary seeming<br>restriction。所以雖然下面的語法在幾乎所有其他實作中都是錯誤的，但在 pandoc<br>中可以正確處理：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; My block [quote].</span><br><span class="line">&gt;</span><br><span class="line">&gt; [quote]: /foo</span><br></pre></td></tr></table></figure>
-<h3 id="內部連結"><a href="#內部連結">內部連結</a></h3>
-<p>要連結到同一份文件的其他章節，可使用自動產生的 ID（參見 <a
-href="#html-latex-與-context-的標題識別符">HTML, LaTeX 與 ConTeXt
-的標題識別符</a> 一節後半）。例如：</p>
+<h3 id="內部連結"><a href="#內部連結" class="headerlink" title="內部連結"></a><a href="#內部連結">內部連結</a></h3><p>要連結到同一份文件的其他章節，可使用自動產生的 ID（參見 <a href="#html-latex-與-context-的標題識別符">HTML, LaTeX 與 ConTeXt<br>的標題識別符</a> 一節後半）。例如：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">See the [Introduction](#introduction).</span><br></pre></td></tr></table></figure>
 <p>或是</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">See the [Introduction].</span><br><span class="line"></span><br><span class="line">[Introduction]: #introduction</span><br></pre></td></tr></table></figure>
-<p>內部連結目前支援的格式有 HTML（包括 HTML slide shows 與 EPUB）、LaTeX
-以及 ConTeXt。</p>
-<h2 id="圖片"><a href="#圖片">圖片</a></h2>
-<p>在連結語法的前面加上一個 <code>!</code>
-就是圖片的語法了。連結文字將會作為圖片的替代文字（alt text）：</p>
+<p>內部連結目前支援的格式有 HTML（包括 HTML slide shows 與 EPUB）、LaTeX 以及<br>ConTeXt。</p>
+<h2 id="圖片"><a href="#圖片" class="headerlink" title="圖片"></a><a href="#圖片">圖片</a></h2><p>在連結語法的前面加上一個 <code>!</code><br>就是圖片的語法了。連結文字將會作為圖片的替代文字（alt text）：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">![la lune](lalune.jpg &quot;Voyage to the moon&quot;)</span><br><span class="line"></span><br><span class="line">![movie reel]</span><br><span class="line"></span><br><span class="line">[movie reel]: movie.gif</span><br></pre></td></tr></table></figure>
-<h3 id="附上說明的圖片"><a
-href="#附上說明的圖片">附上說明的圖片</a></h3>
-<p><strong>Extension:</strong> <code>implicit_figures</code></p>
-<p>一個圖片若自身單獨存在一個段落中，那麼將會以附上圖片說明 (caption)
-的圖表 (figure) 形式呈現。<a href="#fn5">5</a>（在 LaTeX
-中，會使用圖表環境；在 HTML 中，圖片會被放在具有 <code>figure</code>
-類別的 <code>div</code> 元素中，並會附上一個具有 <code>caption</code>
-類別的 <code>p</code>
-元素。）圖片的替代文字同時也會用來作為圖片說明。</p>
+<h3 id="附上說明的圖片"><a href="#附上說明的圖片" class="headerlink" title="附上說明的圖片"></a><a href="#附上說明的圖片">附上說明的圖片</a></h3><p><strong>Extension:</strong> <code>implicit_figures</code></p>
+<p>一個圖片若自身單獨存在一個段落中，那麼將會以附上圖片說明 (caption) 的圖表<br>(figure) 形式呈現。<a href="#fn5">5</a>（在 LaTeX 中，會使用圖表環境；在 HTML<br>中，圖片會被放在具有 <code>figure</code> 類別的 <code>div</code> 元素中，並會附上一個具有 <code>caption</code><br>類別的 <code>p</code> 元素。）圖片的替代文字同時也會用來作為圖片說明。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![This is the caption](/url/of/image.png)</span><br></pre></td></tr></table></figure>
 <p>如果你只是想要個一般的行內圖片，那麼只要讓圖片不是段落裡唯一的元素即可。一個簡單的方法是在圖片後面插入一個不斷行空格：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![This image won&#x27;t be a figure](/url/of/image.png)\</span><br></pre></td></tr></table></figure>
-<h2 id="腳註"><a href="#腳註">腳註</a></h2>
-<p><strong>Extension:</strong> <code>footnotes</code></p>
+<h2 id="腳註"><a href="#腳註" class="headerlink" title="腳註"></a><a href="#腳註">腳註</a></h2><p><strong>Extension:</strong> <code>footnotes</code></p>
 <p>Pandoc’s markdown 支援腳註功能，使用以下的語法：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Here is a footnote reference,<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> and another.[^longnote]</span><br><span class="line"></span><br><span class="line">
 
@@ -1243,89 +901,73 @@ Pandoc
 
 <hexoPostRenderCodeBlock><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Here is an inline note.^[Inlines notes are easier to write, since</span><br><span class="line">you don&#x27;t have to pick an identifier and move down to type the</span><br><span class="line">note.]</span><br></pre></td></tr></table></figure>
 <p>行內與一般腳註可以自由交錯使用。</p>
-<h2 id="引用"><a href="#引用">引用</a></h2>
-<p><strong>Extension:</strong> <code>citations</code></p>
-<p>Pandoc 能夠以數種形式自動產生引用與參考書目（使用 Andrea Rossato 的
-<code>hs-citeproc</code>）。為了使用這項功能，你需要一個下列其中一種格式的參考書目資料庫：</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a><a href="#引用">引用</a></h2><p><strong>Extension:</strong> <code>citations</code></p>
+<p>Pandoc 能夠以數種形式自動產生引用與參考書目（使用 Andrea Rossato 的<br><code>hs-citeproc</code>）。為了使用這項功能，你需要一個下列其中一種格式的參考書目資料庫：</p>
+<div class="table-container">
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Format</th>
 <th>File extension</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>MODS</td>
 <td>.mods</td>
 </tr>
-<tr class="even">
+<tr>
 <td>BibLaTeX</td>
 <td>.bib</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>BibTeX</td>
 <td>.bibtex</td>
 </tr>
-<tr class="even">
+<tr>
 <td>RIS</td>
 <td>.ris</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>EndNote</td>
 <td>.enl</td>
 </tr>
-<tr class="even">
+<tr>
 <td>EndNote XML</td>
 <td>.xml</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>ISI</td>
 <td>.wos</td>
 </tr>
-<tr class="even">
+<tr>
 <td>MEDLINE</td>
 <td>.medline</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>Copac</td>
 <td>.copac</td>
 </tr>
-<tr class="even">
+<tr>
 <td>JSON citeproc</td>
 <td>.json</td>
 </tr>
 </tbody>
 </table>
-<p>需注意的是副檔名 <code>.bib</code> 一般而言同時適用於 BibTeX 與
-BibLaTeX 的檔案，不過你可以使用 <code>.bibtex</code> 來強制指定
-BibTeX。</p>
-<p>你需要使用命令列選項 <code>--bibliography</code>
-來指定參考書目檔案（如果有多個書目檔就得反覆指定）。</p>
-<p>預設情況下，pandoc
-會在引用文獻與參考書目中使用芝加哥「作者－日期」格式。要使用其他的格式，你需要用
-<code>--csl</code> 選項來指定一個 <a
-target="_blank" rel="noopener" href="http://CitationStyles.org">CSL</a> 1.0 格式的檔案。關於建立與修改
-CSL 格式的入門可以在 <a
-target="_blank" rel="noopener" href="http://citationstyles.org/downloads/primer.html"
-class="uri">http://citationstyles.org/downloads/primer.html</a>
-這邊找到。<a target="_blank" rel="noopener" href="https://github.com/citation-style-language/styles"
-class="uri">https://github.com/citation-style-language/styles</a> 是 CSL
-格式的檔案庫。也可以在 <a target="_blank" rel="noopener" href="http://zotero.org/styles"
-class="uri">http://zotero.org/styles</a> 以簡單的方式瀏覽。</p>
-<p>引用資訊放在方括號中，以分號區隔。每一條引用都會有個 key，由
-<code>@</code> 加上資料庫中的引用 ID
-組成，並且可以選擇性地包含前綴、定位以及後綴。以下是一些範例：</p>
+</div>
+<p>需注意的是副檔名 <code>.bib</code> 一般而言同時適用於 BibTeX 與 BibLaTeX<br>的檔案，不過你可以使用 <code>.bibtex</code> 來強制指定 BibTeX。</p>
+<p>你需要使用命令列選項 <code>--bibliography</code><br>來指定參考書目檔案（如果有多個書目檔就得反覆指定）。</p>
+<p>預設情況下，pandoc<br>會在引用文獻與參考書目中使用芝加哥「作者－日期」格式。要使用其他的格式，你需要用<br><code>--csl</code> 選項來指定一個 <a target="_blank" rel="noopener" href="http://CitationStyles.org">CSL</a> 1.0<br>格式的檔案。關於建立與修改 CSL 格式的入門可以在<br><a target="_blank" rel="noopener" href="http://citationstyles.org/downloads/primer.html">http://citationstyles.org/downloads/primer.html</a><br>這邊找到。<a target="_blank" rel="noopener" href="https://github.com/citation-style-language/styles">https://github.com/citation-style-language/styles</a> 是 CSL<br>格式的檔案庫。也可以在 <a target="_blank" rel="noopener" href="http://zotero.org/styles">http://zotero.org/styles</a> 以簡單的方式瀏覽。</p>
+<p>引用資訊放在方括號中，以分號區隔。每一條引用都會有個 key，由 <code>@</code><br>加上資料庫中的引用 ID<br>組成，並且可以選擇性地包含前綴、定位以及後綴。以下是一些範例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Blah blah [see @doe99, pp. 33-35; also @smith04, ch. 1].</span><br><span class="line"></span><br><span class="line">Blah blah [@doe99, pp. 33-35, 38-39 and *passim*].</span><br><span class="line"></span><br><span class="line">Blah blah [@smith04; @doe99].</span><br></pre></td></tr></table></figure>
-<p>在 <code>@</code> 前面的減號 (<code>-</code>)
-將會避免作者名字在引用中出現。這可以用在已經提及作者的文章場合中：</p>
+<p>在 <code>@</code> 前面的減號 (<code>-</code>)<br>將會避免作者名字在引用中出現。這可以用在已經提及作者的文章場合中：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Smith says blah [-@smith04].</span><br></pre></td></tr></table></figure>
 <p>你也可以在文字中直接插入引用資訊，方式如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@smith04 says blah.</span><br><span class="line"></span><br><span class="line">@smith04 [p. 33] says blah.</span><br></pre></td></tr></table></figure>
 <p>如果引用格式檔需要產生一份引用作品的清單，這份清單會被放在文件的最後面。一般而言，你需要以一個適當的標題結束你的文件：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">last paragraph...</span><br><span class="line"></span><br><span class="line"># References</span><br></pre></td></tr></table></figure>
 <p>如此一來參考書目就會被放在這個標題後面了。</p>
-<ol type="1">
+<ol>
 <li><p>之所以有這條規則，主要是要避免以人名頭文字縮寫作為開頭的段落所帶來的混淆，像是</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">B. Russell was an English philosopher.</span><br></pre></td></tr></table></figure>
 <p>這樣就不會被當作清單項目了。</p>
@@ -1333,58 +975,19 @@ class="uri">http://zotero.org/styles</a> 以簡單的方式瀏覽。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(C) 2007 Joe Smith</span><br></pre></td></tr></table></figure>
 <p>這樣的敘述被解釋成清單項目。在這情形下，可以使用反斜線：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(C\) 2007 Joe Smith</span><br></pre></td></tr></table></figure>
-<p><a href="#fnref1">↩︎</a></p></li>
-<li><p><a
-target="_blank" rel="noopener" href="http://www.justatheory.com/computers/markup/modest-markdown-proposal.html">David
-Wheeler</a> 對於 markdown 的建議也同時影響了我。<a
-href="#fnref2">↩︎</a></p></li>
-<li><p>這個方案是由 Michel Fortin 在 <a
-target="_blank" rel="noopener" href="http://six.pairlist.net/pipermail/markdown-discuss/2005-March/001097.html">Markdown
-discussion list</a> 的討論中所提出。<a href="#fnref3">↩︎</a></p></li>
-<li><p>譯註：straight quotes
-指的是左右兩側都長得一樣的引號，例如我們直接在鍵盤上打出來的單引號或雙引號；curly
-quotes 則是左右兩側不同，有從兩側向內包夾視覺效果的引號。<a
-href="#fnref4">↩︎</a></p></li>
-<li><p>這項功能尚未在 RTF, OpenDocument 或 ODT
-格式上實現。在這些格式中，你會得到一個在段落中只包含自己的圖片，而無圖片說明。<a
-href="#fnref5">↩︎</a></p></li>
-</ol>
-Please enable JavaScript to view the <a
-target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-<a target="_blank" rel="noopener" href="http://disqus.com">comments powered by Disqus</a>
-<div id="footnotes">
-<hr>
-<div id="footnotelist">
-<ol style="list-style:none; padding-left: 0;">
-<li id="fn:1">
-<span
-style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span
-style="display: inline-block; vertical-align: top;">Here is the
-footnote.</span><br><span class="line"></span><br><span
-class="line">[^longnote]: Here's one with multiple
-blocks.</span><br><span class="line"></span><br><span class="line">
-Subsequent paragraphs are indented to show that they</span><br><span
-class="line">belong to the previous footnote.</span><br><span
-class="line"></span><br><span class="line"> { some.code
-}</span><br><span class="line"></span><br><span class="line"> The whole
-paragraph can be indented, or just the first</span><br><span
-class="line"> line. In this way, multi-paragraph footnotes work
-like</span><br><span class="line"> multi-paragraph list
-items.</span><br><span class="line"></span><br><span class="line">This
-paragraph won't be part of the note, because it</span><br><span
-class="line">isn't indented.</span><br>
-</pre>
-</td>
-</tr>
-</table>
-</figure>
-</hexoPostRenderCodeBlock></span><a href="#fnref:1" rev="footnote">
-↩︎</a>
+<p><a href="#fnref1">↩</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.justatheory.com/computers/markup/modest-markdown-proposal.html">David<br>Wheeler</a><br>對於 markdown 的建議也同時影響了我。<a href="#fnref2">↩</a></p>
+</li>
+<li><p>這個方案是由 Michel Fortin 在 <a target="_blank" rel="noopener" href="http://six.pairlist.net/pipermail/markdown-discuss/2005-March/001097.html">Markdown discussion<br>list</a><br>的討論中所提出。<a href="#fnref3">↩</a></p>
+</li>
+<li><p>譯註：straight quotes<br>指的是左右兩側都長得一樣的引號，例如我們直接在鍵盤上打出來的單引號或雙引號；curly<br>quotes 則是左右兩側不同，有從兩側向內包夾視覺效果的引號。<a href="#fnref4">↩</a></p>
+</li>
+<li><p>這項功能尚未在 RTF, OpenDocument 或 ODT<br>格式上實現。在這些格式中，你會得到一個在段落中只包含自己的圖片，而無圖片說明。<a href="#fnref5">↩</a></p>
 </li>
 </ol>
-</div>
-</div>
-
+<p>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by<br>Disqus.</a> <a target="_blank" rel="noopener" href="http://disqus.com">comments powered by<br>Disqus</a></p>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Here is the footnote.</span><br><span class="line"></span><br><span class="line">[^longnote]: Here's one with multiple blocks.</span><br><span class="line"></span><br><span class="line">    Subsequent paragraphs are indented to show that they</span><br><span class="line">belong to the previous footnote.</span><br><span class="line"></span><br><span class="line">        { some.code }</span><br><span class="line"></span><br><span class="line">    The whole paragraph can be indented, or just the first</span><br><span class="line">    line.  In this way, multi-paragraph footnotes work like</span><br><span class="line">    multi-paragraph list items.</span><br><span class="line"></span><br><span class="line">This paragraph won't be part of the note, because it</span><br><span class="line">isn't indented.</span><br></pre></td></tr></table></figure></hexoPostRenderCodeBlock></span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
 
@@ -1676,10 +1279,7 @@ class="line">isn't indented.</span><br>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pandocs-markdown"><span class="nav-number"></span> <span class="nav-text">Pandoc’s
-markdown</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%B2%E5%AD%B8"><span class="nav-number">1.</span> <span class="nav-text">哲學</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AE%B5%E8%90%BD"><span class="nav-number">2.</span> <span class="nav-text">段落</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%99%E9%A1%8C"><span class="nav-number">3.</span> <span class="nav-text">標題</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#setext-%E9%A2%A8%E6%A0%BC%E6%A8%99%E9%A1%8C"><span class="nav-number">3.1.</span> <span class="nav-text">Setext
-風格標題</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#atx-%E9%A2%A8%E6%A0%BC%E6%A8%99%E9%A1%8C"><span class="nav-number">3.2.</span> <span class="nav-text">Atx 風格標題</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#html-latex-%E8%88%87-context-%E7%9A%84%E6%A8%99%E9%A1%8C%E8%AD%98%E5%88%A5%E7%AC%A6"><span class="nav-number">3.3.</span> <span class="nav-text">HTML, LaTeX 與 ConTeXt
-的標題識別符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%80%E5%A1%8A%E5%BC%95%E8%A8%80"><span class="nav-number">4.</span> <span class="nav-text">區塊引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E9%9D%A2%E4%BB%A3%E7%A2%BC%E5%8D%80%E5%A1%8A"><span class="nav-number">5.</span> <span class="nav-text">字面（代碼）區塊</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B8%AE%E9%80%B2%E4%BB%A3%E7%A2%BC%E5%8D%80%E5%A1%8A"><span class="nav-number">5.1.</span> <span class="nav-text">縮進代碼區塊</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%8D%E6%AC%84%E4%BB%A3%E7%A2%BC%E5%8D%80%E5%A1%8A"><span class="nav-number">5.2.</span> <span class="nav-text">圍欄代碼區塊</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%8C%E5%8D%80%E5%A1%8A"><span class="nav-number">6.</span> <span class="nav-text">行區塊</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%85%E5%96%AE"><span class="nav-number">7.</span> <span class="nav-text">清單</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%84%A1%E5%BA%8F%E6%B8%85%E5%96%AE"><span class="nav-number">7.1.</span> <span class="nav-text">無序清單</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E5%80%8B%E7%A9%BA%E7%99%BD%E8%A6%8F%E5%89%87"><span class="nav-number">7.2.</span> <span class="nav-text">四個空白規則</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E5%BA%8F%E6%B8%85%E5%96%AE"><span class="nav-number">7.3.</span> <span class="nav-text">有序清單</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9%E6%B8%85%E5%96%AE"><span class="nav-number">7.4.</span> <span class="nav-text">定義清單</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B7%A8%E8%99%9F%E7%AF%84%E4%BE%8B%E6%B8%85%E5%96%AE"><span class="nav-number">7.5.</span> <span class="nav-text">編號範例清單</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B7%8A%E6%B9%8A%E8%88%87%E5%AF%AC%E9%AC%86%E6%B8%85%E5%96%AE"><span class="nav-number">7.6.</span> <span class="nav-text">緊湊與寬鬆清單</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B5%90%E6%9D%9F%E4%B8%80%E5%80%8B%E6%B8%85%E5%96%AE"><span class="nav-number">7.7.</span> <span class="nav-text">結束一個清單</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E9%9A%94%E7%B7%9A"><span class="nav-number">8.</span> <span class="nav-text">分隔線</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A8%E6%A0%BC"><span class="nav-number">9.</span> <span class="nav-text">表格</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B0%A1%E5%96%AE%E8%A1%A8%E6%A0%BC"><span class="nav-number">9.1.</span> <span class="nav-text">簡單表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E8%A1%8C%E8%A1%A8%E6%A0%BC"><span class="nav-number">9.2.</span> <span class="nav-text">多行表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%BC%E6%A1%86%E8%A1%A8%E6%A0%BC"><span class="nav-number">9.3.</span> <span class="nav-text">格框表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%A1%E7%B7%9A%E8%A1%A8%E6%A0%BC"><span class="nav-number">9.4.</span> <span class="nav-text">管線表格</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%A8%99%E9%A1%8C%E5%8D%80%E5%A1%8A"><span class="nav-number">10.</span> <span class="nav-text">文件標題區塊</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E6%96%9C%E7%B7%9A%E8%B7%B3%E8%84%AB%E5%AD%97%E5%85%83"><span class="nav-number">11.</span> <span class="nav-text">反斜線跳脫字元</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%99%BA%E6%85%A7%E5%9E%8B%E6%A8%99%E9%BB%9E%E7%AC%A6%E8%99%9F"><span class="nav-number">12.</span> <span class="nav-text">智慧型標點符號</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%8C%E5%85%A7%E6%A0%BC%E5%BC%8F"><span class="nav-number">13.</span> <span class="nav-text">行內格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%B7%E8%AA%BF"><span class="nav-number">13.1.</span> <span class="nav-text">強調</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%AA%E9%99%A4%E7%B7%9A"><span class="nav-number">13.2.</span> <span class="nav-text">刪除線</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E6%A8%99%E8%88%87%E4%B8%8B%E6%A8%99"><span class="nav-number">13.3.</span> <span class="nav-text">上標與下標</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E9%9D%A2%E6%96%87%E5%AD%97"><span class="nav-number">13.4.</span> <span class="nav-text">字面文字</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B8%E5%AD%B8"><span class="nav-number">14.</span> <span class="nav-text">數學</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#raw-html"><span class="nav-number">15.</span> <span class="nav-text">Raw HTML</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#raw-tex"><span class="nav-number">16.</span> <span class="nav-text">Raw TeX</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#latex-%E5%B7%A8%E9%9B%86"><span class="nav-number">17.</span> <span class="nav-text">LaTeX 巨集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%A3%E7%B5%90"><span class="nav-number">18.</span> <span class="nav-text">連結</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8B%95%E9%80%A3%E7%B5%90"><span class="nav-number">18.1.</span> <span class="nav-text">自動連結</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8C%E5%85%A7%E9%80%A3%E7%B5%90"><span class="nav-number">18.2.</span> <span class="nav-text">行內連結</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E9%80%A3%E7%B5%90"><span class="nav-number">18.3.</span> <span class="nav-text">參考連結</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A7%E9%83%A8%E9%80%A3%E7%B5%90"><span class="nav-number">18.4.</span> <span class="nav-text">內部連結</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%96%E7%89%87"><span class="nav-number">19.</span> <span class="nav-text">圖片</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%84%E4%B8%8A%E8%AA%AA%E6%98%8E%E7%9A%84%E5%9C%96%E7%89%87"><span class="nav-number">19.1.</span> <span class="nav-text">附上說明的圖片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%85%B3%E8%A8%BB"><span class="nav-number">20.</span> <span class="nav-text">腳註</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E7%94%A8"><span class="nav-number">21.</span> <span class="nav-text">引用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pandoc%E2%80%99s-markdown"><span class="nav-number"></span> <span class="nav-text">Pandoc’s markdown</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%B2%E5%AD%B8"><span class="nav-number">1.</span> <span class="nav-text">哲學</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AE%B5%E8%90%BD"><span class="nav-number">2.</span> <span class="nav-text">段落</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%99%E9%A1%8C"><span class="nav-number">3.</span> <span class="nav-text">標題</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Setext-%E9%A2%A8%E6%A0%BC%E6%A8%99%E9%A1%8C"><span class="nav-number">3.1.</span> <span class="nav-text">Setext 風格標題</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Atx-%E9%A2%A8%E6%A0%BC%E6%A8%99%E9%A1%8C"><span class="nav-number">3.2.</span> <span class="nav-text">Atx 風格標題</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML-LaTeX-%E8%88%87-ConTeXt-%E7%9A%84%E6%A8%99%E9%A1%8C%E8%AD%98%E5%88%A5%E7%AC%A6"><span class="nav-number">3.3.</span> <span class="nav-text">HTML, LaTeX 與 ConTeXt 的標題識別符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%80%E5%A1%8A%E5%BC%95%E8%A8%80"><span class="nav-number">4.</span> <span class="nav-text">區塊引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E9%9D%A2%EF%BC%88%E4%BB%A3%E7%A2%BC%EF%BC%89%E5%8D%80%E5%A1%8A"><span class="nav-number">5.</span> <span class="nav-text">字面（代碼）區塊</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B8%AE%E9%80%B2%E4%BB%A3%E7%A2%BC%E5%8D%80%E5%A1%8A"><span class="nav-number">5.1.</span> <span class="nav-text">縮進代碼區塊</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%8D%E6%AC%84%E4%BB%A3%E7%A2%BC%E5%8D%80%E5%A1%8A"><span class="nav-number">5.2.</span> <span class="nav-text">圍欄代碼區塊</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%8C%E5%8D%80%E5%A1%8A"><span class="nav-number">6.</span> <span class="nav-text">行區塊</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%85%E5%96%AE"><span class="nav-number">7.</span> <span class="nav-text">清單</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%84%A1%E5%BA%8F%E6%B8%85%E5%96%AE"><span class="nav-number">7.1.</span> <span class="nav-text">無序清單</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E5%80%8B%E7%A9%BA%E7%99%BD%E8%A6%8F%E5%89%87"><span class="nav-number">7.2.</span> <span class="nav-text">四個空白規則</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E5%BA%8F%E6%B8%85%E5%96%AE"><span class="nav-number">7.3.</span> <span class="nav-text">有序清單</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9%E6%B8%85%E5%96%AE"><span class="nav-number">7.4.</span> <span class="nav-text">定義清單</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B7%A8%E8%99%9F%E7%AF%84%E4%BE%8B%E6%B8%85%E5%96%AE"><span class="nav-number">7.5.</span> <span class="nav-text">編號範例清單</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B7%8A%E6%B9%8A%E8%88%87%E5%AF%AC%E9%AC%86%E6%B8%85%E5%96%AE"><span class="nav-number">7.6.</span> <span class="nav-text">緊湊與寬鬆清單</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B5%90%E6%9D%9F%E4%B8%80%E5%80%8B%E6%B8%85%E5%96%AE"><span class="nav-number">7.7.</span> <span class="nav-text">結束一個清單</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E9%9A%94%E7%B7%9A"><span class="nav-number">8.</span> <span class="nav-text">分隔線</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A8%E6%A0%BC"><span class="nav-number">9.</span> <span class="nav-text">表格</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B0%A1%E5%96%AE%E8%A1%A8%E6%A0%BC"><span class="nav-number">9.1.</span> <span class="nav-text">簡單表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E8%A1%8C%E8%A1%A8%E6%A0%BC"><span class="nav-number">9.2.</span> <span class="nav-text">多行表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%BC%E6%A1%86%E8%A1%A8%E6%A0%BC"><span class="nav-number">9.3.</span> <span class="nav-text">格框表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%A1%E7%B7%9A%E8%A1%A8%E6%A0%BC"><span class="nav-number">9.4.</span> <span class="nav-text">管線表格</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%A8%99%E9%A1%8C%E5%8D%80%E5%A1%8A"><span class="nav-number">10.</span> <span class="nav-text">文件標題區塊</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E6%96%9C%E7%B7%9A%E8%B7%B3%E8%84%AB%E5%AD%97%E5%85%83"><span class="nav-number">11.</span> <span class="nav-text">反斜線跳脫字元</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%99%BA%E6%85%A7%E5%9E%8B%E6%A8%99%E9%BB%9E%E7%AC%A6%E8%99%9F"><span class="nav-number">12.</span> <span class="nav-text">智慧型標點符號</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%8C%E5%85%A7%E6%A0%BC%E5%BC%8F"><span class="nav-number">13.</span> <span class="nav-text">行內格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%B7%E8%AA%BF"><span class="nav-number">13.1.</span> <span class="nav-text">強調</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%AA%E9%99%A4%E7%B7%9A"><span class="nav-number">13.2.</span> <span class="nav-text">刪除線</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E6%A8%99%E8%88%87%E4%B8%8B%E6%A8%99"><span class="nav-number">13.3.</span> <span class="nav-text">上標與下標</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E9%9D%A2%E6%96%87%E5%AD%97"><span class="nav-number">13.4.</span> <span class="nav-text">字面文字</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B8%E5%AD%B8"><span class="nav-number">14.</span> <span class="nav-text">數學</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Raw-HTML"><span class="nav-number">15.</span> <span class="nav-text">Raw HTML</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Raw-TeX"><span class="nav-number">16.</span> <span class="nav-text">Raw TeX</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LaTeX-%E5%B7%A8%E9%9B%86"><span class="nav-number">17.</span> <span class="nav-text">LaTeX 巨集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%A3%E7%B5%90"><span class="nav-number">18.</span> <span class="nav-text">連結</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8B%95%E9%80%A3%E7%B5%90"><span class="nav-number">18.1.</span> <span class="nav-text">自動連結</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8C%E5%85%A7%E9%80%A3%E7%B5%90"><span class="nav-number">18.2.</span> <span class="nav-text">行內連結</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E9%80%A3%E7%B5%90"><span class="nav-number">18.3.</span> <span class="nav-text">參考連結</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A7%E9%83%A8%E9%80%A3%E7%B5%90"><span class="nav-number">18.4.</span> <span class="nav-text">內部連結</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%96%E7%89%87"><span class="nav-number">19.</span> <span class="nav-text">圖片</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%84%E4%B8%8A%E8%AA%AA%E6%98%8E%E7%9A%84%E5%9C%96%E7%89%87"><span class="nav-number">19.1.</span> <span class="nav-text">附上說明的圖片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%85%B3%E8%A8%BB"><span class="nav-number">20.</span> <span class="nav-text">腳註</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E7%94%A8"><span class="nav-number">21.</span> <span class="nav-text">引用</span></a></li></ol></div>
             
 
           </div>
