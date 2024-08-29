@@ -36,6 +36,98 @@ CL说起写文章都已经是一套一套的了，“如果我有好的数据，
       </tags>
   </entry>
   <entry>
+    <title>Deep Learning With Python笔记</title>
+    <url>/2018/08/15/Deep%20Learning%20With%20Python:%20Step%20By%20Step%20Guide%20With%20Keras%20and%20Pytorch%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p><img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/FhRGn-EyJgJqeGMyWbJ66QaDeHkQ.png" /></p>
+<span id="more"></span>
+<h2 id="深度神经网络的由来">深度神经网络的由来：</h2>
+<p>感知学习算法（perceptron learning algorithm）</p>
+<p>↓</p>
+<p>深度神经网络（deep neural networks）</p>
+<h2 id="神经元的模型">神经元的模型：</h2>
+<p><img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/FjXOICuYJtE_67n2x_VRXxFqndji.png" /></p>
+<p><img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/Fh9eW_OEUqHlYUMy0kzQ0azjXHcs.png" /></p>
+<p><img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/FqWEvbN6YmAOMNkJs6o4zV6E9BwP.png" /></p>
+<ul>
+<li><strong>y=wx+b</strong></li>
+</ul>
+<ol type="1">
+<li>y：模型预测的输出</li>
+<li>w：模型的权重（可训练）</li>
+<li>b：水平移动偏差（intercept截距）</li>
+</ol>
+<p>第一次输入时，w是一个随机得非常小的权重，特征值(x)与权重相乘，计算结果与输入线性求和，求和的值馈送到激活函数，这个激活函数是一种感知习学算法的单位阶跃函数（unit
+step
+function）。然后单位阶跃函数基于同值将样本分成类。通过模型计算的数据点&gt;0分为一类，&lt;0分为第二类。对每一个预测分类，查看是否正确，如果正确则绘一个正确的分类标签，如果获得正确的分类，则不更新该样本的相关权重。</p>
+<p>然而在错位的分类的情况下，它以同样的方法更新权重，这样可以将计算推向正确的类，是后期训练传递中，很可能正确预测该特定类的标签。</p>
+<p>感知学习算的简单性也有几个缺点（drawbacks）。因为我们假设在空间中汆在一组权重来充分地分类。其次，我们还假设数据集可线性分离为不同的类。</p>
+<p>取而代之，为了模拟更复杂的函数，我们需要利用非线性的激活函数，因为它们本身就能否进行更复杂的表示，</p>
+<p>尽管感知器学习算法存在局限性，但它启发了后来的模型，这些模型包括更多的神经元，非线性激活函数和称为梯度下降的不同类型的学习规则。</p>
+<h2 id="激活函数">激活函数</h2>
+<figure>
+<img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/Flr4UZkv4tZwjgzjUEa9pRc6-nrW.png"
+alt="激活函数" />
+<figcaption aria-hidden="true">激活函数</figcaption>
+</figure>
+<p>非线性激活函数的作用是执行一个坐标到另一个坐标的几何变换。如上图，图A代表一个线性分隔的二进制分类预测，它代表着我们可以找到一条直线来正确分离两个类。像我们讨论过的感知器学习算法这样的线性分类器可以处理这种情况，因为数据的性质使得可训练的参数（权重）来学习，因为这是一个简单的线性分类问题。
+然而，对于图B，我们需要一种能够对数据点进行分类的更强大的表示，因为这不能通过使用直线来实现。
+这就是使用非线性激活函数的原因，因此也可以学习这些更复杂的数据分布。</p>
+<p>在深度神经网络中使用了几种非线性激活函数来实现线性判断，例如S形，双曲正切函数，线性整流单元等。</p>
+<ul>
+<li><p>sigmoid激活函数（S激活函数）</p>
+<p><img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/Fl71SC5H_p9sv7RSSvRO-k3mjhUu.png" /></p>
+<p>主要用于二进制的分类任务，其中有两个互斥的类。它主要是将各种可能性的值压缩到一个连续且有界的较小范围内。由于sigmoid是一个连续函数，它具有可微分的优点，即我们可以采用导数并在深度神经网络训练期间将其用于反向传播。如果专注中间段，基本上有一个直线分类器，如果考虑曲线的早期分布，则可以建模指数部分。sigmoid是深度学习中最重要的激活函数之一。</p></li>
+<li><p>Hyperbolic Tangent Activation Function双曲正切激活函数</p>
+<figure>
+<img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/Fiq1ZcEpq6OixqTZSm_87eAj4dQM.png"
+alt="双曲正切激活函数" />
+<figcaption aria-hidden="true">双曲正切激活函数</figcaption>
+</figure>
+<p>双曲正切激活函数也称作“tanh”，特别是在Recurrent Neural
+Networks(递归神经网络)。它可以看做是sigmoid激活函数的变化且有更加广泛的输出值域。与sigmoid类似，出入线性的计算结果，再将值的形式转变为-1到1的区间。对于二进制的分类问题，值域可设置为0，输出值大于0为正类，输出值小于0为负类。在实践中，tanh激活正确函数通常的逻辑函数收敛做得更快，并且不太容易在神经网络后续层中过渡拟合。</p></li>
+<li><p>Rectified linear Unit Activation（ReLU）Function 线性整流函数</p>
+<figure>
+<img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/Fu9oEv9rxWRm3R43RqaI0J56aLwe.png"
+alt="线性整流函数" />
+<figcaption aria-hidden="true">线性整流函数</figcaption>
+</figure>
+<p>在深度神经网络中，线性整流函数（ReLU）已成为隐藏层中激活函数的标准。因为于其它函数相比（如sigmoid，tanh等）它的实践表现更好。主要的有点事用ReLu在隐藏层中作为激活函数，在训练期间梯度消失的趋势更小。梯度消失现象是当下游传播的梯度变得非常小，以至于早期层不再学习，因为后面的层已经知道了。这个问题容易被忽略，并且在训练
+层深度网络时变成一个巨大的问题。线性整流函数由于其归零为负值的性质可以解决这个问题。输入到线性整流函数是线性计算步骤的结果。如果输入是负数，ReLu的输出结果是零，但是如果是正数，它将值保留为激活函数的输出。线性整流函数是0到最大值的网络输入。</p>
+<p>f(Z)=max(0-Z)</p>
+<p>与sigmoid不同，ReLu不会受到最大值饱和的影响，整流线性单元激活函数的值可以尽可能的大，只要它们是正的。在实践中使用的ReLU还存在其它的修正形式。例如，LeakyReLu它允许最小范围的负值减少，如max（0.Z，Z），随机整流线性单元，参数整流线性单元类。</p></li>
+<li><p>A Feed Forward Neural Network前馈神经网络</p>
+<figure>
+<img
+src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/FnCH270-OXfWkN5N6_zw-AtFhadP.png"
+alt="前馈神经网络" />
+<figcaption aria-hidden="true">前馈神经网络</figcaption>
+</figure>
+<p>现在我们人工神经元，感知器学习算法和激活函数有了很好的理解，现在是时候将我们学到的东西组装成一个称为前馈神经网络的新模型结构。</p>
+<p>前馈神经网络是一个人工神经网络，它由几个层组成，其中包含单向晶格结果中的神经元。</p>
+<p>这意味着网络的组成并不是以循环的方式所建成的，故名前馈。前馈神经网络有时也被称作多层感知器（Multi-Layer
+perceptron）MLP。MLP与感知学习算法的不同之处在于前者是由多层，多个神经元构成，并通过梯度下降使用反向传播算法来训练网络。前馈神经网络由三层组成，输入层、隐藏层和输出层。</p>
+<p>上图被称作2层前馈神经网络。传统上，在描述一种人工神经网络中的层数时，不计算输入层。</p>
+<p>输入层包含以信息特征形式的数据点以馈送到网络中。箭头代表着网络的权重。通过箭头可以观察到一层中的神经元连接到下一层中的每个神经元。由于这样的连接性质，这些层被称作完全连接层（fully
+connected layer）或密集层（Dense
+layers）。前馈神经网络的隐藏层是真实学习发生的地方，因为输入特征从一个表示转换到另一个表示，以便可以学习它们的基础模式。隐藏层之所以被称为隐藏层是因为无法直接发现内部如何运作。</p></li>
+</ul>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Kistler采集软件Bioware安装</title>
     <url>/2022/08/26/Kistler%E9%87%87%E9%9B%86%E8%BD%AF%E4%BB%B6bioware%E5%AE%89%E8%A3%85/</url>
     <content><![CDATA[<h2 id="bioware下载地址">Bioware下载地址</h2>
@@ -139,616 +231,6 @@ aria-hidden="true">Win11安装Instacal后还是找不到测力台USB</figcaption
       <tags>
         <tag>设备</tag>
         <tag>测力台，笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Deep Learning With Python笔记</title>
-    <url>/2018/08/15/Deep%20Learning%20With%20Python:%20Step%20By%20Step%20Guide%20With%20Keras%20and%20Pytorch%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p><img
-src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/FhRGn-EyJgJqeGMyWbJ66QaDeHkQ.png" /></p>
-<span id="more"></span>
-<h2 id="深度神经网络的由来">深度神经网络的由来：</h2>
-<p>感知学习算法（perceptron learning algorithm）</p>
-<p>↓</p>
-<p>深度神经网络（deep neural networks）</p>
-<h2 id="神经元的模型">神经元的模型：</h2>
-<p><img
-src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/FjXOICuYJtE_67n2x_VRXxFqndji.png" /></p>
-<p><img
-src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/Fh9eW_OEUqHlYUMy0kzQ0azjXHcs.png" /></p>
-<p><img
-src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/FqWEvbN6YmAOMNkJs6o4zV6E9BwP.png" /></p>
-<ul>
-<li><strong>y=wx+b</strong></li>
-</ul>
-<ol type="1">
-<li>y：模型预测的输出</li>
-<li>w：模型的权重（可训练）</li>
-<li>b：水平移动偏差（intercept截距）</li>
-</ol>
-<p>第一次输入时，w是一个随机得非常小的权重，特征值(x)与权重相乘，计算结果与输入线性求和，求和的值馈送到激活函数，这个激活函数是一种感知习学算法的单位阶跃函数（unit
-step
-function）。然后单位阶跃函数基于同值将样本分成类。通过模型计算的数据点&gt;0分为一类，&lt;0分为第二类。对每一个预测分类，查看是否正确，如果正确则绘一个正确的分类标签，如果获得正确的分类，则不更新该样本的相关权重。</p>
-<p>然而在错位的分类的情况下，它以同样的方法更新权重，这样可以将计算推向正确的类，是后期训练传递中，很可能正确预测该特定类的标签。</p>
-<p>感知学习算的简单性也有几个缺点（drawbacks）。因为我们假设在空间中汆在一组权重来充分地分类。其次，我们还假设数据集可线性分离为不同的类。</p>
-<p>取而代之，为了模拟更复杂的函数，我们需要利用非线性的激活函数，因为它们本身就能否进行更复杂的表示，</p>
-<p>尽管感知器学习算法存在局限性，但它启发了后来的模型，这些模型包括更多的神经元，非线性激活函数和称为梯度下降的不同类型的学习规则。</p>
-<h2 id="激活函数">激活函数</h2>
-<figure>
-<img
-src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/Flr4UZkv4tZwjgzjUEa9pRc6-nrW.png"
-alt="激活函数" />
-<figcaption aria-hidden="true">激活函数</figcaption>
-</figure>
-<p>非线性激活函数的作用是执行一个坐标到另一个坐标的几何变换。如上图，图A代表一个线性分隔的二进制分类预测，它代表着我们可以找到一条直线来正确分离两个类。像我们讨论过的感知器学习算法这样的线性分类器可以处理这种情况，因为数据的性质使得可训练的参数（权重）来学习，因为这是一个简单的线性分类问题。
-然而，对于图B，我们需要一种能够对数据点进行分类的更强大的表示，因为这不能通过使用直线来实现。
-这就是使用非线性激活函数的原因，因此也可以学习这些更复杂的数据分布。</p>
-<p>在深度神经网络中使用了几种非线性激活函数来实现线性判断，例如S形，双曲正切函数，线性整流单元等。</p>
-<ul>
-<li><p>sigmoid激活函数（S激活函数）</p>
-<p><img
-src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/Fl71SC5H_p9sv7RSSvRO-k3mjhUu.png" /></p>
-<p>主要用于二进制的分类任务，其中有两个互斥的类。它主要是将各种可能性的值压缩到一个连续且有界的较小范围内。由于sigmoid是一个连续函数，它具有可微分的优点，即我们可以采用导数并在深度神经网络训练期间将其用于反向传播。如果专注中间段，基本上有一个直线分类器，如果考虑曲线的早期分布，则可以建模指数部分。sigmoid是深度学习中最重要的激活函数之一。</p></li>
-<li><p>Hyperbolic Tangent Activation Function双曲正切激活函数</p>
-<figure>
-<img
-src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/Fiq1ZcEpq6OixqTZSm_87eAj4dQM.png"
-alt="双曲正切激活函数" />
-<figcaption aria-hidden="true">双曲正切激活函数</figcaption>
-</figure>
-<p>双曲正切激活函数也称作“tanh”，特别是在Recurrent Neural
-Networks(递归神经网络)。它可以看做是sigmoid激活函数的变化且有更加广泛的输出值域。与sigmoid类似，出入线性的计算结果，再将值的形式转变为-1到1的区间。对于二进制的分类问题，值域可设置为0，输出值大于0为正类，输出值小于0为负类。在实践中，tanh激活正确函数通常的逻辑函数收敛做得更快，并且不太容易在神经网络后续层中过渡拟合。</p></li>
-<li><p>Rectified linear Unit Activation（ReLU）Function 线性整流函数</p>
-<figure>
-<img
-src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/Fu9oEv9rxWRm3R43RqaI0J56aLwe.png"
-alt="线性整流函数" />
-<figcaption aria-hidden="true">线性整流函数</figcaption>
-</figure>
-<p>在深度神经网络中，线性整流函数（ReLU）已成为隐藏层中激活函数的标准。因为于其它函数相比（如sigmoid，tanh等）它的实践表现更好。主要的有点事用ReLu在隐藏层中作为激活函数，在训练期间梯度消失的趋势更小。梯度消失现象是当下游传播的梯度变得非常小，以至于早期层不再学习，因为后面的层已经知道了。这个问题容易被忽略，并且在训练
-层深度网络时变成一个巨大的问题。线性整流函数由于其归零为负值的性质可以解决这个问题。输入到线性整流函数是线性计算步骤的结果。如果输入是负数，ReLu的输出结果是零，但是如果是正数，它将值保留为激活函数的输出。线性整流函数是0到最大值的网络输入。</p>
-<p>f(Z)=max(0-Z)</p>
-<p>与sigmoid不同，ReLu不会受到最大值饱和的影响，整流线性单元激活函数的值可以尽可能的大，只要它们是正的。在实践中使用的ReLU还存在其它的修正形式。例如，LeakyReLu它允许最小范围的负值减少，如max（0.Z，Z），随机整流线性单元，参数整流线性单元类。</p></li>
-<li><p>A Feed Forward Neural Network前馈神经网络</p>
-<figure>
-<img
-src="https://blogimage-1257091156.cos.ap-chengdu.myqcloud.com/FnCH270-OXfWkN5N6_zw-AtFhadP.png"
-alt="前馈神经网络" />
-<figcaption aria-hidden="true">前馈神经网络</figcaption>
-</figure>
-<p>现在我们人工神经元，感知器学习算法和激活函数有了很好的理解，现在是时候将我们学到的东西组装成一个称为前馈神经网络的新模型结构。</p>
-<p>前馈神经网络是一个人工神经网络，它由几个层组成，其中包含单向晶格结果中的神经元。</p>
-<p>这意味着网络的组成并不是以循环的方式所建成的，故名前馈。前馈神经网络有时也被称作多层感知器（Multi-Layer
-perceptron）MLP。MLP与感知学习算法的不同之处在于前者是由多层，多个神经元构成，并通过梯度下降使用反向传播算法来训练网络。前馈神经网络由三层组成，输入层、隐藏层和输出层。</p>
-<p>上图被称作2层前馈神经网络。传统上，在描述一种人工神经网络中的层数时，不计算输入层。</p>
-<p>输入层包含以信息特征形式的数据点以馈送到网络中。箭头代表着网络的权重。通过箭头可以观察到一层中的神经元连接到下一层中的每个神经元。由于这样的连接性质，这些层被称作完全连接层（fully
-connected layer）或密集层（Dense
-layers）。前馈神经网络的隐藏层是真实学习发生的地方，因为输入特征从一个表示转换到另一个表示，以便可以学习它们的基础模式。隐藏层之所以被称为隐藏层是因为无法直接发现内部如何运作。</p></li>
-</ul>
-]]></content>
-      <categories>
-        <category>深度学习</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LME线性混合模型处理ERP</title>
-    <url>/2022/09/03/LME%E7%BA%BF%E6%80%A7%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B%E5%A4%84%E7%90%86ERP(test)/</url>
-    <content><![CDATA[<h1 id="lme线性混合模型处理erp">LME线性混合模型处理ERP</h1>
-<blockquote>
-<p><em>存在的问题</em></p>
-<ul>
-<li>时间窗口的选择</li>
-<li>通道的选择</li>
-<li>模型的选择</li>
-<li>变量编码<br />
-</li>
-<li>统计能力 power</li>
-</ul>
-</blockquote>
-<h2
-id="文献1--线性混合效应模型在婴儿和儿童事件相关潜力研究中的效用">文献1--线性混合效应模型在婴儿和儿童事件相关潜力研究中的效用</h2>
-<p>根据论文《线性混合效应模型在婴儿和儿童事件相关潜力研究中的效用》<span
-class="citation" data-cites="heiseUtilityLinearMixed2022"><sup>[<a
-href="#ref-heiseUtilityLinearMixed2022"
-role="doc-biblioref">1</a>]</sup></span>的处理过程找到了GitHub上的<a
-href="https://github.com/basclab/LME_MixedEffectsERPTutorial/tree/main/LMETutorialScripts">数据处理脚本</a>。脚本共有7个，其中1-5是Matlab从Continues
-EEG到ERP的处理过程，脚本6-7是R语言对ERP进行LME混合线性模型的处理过程，如Figure 1。</p>
-<figure>
-<img
-src="https://user-images.githubusercontent.com/49215489/148004509-6a02682d-62da-42e5-8828-5feb35ea8ff6.png"
-id="fig:a" style="width:70.0%" alt="Figure 1. 文献中的处理流程" />
-<figcaption aria-hidden="true">Figure 1. 文献中的处理流程</figcaption>
-</figure>
-<span id="more"></span>
-<p>文章比较ANOVA与LMM，发现ANOVA的结果有偏差，随着受试者的减少，结果变得偏差。而LMM随着受试者的减少，模型也能产生准确、无偏差的结果。论文包括了教程和示例代码。</p>
-<h2
-id="文献2--线性混合效应模型和非独立数据的分析一个统一的框架用于分析改变主题内部和或项目内的分类和连续自变量">文献2--线性混合效应模型和非独立数据的分析：一个统一的框架，用于分析改变主题内部和/或项目内的分类和连续自变量。</h2>
-<p>近年来，对“线性混合效应模型” （LMEMs）的兴趣急剧增加。Judd、Westfall
-和 Kenny（2012 年）以及Barr、Levy、Scheepers 和 Tily（2013
-年）的有影响力的文章清楚地表明，许多心理学研究都需要这些类型的模型。<span
-class="citation"
-data-cites="brauerLinearMixedeffectsModels2018"><sup>[<a
-href="#ref-brauerLinearMixedeffectsModels2018"
-role="doc-biblioref">2</a>]</sup></span> 传统的
-ANOVA/回归方法的局限性在于它不能很好地处理缺失的数据，并且无法处理在“单位”内变化的连续预测变量（例如，受试者内、组间、组内、教室）。更重要的是，当相同的受试者暴露于同一组项目（或刺激或目标）时，这种方法会产生有偏差的推论统计。只有混合模型才能产生具有可接受的
-I 型和 II
-型错误率的无偏参数估计。（<em>也就是说ANOVA不适合重复测量</em>）</p>
-<h3 id="术语和数据格式">术语和数据格式</h3>
-<p>线性混合效应模型（LMEM）指代具有一种或多种的随机效应的模型，如分层回归、分层线性建模
-(HLM)、多级回归、多级线性建模、线性混合模型和随机系数模型。<br />
-<strong>为了采用“
-LMEM思维方式”，越来越多的研究人员现在以“长格式”而不是“宽格式”分析他们的数据</strong>。
-长格式的数据文件更“整洁”，因为它们类似于受试者间设计：一列表示因变量，一列或多列对应于预测变量些，并且一项观察与一行相关。R中的
-<strong>reshape</strong>
-函数允许研究人员将数据文件从宽格式转换为长格式，反之亦然。<br />
-想象一个假设的实验（我们将在本文中将其称为“研究
-1”），其中研究人员招募100名本科生，并要求他们列出他们在大学学习的两个高声望课程和两个低声望课程。声望被定义为课程在学生成绩单上“看起来不错”的程度（例如，困难的科学课程、荣誉课程、研究生水平的课程）。然后要求学生在9分制上表明他们对四个班级中的每一个课程的喜好。（Figure 2）</p>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220831210157.png"
-id="fig:b" style="width:70.0%"
-alt="Figure 2. 宽格式与长格式的相同数据比较" />
-<figcaption aria-hidden="true">Figure 2.
-宽格式与长格式的相同数据比较</figcaption>
-</figure>
-<h3 id="线性混合模型简介">线性混合模型简介</h3>
-<h4 id="固定变量和随机变量">固定变量和随机变量</h4>
-<p>在LMEM中，相关变量被认为是“固定的”（fixed）或“随机的”（random）。在“研究1”中的声望（prestige）就是一个固定变量，且有两个级别，而受试者（subject.ID）就是一个随机变量（有100个级别）。</p>
-<ul>
-<li>当从感兴趣的变量的所有级别收集数据时，变量被认为是固定的。<br />
-</li>
-<li>当一个变量具有许多可能的水平并且研究人员对所有可能的水平都感兴趣时，该变量被认为是随机的，但数据中仅包含水平的随机样本。<br />
-</li>
-<li>测量的预测因素，协变量和人口统计通常是固定的变量。<br />
-</li>
-<li>仅当每个变量级别的观察值多一个以上的观察值时，数据分析中才会明确包含随机变量。只有在数据中创建非独立性时，随机变量才包含在分析中。</li>
-</ul>
-<h4 id="简单误差-vs-复杂误差">简单误差 VS 复杂误差</h4>
-<p>统计分析都具有相同的基本结构：<span class="math inline">\(DATA =
-MODEL + ERROR\)</span>（Figure 3）。每个统计模型都基于结果变量(<span
-class="math inline">\(β0\)</span>)和一个或多个预测变量（此处为<span
-class="math inline">\(β1X\)</span>）的（加权）平均值进行预测。<strong>独立数据分析</strong>（例如，受试者间分析）和<strong>非独立数据分析</strong>（例如，受试者内分析）之间的主要区别在于误差项的复杂性。</p>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220902001711.png"
-id="fig:c" alt="Figure 3. 独立数据与非独立数据的比较" />
-<figcaption aria-hidden="true">Figure 3.
-独立数据与非独立数据的比较</figcaption>
-</figure>
-<p>在独立数据分析中（受试者间），误差项比较简单，只有一个随机误差（<span
-class="math inline">\(e_i\)</span>）。Figure 3左</p>
-<p>当数据是非独立的（受试者内）并通过LMEM分析时，误差来源于三个分量。Figure 3右</p>
-<ul>
-<li>随机截距：来源于受试者之间的个体差异（Figure 3中标记为<span
-class="math inline">\(e_{RI}\)</span> 或 <span
-class="math inline">\(u_{0j}\)</span> ）</li>
-<li>随机斜率：来源于受试者之间受预测变量（除了受试者的其他变量）影响的差异（Figure 3中标记为<span
-class="math inline">\(e_{RS}\)</span> 或 <span
-class="math inline">\(u_{1j}X_{ij}\)</span> ）</li>
-<li>随机误差：其他误差来源。（Figure 3中标记为<span
-class="math inline">\(e\)</span> 或 <span
-class="math inline">\(e_{ij}\)</span> ）</li>
-</ul>
-<p>在GLM（一般线性模型）中的重点是解释与预测变量的相关回归系数。在Figure 3中，β1表示模型对“声望”对喜欢的影响的估计。如果β1在统计上显着，我们得出结论，预测变量对结果变量有影响。</p>
-<h4 id="固定效应与随机效应的解释">固定效应与随机效应的解释</h4>
-<ul>
-<li>固定效应：在Figure 3中的两个模型中，系数β0和β1称为“固定效应“。β1为固定斜率，β0为固定截距。这些影响称为“固定"，因为它们适用于整个样本。</li>
-<li>随机效应：在Figure 3中的两个模型中，系数<span
-class="math inline">\(u_{0j}\)</span> 和 <span
-class="math inline">\(u_{1j}X_{ij}\)</span>称为“随机效应“。<span
-class="math inline">\(u_{1j}X_{ij}\)</span>为随机斜率，<span
-class="math inline">\(u_{0j}\)</span>为随机截距，因为他们代表了模型中β0和β1在不同受试者间的变化程度。在Equation 1中更容易理解。</li>
-</ul>
-<p><span id="eq:a"><span class="math display">\[Y_{ij} = ( \beta_0 +
-u_{0j} ) + ( \beta_1 + u_{1j} ) X_{ij} +
-e_{ij}\qquad{(1)}\]</span></span></p>
-<h3
-id="扩展到具有多个二分预测变量的设计">扩展到具有多个二分预测变量的设计</h3>
-<p>与方差分析和回归分析一样，当模型包含交互项时，LMEM
-通常要求我们在分析之前将预测变量居中。更准确地说，只有当二分变量已被重新编码为
--.5 和
-+.5（或以零为中心的任何其他两个值）并且连续变量已经“平均居中”（通过从每个分数中减去平均值）。</p>
-<h4 id="连续受试者内预测变量的分析">连续受试者内预测变量的分析</h4>
-<p>LMEM可以轻松扩展到连续变量间（内部）的分析（例如：受试者间，课程间）。</p>
-<h4 id="不同形式的均值居中">不同形式的均值居中</h4>
-<p>尽管预测变量在研究 1 和 2
-中都以零为中心，但两者之间存在重要区别：在研究 1
-中，二分预测变量被重新编码为 -.5 和
-+.5，并且不需要重新编码，因为它不会影响与预测变量相关的固定效应的参数估计。然而，在研究
-2
-中，连续预测变量以每个受试者自己的均值为中心（有时称为“聚类均值居中”或“组均值居中”）。这种操作对于获得预测变量和结果之间的主体内关联的无偏估计是必要的。</p>
-<h4 id="相关分析">相关分析</h4>
-<p>LMEM框架还可以用于检查连续的受试者间预测因子与一个或多个其他预测变量的交互作用。<br />
-如果预测变量是在受试者内，应该聚类平均值居中（cluster-mean）,
-Figure 4。</p>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220902231832.png"
-id="fig:d" alt="Figure 4. 受试者间（性别）" />
-<figcaption aria-hidden="true">Figure 4. 受试者间（性别）</figcaption>
-</figure>
-<p>如果预测变量是在受试者间，应该以总平均居中（grand-mean）,
-Figure 5。</p>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220902231936.png"
-id="fig:e" alt="Figure 5. 受试者内（科学）" />
-<figcaption aria-hidden="true">Figure 5. 受试者内（科学）</figcaption>
-</figure>
-<p><strong>请注意，受试者内的连续预测变量可以是时间，以便模型可以检查受试者随时间的变化。</strong></p>
-<h3 id="扩展到多级模型">扩展到多级模型</h3>
-<p>在到目前为止讨论的所有示例中，预测变量在
-受试者中各不相同。读者应该知道，上面所说的一切（以及文章的其余部分）也适用于预测变量在高阶单元或“集群”内变化的研究。例如当受试者嵌套在一个组（groups）、家庭（families）、或者教室（classrooms）。所谓的“多级模型”只是LMEM的一个特例。</p>
-<h4 id="多级模型示例">多级模型示例</h4>
-<p>考虑一项研究，其中研究人员组成四个人的讨论组，并为其中两个人分配一个高地位（高声望）和两个低地位（低声望）。（有一个小的变化：主题.ID
-被替换为
-group.ID）。受试者和组都是随机变量。鉴于每个受试者只有一次观察，LMEM
-不包含副主题随机效应。它确实包含两个组的随机效应：一个逐组随机截距（因为来自同一组的四个数据点是相关的）和一个逐组随机斜率（因为预测变量“声望”在组内变化
-）</p>
-<h3 id="限制最大似然">限制最大似然</h3>
-<p>应该注意的是，LMEM
-使用称为“限制最大似然”（ReML）的估计程序，而不是作为标准 ANOVA
-和回归分析的“普通最小二乘法”（OLS）。 使用 ReML 作为估计程序有许多 LMEM
-用户应该注意的含义。除了在简单的 LMEM
-中，最终模型可能具有带小数的分母自由度。它们应该这样报告，例如，F (1,
-54.17) = 4.86, p &lt; .04。 只有 Kenward-Roger
-自由度的F统计量的结果才能准确再现重复测量方差分析的结果。</p>
-<h3 id="非独立的多重来源">非独立的多重来源</h3>
-<p>在许多心理学实验中，受试者会接触到相同的一组项目，即他们可能会查看相同的单词、句子、图片或头像，或者他们可能会对相同的产品、面孔、艺术品或个人进行评分。或者，聚集在组、家庭、教室或县中的受试者可以各自提供多个数据点。此类研究包含两个非独立性来源：一些回答可能更相似，因为它们是由同一受试者做出的，其他回答可能更相似，因为它们涉及相同的项目（即不同的受试者对相同的项目进行评分)，但其他反应可能更相似，因为它们是由同一组的受试者做出的。</p>
-<p>当存在多个非独立来源时，可能很难决定分析中应包括哪些随机效应。</p>
-<p>然而，幸运的是，所有专家都同意数据分析的初始步骤。</p>
-<ol type="1">
-<li><p>第一步包括确定研究设计所要求的所谓“最大随机效应结构”。正如我们将看到的那样，这个最大随机效应结构包括我们可能希望根据设计特征包括的所有随机效应，即基于预测变量是否在导致非独立性的随机变量的水平之内或之间变化数据。</p></li>
-<li><p>第二步包括估计具有最大随机效应的LMEM结构体。然而，正如我们将看到的，这并不总是可能的，因为一些
-LMEM 非常复杂，以至于迭代估计过程无法收敛。</p></li>
-<li><p>在这种情况下，有必要逐步简化随机效应结构，直到可以实现收敛。</p></li>
-</ol>
-<hr />
-<p><strong>在接下来的部分中，我们将详细讨论前两个步骤中的每一个。在我们的讨论中，我们将关注两个导致数据不独立的随机变量。第一个随机变量始终是主题。我们将第二个随机变量称为“项目”，但读者应该知道，这个术语可能指的是任何随机变量，它是非独立的第二个来源（例如，刺激、目标、同盟者、位置、小组、教室）。</strong></p>
-<h3 id="如何确定最大随机效应结构">如何确定最大随机效应结构</h3>
-<h4 id="随机截距">随机截距</h4>
-<p>通过在最大随机效应结构中确定适当的随机截距来解释其非独立性。Figure 6中的第一条规则确定了什么时候需要随机截距。当考虑的单元是受试者时，只要给定受试者多个数据点（测试点），就应该包括一个由受试者产生的随机截距。
-当每个受试者有多个数据点并且每个项目有多个数据点时，必须通过添加按受试者随机截距和按项目随机截距来考虑这两个非独立来源。</p>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220907235123.png"
-id="fig:f"
-alt="Figure 6. 一组关于应包含在最大随机效应结构中的受试者和项目随机效应类型的简单规则" />
-<figcaption aria-hidden="true">Figure 6.
-一组关于应包含在最大随机效应结构中的受试者和项目随机效应类型的简单规则</figcaption>
-</figure>
-<p>第一个规则：如果单元引起非独立性，则需要一个串联随机截距。<br />
-第二个规则：通常，单位内预测变量需要一个串联随机斜率，而单位间预测器则不需要。<br />
-第三个规则：建议在包含交互的所有因素均为单位内部时，包括一个串联随机斜率，以进行相互作用。</p>
-<h4 id="随机斜率">随机斜率</h4>
-<p>随机斜率参见Figure 6中的第二个规则。我们希望为在受试者内变化的任何预测变量包括一个按受试者随机斜率（但不是在受试者之间变化时）。同样，我们希望为在项目内变化的任何预测变量包括一个逐项随机斜率（但不是在项目之间变化时）。</p>
-<ul>
-<li>在受试者间变化的研究<br />
-为了说明这个规则，让我们想象一个研究，在该研究中，受试者评价他们对八辆低声望汽车和八辆高声望汽车的喜好。所有受试者都对同一组
-16 辆汽车进行评分(Figure 7)。
-请注意，声望的随机斜率不需要随机斜率，因为声望在项目内不会变化（每辆目标汽车的声望要么低要么高）。</li>
-</ul>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220912143752.png"
-id="fig:g"
-alt="Figure 7. LMEM 和 R 脚本用于具有一个二分预测变量（声望）的研究，该变量 在 受试者内部但在项目之间有所不同" />
-<figcaption aria-hidden="true">Figure 7. LMEM 和 R
-脚本用于具有一个二分预测变量（声望）的研究，该变量 在
-受试者内部但在项目之间有所不同</figcaption>
-</figure>
-<ul>
-<li>在项目内变化的研究<br />
-想象一项研究，其中受试者评估同一组 20
-辆汽车（中等声望），但他们在两个受试者之间的条件之一中这样做。一半的受试者在看过五辆声望很高的汽车（高声望背景）后评价他们对这
-20
-辆车的喜好，而另一半受试者之前曾接触过五辆声望很低的汽车（低声望背景）。同样，这项研究包含两个非独立性来源，主题和项目，需要两个随机截距。预测变量“声望”在受试者之间变化（每个受试者仅在一个声望上下文条件下），但在项目内变化（20
-辆目标汽车中的每一辆在某些受试者的声望较高的上下文中，但在某些受试者的声望较低的上下文中其他科目）。适当
-LMEM的最大随机效应结构包含三个随机效应（参见Figure 8）。鉴于声望（背景）因学科而异，因此无需包括副学科
-声望的随机斜率。</li>
-</ul>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220912144628.png"
-id="fig:h"
-alt="Figure 8. LMEM 和 R 脚本用于具有一个二分预测器（声望）的研究，该预测器在受试者之间但在项目内部有所不同" />
-<figcaption aria-hidden="true">Figure 8. LMEM 和 R
-脚本用于具有一个二分预测器（声望）的研究，该预测器在受试者之间但在项目内部有所不同</figcaption>
-</figure>
-<h4 id="交互的随机效应">交互的随机效应</h4>
-<p>关于交互，参见Figure 6中的第三条规则。当交互作用的所有预测变量在受试者内变化时，交互项的逐受试者随机斜率应包含在最大随机效应结构中。同样，当交互项的所有预测变量在项内变化时，研究人员应该为交互项包括一个逐项的随机斜率。除了前两条之外，这条规则允许我们为更复杂的设计确定最大随机效应结构。</p>
-<h3 id="如何解决收敛问题">如何解决收敛问题</h3>
-<p>在确定了研究的最大随机效应结构后，下一步是估计相应的
-LMEM。不幸的是，导出参数估计的迭代 ReML
-过程并不总是“收敛”（即，数值优化算法不能可靠地确定对数似然函数的最大值）。如果模型无法收敛，可以使用Figure 9中的方式补救。</p>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220912162649.png"
-id="fig:i" alt="Figure 9. 可用于实现 LMEM 收敛的 20 种补救措施清单" />
-<figcaption aria-hidden="true">Figure 9. 可用于实现 LMEM 收敛的 20
-种补救措施清单</figcaption>
-</figure>
-<blockquote>
-<p>预防措施避免收敛失败：<br />
-1. 在您的研究中包括尽可能多的受试者和尽可能多的项目。<br />
-2. 包括异质受试者和异质物品。解决收敛失败的非感性补救措施：<br />
-3.
-检查您的数据（案例分析，分配假设）。如有必要，将转换应用于预测变量或结果变量。<br />
-4.
-检查模型拼写错误（例如，该模型是否包含一个在单位之间变化的预测变量的字节单位随机斜率？）。<br />
-5. 确保所有预测因素都居中（降低了多重共线性）。<br />
-6. 增加迭代次数。<br />
-7. 更改用于最大化对数似然函数的数值优化过程。<br />
-8. 给模型更好的启动值。<br />
-9. 重建预测变量或结果变量。<br />
-10.
-检查非关联是否是由于存在一些特定细胞的少数受试者（或项目）。如果是，请考虑归纳数据或删除有问题的主题（或项目）。<br />
-11.
-去除协变量的随机效应（只要协变量与感兴趣因素之间的相互作用不在模型中）。<br />
-12. 检查您的模型是否可以简化：如果假设是x2 by
-x2相互作用，则可能无需在模型中包含x3和x4（至少最初）。或在一组高度相关的预测指标中删除除一个预测因子以外的所有预测变量。解决融合失败的经典疗法：<br />
-13.
-如果目标是测试两个固定效果X1和X2，而不是它们的相互作用，则估计两个LMEM，一个均具有固定效果，但仅是X1的随机斜率（用于测试X1），一个具有两个固定效果，但只有X2的随机斜率（用于测试X2）。<br />
-14.
-如果您的设计具有两个或多个单元内预测因素，并且您的假设涉及互动，请删除单位内预测变量和低阶相互作用的串联随机斜率，但请勿删除副本UNIT单位内预测变量之间的最高阶段相互作用的随机斜率（Barr，2013，Frontiers）。<br />
-15.
-在随机效果之间有选择地删除协方差：首先删除与您的假设无直接相关的预测因子的协方差（如果您决定将这些预测变量保留在模型中）。继续删除您怀疑无论如何都接近零的协方差。最后，消除随机效应之间的所有协方差。<br />
-16.
-删除模型中也有随机斜率的一些随机截距。请勿删除随机斜率。警告您的读者，您估计了一个没有随机拦截的模型。<br />
-17.
-执行两个单独的LMEM-一个主体作为分析单位（具有最大的受试者随机效应结构，但没有副本随机效应），一个用作为分析单位的项目（具有最大的副总体随机效应结构，但没有受试者随机效应）并应用F1
-F2逻辑（两者都必须在p .05处显着）。具有重大缺点的纠正措施：<br />
-18.
-运行分析并计算Clark（1973）Min-F'统计数据。请注意，该测试的功能不足。如果Min-F’很重要，您可以确信您的结果不是由于I型错误率而引起的。<br />
-19.
-运行LMEM或重复测量方差分析，其中受试者是唯一的随机变量（因此忽略了由于项目而引起的非独立性）。警告您的读者，您的I型错误率可能高达60％（请参阅Judd等人，2012年的表2）。<br />
-20. 估计您保持随机的LMEM</p>
-</blockquote>
-<h3 id="决定要估计的lmem">决定要估计的LMEM</h3>
-<p>在前面的部分中，我们已经描述了分析LMEM
-的前两个步骤。第一步是确定研究设计所需的最大随机效应结构。第二步是让
-LMEM 在保持随机效应结构尽可能大的同时收敛。
-<strong>大多数专家一致认为，最终的 LMEM
-需要包含作为研究人员假设重点的预测变量的随机斜率，而不管这个（这些）随机斜率的方差如何。他们还同意，随机效应结构中方差接近于零的方差分量的存在不会影响模型的拟合优度。因此，无论它们是包含还是排除，对固定效应的显着性检验的影响都非常小。</strong></p>
-<h3 id="统计能力与普遍性">统计能力与普遍性</h3>
-<p>在大多数 LMEM 中，预测变量的推理测试（即固定效应）的能力不足。</p>
-<h3 id="结论">结论</h3>
-<p>如果我们想知道我们的效果
-是否存在——也就是说，即使研究的一个小方面发生了变化，被调查的心理过程是否发生并在现实世界中发挥作用，并且观察到的效果是否会复制——有必要随机选择项目（即刺激、目标、同盟者、学校、地点、环境），并在我们的数据分析中估计包含适当副项目随机效应的LMEM。</p>
-<p>LMEM
-非常适合分析独立或由某些更高阶单元（例如，治疗师内的患者）聚集的受试者随时间（或空间）的变化。LMEM
-处理缺失数据更有效，因为与重复测量方差分析不同，它们不会消除具有一个或多个缺失值的受试者的所有观察结果。这是从
-LMEM 到“广义线性混合 效应
-模型”的一小步，当结果变量是分类、有序或计数时，这是需要的。</p>
-<p>诸如方差分析和回归分析之类的标准统计程序是否已过时？绝对不是，因为仍然有许多心理学研究，其中预测变量因受试者而异，而受试者是唯一的随机变量。然而，我们经常让我们的受试者接触多个项目（例如，刺激、同盟者），检查它们如何随时间变化（例如，治疗、学习），在多种环境（例如，位置、情况）中测试它们，并与受试者打交道相互影响的人（例如，小组、教室）。鉴于这些类型的研究涉及多个非独立来源，LMEM
-将越来越多地出现在我们科学期刊的结果部分中，并且无疑属于心理学研究人员的标准工具包。</p>
-<h2
-id="文献3--面部分类的全有或全无神经机制来自-n170-的证据">文献3--面部分类的全有或全无神经机制：来自
-N170 的证据</h2>
-<p>为了解开这些替代方案，我们采用线性混合模型 (LMM) 与零假设显着性检验
-(NHST) 和等价检验 (ETs) 来检查 N170
-对不同持续时间的面部和房屋图像的依赖性，而参与者报告每次试验的主观信心.
-采取了几项措施来确保参与者在报告高主观信心时确实对面部有清晰的感知。<span
-class="citation" data-cites="jinAllornoneNeuralMechanisms2022"><sup>[<a
-href="#ref-jinAllornoneNeuralMechanisms2022"
-role="doc-biblioref">3</a>]</sup></span></p>
-<p>为了解开这些替代方案，我们采用了线性混合建模（LMM），具有无效的假设显着性测试（NHST）和等效测试（ETS）来检查N170对面部和房屋图像的依赖性，而参与者则报告了每个试验的主观置信度。</p>
-<h3 id="材料和方法">材料和方法</h3>
-<h4 id="受试者">受试者</h4>
-<p>35名受试者，仅在确定刺激为FAC的时候，按键1。</p>
-<h4 id="刺激">刺激</h4>
-<p>40张高加索人（20位女性）面孔的照片, 40套房屋图像。</p>
-<h4 id="设备">设备</h4>
-<p>E-Prime
-2.0，三星同步主HDTV显示器（60Hz），使用128通道AG/AGCL电极网，常见顶点（CZ）用作参考。</p>
-<h4 id="eeg数据处理">EEG数据处理</h4>
-<p>除了基于独立组件分析（ICA）结果拒绝独立组件（ICA）的结果外，所有步骤均使用新西兰Escience基础架构的高性能计算集群中的MATLAB脚本完成。(available:
-https://osf. io/fvtc3/)</p>
-<h3 id="程序">程序</h3>
-<h4 id="积分窗口峰值通道和平均振幅">积分窗口、峰值通道和平均振幅</h4>
-<p>使用数据驱动的方法来确定N170和P1的窗口。</p>
-<ol type="1">
-<li>根据之前研究选择P7和P8作为可能的峰值通道。</li>
-<li>总平均所有通道在刺激后100ms到250ms确定了这个这个大平均波形的最小（负）振幅。</li>
-<li>定义了一个全宽半最大值的窗口，通过迭代调整窗口落在36-40ms的范围。</li>
-<li>创建窗口的总平均头皮图，观察确认通道。负峰值活动中心在PO7和PO8附近。</li>
-<li>用更新的峰值从新检查窗口。</li>
-<li>确定ERP组件窗口内的平均振幅，交给LMM分析。</li>
-</ol>
-<h3 id="统计分析">统计分析</h3>
-<h4 id="线性混合建模">线性混合建模</h4>
-<p>在本研究中应用 LMM 的具体好处是，与 rm-ANOVA 相比，LMM
-可以在存在缺失数据的情况下产生无偏的结果，而无需移除参与者。LMM
-的另一个优点是它们可以在单个观察级别上对幅度进行建模并估计多个随机效应。<br />
-为每个因变量获得最佳模型的一般程序遵循Bates、Kliegl 等人的建议<span
-class="citation" data-cites="batesParsimoniousMixedModels2018"><sup>[<a
-href="#ref-batesParsimoniousMixedModels2018"
-role="doc-biblioref">4</a>]</sup></span>。</p>
-<ol type="1">
-<li>首先创建最大模型，包含所有受试者和项目的随机截距和随机斜率。</li>
-<li>如果最大模型没有收敛，拟合相应的零相关模型，其中随机效应之间的相关性被强制为0。</li>
-<li>然后没有显著解释数据的随机效应被零相关参数中移除，模型缩减。</li>
-<li>再在简化模型中添加剩余随机效应之间的相关性来扩展模型，如果不能收敛，则将方差最小的随机效应逐一去除，直到模型收敛，从而得到最终的最优模型。</li>
-<li>在此模型上进行后续比较。</li>
-</ol>
-<h3 id="软件">软件</h3>
-<p>我们使用 R（R Core Team 2021）和 RStudio（RStudio Team
-2021）进行了所有统计分析。使用 Tidyverse 软件包整理数据（Wickham
-等人，2019 年）。我们使用 lme4 包 ( Bates, Mächler, et al. 2015b ) 执行
-LMM，并使用 emmeans 包 (Lenth 2021 ) 进行后续比较和 ET，其中使用
-Satterthwaite 近似来估计统计结果。R Markdown
-输出文件可在https://osf.io/zv6kg/获得。</p>
-<h3 id="文献4--简约的混合模型">文献4--简约的混合模型</h3>
-<p>在过去的十年中，当将受试者和项目作为随机因素的变化时，心理语言实验的分析方式发生了重大变化（特别是从方差分析到线性混合模型（LMM））。尽管层次线性模型已经存在数十年了，但在Pinheiro和Bates（2000）之后的语言学和心理学等领域，它们在心理学和语言学等领域的采用变得更加广泛。最近，LMM的使用已扩散到其他心理学领域，例如人格和社会心理学。<span
-class="citation" data-cites="batesParsimoniousMixedModels2018"><sup>[<a
-href="#ref-batesParsimoniousMixedModels2018"
-role="doc-biblioref">4</a>]</sup></span>
-一个特别有吸引力的特征是，通过LMMS，有关实验效果和相互作用的统计推断不再需要单独的差异分析，一个针对受试者和项目，可以进行在一个连贯的框架内。</p>
-<p>这种连贯性的好处是有一定代价的。使用混合效应模型分析实验数据的重要部分是选择适当的随机效应结构。原则上，LMM不仅考虑受试者之间的差异和因变量的平均值（即随机截距）的均值，而且在受试者之间以及所有主效应和交互作用（即随机斜率）以及项目之间的差异以及项目之间的差异（即随机斜率）以及截距和斜率之间的相关性。让我们使用最简单的模型来说明基本点，使用两级主题内实验操作，并使用主体作为唯一的随机因素，使用Bates等人描述的R的“
-LME4”软件包的公式表示法。 （2015a）：</p>
-<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">Y <span class="operator">~</span> <span class="number">1</span> <span class="operator">+</span> A <span class="operator">+</span> <span class="punctuation">(</span><span class="number">1</span><span class="operator">|</span>Subject<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-<p>该模型可能支持受试者内因子A的固定效应A。但是，如果A（即两个实验条件之间的差异）在受试者之间可靠地不同，那么关于A的不确定性可能是如此之大，以至于以至于主要影响的主要影响A在模型中不再显着，允许A：</p>
-<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">Y <span class="operator">~</span> <span class="number">1</span> <span class="operator">+</span> A <span class="operator">+</span> <span class="punctuation">(</span><span class="number">1</span><span class="operator">+</span>A<span class="operator">|</span>Subject<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-<p>为了评估实验操作的重要性，因此必须在存在相应的随机斜率的情况下检查其固定作用。</p>
-<h2
-id="文献4--急性运动可改善甲基苯丙胺的渴望和抑制缺陷一项erp研究">文献4--急性运动可改善甲基苯丙胺的渴望和抑制缺陷：一项ERP研究</h2>
-<p>渴望（carving）抑制缺陷（inhibitory deficts）</p>
-<p>本研究采用受试者内平衡设计。共有 24 名参与者符合 DSM-IV 的MA
-依赖标准被招募。渴望水平、反应时间和反应准确性，以及事件相关电位 (ERP)
-成分 N2 和
-P3，在运动和控制治疗后以平衡顺序进行测量。急性运动也促进了标准和 MA
-相关的 Go/Nogo 任务的抑制性能。与阅读控制时段和 Go
-条件相比，在锻炼时段和 Nogo 条件下的两项任务中观察到更大的 N2
-幅度，但没有更大的 P3 幅度<span class="citation"
-data-cites="wangAcuteExerciseAmeliorates2015"><sup>[<a
-href="#ref-wangAcuteExerciseAmeliorates2015"
-role="doc-biblioref">5</a>]</sup></span>。论文证明中等强度的急性运动对MA的渴望和抑制控制有益。</p>
-<p>抑制是指不当行为或与任务无关信息的适应能力。</p>
-<h3 id="介绍">介绍</h3>
-<p>MA用户在多种认知表现指标上表现更差，例如抑制、执行能力、记忆和现实生活中的功能能力。抑制涉及多个大脑区域，包括额下叶、顶叶和基底神经节。长期滥用MA会导致与抑制相关的大脑功能区域障碍，例如前扣带皮层（ACC）和背外侧前额叶皮层（DLPFC）。</p>
-<p>N2被认为代表了一个冲突监测过程，相对于健康组，滥用药物组观察到较低的N2振幅。<br />
-P3振幅被认为代表了上下文更新、注意力资源分配以及促进检测和评估刺激的过程，与N2类似，具有物质依赖的个体在皮质抑制相关的任务间表现出降低的P3振幅。<br />
-大量研究发现，在健康人群中停止中等强度的急性有氧运动后，需要抑制控制的任务条件下，认知能力的增强都与P3振幅增强有关。</p>
-<h3 id="方法">方法</h3>
-<h4 id="参与者">参与者</h4>
-<p>24名18-40岁参与者(20男，4女），根据DSM-IV标准，排除1）精神病史
-2）身体或医疗状况 3）色盲 4）Raven的智力测试标准。</p>
-<h4 id="渴望评估">渴望评估</h4>
-<p>视觉模拟量表（VAS）。</p>
-<h4 id="认知任务">认知任务</h4>
-<p>使用两个Go/Nogo范式，Go: MA-Go(蓝框MA), Neutral-Go(蓝框中性); Nogo:
-MA-Nogo(), Neutral-Nogo。</p>
-<h4 id="eeg处理">EEG处理</h4>
-<p>N2和P3量化为200ms-300ms和300-500ms之间。分别来自于Fz、Cz、Pz的电极。</p>
-<h4 id="统计分析-1">统计分析</h4>
-<ul>
-<li>VAS：为了检查参与者的渴望状态，应用 2（会话：运动，控制） ×
-4（时间点：运动前、运动中、运动后立即、 运动后 50
-分钟）重复测量方差分析来评估 VAS 分数。</li>
-<li>关于神经电数据，对于标准 Go/Nogo 任务，2（会话） × 2（条件） ×
-3（站点：Fz、Cz、Pz）ANOVA 分别针对 N2 幅度、N2 潜伏期、P3 幅度和 P3
-潜伏期进行。</li>
-</ul>
-<h2 id="相关网页链接">相关网页链接</h2>
-<ul>
-<li><p>论文：</p>
-<p><a href="http://www.80lib.com/user/enlist/sd.html">80图书馆</a></p>
-<p><a
-href="https://www.sciencedirect.com/science/article/pii/S0749596X20300061#b0390">心理科学中线性混合效应模型的最佳实践指南</a></p>
-<p><a
-href="https://www.sciencedirect.com/science/article/pii/S2590260122000030">使用线性混合模型分析会话中的学习过程可以改善治疗效果的检测：计时心理旋转的示例性研究</a></p>
-<p><a
-href="https://www.sciencedirect.com/science/article/pii/S0167876022001416#bb0200">自愿与强制语言转换的控制机制：来自ERP的证据</a></p>
-<p><a
-href="https://www.frontiersin.org/articles/10.3389/fpsyg.2010.00238/full">线性混合模型中的实验效果和个体差异：估计视觉注意力中的空间、物体和吸引力效应之间的关系</a></p></li>
-<li><p>R语言：</p>
-<p><a
-href="https://zhuanlan.zhihu.com/p/60204351">R语言之重复测量方差分析——ezANOVA的使用与解析</a></p>
-<p><a
-href="https://zhuanlan.zhihu.com/p/88497589">bruceR包重磅更新：方差分析、简单效应检验、事后多重比较</a></p>
-<p><a
-href="https://zhuanlan.zhihu.com/p/281150493">R语言综合工具包：bruceR中文帮助文档（持续更新）</a></p>
-<p><a
-href="https://www.bilibili.com/video/BV1XT4y1S7r4?p=5&amp;vd_source=7b248d6596f7ca4944759406d03d59d8">（R语言）线性混合效应模型教程</a></p>
-<p><a
-href="https://www.bilibili.com/read/cv16091910?from=note">（R语言）线性混合效应模型教程(代码)</a></p>
-<p><a
-href="https://github.com/basclab/LME_MixedEffectsERPTutorial/blob/main/LMETutorialScripts/LME_07_AnalyzeLMEModel.R">LME_MixedEffectsERPTutorial</a></p>
-<p><a
-href="https://blog.csdn.net/kMD8d5R/article/details/85240949">基于R的混合线性模型的实现</a></p></li>
-<li><p>教程</p>
-<p><a
-href="https://www.bilibili.com/video/BV1gk4y127kW?spm_id_from=333.999.0.0&amp;vd_source=7b248d6596f7ca4944759406d03d59d8">[讲座/北理工]R语言入门-线性混合模型分析_王蓓老师_200824</a></p>
-<p><a
-href="https://pan.baidu.com/s/1mhJlTrXA-JhLnU2invuXYQ#list/path=%2Fsharelink252639068-950448459562825%2F01&amp;parentPath=%2Fsharelink252639068-950448459562825">王蓓老师的课程资料</a></p>
-<p><a
-href="https://ourcodingclub.github.io/tutorials/mixed-models/?nsukey=JfcXN4ZtaaEgpYJMyxe3oLJVjnlrrISjyCNa8jr%2FJxC5boovrpcf%2BTJJhmqhALfQNznAP1VPeUUSZghPYi93AZHNXDFsaXoP9oL%2FEzSgzpmo9VmN7oUwmYExM%2F5cQ5Y3BhDFhWxHSxbAeT3iYd6fwXLzR65TQThi239DVAazfetJiUJlMdBoxgvfGykUcx50Fnd8BemyGv%2FLMezfhVe0tA%3D%3D&amp;from=timeline">INTRODUCTION
-TO LINEAR MIXED MODELS</a></p>
-<p><a
-href="https://mfviz.com/hierarchical-models/">线性混合模型教学动画</a></p>
-<p><a
-href="https://mfviz.com/hierarchical-models/">线性混合效应模型入门之一（linear
-mixed effects model）</a></p>
-<p><a
-href="https://zhuanlan.zhihu.com/p/483173133">线性混合效应模型入门之二 -
-实例操作及结果解读（R、Python、SPSS实现）</a></p>
-<p><a
-href="https://zhuanlan.zhihu.com/p/483173133">线性混合效应模型入门之二 -
-实例操作及结果解读（R、Python、SPSS实现）</a></p>
-<p><a
-href="https://www.51xxziyuan.com/61/2161.html">跟着这篇柳叶刀的文章来学会重复测量方差分析</a></p>
-<p><a
-href="https://xw.qq.com/cmsid/20200413A0HCBT00">F＝3.4括号里面的数字什么意思？方差分析F检验结果如何解读？</a></p>
-<p><a
-href="https://blog.csdn.net/qq_42021257/article/details/115913771">论文中怎么写F检验值</a></p></li>
-<li><p>SPSS</p>
-<p><a
-href="https://mfviz.com/hierarchical-models/">【心理学实验】SPSS两因素重复测量方差分析
-简单效应分析(有代码在评论里)</a></p>
-<figure>
-<img
-src="https://pic1.zhimg.com/80/v2-4ac4078f118ecadd756cd639c5862768_1440w.jpg"
-id="fig:重复测量流程图" style="width:50.0%"
-alt="Figure 10. 重复测量流程图" />
-<figcaption aria-hidden="true">Figure 10. 重复测量流程图</figcaption>
-</figure></li>
-</ul>
-<h1 class="unnumbered" id="bibliography">Reference</h1>
-<div id="refs" class="references csl-bib-body" role="doc-bibliography">
-<div id="ref-heiseUtilityLinearMixed2022" class="csl-entry"
-role="doc-biblioentry">
-<div class="csl-left-margin">[1] </div><div
-class="csl-right-inline">HEISE M J. MON S K. BOWMAN L C. Utility of
-linear mixed effects models for event-related potential research with
-infants and children[J/OL]. Developmental Cognitive Neuroscience, 2022,
-54: 101070[2022-08-27]. <a
-href="https://www.sciencedirect.com/science/article/pii/S1878929322000147">https://www.sciencedirect.com/science/article/pii/S1878929322000147</a>.</div>
-</div>
-<div id="ref-brauerLinearMixedeffectsModels2018" class="csl-entry"
-role="doc-biblioentry">
-<div class="csl-left-margin">[2] </div><div
-class="csl-right-inline">BRAUER M. CURTIN J J. Linear mixed-effects
-models and the analysis of nonindependent data: <span>A</span> unified
-framework to analyze categorical and continuous independent variables
-that vary within-subjects and/or within-items.[J/OL]. Psychological
-Methods, 2018, 23(3): 389-411[2022-08-31]. <a
-href="http://doi.apa.org/getdoi.cfm?doi=10.1037/met0000159">http://doi.apa.org/getdoi.cfm?doi=10.1037/met0000159</a>.</div>
-</div>
-<div id="ref-jinAllornoneNeuralMechanisms2022" class="csl-entry"
-role="doc-biblioentry">
-<div class="csl-left-margin">[3] </div><div class="csl-right-inline">JIN
-H. HAYWARD W G. CORBALLIS P M. All-or-none neural mechanisms underlying
-face categorization: Evidence from the <span>N170</span>[J/OL]. Cerebral
-Cortex, 2022: bhac101[2022-09-02]. <a
-href="https://doi.org/10.1093/cercor/bhac101">https://doi.org/10.1093/cercor/bhac101</a>.</div>
-</div>
-<div id="ref-batesParsimoniousMixedModels2018" class="csl-entry"
-role="doc-biblioentry">
-<div class="csl-left-margin">[4] </div><div
-class="csl-right-inline">BATES D. KLIEGL R. VASISHTH S. et al.
-Parsimonious <span>Mixed Models</span>[EB/OL]. (2018-05-26)[2022-09-02].
-<a
-href="http://arxiv.org/abs/1506.04967">http://arxiv.org/abs/1506.04967</a>.</div>
-</div>
-<div id="ref-wangAcuteExerciseAmeliorates2015" class="csl-entry"
-role="doc-biblioentry">
-<div class="csl-left-margin">[5] </div><div
-class="csl-right-inline">WANG D. ZHOU C. CHANG Y K. Acute exercise
-ameliorates craving and inhibitory deficits in methamphetamine: <span>An
-ERP</span> study[J/OL]. Physiology &amp; Behavior, 2015, 147:
-38-46[2022-09-20]. <a
-href="https://www.sciencedirect.com/science/article/pii/S0031938415002036">https://www.sciencedirect.com/science/article/pii/S0031938415002036</a>.</div>
-</div>
-</div>
-]]></content>
-      <categories>
-        <category>EEG</category>
-      </categories>
-      <tags>
-        <tag>模板</tag>
       </tags>
   </entry>
   <entry>
@@ -1429,6 +911,62 @@ items</li>
       </tags>
   </entry>
   <entry>
+    <title>Lazyvim 常用操作</title>
+    <url>/2024/08/29/lazyvim_zero_to_IDE/</url>
+    <content><![CDATA[<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">██╗      █████╗ ███████╗██╗   ██╗██╗   ██╗██╗███╗   ███╗          Z</span><br><span class="line">██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝██║   ██║██║████╗ ████║      Z</span><br><span class="line">██║     ███████║  ███╔╝  ╚████╔╝ ██║   ██║██║██╔████╔██║   z</span><br><span class="line">██║     ██╔══██║ ███╔╝    ╚██╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║ z</span><br><span class="line">███████╗██║  ██║███████╗   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║</span><br><span class="line">╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝</span><br></pre></td></tr></table></figure>
+<p>根据lazyvim推荐视频记录 地址：<a
+href="https://www.youtube.com/watch?v=N93cTbtLCIM&amp;t=393s">https://www.youtube.com/watch?v=N93cTbtLCIM&amp;t=393s</a></p>
+<h2 id="检查lazyvim的健康情况">检查Lazyvim的健康情况</h2>
+<p>建议安装后运行 ':LazyHealth' 这将加载所有插件并检查是否一切正常。</p>
+<span id="more"></span>
+<h2 id="使用leader-key">使用leader key</h2>
+<p>使用leader key可以方便的使用安装的插件，一般lazyvim的leader
+key是空格。</p>
+<p>e.g. <code>&lt;leader&gt;</code>+e 可以打开neo-tree</p>
+<h2 id="language-servers">language servers</h2>
+<p>不同语言的注释需要重Mason中安装，<code>&lt;leader&gt;</code>+cm打开安装</p>
+<h2 id="快速查找文件">快速查找文件</h2>
+<p>ff-&gt;然后可以用fzf模糊查找
+<code>&lt;leader&gt;</code>+s之后可以查找很多内容，例如文件内的内容，hlep，keymap等等</p>
+<h2 id="快捷键">快捷键</h2>
+<ol type="1">
+<li>大写的K可以查看变量定义(K)</li>
+<li>s键可以全局查找单词(现在可以全局查找中文，<a
+href="https://github.com/rainzm/flash-zh.nvim?tab=readme-ov-file">flash-zh.nvim</a>
+)</li>
+<li>中文分词用jieba.nvim,<a
+href="https://github.com/noearc/jieba-lua">地址</a></li>
+<li><code>&lt;leader&gt;</code>+uC: 修改主题</li>
+<li><code>&lt;leader&gt;</code>+cf：自动修改代码格式</li>
+<li><code>&lt;leader&gt;</code>+xx：代码诊断</li>
+<li><code>&lt;leader&gt;</code>+ca：根据建议修改代码</li>
+<li><code>&lt;leader&gt;</code>+fb: 查看buffer</li>
+<li>HJKL：在buffer中左上右下切换([b，]b也可以左右切换)</li>
+<li><code>&lt;leader&gt;</code>+｜：窗口左右分屏</li>
+<li><code>&lt;leader&gt;</code>+-：窗口上下分屏</li>
+<li>ctrl+jkl：在窗口左上右下切换</li>
+<li><code>&lt;leader&gt;</code>+w␣后+&lt;&gt;+_可以左右上下调整宽度和高低</li>
+<li><code>&lt;leader&gt;</code>+sk：搜索keymaps</li>
+<li><code>&lt;leader&gt;</code>+sr：全局查找替换文本(在窗口需要用快捷键<code>\</code>操作)</li>
+<li><code>&lt;leader&gt;</code>+/：开启一个terminal</li>
+</ol>
+<h2 id="lazyvim配置">lazyvim配置</h2>
+<p>根据官网配置记录 地址：<a
+href="http://www.lazyvim.org/configuration">http://www.lazyvim.org/configuration</a></p>
+<p>Lazyvim的文件配置如下：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">~/.config/nvim</span><br><span class="line">├── lua</span><br><span class="line">│   ├── config</span><br><span class="line">│   │   ├── autocmds.lua</span><br><span class="line">│   │   ├── keymaps.lua</span><br><span class="line">│   │   ├── lazy.lua</span><br><span class="line">│   │   └── options.lua</span><br><span class="line">│   └── plugins</span><br><span class="line">│       ├── spec1.lua</span><br><span class="line">│       ├── **</span><br><span class="line">│       └── spec2.lua</span><br><span class="line">└── init.toml</span><br></pre></td></tr></table></figure>
+<p>在配置文件中，<code>config</code>文件夹是默认文件不用修改，其中keymaps.lua是修改健位的文件</p>
+<p>如果要添加插件，在<code>plugins</code>中新建一个*.lua文件，插件GitHub中一般会写好</p>
+]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+        <tag>vim</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mrakdown 常用语法简要说明</title>
     <url>/2017/08/26/markdown-%E8%AF%AD%E6%B3%95%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E/</url>
     <content><![CDATA[<p><img src="https://i.loli.net/2018/02/21/5a8d71a965d64.png" class="full-image" /></p>
@@ -1649,6 +1187,270 @@ href="https://storage.googleapis.com/tfjs-models/demos/posenet/camera.html">clic
       </categories>
       <tags>
         <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Zotero+Vim+Markdown</title>
+    <url>/2022/08/30/zotero+vim+markdown/</url>
+    <content><![CDATA[<h2 id="zotero">Zotero</h2>
+<p>Zotero
+是一个开源、易用的多平台科研工具，可用来帮助收集、组织、引用、分享各类<strong>文献</strong>与资料，注册账号之后可以使用官方服务器在多端自动同步以及使用浏览器插件，还可以直接在网页中操作。</p>
+<ul>
+<li><a href="https://www.zotero.org">Zotero官网</a><br />
+</li>
+<li><a href="https://github.com/zotero/zotero">Zotero Github</a></li>
+</ul>
+<p>下载安装：官网免费下载，安装按默认提示即可。</p>
+<figure>
+<img src="https://www.zotero.org/static/images/home/screenshot-1.4.png"
+alt="官网示意图" />
+<figcaption aria-hidden="true">官网示意图</figcaption>
+</figure>
+<p><span id="more"></span></p>
+<ul>
+<li>在官网中选择Download，下载对应的系统版本。</li>
+<li>再安装Zotero
+Connector，这是在Chrome中的插件，可以在文献的网页中自动获取文献的元信息以及可获取的pdf保存。</li>
+<li>另外有软件中有一个免费的小空间可以同步数据（好像是1个G），我的是163邮箱账号注册的。</li>
+</ul>
+<h3 id="zotero插件">Zotero插件</h3>
+<p>在tools-&gt; Add on 中可以看已经安装的插件。</p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220830022929.png"
+alt="我安装的插件" />
+<figcaption aria-hidden="true">我安装的插件</figcaption>
+</figure>
+<p>需要安装插件需要到官网安装。</p>
+<ul>
+<li><a href="https://www.zotero.org/support/plugins">Zotero
+官网插件安装地址</a></li>
+</ul>
+<blockquote>
+<p>To install a plugin in Zotero, download its .xpi file to your
+computer. Then, in Zotero, click “Tools → Add-Ons”, then drag the .xpi
+for the plugin onto the Add-Ons window that opens.</p>
+</blockquote>
+<ol type="1">
+<li><p>Better Bibtex for Zotero<br />
+Better BibTeX (BBT) is an extension for Zotero and Juris-M that makes it
+easier to manage bibliographic data, especially for people authoring
+documents using text-based toolchains (e.g. based on LaTeX /
+Markdown).<br />
+<a
+href="https://retorque.re/zotero-better-bibtex/">官网和下载地址</a></p>
+<ul>
+<li>可以生成<code>bib</code>文件，在Markdown中插入<code>CiteKey</code>引用文献（需要<code>Pandoc</code>）。</li>
+<li>生成的<code>bib</code>可以实时更新，需要在生成的bib文件中点击<code>update</code>，另外也支持生成到多个位置（文件夹）同时更新。</li>
+</ul></li>
+<li><p>Jasminum-茉莉花<br />
+<a href="https://github.com/l0o0/jasminum">官网和下载地址</a><br />
+一个简单的 Zotero 中文插件（这个插件并不是 Zotero
+translator），实现的功能有：</p>
+<ul>
+<li>拆分或合并 Zotero 中条目作者姓和名</li>
+<li>根据知网上下载的文献文件来抓取引用信息（就是根据文件名）</li>
+<li>添加中文PDF/CAJ时，自动拉取知网数据，该功能默认关闭。需要到设置中开启，注意添加的文件名需要含有中文，全英文没有效果（还是根据文件名）</li>
+<li>为知网的学位论文 PDF 添加书签</li>
+<li>更新中文 translators</li>
+<li>拉取文献引用次数，是否核心期刊</li>
+</ul></li>
+<li><p>Zotero Better Notes<br />
+<a
+href="https://github.com/windingwind/zotero-better-notes">官网和下载地址</a><br />
+<a
+href="https://github.com/windingwind/zotero-better-notes/blob/master/UserGuideCN.md">中文说明</a><br />
+Everything about note management. All in Zotero.<br />
+好用，一边看文献一边记笔记，支持Markdown和双向连接。</p></li>
+<li><p>Zotero PDF Preview<br />
+<a
+href="https://github.com/windingwind/zotero-pdf-preview">官网和下载地址</a><br />
+Provides a PDF preview tab in the item pane.<br />
+预览PDf。</p></li>
+<li><p>PDF Translate<br />
+<a
+href="https://github.com/windingwind/zotero-pdf-translate">官网和下载地址</a><br />
+Translate PDFs, annotations, notes, and item titles automatically.<br />
+好用，类似小绿鲸，划词翻译，一件翻译题目。</p></li>
+</ol>
+<h2 id="vimmarkdwon编辑">Vim+Markdwon编辑</h2>
+<h3 id="vim不用">Vim（不用）</h3>
+<p>写点小文本、小代码，运行Linux可以，速度快，但插件多了也慢。要和Zotero一起使用的话比较折腾。</p>
+<h3 id="sublime用的少">Sublime（用的少）</h3>
+<p>Sublime编辑Markdown+Zotero，主要是使用<code>Packges install</code>安装几个相关的包。</p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220830034148.png"
+alt="我安装的几个包" />
+<figcaption aria-hidden="true">我安装的几个包</figcaption>
+</figure>
+<ol type="1">
+<li><p>IMSwitchForVintage<br />
+用作Vim切换模式按ESC后中英输入法转换。</p></li>
+<li><p>Citer<br />
+指定了bib文件后可以自动识别<code>CiteKey</code>，在文中插入引用。<br />
+需要修改<code>Packages</code>-<code>Citer.sublime-settings</code>文件。</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"> <span class="comment">//REQUIRED:</span></span><br><span class="line">  <span class="comment">//在这里配置bib路径</span></span><br><span class="line"> <span class="attr">&quot;bibtex_file&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/path_to_bib_file/XXXXXX.bib&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="comment">// You can also specify a list</span></span><br><span class="line"> <span class="comment">//&quot;bibtex_file_path&quot;: [&quot;example/path/to/file.bib&quot;, &quot;example/path/to/fileTwo.bib&quot;],</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//OPTIONAL:</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//By default Citer Search looks for your keyword in the </span></span><br><span class="line"> <span class="comment">//author, title, year, and Citekey (id) fields</span></span><br><span class="line"> <span class="attr">&quot;search_fields&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;author&quot;</span><span class="punctuation">,</span> <span class="string">&quot;title&quot;</span><span class="punctuation">,</span> <span class="string">&quot;year&quot;</span><span class="punctuation">,</span> <span class="string">&quot;id&quot;</span><span class="punctuation">]</span> <span class="punctuation">,</span></span><br><span class="line"> <span class="comment">//Default format is @Citekey</span></span><br><span class="line"> <span class="attr">&quot;citation_format&quot;</span><span class="punctuation">:</span> <span class="string">&quot;[@%s]&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="comment">//list of scopes. Could be top level &quot;text&quot; or &quot;source&quot;, or limit to</span></span><br><span class="line"> <span class="comment">// e.g &quot;text.html.markdown&quot;</span></span><br><span class="line"> <span class="attr">&quot;completions_scopes&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;text&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"> <span class="attr">&quot;enable_completions&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"> <span class="comment">//Customise the quickview of you library, using python format syntax</span></span><br><span class="line"> <span class="attr">&quot;quickview_format&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;citekey&#125; - &#123;title&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="attr">&quot;auto_merge_citations&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line"> <span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>Markdown预览<br />
+借助Typroa预览。</p></li>
+</ol>
+<h3 id="typroa">Typroa</h3>
+<p>Typroa是一个Markdown编辑工具，不支持Zotero，平时写个小东西挺好用的。自带Pandoc可生成多种格式文件，可以选择系统安装的Pandoc，生成自定义格式文件。</p>
+<h3 id="vscode推荐">Vscode（推荐）</h3>
+<p>Vscode是微软开发的一个编辑器，支持多种语言。非常好的一点是支持Zotero+Vim+Markdown。<br />
+安装后需要再安装所需插件。</p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220830043036.png"
+style="width:50.0%" alt="我安装的插件" />
+<figcaption aria-hidden="true">我安装的插件</figcaption>
+</figure>
+<p>主要有用的插件：<br />
+1. vim<br />
+2. Markdown All in One<br />
+3. PicGo(图床)<br />
+4. Pandoc Citer(制定Zotero生成的bib文件，输入@自动引用)<br />
+5. Pandoc
+Markdown（可以指定系统Pandoc命令生成预览，其中指定需要的信息写在md文件的yml头部中,
+cmd+shift+R开启预览）<br />
+指定命令：</p>
+<p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 需要安装pandoc-crossref来交叉引用表头，图标题，公式等。</span></span><br><span class="line"><span class="comment"># pandoc-crossref一定要写在--cite前面，不然不生效。</span></span><br><span class="line">--filter pandoc-crossref --cite</span><br></pre></td></tr></table></figure></p>
+<h4 id="我的vscode用户配置">我的Vscode用户配置</h4>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;editor.renderControlCharacters&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;workbench.colorTheme&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Monokai&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;terminal.integrated.inheritEnv&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;editor.find.addExtraSpaceOnTop&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;terminal.integrated.fontFamily&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Source Code Pro for Powerline&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;python.pythonPath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/usr/bin/python3&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;editor.accessibilitySupport&quot;</span><span class="punctuation">:</span> <span class="string">&quot;off&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;workbench.editor.enablePreview&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;vim.smartRelativeLine&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;vim.easymotion&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;vim.leader&quot;</span><span class="punctuation">:</span> <span class="string">&quot; &quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;vim.autoSwitchInputMethod.enable&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">//需要设置输入法自动切换，下载im-select到/usr/local/bin/im-select</span></span><br><span class="line">    <span class="attr">&quot;vim.autoSwitchInputMethod.defaultIM&quot;</span><span class="punctuation">:</span> <span class="string">&quot;com.apple.keylayout.US&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;vim.autoSwitchInputMethod.obtainIMCmd&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/usr/local/bin/im-select&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;vim.autoSwitchInputMethod.switchIMCmd&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/usr/local/bin/im-select &#123;im&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;vim.autoindent&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">//配置图床（要自己修改）</span></span><br><span class="line">    <span class="attr">&quot;picgo.picBed.current&quot;</span><span class="punctuation">:</span> <span class="string">&quot;aliyun&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;picgo.picBed.aliyun.bucket&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gazelle-pic-bed&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;picgo.picBed.aliyun.accessKeyId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;XXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;picgo.picBed.aliyun.accessKeySecret&quot;</span><span class="punctuation">:</span> <span class="string">&quot;XXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;picgo.picBed.aliyun.area&quot;</span><span class="punctuation">:</span> <span class="string">&quot;oss-cn-hangzhou&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">//指定md文件中要折行显示</span></span><br><span class="line">    <span class="attr">&quot;[markdown]&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;editor.wordWrap&quot;</span><span class="punctuation">:</span> <span class="string">&quot;on&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">//Pandoc Markdown插件指定命令</span></span><br><span class="line">    <span class="attr">&quot;pandocMd.extraPandocArguments&quot;</span><span class="punctuation">:</span> <span class="string">&quot;--filter pandoc-crossref --cite&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;settingsSync.ignoredExtensions&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    </span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">//指定zenmode中显示行号何状态栏</span></span><br><span class="line">    <span class="attr">&quot;zenMode.hideLineNumbers&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;zenMode.hideStatusBar&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">//指定Pandoc Citer的bib文件位置（要自己修改）</span></span><br><span class="line">    <span class="attr">&quot;PandocCiter.DefaultBib&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/path_to_bib_file/XXXXXX.bib&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="hexo使用markdown">hexo使用Markdown</h3>
+<p>参见这个文章的最后！<br />
+<a
+href="https://gaomm.top/2022/08/25/%E5%86%99%E4%BD%9C%E6%A8%A1%E6%9D%BF/">写作模板</a></p>
+]]></content>
+      <categories>
+        <category>papers</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>写作模板</title>
+    <url>/2022/08/25/%E5%86%99%E4%BD%9C%E6%A8%A1%E6%9D%BF/</url>
+    <content><![CDATA[<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">chapters:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">figureTitle:</span> <span class="string">&quot;图&quot;</span></span><br><span class="line"><span class="attr">figPrefix:</span> <span class="string">&quot;图&quot;</span></span><br><span class="line"><span class="attr">tableTitle:</span> <span class="string">&quot;表&quot;</span></span><br><span class="line"><span class="attr">tablePrefix:</span> <span class="string">&quot;表&quot;</span></span><br><span class="line"><span class="attr">tableTemplate:</span> <span class="string">|</span></span><br><span class="line"><span class="string">  *$$tableTitle$$ $$i$$*$$titleDelim$$ $$t$$</span></span><br><span class="line"><span class="string"></span><span class="attr">bibliography:</span> <span class="string">&quot;path/EEG.bib&quot;</span></span><br><span class="line"><span class="attr">csl:</span> <span class="string">chinese-gb7714-2005-numeric.csl</span> </span><br><span class="line"><span class="attr">reference-section-title:</span> <span class="string">Reference</span></span><br><span class="line"><span class="attr">tableTemplate:</span> <span class="string">|</span></span><br><span class="line"><span class="string">  *$$tableTitle$$ $$i$$*$$titleDelim$$ $$t$$</span></span><br><span class="line"><span class="string"></span><span class="attr">link-citations:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">lang:</span> <span class="string">en-GB</span></span><br><span class="line"><span class="attr">papersize:</span> <span class="string">a4</span></span><br><span class="line"><span class="attr">colorlinks:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">links-as-notes:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">fontsize:</span> <span class="number">11.</span><span class="string">5pt</span></span><br></pre></td></tr></table></figure>
+<p><span id="more"></span></p>
+<h1 id="lme线性混合模型处理erp">LME线性混合模型处理ERP</h1>
+<h2 id="处理流程">处理流程</h2>
+<p>根据论文《线性混合效应模型在婴儿和儿童事件相关潜力研究中的效用》<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>的处理过程找到了GitHub上的<a
+href="https://github.com/basclab/LME_MixedEffectsERPTutorial/tree/main/LMETutorialScripts">数据处理脚本</a>。脚本共有7个，其中1-5是Matlab从Continues
+EEG到ERP的处理过程，脚本6-7是R语言对ERP进行LME混合线性模型的处理过程，如下图。</p>
+<p>测试引用<span class="citation"
+data-cites="marusicNeuralBasesAgeRelated2022 tenbrinkeEffectsComputerizedCognitive2019 heiseUtilityLinearMixed2022"><sup>[<a
+href="#ref-marusicNeuralBasesAgeRelated2022"
+role="doc-biblioref">1</a>–<a href="#ref-heiseUtilityLinearMixed2022"
+role="doc-biblioref">3</a>]</sup></span></p>
+<p>吧啦吧啦吧啦，见Table 1</p>
+<div id="tbl:表头">
+<table>
+<caption>Table 1. 我是表</caption>
+<thead>
+<tr class="header">
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>引用一个图Figure 1, 2</p>
+<figure>
+<img src="https://s2.loli.net/2022/07/27/HKG6QcCpNwXn7dY.png"
+id="fig:重复测量流程图2" style="width:50.0%" alt="Figure 1. 图的标题" />
+<figcaption aria-hidden="true">Figure 1. 图的标题</figcaption>
+</figure>
+<p>测试公式：见公式Equation 1 <span id="eq:eqn1"><span
+class="math display">\[P_i(x) = \sum_i a_i
+x^i\qquad{(1)}\]</span></span></p>
+<figure>
+<img
+src="https://pic1.zhimg.com/80/v2-4ac4078f118ecadd756cd639c5862768_1440w.jpg"
+id="fig:重复测量流程图" style="width:50.0%"
+alt="Figure 2. 重复测量流程图" />
+<figcaption aria-hidden="true">Figure 2. 重复测量流程图</figcaption>
+</figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pandoc -i <span class="string">&#x27;.\LME线性混合模型处理ERP(test).md&#x27;</span> -o test.docx --filter pandoc-crossref --cite</span><br></pre></td></tr></table></figure>
+<h2 id="hexo中使用pandoc">hexo中使用pandoc</h2>
+<ol type="1">
+<li><p>安装<code>hexo-renderer-pandoc</code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure></p></li>
+<li><p>修改hexo文件夹下的<code>_config.yml</code> <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">pandoc:</span></span><br><span class="line"><span class="attr">filters:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">pandoc-crossref</span></span><br><span class="line"><span class="attr">extra:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">citeproc:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">bibliography:</span> <span class="string">&quot;/Users/macgazelle/blog/hexo/source/_posts/EEG.bib&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">csl:</span> <span class="string">&quot;/Users/macgazelle/blog/hexo/source/_posts/chinese-gb7714-2015-numeric.csl&quot;</span> </span><br><span class="line"><span class="attr">meta:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">link-citations:</span> <span class="literal">true</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">reference-section-title:</span> <span class="string">Reference</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">colorlinks:</span> <span class="literal">true</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">lang:</span> <span class="string">en-GB</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">figPrefix:</span> <span class="string">&quot;Figure&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">tblPrefix:</span> <span class="string">&quot;Table&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">tableTitle:</span> <span class="string">&quot;Table&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">figureTitle:</span> <span class="string">&quot;Figure&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">titleDelim:</span> <span class="string">.</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">eqnPrefix:</span> <span class="string">&quot;Equation&quot;</span></span><br><span class="line"><span class="attr">template:</span></span><br><span class="line"><span class="attr">mathEngine:</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>头文件yml记得要加两句<br />
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">disableNunjucks:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>hexo部署的时候，记得clean一下，用下面的命令 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure></p>
+<div id="footnotes">
+<hr>
+<div id="footnotelist">
+<ol style="list-style:none; padding-left: 0;">
+<li id="fn:1">
+<span
+style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span
+style="display: inline-block; vertical-align: top;">Mjha B , Skma B ,
+Lcba B . Utility of Linear Mixed Effects Models for Event-Related
+Potential Research with Infants and Children. 2022.
+https://www.sciencedirect.com/science/article/pii/S1878929322000147</span><a href="#fnref:1" rev="footnote">
+↩︎</a>
+</li>
+</ol>
+</div>
+</div></li>
+</ol>
+<h1 class="unnumbered" id="bibliography">Reference</h1>
+<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="ref-marusicNeuralBasesAgeRelated2022" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[1] </div><div
+class="csl-right-inline">MARUSIC U. PESKAR M. DE PAUW K. et al. Neural
+<span>Bases</span> of <span>Age-Related Sensorimotor Slowing</span> in
+the <span>Upper</span> and <span>Lower Limbs</span>[J/OL]. Frontiers in
+Aging Neuroscience, 2022, 14: 819576. <a
+href="https://doi.org/10.3389/fnagi.2022.819576">https://doi.org/10.3389/fnagi.2022.819576</a>.</div>
+</div>
+<div id="ref-tenbrinkeEffectsComputerizedCognitive2019"
+class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">TEN
+BRINKE L F. BEST J R. CHAN J L C. et al. The <span>Effects</span> of
+<span>Computerized Cognitive Training With</span> and <span>Without
+Physical Exercise</span> on <span>Cognitive Function</span> in
+<span>Older Adults</span>: <span>An</span> 8-<span>Week Randomized
+Controlled Trial</span>[J/OL]. The Journals of Gerontology: Series A,
+2019: glz115[2022-08-17]. <a
+href="https://academic.oup.com/biomedgerontology/advance-article/doi/10.1093/gerona/glz115/5485711">https://academic.oup.com/biomedgerontology/advance-article/doi/10.1093/gerona/glz115/5485711</a>.</div>
+</div>
+<div id="ref-heiseUtilityLinearMixed2022" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[3] </div><div
+class="csl-right-inline">HEISE M J. MON S K. BOWMAN L C. Utility of
+linear mixed effects models for event-related potential research with
+infants and children[J/OL]. Developmental Cognitive Neuroscience, 2022,
+54: 101070[2022-08-27]. <a
+href="https://www.sciencedirect.com/science/article/pii/S1878929322000147">https://www.sciencedirect.com/science/article/pii/S1878929322000147</a>.</div>
+</div>
+</div>
+]]></content>
+      <categories>
+        <category>papers</category>
+      </categories>
+      <tags>
+        <tag>模板</tag>
       </tags>
   </entry>
   <entry>
@@ -2587,459 +2389,6 @@ class="line">isn't indented.</span><br>
       </tags>
   </entry>
   <entry>
-    <title>生物力学资料速查</title>
-    <url>/2022/12/03/quick_search/</url>
-    <content><![CDATA[<p>这里用于记录生物力学有关的资料以及网站，方便速查。</p>
-<hr />
-<h2 id="官网">官网</h2>
-<h3 id="bob">1. BOB</h3>
-<p><img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20221205005224.png"
-style="width:60.0%" /></p>
-<p>BOB(Biomechanics of
-Bodies)是一个包含易用肌骨模型的软件，用于分析功能和量化模型。</p>
-<p>网站地址: <strong><a
-href="https://space.bilibili.com/121053892">点我</a></strong></p>
-<span id="more"></span>
-<h3 id="motion-lab-systems">2. Motion Lab Systems</h3>
-<p><img src="https://www.motion-labs.com/images/gaitlogo.png" /></p>
-<p>Motion Lab
-Systems是一个生物力学肌电和相关设备的网站，网站自带了处理C3D数据、肌电数据的软件（windows）。</p>
-<p>其中有两个免费的软件可以查看C3D数据。</p>
-<p>地址: <strong><a
-href="https://space.bilibili.com/121053892">点我</a></strong></p>
-<ul>
-<li>MLSivewer</li>
-<li>Mokka</li>
-</ul>
-<h3 id="theia-3d">3. THEIA 3D</h3>
-<p>无标记点动作捕捉</p>
-<p><img
-src="https://www.theiamarkerless.ca/wp-content/uploads/logo_red_black_name_runner_168x50.png" /></p>
-<p>网站地址: <strong><a
-href="https://www.theiamarkerless.ca/">点我</a></strong></p>
-<h3 id="btk-mokka">4. BTK &amp; Mokka</h3>
-<p>BTK（Biomechanical
-ToolKit）是python的C3D数据处理包，Mokka是一个Win平台下读取与可视化的软件，并且有个小型官网。</p>
-<ul>
-<li>BTK（更新到2016年9月） BTK文档：<strong><a
-href="http://biomechanical-toolkit.github.io/">点我</a></strong></li>
-<li>Mokka小型官网：<strong><a
-href="http://biomechanical-toolkit.github.io/mokka/index.html">点我</a></strong></li>
-</ul>
-<h3 id="c3d">5. C3D</h3>
-<p>C3D文件官网，C3D文件介绍，格式标准（PDF），处理C3D文件的软件</p>
-<p>网站地址: <strong><a
-href="https://www.c3d.org/index.html">点我</a></strong></p>
-<h3 id="isbs论坛官网">6. ISBS论坛官网</h3>
-<p>网站地址: <strong><a
-href="https://biomch-l.isbweb.org/">点我</a></strong></p>
-<ul>
-<li>生物力学讨论帖子</li>
-<li>工作招聘</li>
-<li><strong>每个月的生物力学文献更新📜</strong></li>
-</ul>
-<h3 id="the-biomechanist">7. The Biomechanist</h3>
-<p><img
-src="https://www.biomechanist.net/wp-content/uploads/2020/09/cropped-Logo-6-e1601280454906-4.png"
-style="width:40.0%" /></p>
-<p>网站地址: <strong><a
-href="https://www.biomechanist.net/">点我</a></strong></p>
-<p>我们是德国科隆体育大学“运动与医学中的人类技术”硕士课程的五名学生。我们每个人都来自一个完全不同的运动领域，但我们有一个共同点：对运动和生物力学的迷恋。我们认为这是体育和运动科学中被低估的一部分，并希望这个网站将有助于引起对这个令人兴奋的话题的更多关注。</p>
-<ul>
-<li>有关于生物力学基础教学</li>
-<li>有ISBS的YouTube视频教学</li>
-<li>有一些blog</li>
-</ul>
-<h3 id="simtk">8. SimTK</h3>
-<p>生物医学仿真工具，包含了生物学建模，生物力学建模等工具。</p>
-<p>网站地址: <strong><a href="https://simtk.org/">点我</a></strong></p>
-<ul>
-<li><p>Opensim</p>
-<p><img src="https://simtk.org/logos/opensim?dummy_value=509697024"
-style="width:10.0%" /></p>
-<p>提供易于使用、可扩展的软件，用于对神经肌肉骨骼系统进行建模、模拟、控制和分析。</p></li>
-<li><p>OpenCap</p>
-<p><img src="https://simtk.org/logos/opencap?dummy_value=2104624939"
-style="width:10.0%" /></p>
-<p>OpenCap是一个软件包，用于从智能手机视频中估计3D人体运动动态。</p></li>
-<li><p>还有很多</p></li>
-</ul>
-<h3 id="kintics-toolkit">9. Kintics Toolkit</h3>
-<p>用于处理C3D数据。 是学生和研究人员学习使用 Python 进行 3D
-生物力学数据处理的在线资源。 是一个开源的 Python
-包，它（仅）完成此处理的繁重工作，因此用户可以控制他们的数据。</p>
-<p>网站地址: <strong><a
-href="https://kineticstoolkit.uqam.ca">点我</a></strong></p>
-<p><img
-src="https://kineticstoolkit.uqam.ca/doc/_images/frontpage.gif" /></p>
-<ul>
-<li>有Github仓库</li>
-<li>有C3D处理说明文档</li>
-<li>有python教程</li>
-</ul>
-<hr />
-<h2 id="学习">学习</h2>
-<h3 id="选择无言b站">1. 选择无言（B站）</h3>
-<p>B站up主，估计是上体的人。</p>
-<p>有Visual
-3D的使用视频教程，Anybody建模的教程，以及其他python，Matlab在关于生物力学的应用。</p>
-<p>网站地址: <strong><a
-href="https://space.bilibili.com/121053892">点我</a></strong></p>
-<h3 id="working-with-btk-and-mokka">2. Working with BTK and Mokka</h3>
-<ul>
-<li>介绍在Mokka中可视化C3D文件。</li>
-<li>介绍在Matlab中读取C3D文件。</li>
-<li>下载连接</li>
-</ul>
-<p>网站地址: <strong><a
-href="https://www.biomechanist.net/btk-and-mokka/">点我</a></strong></p>
-<h3 id="bassettbiomechanics">3. bassettbiomechanics</h3>
-<p>生物力学基础、Visual 3D 视频教程。（需要注册，有些要收费）</p>
-<p><img
-src="https://bassettbiomechanics.com/wp-content/uploads/sites/7/2020/11/BassettBiomechanics_Header_in_line.png" /></p>
-<p>网站地址: <strong><a
-href="https://bassettbiomechanics.com">点我</a></strong></p>
-<h3 id="emg交互教学">4. EMG交互教学</h3>
-<p>带有肌电的信号采集动画，可以交互的观察理解肌电的信号采集原理，学习肌电的基础知识。</p>
-<ul>
-<li>网页下面还有两个交互工具（EMG
-神经肌肉模拟，EMG分析工具）可以学习一下</li>
-<li>网页下面有肌电的教学视频（EMG in Sports Biomechanics)可以看一下</li>
-</ul>
-<p>网站地址: <strong><a
-href="https://delsys.com/interactive-teaching-tools-for-beginners-learn-electromyography-emg/">点我</a></strong></p>
-<h3 id="emg期刊和emg报告标准">5. EMG期刊和EMG报告标准</h3>
-<ul>
-<li><p>EMG期刊</p>
-<p><img
-src="https://ars.els-cdn.com/content/image/1-s2.0-S1050641119X0005X-cov200h.gif" /></p>
-<p>The official journal of ISEK is the Journal of Electromyography and
-Kinesiology (JEK), published bimonthly at Elsevier Science.</p>
-<ul>
-<li>期刊内搜索“Tutorial”，有几篇肌电的教程</li>
-<li>期刊内容大多与表面肌电、运动相关</li>
-</ul>
-<p>网站地址: <strong><a
-href="https://www.sciencedirect.com/journal/journal-of-electromyography-and-kinesiology">点我</a></strong></p></li>
-<li><p>EMG报告标准</p>
-<p>网站地址: <strong><a
-href="https://isek.org/wp-content/uploads/2015/05/Standards-for-Reporting-EMG-Data.pdf">点我</a></strong></p></li>
-</ul>
-<h3 id="opensim深入教学">6. OpenSim深入教学</h3>
-<p>知乎上的一篇关于OpenSim的教学文章，确实是比较深入的了。</p>
-<p>网站地址: <strong><a
-href="https://zhuanlan.zhihu.com/p/523055552">点我</a></strong></p>
-<h3 id="simon聊聊opensim">7. Simon聊聊OpenSim</h3>
-<p>关于OpenSim的教程和笔记。</p>
-<p>网站地址: <strong><a
-href="https://www.zhihu.com/column/c_1376915554922442752">点我</a></strong></p>
-<h3 id="gaitlab.ir">8. Gaitlab.ir</h3>
-<p>应该是伊朗的步态实验室，好处就是，里面的相关资料里有：</p>
-<ul>
-<li>各种生物力学的书PDF，提供下载（<strong>免费</strong>）</li>
-</ul>
-<p>网站地址: <strong><a
-href="http://www.gaitlab.ir">点我</a></strong></p>
-<hr />
-<h2 id="人">人</h2>
-<h3 id="peter-b.-shull">1. Peter B. Shull</h3>
-<p>上海交通大学，Wearable Systems Lab</p>
-<p>我们的实验室旨在分析和训练人体运动。我们结合机器人、触觉和生物力学原理，使用嵌入式电子设备、实时模型、传感器融合算法和新型反馈设备开发可穿戴系统。我们力求了解自然环境中的运动和运动修改基础知识，例如家庭、办公室、公园或体育馆。</p>
-<p>网站地址: <strong><a
-href="http://www.wearablesystems.org/">点我</a></strong></p>
-<hr />
-<h2 id="github">Github</h2>
-<h3 id="biomechanics-dataset">1.Biomechanics dataset</h3>
-<p>包含公开的生物力学数据库。 - C3D格式 - 其他格式</p>
-<p>网站地址: <strong><a
-href="https://github.com/mkjung99/biomechanics_dataset">点我</a></strong></p>
-<h3 id="wpi-aim-lab">2.WPI AIM Lab</h3>
-<p><img
-src="https://avatars.githubusercontent.com/u/12138786?s=200&amp;v=4" /></p>
-<p>网站地址: <strong><a
-href="https://github.com/WPI-AIM">点我</a></strong></p>
-<p>WPI AIM Lab是WPI自动化与介入医学机器人研究实验室的一个仓库。</p>
-<p>与生物力学相关的库有:</p>
-<ul>
-<li>AIM_GaitCore(步态分析工具箱)</li>
-<li>AIM_Vicon(读取和分析Vicon数据的包，可以读取Vicon导出的CSV文件，自动填补丢失的点)</li>
-<li>AIM_GaitAnalysisToolkit(Vicon数据步态分析工具箱，分析步态，分离步态周期)</li>
-</ul>
-]]></content>
-      <categories>
-        <category>biomechanics</category>
-      </categories>
-      <tags>
-        <tag>资料</tag>
-        <tag>速查，笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Zotero+Vim+Markdown</title>
-    <url>/2022/08/30/zotero+vim+markdown/</url>
-    <content><![CDATA[<h2 id="zotero">Zotero</h2>
-<p>Zotero
-是一个开源、易用的多平台科研工具，可用来帮助收集、组织、引用、分享各类<strong>文献</strong>与资料，注册账号之后可以使用官方服务器在多端自动同步以及使用浏览器插件，还可以直接在网页中操作。</p>
-<ul>
-<li><a href="https://www.zotero.org">Zotero官网</a><br />
-</li>
-<li><a href="https://github.com/zotero/zotero">Zotero Github</a></li>
-</ul>
-<p>下载安装：官网免费下载，安装按默认提示即可。</p>
-<figure>
-<img src="https://www.zotero.org/static/images/home/screenshot-1.4.png"
-alt="官网示意图" />
-<figcaption aria-hidden="true">官网示意图</figcaption>
-</figure>
-<p><span id="more"></span></p>
-<ul>
-<li>在官网中选择Download，下载对应的系统版本。</li>
-<li>再安装Zotero
-Connector，这是在Chrome中的插件，可以在文献的网页中自动获取文献的元信息以及可获取的pdf保存。</li>
-<li>另外有软件中有一个免费的小空间可以同步数据（好像是1个G），我的是163邮箱账号注册的。</li>
-</ul>
-<h3 id="zotero插件">Zotero插件</h3>
-<p>在tools-&gt; Add on 中可以看已经安装的插件。</p>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220830022929.png"
-alt="我安装的插件" />
-<figcaption aria-hidden="true">我安装的插件</figcaption>
-</figure>
-<p>需要安装插件需要到官网安装。</p>
-<ul>
-<li><a href="https://www.zotero.org/support/plugins">Zotero
-官网插件安装地址</a></li>
-</ul>
-<blockquote>
-<p>To install a plugin in Zotero, download its .xpi file to your
-computer. Then, in Zotero, click “Tools → Add-Ons”, then drag the .xpi
-for the plugin onto the Add-Ons window that opens.</p>
-</blockquote>
-<ol type="1">
-<li><p>Better Bibtex for Zotero<br />
-Better BibTeX (BBT) is an extension for Zotero and Juris-M that makes it
-easier to manage bibliographic data, especially for people authoring
-documents using text-based toolchains (e.g. based on LaTeX /
-Markdown).<br />
-<a
-href="https://retorque.re/zotero-better-bibtex/">官网和下载地址</a></p>
-<ul>
-<li>可以生成<code>bib</code>文件，在Markdown中插入<code>CiteKey</code>引用文献（需要<code>Pandoc</code>）。</li>
-<li>生成的<code>bib</code>可以实时更新，需要在生成的bib文件中点击<code>update</code>，另外也支持生成到多个位置（文件夹）同时更新。</li>
-</ul></li>
-<li><p>Jasminum-茉莉花<br />
-<a href="https://github.com/l0o0/jasminum">官网和下载地址</a><br />
-一个简单的 Zotero 中文插件（这个插件并不是 Zotero
-translator），实现的功能有：</p>
-<ul>
-<li>拆分或合并 Zotero 中条目作者姓和名</li>
-<li>根据知网上下载的文献文件来抓取引用信息（就是根据文件名）</li>
-<li>添加中文PDF/CAJ时，自动拉取知网数据，该功能默认关闭。需要到设置中开启，注意添加的文件名需要含有中文，全英文没有效果（还是根据文件名）</li>
-<li>为知网的学位论文 PDF 添加书签</li>
-<li>更新中文 translators</li>
-<li>拉取文献引用次数，是否核心期刊</li>
-</ul></li>
-<li><p>Zotero Better Notes<br />
-<a
-href="https://github.com/windingwind/zotero-better-notes">官网和下载地址</a><br />
-<a
-href="https://github.com/windingwind/zotero-better-notes/blob/master/UserGuideCN.md">中文说明</a><br />
-Everything about note management. All in Zotero.<br />
-好用，一边看文献一边记笔记，支持Markdown和双向连接。</p></li>
-<li><p>Zotero PDF Preview<br />
-<a
-href="https://github.com/windingwind/zotero-pdf-preview">官网和下载地址</a><br />
-Provides a PDF preview tab in the item pane.<br />
-预览PDf。</p></li>
-<li><p>PDF Translate<br />
-<a
-href="https://github.com/windingwind/zotero-pdf-translate">官网和下载地址</a><br />
-Translate PDFs, annotations, notes, and item titles automatically.<br />
-好用，类似小绿鲸，划词翻译，一件翻译题目。</p></li>
-</ol>
-<h2 id="vimmarkdwon编辑">Vim+Markdwon编辑</h2>
-<h3 id="vim不用">Vim（不用）</h3>
-<p>写点小文本、小代码，运行Linux可以，速度快，但插件多了也慢。要和Zotero一起使用的话比较折腾。</p>
-<h3 id="sublime用的少">Sublime（用的少）</h3>
-<p>Sublime编辑Markdown+Zotero，主要是使用<code>Packges install</code>安装几个相关的包。</p>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220830034148.png"
-alt="我安装的几个包" />
-<figcaption aria-hidden="true">我安装的几个包</figcaption>
-</figure>
-<ol type="1">
-<li><p>IMSwitchForVintage<br />
-用作Vim切换模式按ESC后中英输入法转换。</p></li>
-<li><p>Citer<br />
-指定了bib文件后可以自动识别<code>CiteKey</code>，在文中插入引用。<br />
-需要修改<code>Packages</code>-<code>Citer.sublime-settings</code>文件。</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"> <span class="comment">//REQUIRED:</span></span><br><span class="line">  <span class="comment">//在这里配置bib路径</span></span><br><span class="line"> <span class="attr">&quot;bibtex_file&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/path_to_bib_file/XXXXXX.bib&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="comment">// You can also specify a list</span></span><br><span class="line"> <span class="comment">//&quot;bibtex_file_path&quot;: [&quot;example/path/to/file.bib&quot;, &quot;example/path/to/fileTwo.bib&quot;],</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//OPTIONAL:</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//By default Citer Search looks for your keyword in the </span></span><br><span class="line"> <span class="comment">//author, title, year, and Citekey (id) fields</span></span><br><span class="line"> <span class="attr">&quot;search_fields&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;author&quot;</span><span class="punctuation">,</span> <span class="string">&quot;title&quot;</span><span class="punctuation">,</span> <span class="string">&quot;year&quot;</span><span class="punctuation">,</span> <span class="string">&quot;id&quot;</span><span class="punctuation">]</span> <span class="punctuation">,</span></span><br><span class="line"> <span class="comment">//Default format is @Citekey</span></span><br><span class="line"> <span class="attr">&quot;citation_format&quot;</span><span class="punctuation">:</span> <span class="string">&quot;[@%s]&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="comment">//list of scopes. Could be top level &quot;text&quot; or &quot;source&quot;, or limit to</span></span><br><span class="line"> <span class="comment">// e.g &quot;text.html.markdown&quot;</span></span><br><span class="line"> <span class="attr">&quot;completions_scopes&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;text&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"> <span class="attr">&quot;enable_completions&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"> <span class="comment">//Customise the quickview of you library, using python format syntax</span></span><br><span class="line"> <span class="attr">&quot;quickview_format&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;citekey&#125; - &#123;title&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="attr">&quot;auto_merge_citations&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line"> <span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>Markdown预览<br />
-借助Typroa预览。</p></li>
-</ol>
-<h3 id="typroa">Typroa</h3>
-<p>Typroa是一个Markdown编辑工具，不支持Zotero，平时写个小东西挺好用的。自带Pandoc可生成多种格式文件，可以选择系统安装的Pandoc，生成自定义格式文件。</p>
-<h3 id="vscode推荐">Vscode（推荐）</h3>
-<p>Vscode是微软开发的一个编辑器，支持多种语言。非常好的一点是支持Zotero+Vim+Markdown。<br />
-安装后需要再安装所需插件。</p>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220830043036.png"
-style="width:50.0%" alt="我安装的插件" />
-<figcaption aria-hidden="true">我安装的插件</figcaption>
-</figure>
-<p>主要有用的插件：<br />
-1. vim<br />
-2. Markdown All in One<br />
-3. PicGo(图床)<br />
-4. Pandoc Citer(制定Zotero生成的bib文件，输入@自动引用)<br />
-5. Pandoc
-Markdown（可以指定系统Pandoc命令生成预览，其中指定需要的信息写在md文件的yml头部中,
-cmd+shift+R开启预览）<br />
-指定命令：</p>
-<p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 需要安装pandoc-crossref来交叉引用表头，图标题，公式等。</span></span><br><span class="line"><span class="comment"># pandoc-crossref一定要写在--cite前面，不然不生效。</span></span><br><span class="line">--filter pandoc-crossref --cite</span><br></pre></td></tr></table></figure></p>
-<h4 id="我的vscode用户配置">我的Vscode用户配置</h4>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;editor.renderControlCharacters&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;workbench.colorTheme&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Monokai&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;terminal.integrated.inheritEnv&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;editor.find.addExtraSpaceOnTop&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;terminal.integrated.fontFamily&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Source Code Pro for Powerline&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;python.pythonPath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/usr/bin/python3&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;editor.accessibilitySupport&quot;</span><span class="punctuation">:</span> <span class="string">&quot;off&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;workbench.editor.enablePreview&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;vim.smartRelativeLine&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;vim.easymotion&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;vim.leader&quot;</span><span class="punctuation">:</span> <span class="string">&quot; &quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;vim.autoSwitchInputMethod.enable&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">//需要设置输入法自动切换，下载im-select到/usr/local/bin/im-select</span></span><br><span class="line">    <span class="attr">&quot;vim.autoSwitchInputMethod.defaultIM&quot;</span><span class="punctuation">:</span> <span class="string">&quot;com.apple.keylayout.US&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;vim.autoSwitchInputMethod.obtainIMCmd&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/usr/local/bin/im-select&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;vim.autoSwitchInputMethod.switchIMCmd&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/usr/local/bin/im-select &#123;im&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;vim.autoindent&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">//配置图床（要自己修改）</span></span><br><span class="line">    <span class="attr">&quot;picgo.picBed.current&quot;</span><span class="punctuation">:</span> <span class="string">&quot;aliyun&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;picgo.picBed.aliyun.bucket&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gazelle-pic-bed&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;picgo.picBed.aliyun.accessKeyId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;XXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;picgo.picBed.aliyun.accessKeySecret&quot;</span><span class="punctuation">:</span> <span class="string">&quot;XXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;picgo.picBed.aliyun.area&quot;</span><span class="punctuation">:</span> <span class="string">&quot;oss-cn-hangzhou&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">//指定md文件中要折行显示</span></span><br><span class="line">    <span class="attr">&quot;[markdown]&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;editor.wordWrap&quot;</span><span class="punctuation">:</span> <span class="string">&quot;on&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">//Pandoc Markdown插件指定命令</span></span><br><span class="line">    <span class="attr">&quot;pandocMd.extraPandocArguments&quot;</span><span class="punctuation">:</span> <span class="string">&quot;--filter pandoc-crossref --cite&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;settingsSync.ignoredExtensions&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    </span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">//指定zenmode中显示行号何状态栏</span></span><br><span class="line">    <span class="attr">&quot;zenMode.hideLineNumbers&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;zenMode.hideStatusBar&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">//指定Pandoc Citer的bib文件位置（要自己修改）</span></span><br><span class="line">    <span class="attr">&quot;PandocCiter.DefaultBib&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/path_to_bib_file/XXXXXX.bib&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="hexo使用markdown">hexo使用Markdown</h3>
-<p>参见这个文章的最后！<br />
-<a
-href="https://gaomm.top/2022/08/25/%E5%86%99%E4%BD%9C%E6%A8%A1%E6%9D%BF/">写作模板</a></p>
-]]></content>
-      <categories>
-        <category>papers</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>写作模板</title>
-    <url>/2022/08/25/%E5%86%99%E4%BD%9C%E6%A8%A1%E6%9D%BF/</url>
-    <content><![CDATA[<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">chapters:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">figureTitle:</span> <span class="string">&quot;图&quot;</span></span><br><span class="line"><span class="attr">figPrefix:</span> <span class="string">&quot;图&quot;</span></span><br><span class="line"><span class="attr">tableTitle:</span> <span class="string">&quot;表&quot;</span></span><br><span class="line"><span class="attr">tablePrefix:</span> <span class="string">&quot;表&quot;</span></span><br><span class="line"><span class="attr">tableTemplate:</span> <span class="string">|</span></span><br><span class="line"><span class="string">  *$$tableTitle$$ $$i$$*$$titleDelim$$ $$t$$</span></span><br><span class="line"><span class="string"></span><span class="attr">bibliography:</span> <span class="string">&quot;path/EEG.bib&quot;</span></span><br><span class="line"><span class="attr">csl:</span> <span class="string">chinese-gb7714-2005-numeric.csl</span> </span><br><span class="line"><span class="attr">reference-section-title:</span> <span class="string">Reference</span></span><br><span class="line"><span class="attr">tableTemplate:</span> <span class="string">|</span></span><br><span class="line"><span class="string">  *$$tableTitle$$ $$i$$*$$titleDelim$$ $$t$$</span></span><br><span class="line"><span class="string"></span><span class="attr">link-citations:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">lang:</span> <span class="string">en-GB</span></span><br><span class="line"><span class="attr">papersize:</span> <span class="string">a4</span></span><br><span class="line"><span class="attr">colorlinks:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">links-as-notes:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">fontsize:</span> <span class="number">11.</span><span class="string">5pt</span></span><br></pre></td></tr></table></figure>
-<p><span id="more"></span></p>
-<h1 id="lme线性混合模型处理erp">LME线性混合模型处理ERP</h1>
-<h2 id="处理流程">处理流程</h2>
-<p>根据论文《线性混合效应模型在婴儿和儿童事件相关潜力研究中的效用》<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>的处理过程找到了GitHub上的<a
-href="https://github.com/basclab/LME_MixedEffectsERPTutorial/tree/main/LMETutorialScripts">数据处理脚本</a>。脚本共有7个，其中1-5是Matlab从Continues
-EEG到ERP的处理过程，脚本6-7是R语言对ERP进行LME混合线性模型的处理过程，如下图。</p>
-<p>测试引用<span class="citation"
-data-cites="marusicNeuralBasesAgeRelated2022 tenbrinkeEffectsComputerizedCognitive2019 heiseUtilityLinearMixed2022"><sup>[<a
-href="#ref-marusicNeuralBasesAgeRelated2022"
-role="doc-biblioref">1</a>–<a href="#ref-heiseUtilityLinearMixed2022"
-role="doc-biblioref">3</a>]</sup></span></p>
-<p>吧啦吧啦吧啦，见Table 1</p>
-<div id="tbl:表头">
-<table>
-<caption>Table 1. 我是表</caption>
-<thead>
-<tr class="header">
-<th>a</th>
-<th>b</th>
-<th>c</th>
-<th>b</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td>3</td>
-<td>2</td>
-<td>1</td>
-<td>2</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>引用一个图Figure 1, 2</p>
-<figure>
-<img src="https://s2.loli.net/2022/07/27/HKG6QcCpNwXn7dY.png"
-id="fig:重复测量流程图2" style="width:50.0%" alt="Figure 1. 图的标题" />
-<figcaption aria-hidden="true">Figure 1. 图的标题</figcaption>
-</figure>
-<p>测试公式：见公式Equation 1 <span id="eq:eqn1"><span
-class="math display">\[P_i(x) = \sum_i a_i
-x^i\qquad{(1)}\]</span></span></p>
-<figure>
-<img
-src="https://pic1.zhimg.com/80/v2-4ac4078f118ecadd756cd639c5862768_1440w.jpg"
-id="fig:重复测量流程图" style="width:50.0%"
-alt="Figure 2. 重复测量流程图" />
-<figcaption aria-hidden="true">Figure 2. 重复测量流程图</figcaption>
-</figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pandoc -i <span class="string">&#x27;.\LME线性混合模型处理ERP(test).md&#x27;</span> -o test.docx --filter pandoc-crossref --cite</span><br></pre></td></tr></table></figure>
-<h2 id="hexo中使用pandoc">hexo中使用pandoc</h2>
-<ol type="1">
-<li><p>安装<code>hexo-renderer-pandoc</code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure></p></li>
-<li><p>修改hexo文件夹下的<code>_config.yml</code> <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">pandoc:</span></span><br><span class="line"><span class="attr">filters:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">pandoc-crossref</span></span><br><span class="line"><span class="attr">extra:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">citeproc:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">bibliography:</span> <span class="string">&quot;/Users/macgazelle/blog/hexo/source/_posts/EEG.bib&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">csl:</span> <span class="string">&quot;/Users/macgazelle/blog/hexo/source/_posts/chinese-gb7714-2015-numeric.csl&quot;</span> </span><br><span class="line"><span class="attr">meta:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">link-citations:</span> <span class="literal">true</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">reference-section-title:</span> <span class="string">Reference</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">colorlinks:</span> <span class="literal">true</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">lang:</span> <span class="string">en-GB</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">figPrefix:</span> <span class="string">&quot;Figure&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">tblPrefix:</span> <span class="string">&quot;Table&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">tableTitle:</span> <span class="string">&quot;Table&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">figureTitle:</span> <span class="string">&quot;Figure&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">titleDelim:</span> <span class="string">.</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">eqnPrefix:</span> <span class="string">&quot;Equation&quot;</span></span><br><span class="line"><span class="attr">template:</span></span><br><span class="line"><span class="attr">mathEngine:</span></span><br></pre></td></tr></table></figure></p></li>
-<li><p>头文件yml记得要加两句<br />
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">disableNunjucks:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></p></li>
-<li><p>hexo部署的时候，记得clean一下，用下面的命令 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure></p>
-<div id="footnotes">
-<hr>
-<div id="footnotelist">
-<ol style="list-style:none; padding-left: 0;">
-<li id="fn:1">
-<span
-style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span
-style="display: inline-block; vertical-align: top;">Mjha B , Skma B ,
-Lcba B . Utility of Linear Mixed Effects Models for Event-Related
-Potential Research with Infants and Children. 2022.
-https://www.sciencedirect.com/science/article/pii/S1878929322000147</span><a href="#fnref:1" rev="footnote">
-↩︎</a>
-</li>
-</ol>
-</div>
-</div></li>
-</ol>
-<h1 class="unnumbered" id="bibliography">Reference</h1>
-<div id="refs" class="references csl-bib-body" role="doc-bibliography">
-<div id="ref-marusicNeuralBasesAgeRelated2022" class="csl-entry"
-role="doc-biblioentry">
-<div class="csl-left-margin">[1] </div><div
-class="csl-right-inline">MARUSIC U. PESKAR M. DE PAUW K. et al. Neural
-<span>Bases</span> of <span>Age-Related Sensorimotor Slowing</span> in
-the <span>Upper</span> and <span>Lower Limbs</span>[J/OL]. Frontiers in
-Aging Neuroscience, 2022, 14: 819576. <a
-href="https://doi.org/10.3389/fnagi.2022.819576">https://doi.org/10.3389/fnagi.2022.819576</a>.</div>
-</div>
-<div id="ref-tenbrinkeEffectsComputerizedCognitive2019"
-class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">[2] </div><div class="csl-right-inline">TEN
-BRINKE L F. BEST J R. CHAN J L C. et al. The <span>Effects</span> of
-<span>Computerized Cognitive Training With</span> and <span>Without
-Physical Exercise</span> on <span>Cognitive Function</span> in
-<span>Older Adults</span>: <span>An</span> 8-<span>Week Randomized
-Controlled Trial</span>[J/OL]. The Journals of Gerontology: Series A,
-2019: glz115[2022-08-17]. <a
-href="https://academic.oup.com/biomedgerontology/advance-article/doi/10.1093/gerona/glz115/5485711">https://academic.oup.com/biomedgerontology/advance-article/doi/10.1093/gerona/glz115/5485711</a>.</div>
-</div>
-<div id="ref-heiseUtilityLinearMixed2022" class="csl-entry"
-role="doc-biblioentry">
-<div class="csl-left-margin">[3] </div><div
-class="csl-right-inline">HEISE M J. MON S K. BOWMAN L C. Utility of
-linear mixed effects models for event-related potential research with
-infants and children[J/OL]. Developmental Cognitive Neuroscience, 2022,
-54: 101070[2022-08-27]. <a
-href="https://www.sciencedirect.com/science/article/pii/S1878929322000147">https://www.sciencedirect.com/science/article/pii/S1878929322000147</a>.</div>
-</div>
-</div>
-]]></content>
-      <categories>
-        <category>papers</category>
-      </categories>
-      <tags>
-        <tag>模板</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>安装Ubuntu版openpose</title>
     <url>/2018/06/18/%E5%AE%89%E8%A3%85Ubuntu%E7%89%88openpose/</url>
     <content><![CDATA[<h2 id="ubuntu-下载加速">Ubuntu 下载加速</h2>
@@ -3117,6 +2466,524 @@ OpenCV</a> respectively.</p>
       </categories>
       <tags>
         <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LME线性混合模型处理ERP</title>
+    <url>/2022/09/03/LME%E7%BA%BF%E6%80%A7%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B%E5%A4%84%E7%90%86ERP(test)/</url>
+    <content><![CDATA[<h1 id="lme线性混合模型处理erp">LME线性混合模型处理ERP</h1>
+<blockquote>
+<p><em>存在的问题</em></p>
+<ul>
+<li>时间窗口的选择</li>
+<li>通道的选择</li>
+<li>模型的选择</li>
+<li>变量编码<br />
+</li>
+<li>统计能力 power</li>
+</ul>
+</blockquote>
+<h2
+id="文献1--线性混合效应模型在婴儿和儿童事件相关潜力研究中的效用">文献1--线性混合效应模型在婴儿和儿童事件相关潜力研究中的效用</h2>
+<p>根据论文《线性混合效应模型在婴儿和儿童事件相关潜力研究中的效用》<span
+class="citation" data-cites="heiseUtilityLinearMixed2022"><sup>[<a
+href="#ref-heiseUtilityLinearMixed2022"
+role="doc-biblioref">1</a>]</sup></span>的处理过程找到了GitHub上的<a
+href="https://github.com/basclab/LME_MixedEffectsERPTutorial/tree/main/LMETutorialScripts">数据处理脚本</a>。脚本共有7个，其中1-5是Matlab从Continues
+EEG到ERP的处理过程，脚本6-7是R语言对ERP进行LME混合线性模型的处理过程，如Figure 1。</p>
+<figure>
+<img
+src="https://user-images.githubusercontent.com/49215489/148004509-6a02682d-62da-42e5-8828-5feb35ea8ff6.png"
+id="fig:a" style="width:70.0%" alt="Figure 1. 文献中的处理流程" />
+<figcaption aria-hidden="true">Figure 1. 文献中的处理流程</figcaption>
+</figure>
+<span id="more"></span>
+<p>文章比较ANOVA与LMM，发现ANOVA的结果有偏差，随着受试者的减少，结果变得偏差。而LMM随着受试者的减少，模型也能产生准确、无偏差的结果。论文包括了教程和示例代码。</p>
+<h2
+id="文献2--线性混合效应模型和非独立数据的分析一个统一的框架用于分析改变主题内部和或项目内的分类和连续自变量">文献2--线性混合效应模型和非独立数据的分析：一个统一的框架，用于分析改变主题内部和/或项目内的分类和连续自变量。</h2>
+<p>近年来，对“线性混合效应模型” （LMEMs）的兴趣急剧增加。Judd、Westfall
+和 Kenny（2012 年）以及Barr、Levy、Scheepers 和 Tily（2013
+年）的有影响力的文章清楚地表明，许多心理学研究都需要这些类型的模型。<span
+class="citation"
+data-cites="brauerLinearMixedeffectsModels2018"><sup>[<a
+href="#ref-brauerLinearMixedeffectsModels2018"
+role="doc-biblioref">2</a>]</sup></span> 传统的
+ANOVA/回归方法的局限性在于它不能很好地处理缺失的数据，并且无法处理在“单位”内变化的连续预测变量（例如，受试者内、组间、组内、教室）。更重要的是，当相同的受试者暴露于同一组项目（或刺激或目标）时，这种方法会产生有偏差的推论统计。只有混合模型才能产生具有可接受的
+I 型和 II
+型错误率的无偏参数估计。（<em>也就是说ANOVA不适合重复测量</em>）</p>
+<h3 id="术语和数据格式">术语和数据格式</h3>
+<p>线性混合效应模型（LMEM）指代具有一种或多种的随机效应的模型，如分层回归、分层线性建模
+(HLM)、多级回归、多级线性建模、线性混合模型和随机系数模型。<br />
+<strong>为了采用“
+LMEM思维方式”，越来越多的研究人员现在以“长格式”而不是“宽格式”分析他们的数据</strong>。
+长格式的数据文件更“整洁”，因为它们类似于受试者间设计：一列表示因变量，一列或多列对应于预测变量些，并且一项观察与一行相关。R中的
+<strong>reshape</strong>
+函数允许研究人员将数据文件从宽格式转换为长格式，反之亦然。<br />
+想象一个假设的实验（我们将在本文中将其称为“研究
+1”），其中研究人员招募100名本科生，并要求他们列出他们在大学学习的两个高声望课程和两个低声望课程。声望被定义为课程在学生成绩单上“看起来不错”的程度（例如，困难的科学课程、荣誉课程、研究生水平的课程）。然后要求学生在9分制上表明他们对四个班级中的每一个课程的喜好。（Figure 2）</p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220831210157.png"
+id="fig:b" style="width:70.0%"
+alt="Figure 2. 宽格式与长格式的相同数据比较" />
+<figcaption aria-hidden="true">Figure 2.
+宽格式与长格式的相同数据比较</figcaption>
+</figure>
+<h3 id="线性混合模型简介">线性混合模型简介</h3>
+<h4 id="固定变量和随机变量">固定变量和随机变量</h4>
+<p>在LMEM中，相关变量被认为是“固定的”（fixed）或“随机的”（random）。在“研究1”中的声望（prestige）就是一个固定变量，且有两个级别，而受试者（subject.ID）就是一个随机变量（有100个级别）。</p>
+<ul>
+<li>当从感兴趣的变量的所有级别收集数据时，变量被认为是固定的。<br />
+</li>
+<li>当一个变量具有许多可能的水平并且研究人员对所有可能的水平都感兴趣时，该变量被认为是随机的，但数据中仅包含水平的随机样本。<br />
+</li>
+<li>测量的预测因素，协变量和人口统计通常是固定的变量。<br />
+</li>
+<li>仅当每个变量级别的观察值多一个以上的观察值时，数据分析中才会明确包含随机变量。只有在数据中创建非独立性时，随机变量才包含在分析中。</li>
+</ul>
+<h4 id="简单误差-vs-复杂误差">简单误差 VS 复杂误差</h4>
+<p>统计分析都具有相同的基本结构：<span class="math inline">\(DATA =
+MODEL + ERROR\)</span>（Figure 3）。每个统计模型都基于结果变量(<span
+class="math inline">\(β0\)</span>)和一个或多个预测变量（此处为<span
+class="math inline">\(β1X\)</span>）的（加权）平均值进行预测。<strong>独立数据分析</strong>（例如，受试者间分析）和<strong>非独立数据分析</strong>（例如，受试者内分析）之间的主要区别在于误差项的复杂性。</p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220902001711.png"
+id="fig:c" alt="Figure 3. 独立数据与非独立数据的比较" />
+<figcaption aria-hidden="true">Figure 3.
+独立数据与非独立数据的比较</figcaption>
+</figure>
+<p>在独立数据分析中（受试者间），误差项比较简单，只有一个随机误差（<span
+class="math inline">\(e_i\)</span>）。Figure 3左</p>
+<p>当数据是非独立的（受试者内）并通过LMEM分析时，误差来源于三个分量。Figure 3右</p>
+<ul>
+<li>随机截距：来源于受试者之间的个体差异（Figure 3中标记为<span
+class="math inline">\(e_{RI}\)</span> 或 <span
+class="math inline">\(u_{0j}\)</span> ）</li>
+<li>随机斜率：来源于受试者之间受预测变量（除了受试者的其他变量）影响的差异（Figure 3中标记为<span
+class="math inline">\(e_{RS}\)</span> 或 <span
+class="math inline">\(u_{1j}X_{ij}\)</span> ）</li>
+<li>随机误差：其他误差来源。（Figure 3中标记为<span
+class="math inline">\(e\)</span> 或 <span
+class="math inline">\(e_{ij}\)</span> ）</li>
+</ul>
+<p>在GLM（一般线性模型）中的重点是解释与预测变量的相关回归系数。在Figure 3中，β1表示模型对“声望”对喜欢的影响的估计。如果β1在统计上显着，我们得出结论，预测变量对结果变量有影响。</p>
+<h4 id="固定效应与随机效应的解释">固定效应与随机效应的解释</h4>
+<ul>
+<li>固定效应：在Figure 3中的两个模型中，系数β0和β1称为“固定效应“。β1为固定斜率，β0为固定截距。这些影响称为“固定"，因为它们适用于整个样本。</li>
+<li>随机效应：在Figure 3中的两个模型中，系数<span
+class="math inline">\(u_{0j}\)</span> 和 <span
+class="math inline">\(u_{1j}X_{ij}\)</span>称为“随机效应“。<span
+class="math inline">\(u_{1j}X_{ij}\)</span>为随机斜率，<span
+class="math inline">\(u_{0j}\)</span>为随机截距，因为他们代表了模型中β0和β1在不同受试者间的变化程度。在Equation 1中更容易理解。</li>
+</ul>
+<p><span id="eq:a"><span class="math display">\[Y_{ij} = ( \beta_0 +
+u_{0j} ) + ( \beta_1 + u_{1j} ) X_{ij} +
+e_{ij}\qquad{(1)}\]</span></span></p>
+<h3
+id="扩展到具有多个二分预测变量的设计">扩展到具有多个二分预测变量的设计</h3>
+<p>与方差分析和回归分析一样，当模型包含交互项时，LMEM
+通常要求我们在分析之前将预测变量居中。更准确地说，只有当二分变量已被重新编码为
+-.5 和
++.5（或以零为中心的任何其他两个值）并且连续变量已经“平均居中”（通过从每个分数中减去平均值）。</p>
+<h4 id="连续受试者内预测变量的分析">连续受试者内预测变量的分析</h4>
+<p>LMEM可以轻松扩展到连续变量间（内部）的分析（例如：受试者间，课程间）。</p>
+<h4 id="不同形式的均值居中">不同形式的均值居中</h4>
+<p>尽管预测变量在研究 1 和 2
+中都以零为中心，但两者之间存在重要区别：在研究 1
+中，二分预测变量被重新编码为 -.5 和
++.5，并且不需要重新编码，因为它不会影响与预测变量相关的固定效应的参数估计。然而，在研究
+2
+中，连续预测变量以每个受试者自己的均值为中心（有时称为“聚类均值居中”或“组均值居中”）。这种操作对于获得预测变量和结果之间的主体内关联的无偏估计是必要的。</p>
+<h4 id="相关分析">相关分析</h4>
+<p>LMEM框架还可以用于检查连续的受试者间预测因子与一个或多个其他预测变量的交互作用。<br />
+如果预测变量是在受试者内，应该聚类平均值居中（cluster-mean）,
+Figure 4。</p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220902231832.png"
+id="fig:d" alt="Figure 4. 受试者间（性别）" />
+<figcaption aria-hidden="true">Figure 4. 受试者间（性别）</figcaption>
+</figure>
+<p>如果预测变量是在受试者间，应该以总平均居中（grand-mean）,
+Figure 5。</p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220902231936.png"
+id="fig:e" alt="Figure 5. 受试者内（科学）" />
+<figcaption aria-hidden="true">Figure 5. 受试者内（科学）</figcaption>
+</figure>
+<p><strong>请注意，受试者内的连续预测变量可以是时间，以便模型可以检查受试者随时间的变化。</strong></p>
+<h3 id="扩展到多级模型">扩展到多级模型</h3>
+<p>在到目前为止讨论的所有示例中，预测变量在
+受试者中各不相同。读者应该知道，上面所说的一切（以及文章的其余部分）也适用于预测变量在高阶单元或“集群”内变化的研究。例如当受试者嵌套在一个组（groups）、家庭（families）、或者教室（classrooms）。所谓的“多级模型”只是LMEM的一个特例。</p>
+<h4 id="多级模型示例">多级模型示例</h4>
+<p>考虑一项研究，其中研究人员组成四个人的讨论组，并为其中两个人分配一个高地位（高声望）和两个低地位（低声望）。（有一个小的变化：主题.ID
+被替换为
+group.ID）。受试者和组都是随机变量。鉴于每个受试者只有一次观察，LMEM
+不包含副主题随机效应。它确实包含两个组的随机效应：一个逐组随机截距（因为来自同一组的四个数据点是相关的）和一个逐组随机斜率（因为预测变量“声望”在组内变化
+）</p>
+<h3 id="限制最大似然">限制最大似然</h3>
+<p>应该注意的是，LMEM
+使用称为“限制最大似然”（ReML）的估计程序，而不是作为标准 ANOVA
+和回归分析的“普通最小二乘法”（OLS）。 使用 ReML 作为估计程序有许多 LMEM
+用户应该注意的含义。除了在简单的 LMEM
+中，最终模型可能具有带小数的分母自由度。它们应该这样报告，例如，F (1,
+54.17) = 4.86, p &lt; .04。 只有 Kenward-Roger
+自由度的F统计量的结果才能准确再现重复测量方差分析的结果。</p>
+<h3 id="非独立的多重来源">非独立的多重来源</h3>
+<p>在许多心理学实验中，受试者会接触到相同的一组项目，即他们可能会查看相同的单词、句子、图片或头像，或者他们可能会对相同的产品、面孔、艺术品或个人进行评分。或者，聚集在组、家庭、教室或县中的受试者可以各自提供多个数据点。此类研究包含两个非独立性来源：一些回答可能更相似，因为它们是由同一受试者做出的，其他回答可能更相似，因为它们涉及相同的项目（即不同的受试者对相同的项目进行评分)，但其他反应可能更相似，因为它们是由同一组的受试者做出的。</p>
+<p>当存在多个非独立来源时，可能很难决定分析中应包括哪些随机效应。</p>
+<p>然而，幸运的是，所有专家都同意数据分析的初始步骤。</p>
+<ol type="1">
+<li><p>第一步包括确定研究设计所要求的所谓“最大随机效应结构”。正如我们将看到的那样，这个最大随机效应结构包括我们可能希望根据设计特征包括的所有随机效应，即基于预测变量是否在导致非独立性的随机变量的水平之内或之间变化数据。</p></li>
+<li><p>第二步包括估计具有最大随机效应的LMEM结构体。然而，正如我们将看到的，这并不总是可能的，因为一些
+LMEM 非常复杂，以至于迭代估计过程无法收敛。</p></li>
+<li><p>在这种情况下，有必要逐步简化随机效应结构，直到可以实现收敛。</p></li>
+</ol>
+<hr />
+<p><strong>在接下来的部分中，我们将详细讨论前两个步骤中的每一个。在我们的讨论中，我们将关注两个导致数据不独立的随机变量。第一个随机变量始终是主题。我们将第二个随机变量称为“项目”，但读者应该知道，这个术语可能指的是任何随机变量，它是非独立的第二个来源（例如，刺激、目标、同盟者、位置、小组、教室）。</strong></p>
+<h3 id="如何确定最大随机效应结构">如何确定最大随机效应结构</h3>
+<h4 id="随机截距">随机截距</h4>
+<p>通过在最大随机效应结构中确定适当的随机截距来解释其非独立性。Figure 6中的第一条规则确定了什么时候需要随机截距。当考虑的单元是受试者时，只要给定受试者多个数据点（测试点），就应该包括一个由受试者产生的随机截距。
+当每个受试者有多个数据点并且每个项目有多个数据点时，必须通过添加按受试者随机截距和按项目随机截距来考虑这两个非独立来源。</p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220907235123.png"
+id="fig:f"
+alt="Figure 6. 一组关于应包含在最大随机效应结构中的受试者和项目随机效应类型的简单规则" />
+<figcaption aria-hidden="true">Figure 6.
+一组关于应包含在最大随机效应结构中的受试者和项目随机效应类型的简单规则</figcaption>
+</figure>
+<p>第一个规则：如果单元引起非独立性，则需要一个串联随机截距。<br />
+第二个规则：通常，单位内预测变量需要一个串联随机斜率，而单位间预测器则不需要。<br />
+第三个规则：建议在包含交互的所有因素均为单位内部时，包括一个串联随机斜率，以进行相互作用。</p>
+<h4 id="随机斜率">随机斜率</h4>
+<p>随机斜率参见Figure 6中的第二个规则。我们希望为在受试者内变化的任何预测变量包括一个按受试者随机斜率（但不是在受试者之间变化时）。同样，我们希望为在项目内变化的任何预测变量包括一个逐项随机斜率（但不是在项目之间变化时）。</p>
+<ul>
+<li>在受试者间变化的研究<br />
+为了说明这个规则，让我们想象一个研究，在该研究中，受试者评价他们对八辆低声望汽车和八辆高声望汽车的喜好。所有受试者都对同一组
+16 辆汽车进行评分(Figure 7)。
+请注意，声望的随机斜率不需要随机斜率，因为声望在项目内不会变化（每辆目标汽车的声望要么低要么高）。</li>
+</ul>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220912143752.png"
+id="fig:g"
+alt="Figure 7. LMEM 和 R 脚本用于具有一个二分预测变量（声望）的研究，该变量 在 受试者内部但在项目之间有所不同" />
+<figcaption aria-hidden="true">Figure 7. LMEM 和 R
+脚本用于具有一个二分预测变量（声望）的研究，该变量 在
+受试者内部但在项目之间有所不同</figcaption>
+</figure>
+<ul>
+<li>在项目内变化的研究<br />
+想象一项研究，其中受试者评估同一组 20
+辆汽车（中等声望），但他们在两个受试者之间的条件之一中这样做。一半的受试者在看过五辆声望很高的汽车（高声望背景）后评价他们对这
+20
+辆车的喜好，而另一半受试者之前曾接触过五辆声望很低的汽车（低声望背景）。同样，这项研究包含两个非独立性来源，主题和项目，需要两个随机截距。预测变量“声望”在受试者之间变化（每个受试者仅在一个声望上下文条件下），但在项目内变化（20
+辆目标汽车中的每一辆在某些受试者的声望较高的上下文中，但在某些受试者的声望较低的上下文中其他科目）。适当
+LMEM的最大随机效应结构包含三个随机效应（参见Figure 8）。鉴于声望（背景）因学科而异，因此无需包括副学科
+声望的随机斜率。</li>
+</ul>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220912144628.png"
+id="fig:h"
+alt="Figure 8. LMEM 和 R 脚本用于具有一个二分预测器（声望）的研究，该预测器在受试者之间但在项目内部有所不同" />
+<figcaption aria-hidden="true">Figure 8. LMEM 和 R
+脚本用于具有一个二分预测器（声望）的研究，该预测器在受试者之间但在项目内部有所不同</figcaption>
+</figure>
+<h4 id="交互的随机效应">交互的随机效应</h4>
+<p>关于交互，参见Figure 6中的第三条规则。当交互作用的所有预测变量在受试者内变化时，交互项的逐受试者随机斜率应包含在最大随机效应结构中。同样，当交互项的所有预测变量在项内变化时，研究人员应该为交互项包括一个逐项的随机斜率。除了前两条之外，这条规则允许我们为更复杂的设计确定最大随机效应结构。</p>
+<h3 id="如何解决收敛问题">如何解决收敛问题</h3>
+<p>在确定了研究的最大随机效应结构后，下一步是估计相应的
+LMEM。不幸的是，导出参数估计的迭代 ReML
+过程并不总是“收敛”（即，数值优化算法不能可靠地确定对数似然函数的最大值）。如果模型无法收敛，可以使用Figure 9中的方式补救。</p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220912162649.png"
+id="fig:i" alt="Figure 9. 可用于实现 LMEM 收敛的 20 种补救措施清单" />
+<figcaption aria-hidden="true">Figure 9. 可用于实现 LMEM 收敛的 20
+种补救措施清单</figcaption>
+</figure>
+<blockquote>
+<p>预防措施避免收敛失败：<br />
+1. 在您的研究中包括尽可能多的受试者和尽可能多的项目。<br />
+2. 包括异质受试者和异质物品。解决收敛失败的非感性补救措施：<br />
+3.
+检查您的数据（案例分析，分配假设）。如有必要，将转换应用于预测变量或结果变量。<br />
+4.
+检查模型拼写错误（例如，该模型是否包含一个在单位之间变化的预测变量的字节单位随机斜率？）。<br />
+5. 确保所有预测因素都居中（降低了多重共线性）。<br />
+6. 增加迭代次数。<br />
+7. 更改用于最大化对数似然函数的数值优化过程。<br />
+8. 给模型更好的启动值。<br />
+9. 重建预测变量或结果变量。<br />
+10.
+检查非关联是否是由于存在一些特定细胞的少数受试者（或项目）。如果是，请考虑归纳数据或删除有问题的主题（或项目）。<br />
+11.
+去除协变量的随机效应（只要协变量与感兴趣因素之间的相互作用不在模型中）。<br />
+12. 检查您的模型是否可以简化：如果假设是x2 by
+x2相互作用，则可能无需在模型中包含x3和x4（至少最初）。或在一组高度相关的预测指标中删除除一个预测因子以外的所有预测变量。解决融合失败的经典疗法：<br />
+13.
+如果目标是测试两个固定效果X1和X2，而不是它们的相互作用，则估计两个LMEM，一个均具有固定效果，但仅是X1的随机斜率（用于测试X1），一个具有两个固定效果，但只有X2的随机斜率（用于测试X2）。<br />
+14.
+如果您的设计具有两个或多个单元内预测因素，并且您的假设涉及互动，请删除单位内预测变量和低阶相互作用的串联随机斜率，但请勿删除副本UNIT单位内预测变量之间的最高阶段相互作用的随机斜率（Barr，2013，Frontiers）。<br />
+15.
+在随机效果之间有选择地删除协方差：首先删除与您的假设无直接相关的预测因子的协方差（如果您决定将这些预测变量保留在模型中）。继续删除您怀疑无论如何都接近零的协方差。最后，消除随机效应之间的所有协方差。<br />
+16.
+删除模型中也有随机斜率的一些随机截距。请勿删除随机斜率。警告您的读者，您估计了一个没有随机拦截的模型。<br />
+17.
+执行两个单独的LMEM-一个主体作为分析单位（具有最大的受试者随机效应结构，但没有副本随机效应），一个用作为分析单位的项目（具有最大的副总体随机效应结构，但没有受试者随机效应）并应用F1
+F2逻辑（两者都必须在p .05处显着）。具有重大缺点的纠正措施：<br />
+18.
+运行分析并计算Clark（1973）Min-F'统计数据。请注意，该测试的功能不足。如果Min-F’很重要，您可以确信您的结果不是由于I型错误率而引起的。<br />
+19.
+运行LMEM或重复测量方差分析，其中受试者是唯一的随机变量（因此忽略了由于项目而引起的非独立性）。警告您的读者，您的I型错误率可能高达60％（请参阅Judd等人，2012年的表2）。<br />
+20. 估计您保持随机的LMEM</p>
+</blockquote>
+<h3 id="决定要估计的lmem">决定要估计的LMEM</h3>
+<p>在前面的部分中，我们已经描述了分析LMEM
+的前两个步骤。第一步是确定研究设计所需的最大随机效应结构。第二步是让
+LMEM 在保持随机效应结构尽可能大的同时收敛。
+<strong>大多数专家一致认为，最终的 LMEM
+需要包含作为研究人员假设重点的预测变量的随机斜率，而不管这个（这些）随机斜率的方差如何。他们还同意，随机效应结构中方差接近于零的方差分量的存在不会影响模型的拟合优度。因此，无论它们是包含还是排除，对固定效应的显着性检验的影响都非常小。</strong></p>
+<h3 id="统计能力与普遍性">统计能力与普遍性</h3>
+<p>在大多数 LMEM 中，预测变量的推理测试（即固定效应）的能力不足。</p>
+<h3 id="结论">结论</h3>
+<p>如果我们想知道我们的效果
+是否存在——也就是说，即使研究的一个小方面发生了变化，被调查的心理过程是否发生并在现实世界中发挥作用，并且观察到的效果是否会复制——有必要随机选择项目（即刺激、目标、同盟者、学校、地点、环境），并在我们的数据分析中估计包含适当副项目随机效应的LMEM。</p>
+<p>LMEM
+非常适合分析独立或由某些更高阶单元（例如，治疗师内的患者）聚集的受试者随时间（或空间）的变化。LMEM
+处理缺失数据更有效，因为与重复测量方差分析不同，它们不会消除具有一个或多个缺失值的受试者的所有观察结果。这是从
+LMEM 到“广义线性混合 效应
+模型”的一小步，当结果变量是分类、有序或计数时，这是需要的。</p>
+<p>诸如方差分析和回归分析之类的标准统计程序是否已过时？绝对不是，因为仍然有许多心理学研究，其中预测变量因受试者而异，而受试者是唯一的随机变量。然而，我们经常让我们的受试者接触多个项目（例如，刺激、同盟者），检查它们如何随时间变化（例如，治疗、学习），在多种环境（例如，位置、情况）中测试它们，并与受试者打交道相互影响的人（例如，小组、教室）。鉴于这些类型的研究涉及多个非独立来源，LMEM
+将越来越多地出现在我们科学期刊的结果部分中，并且无疑属于心理学研究人员的标准工具包。</p>
+<h2
+id="文献3--面部分类的全有或全无神经机制来自-n170-的证据">文献3--面部分类的全有或全无神经机制：来自
+N170 的证据</h2>
+<p>为了解开这些替代方案，我们采用线性混合模型 (LMM) 与零假设显着性检验
+(NHST) 和等价检验 (ETs) 来检查 N170
+对不同持续时间的面部和房屋图像的依赖性，而参与者报告每次试验的主观信心.
+采取了几项措施来确保参与者在报告高主观信心时确实对面部有清晰的感知。<span
+class="citation" data-cites="jinAllornoneNeuralMechanisms2022"><sup>[<a
+href="#ref-jinAllornoneNeuralMechanisms2022"
+role="doc-biblioref">3</a>]</sup></span></p>
+<p>为了解开这些替代方案，我们采用了线性混合建模（LMM），具有无效的假设显着性测试（NHST）和等效测试（ETS）来检查N170对面部和房屋图像的依赖性，而参与者则报告了每个试验的主观置信度。</p>
+<h3 id="材料和方法">材料和方法</h3>
+<h4 id="受试者">受试者</h4>
+<p>35名受试者，仅在确定刺激为FAC的时候，按键1。</p>
+<h4 id="刺激">刺激</h4>
+<p>40张高加索人（20位女性）面孔的照片, 40套房屋图像。</p>
+<h4 id="设备">设备</h4>
+<p>E-Prime
+2.0，三星同步主HDTV显示器（60Hz），使用128通道AG/AGCL电极网，常见顶点（CZ）用作参考。</p>
+<h4 id="eeg数据处理">EEG数据处理</h4>
+<p>除了基于独立组件分析（ICA）结果拒绝独立组件（ICA）的结果外，所有步骤均使用新西兰Escience基础架构的高性能计算集群中的MATLAB脚本完成。(available:
+https://osf. io/fvtc3/)</p>
+<h3 id="程序">程序</h3>
+<h4 id="积分窗口峰值通道和平均振幅">积分窗口、峰值通道和平均振幅</h4>
+<p>使用数据驱动的方法来确定N170和P1的窗口。</p>
+<ol type="1">
+<li>根据之前研究选择P7和P8作为可能的峰值通道。</li>
+<li>总平均所有通道在刺激后100ms到250ms确定了这个这个大平均波形的最小（负）振幅。</li>
+<li>定义了一个全宽半最大值的窗口，通过迭代调整窗口落在36-40ms的范围。</li>
+<li>创建窗口的总平均头皮图，观察确认通道。负峰值活动中心在PO7和PO8附近。</li>
+<li>用更新的峰值从新检查窗口。</li>
+<li>确定ERP组件窗口内的平均振幅，交给LMM分析。</li>
+</ol>
+<h3 id="统计分析">统计分析</h3>
+<h4 id="线性混合建模">线性混合建模</h4>
+<p>在本研究中应用 LMM 的具体好处是，与 rm-ANOVA 相比，LMM
+可以在存在缺失数据的情况下产生无偏的结果，而无需移除参与者。LMM
+的另一个优点是它们可以在单个观察级别上对幅度进行建模并估计多个随机效应。<br />
+为每个因变量获得最佳模型的一般程序遵循Bates、Kliegl 等人的建议<span
+class="citation" data-cites="batesParsimoniousMixedModels2018"><sup>[<a
+href="#ref-batesParsimoniousMixedModels2018"
+role="doc-biblioref">4</a>]</sup></span>。</p>
+<ol type="1">
+<li>首先创建最大模型，包含所有受试者和项目的随机截距和随机斜率。</li>
+<li>如果最大模型没有收敛，拟合相应的零相关模型，其中随机效应之间的相关性被强制为0。</li>
+<li>然后没有显著解释数据的随机效应被零相关参数中移除，模型缩减。</li>
+<li>再在简化模型中添加剩余随机效应之间的相关性来扩展模型，如果不能收敛，则将方差最小的随机效应逐一去除，直到模型收敛，从而得到最终的最优模型。</li>
+<li>在此模型上进行后续比较。</li>
+</ol>
+<h3 id="软件">软件</h3>
+<p>我们使用 R（R Core Team 2021）和 RStudio（RStudio Team
+2021）进行了所有统计分析。使用 Tidyverse 软件包整理数据（Wickham
+等人，2019 年）。我们使用 lme4 包 ( Bates, Mächler, et al. 2015b ) 执行
+LMM，并使用 emmeans 包 (Lenth 2021 ) 进行后续比较和 ET，其中使用
+Satterthwaite 近似来估计统计结果。R Markdown
+输出文件可在https://osf.io/zv6kg/获得。</p>
+<h3 id="文献4--简约的混合模型">文献4--简约的混合模型</h3>
+<p>在过去的十年中，当将受试者和项目作为随机因素的变化时，心理语言实验的分析方式发生了重大变化（特别是从方差分析到线性混合模型（LMM））。尽管层次线性模型已经存在数十年了，但在Pinheiro和Bates（2000）之后的语言学和心理学等领域，它们在心理学和语言学等领域的采用变得更加广泛。最近，LMM的使用已扩散到其他心理学领域，例如人格和社会心理学。<span
+class="citation" data-cites="batesParsimoniousMixedModels2018"><sup>[<a
+href="#ref-batesParsimoniousMixedModels2018"
+role="doc-biblioref">4</a>]</sup></span>
+一个特别有吸引力的特征是，通过LMMS，有关实验效果和相互作用的统计推断不再需要单独的差异分析，一个针对受试者和项目，可以进行在一个连贯的框架内。</p>
+<p>这种连贯性的好处是有一定代价的。使用混合效应模型分析实验数据的重要部分是选择适当的随机效应结构。原则上，LMM不仅考虑受试者之间的差异和因变量的平均值（即随机截距）的均值，而且在受试者之间以及所有主效应和交互作用（即随机斜率）以及项目之间的差异以及项目之间的差异（即随机斜率）以及截距和斜率之间的相关性。让我们使用最简单的模型来说明基本点，使用两级主题内实验操作，并使用主体作为唯一的随机因素，使用Bates等人描述的R的“
+LME4”软件包的公式表示法。 （2015a）：</p>
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">Y <span class="operator">~</span> <span class="number">1</span> <span class="operator">+</span> A <span class="operator">+</span> <span class="punctuation">(</span><span class="number">1</span><span class="operator">|</span>Subject<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<p>该模型可能支持受试者内因子A的固定效应A。但是，如果A（即两个实验条件之间的差异）在受试者之间可靠地不同，那么关于A的不确定性可能是如此之大，以至于以至于主要影响的主要影响A在模型中不再显着，允许A：</p>
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">Y <span class="operator">~</span> <span class="number">1</span> <span class="operator">+</span> A <span class="operator">+</span> <span class="punctuation">(</span><span class="number">1</span><span class="operator">+</span>A<span class="operator">|</span>Subject<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<p>为了评估实验操作的重要性，因此必须在存在相应的随机斜率的情况下检查其固定作用。</p>
+<h2
+id="文献4--急性运动可改善甲基苯丙胺的渴望和抑制缺陷一项erp研究">文献4--急性运动可改善甲基苯丙胺的渴望和抑制缺陷：一项ERP研究</h2>
+<p>渴望（carving）抑制缺陷（inhibitory deficts）</p>
+<p>本研究采用受试者内平衡设计。共有 24 名参与者符合 DSM-IV 的MA
+依赖标准被招募。渴望水平、反应时间和反应准确性，以及事件相关电位 (ERP)
+成分 N2 和
+P3，在运动和控制治疗后以平衡顺序进行测量。急性运动也促进了标准和 MA
+相关的 Go/Nogo 任务的抑制性能。与阅读控制时段和 Go
+条件相比，在锻炼时段和 Nogo 条件下的两项任务中观察到更大的 N2
+幅度，但没有更大的 P3 幅度<span class="citation"
+data-cites="wangAcuteExerciseAmeliorates2015"><sup>[<a
+href="#ref-wangAcuteExerciseAmeliorates2015"
+role="doc-biblioref">5</a>]</sup></span>。论文证明中等强度的急性运动对MA的渴望和抑制控制有益。</p>
+<p>抑制是指不当行为或与任务无关信息的适应能力。</p>
+<h3 id="介绍">介绍</h3>
+<p>MA用户在多种认知表现指标上表现更差，例如抑制、执行能力、记忆和现实生活中的功能能力。抑制涉及多个大脑区域，包括额下叶、顶叶和基底神经节。长期滥用MA会导致与抑制相关的大脑功能区域障碍，例如前扣带皮层（ACC）和背外侧前额叶皮层（DLPFC）。</p>
+<p>N2被认为代表了一个冲突监测过程，相对于健康组，滥用药物组观察到较低的N2振幅。<br />
+P3振幅被认为代表了上下文更新、注意力资源分配以及促进检测和评估刺激的过程，与N2类似，具有物质依赖的个体在皮质抑制相关的任务间表现出降低的P3振幅。<br />
+大量研究发现，在健康人群中停止中等强度的急性有氧运动后，需要抑制控制的任务条件下，认知能力的增强都与P3振幅增强有关。</p>
+<h3 id="方法">方法</h3>
+<h4 id="参与者">参与者</h4>
+<p>24名18-40岁参与者(20男，4女），根据DSM-IV标准，排除1）精神病史
+2）身体或医疗状况 3）色盲 4）Raven的智力测试标准。</p>
+<h4 id="渴望评估">渴望评估</h4>
+<p>视觉模拟量表（VAS）。</p>
+<h4 id="认知任务">认知任务</h4>
+<p>使用两个Go/Nogo范式，Go: MA-Go(蓝框MA), Neutral-Go(蓝框中性); Nogo:
+MA-Nogo(), Neutral-Nogo。</p>
+<h4 id="eeg处理">EEG处理</h4>
+<p>N2和P3量化为200ms-300ms和300-500ms之间。分别来自于Fz、Cz、Pz的电极。</p>
+<h4 id="统计分析-1">统计分析</h4>
+<ul>
+<li>VAS：为了检查参与者的渴望状态，应用 2（会话：运动，控制） ×
+4（时间点：运动前、运动中、运动后立即、 运动后 50
+分钟）重复测量方差分析来评估 VAS 分数。</li>
+<li>关于神经电数据，对于标准 Go/Nogo 任务，2（会话） × 2（条件） ×
+3（站点：Fz、Cz、Pz）ANOVA 分别针对 N2 幅度、N2 潜伏期、P3 幅度和 P3
+潜伏期进行。</li>
+</ul>
+<h2 id="相关网页链接">相关网页链接</h2>
+<ul>
+<li><p>论文：</p>
+<p><a href="http://www.80lib.com/user/enlist/sd.html">80图书馆</a></p>
+<p><a
+href="https://www.sciencedirect.com/science/article/pii/S0749596X20300061#b0390">心理科学中线性混合效应模型的最佳实践指南</a></p>
+<p><a
+href="https://www.sciencedirect.com/science/article/pii/S2590260122000030">使用线性混合模型分析会话中的学习过程可以改善治疗效果的检测：计时心理旋转的示例性研究</a></p>
+<p><a
+href="https://www.sciencedirect.com/science/article/pii/S0167876022001416#bb0200">自愿与强制语言转换的控制机制：来自ERP的证据</a></p>
+<p><a
+href="https://www.frontiersin.org/articles/10.3389/fpsyg.2010.00238/full">线性混合模型中的实验效果和个体差异：估计视觉注意力中的空间、物体和吸引力效应之间的关系</a></p></li>
+<li><p>R语言：</p>
+<p><a
+href="https://zhuanlan.zhihu.com/p/60204351">R语言之重复测量方差分析——ezANOVA的使用与解析</a></p>
+<p><a
+href="https://zhuanlan.zhihu.com/p/88497589">bruceR包重磅更新：方差分析、简单效应检验、事后多重比较</a></p>
+<p><a
+href="https://zhuanlan.zhihu.com/p/281150493">R语言综合工具包：bruceR中文帮助文档（持续更新）</a></p>
+<p><a
+href="https://www.bilibili.com/video/BV1XT4y1S7r4?p=5&amp;vd_source=7b248d6596f7ca4944759406d03d59d8">（R语言）线性混合效应模型教程</a></p>
+<p><a
+href="https://www.bilibili.com/read/cv16091910?from=note">（R语言）线性混合效应模型教程(代码)</a></p>
+<p><a
+href="https://github.com/basclab/LME_MixedEffectsERPTutorial/blob/main/LMETutorialScripts/LME_07_AnalyzeLMEModel.R">LME_MixedEffectsERPTutorial</a></p>
+<p><a
+href="https://blog.csdn.net/kMD8d5R/article/details/85240949">基于R的混合线性模型的实现</a></p></li>
+<li><p>教程</p>
+<p><a
+href="https://www.bilibili.com/video/BV1gk4y127kW?spm_id_from=333.999.0.0&amp;vd_source=7b248d6596f7ca4944759406d03d59d8">[讲座/北理工]R语言入门-线性混合模型分析_王蓓老师_200824</a></p>
+<p><a
+href="https://pan.baidu.com/s/1mhJlTrXA-JhLnU2invuXYQ#list/path=%2Fsharelink252639068-950448459562825%2F01&amp;parentPath=%2Fsharelink252639068-950448459562825">王蓓老师的课程资料</a></p>
+<p><a
+href="https://ourcodingclub.github.io/tutorials/mixed-models/?nsukey=JfcXN4ZtaaEgpYJMyxe3oLJVjnlrrISjyCNa8jr%2FJxC5boovrpcf%2BTJJhmqhALfQNznAP1VPeUUSZghPYi93AZHNXDFsaXoP9oL%2FEzSgzpmo9VmN7oUwmYExM%2F5cQ5Y3BhDFhWxHSxbAeT3iYd6fwXLzR65TQThi239DVAazfetJiUJlMdBoxgvfGykUcx50Fnd8BemyGv%2FLMezfhVe0tA%3D%3D&amp;from=timeline">INTRODUCTION
+TO LINEAR MIXED MODELS</a></p>
+<p><a
+href="https://mfviz.com/hierarchical-models/">线性混合模型教学动画</a></p>
+<p><a
+href="https://mfviz.com/hierarchical-models/">线性混合效应模型入门之一（linear
+mixed effects model）</a></p>
+<p><a
+href="https://zhuanlan.zhihu.com/p/483173133">线性混合效应模型入门之二 -
+实例操作及结果解读（R、Python、SPSS实现）</a></p>
+<p><a
+href="https://zhuanlan.zhihu.com/p/483173133">线性混合效应模型入门之二 -
+实例操作及结果解读（R、Python、SPSS实现）</a></p>
+<p><a
+href="https://www.51xxziyuan.com/61/2161.html">跟着这篇柳叶刀的文章来学会重复测量方差分析</a></p>
+<p><a
+href="https://xw.qq.com/cmsid/20200413A0HCBT00">F＝3.4括号里面的数字什么意思？方差分析F检验结果如何解读？</a></p>
+<p><a
+href="https://blog.csdn.net/qq_42021257/article/details/115913771">论文中怎么写F检验值</a></p></li>
+<li><p>SPSS</p>
+<p><a
+href="https://mfviz.com/hierarchical-models/">【心理学实验】SPSS两因素重复测量方差分析
+简单效应分析(有代码在评论里)</a></p>
+<figure>
+<img
+src="https://pic1.zhimg.com/80/v2-4ac4078f118ecadd756cd639c5862768_1440w.jpg"
+id="fig:重复测量流程图" style="width:50.0%"
+alt="Figure 10. 重复测量流程图" />
+<figcaption aria-hidden="true">Figure 10. 重复测量流程图</figcaption>
+</figure></li>
+</ul>
+<h1 class="unnumbered" id="bibliography">Reference</h1>
+<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="ref-heiseUtilityLinearMixed2022" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[1] </div><div
+class="csl-right-inline">HEISE M J. MON S K. BOWMAN L C. Utility of
+linear mixed effects models for event-related potential research with
+infants and children[J/OL]. Developmental Cognitive Neuroscience, 2022,
+54: 101070[2022-08-27]. <a
+href="https://www.sciencedirect.com/science/article/pii/S1878929322000147">https://www.sciencedirect.com/science/article/pii/S1878929322000147</a>.</div>
+</div>
+<div id="ref-brauerLinearMixedeffectsModels2018" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[2] </div><div
+class="csl-right-inline">BRAUER M. CURTIN J J. Linear mixed-effects
+models and the analysis of nonindependent data: <span>A</span> unified
+framework to analyze categorical and continuous independent variables
+that vary within-subjects and/or within-items.[J/OL]. Psychological
+Methods, 2018, 23(3): 389-411[2022-08-31]. <a
+href="http://doi.apa.org/getdoi.cfm?doi=10.1037/met0000159">http://doi.apa.org/getdoi.cfm?doi=10.1037/met0000159</a>.</div>
+</div>
+<div id="ref-jinAllornoneNeuralMechanisms2022" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">JIN
+H. HAYWARD W G. CORBALLIS P M. All-or-none neural mechanisms underlying
+face categorization: Evidence from the <span>N170</span>[J/OL]. Cerebral
+Cortex, 2022: bhac101[2022-09-02]. <a
+href="https://doi.org/10.1093/cercor/bhac101">https://doi.org/10.1093/cercor/bhac101</a>.</div>
+</div>
+<div id="ref-batesParsimoniousMixedModels2018" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[4] </div><div
+class="csl-right-inline">BATES D. KLIEGL R. VASISHTH S. et al.
+Parsimonious <span>Mixed Models</span>[EB/OL]. (2018-05-26)[2022-09-02].
+<a
+href="http://arxiv.org/abs/1506.04967">http://arxiv.org/abs/1506.04967</a>.</div>
+</div>
+<div id="ref-wangAcuteExerciseAmeliorates2015" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[5] </div><div
+class="csl-right-inline">WANG D. ZHOU C. CHANG Y K. Acute exercise
+ameliorates craving and inhibitory deficits in methamphetamine: <span>An
+ERP</span> study[J/OL]. Physiology &amp; Behavior, 2015, 147:
+38-46[2022-09-20]. <a
+href="https://www.sciencedirect.com/science/article/pii/S0031938415002036">https://www.sciencedirect.com/science/article/pii/S0031938415002036</a>.</div>
+</div>
+</div>
+]]></content>
+      <categories>
+        <category>EEG</category>
+      </categories>
+      <tags>
+        <tag>模板</tag>
       </tags>
   </entry>
   <entry>
@@ -5164,6 +5031,195 @@ alt="image-20180711231737440" /></p>
       </categories>
       <tags>
         <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>生物力学资料速查</title>
+    <url>/2022/12/03/quick_search/</url>
+    <content><![CDATA[<p>这里用于记录生物力学有关的资料以及网站，方便速查。</p>
+<hr />
+<h2 id="官网">官网</h2>
+<h3 id="bob">1. BOB</h3>
+<p><img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20221205005224.png"
+style="width:60.0%" /></p>
+<p>BOB(Biomechanics of
+Bodies)是一个包含易用肌骨模型的软件，用于分析功能和量化模型。</p>
+<p>网站地址: <strong><a
+href="https://space.bilibili.com/121053892">点我</a></strong></p>
+<span id="more"></span>
+<h3 id="motion-lab-systems">2. Motion Lab Systems</h3>
+<p><img src="https://www.motion-labs.com/images/gaitlogo.png" /></p>
+<p>Motion Lab
+Systems是一个生物力学肌电和相关设备的网站，网站自带了处理C3D数据、肌电数据的软件（windows）。</p>
+<p>其中有两个免费的软件可以查看C3D数据。</p>
+<p>地址: <strong><a
+href="https://space.bilibili.com/121053892">点我</a></strong></p>
+<ul>
+<li>MLSivewer</li>
+<li>Mokka</li>
+</ul>
+<h3 id="theia-3d">3. THEIA 3D</h3>
+<p>无标记点动作捕捉</p>
+<p><img
+src="https://www.theiamarkerless.ca/wp-content/uploads/logo_red_black_name_runner_168x50.png" /></p>
+<p>网站地址: <strong><a
+href="https://www.theiamarkerless.ca/">点我</a></strong></p>
+<h3 id="btk-mokka">4. BTK &amp; Mokka</h3>
+<p>BTK（Biomechanical
+ToolKit）是python的C3D数据处理包，Mokka是一个Win平台下读取与可视化的软件，并且有个小型官网。</p>
+<ul>
+<li>BTK（更新到2016年9月） BTK文档：<strong><a
+href="http://biomechanical-toolkit.github.io/">点我</a></strong></li>
+<li>Mokka小型官网：<strong><a
+href="http://biomechanical-toolkit.github.io/mokka/index.html">点我</a></strong></li>
+</ul>
+<h3 id="c3d">5. C3D</h3>
+<p>C3D文件官网，C3D文件介绍，格式标准（PDF），处理C3D文件的软件</p>
+<p>网站地址: <strong><a
+href="https://www.c3d.org/index.html">点我</a></strong></p>
+<h3 id="isbs论坛官网">6. ISBS论坛官网</h3>
+<p>网站地址: <strong><a
+href="https://biomch-l.isbweb.org/">点我</a></strong></p>
+<ul>
+<li>生物力学讨论帖子</li>
+<li>工作招聘</li>
+<li><strong>每个月的生物力学文献更新📜</strong></li>
+</ul>
+<h3 id="the-biomechanist">7. The Biomechanist</h3>
+<p><img
+src="https://www.biomechanist.net/wp-content/uploads/2020/09/cropped-Logo-6-e1601280454906-4.png"
+style="width:40.0%" /></p>
+<p>网站地址: <strong><a
+href="https://www.biomechanist.net/">点我</a></strong></p>
+<p>我们是德国科隆体育大学“运动与医学中的人类技术”硕士课程的五名学生。我们每个人都来自一个完全不同的运动领域，但我们有一个共同点：对运动和生物力学的迷恋。我们认为这是体育和运动科学中被低估的一部分，并希望这个网站将有助于引起对这个令人兴奋的话题的更多关注。</p>
+<ul>
+<li>有关于生物力学基础教学</li>
+<li>有ISBS的YouTube视频教学</li>
+<li>有一些blog</li>
+</ul>
+<h3 id="simtk">8. SimTK</h3>
+<p>生物医学仿真工具，包含了生物学建模，生物力学建模等工具。</p>
+<p>网站地址: <strong><a href="https://simtk.org/">点我</a></strong></p>
+<ul>
+<li><p>Opensim</p>
+<p><img src="https://simtk.org/logos/opensim?dummy_value=509697024"
+style="width:10.0%" /></p>
+<p>提供易于使用、可扩展的软件，用于对神经肌肉骨骼系统进行建模、模拟、控制和分析。</p></li>
+<li><p>OpenCap</p>
+<p><img src="https://simtk.org/logos/opencap?dummy_value=2104624939"
+style="width:10.0%" /></p>
+<p>OpenCap是一个软件包，用于从智能手机视频中估计3D人体运动动态。</p></li>
+<li><p>还有很多</p></li>
+</ul>
+<h3 id="kintics-toolkit">9. Kintics Toolkit</h3>
+<p>用于处理C3D数据。 是学生和研究人员学习使用 Python 进行 3D
+生物力学数据处理的在线资源。 是一个开源的 Python
+包，它（仅）完成此处理的繁重工作，因此用户可以控制他们的数据。</p>
+<p>网站地址: <strong><a
+href="https://kineticstoolkit.uqam.ca">点我</a></strong></p>
+<p><img
+src="https://kineticstoolkit.uqam.ca/doc/_images/frontpage.gif" /></p>
+<ul>
+<li>有Github仓库</li>
+<li>有C3D处理说明文档</li>
+<li>有python教程</li>
+</ul>
+<hr />
+<h2 id="学习">学习</h2>
+<h3 id="选择无言b站">1. 选择无言（B站）</h3>
+<p>B站up主，估计是上体的人。</p>
+<p>有Visual
+3D的使用视频教程，Anybody建模的教程，以及其他python，Matlab在关于生物力学的应用。</p>
+<p>网站地址: <strong><a
+href="https://space.bilibili.com/121053892">点我</a></strong></p>
+<h3 id="working-with-btk-and-mokka">2. Working with BTK and Mokka</h3>
+<ul>
+<li>介绍在Mokka中可视化C3D文件。</li>
+<li>介绍在Matlab中读取C3D文件。</li>
+<li>下载连接</li>
+</ul>
+<p>网站地址: <strong><a
+href="https://www.biomechanist.net/btk-and-mokka/">点我</a></strong></p>
+<h3 id="bassettbiomechanics">3. bassettbiomechanics</h3>
+<p>生物力学基础、Visual 3D 视频教程。（需要注册，有些要收费）</p>
+<p><img
+src="https://bassettbiomechanics.com/wp-content/uploads/sites/7/2020/11/BassettBiomechanics_Header_in_line.png" /></p>
+<p>网站地址: <strong><a
+href="https://bassettbiomechanics.com">点我</a></strong></p>
+<h3 id="emg交互教学">4. EMG交互教学</h3>
+<p>带有肌电的信号采集动画，可以交互的观察理解肌电的信号采集原理，学习肌电的基础知识。</p>
+<ul>
+<li>网页下面还有两个交互工具（EMG
+神经肌肉模拟，EMG分析工具）可以学习一下</li>
+<li>网页下面有肌电的教学视频（EMG in Sports Biomechanics)可以看一下</li>
+</ul>
+<p>网站地址: <strong><a
+href="https://delsys.com/interactive-teaching-tools-for-beginners-learn-electromyography-emg/">点我</a></strong></p>
+<h3 id="emg期刊和emg报告标准">5. EMG期刊和EMG报告标准</h3>
+<ul>
+<li><p>EMG期刊</p>
+<p><img
+src="https://ars.els-cdn.com/content/image/1-s2.0-S1050641119X0005X-cov200h.gif" /></p>
+<p>The official journal of ISEK is the Journal of Electromyography and
+Kinesiology (JEK), published bimonthly at Elsevier Science.</p>
+<ul>
+<li>期刊内搜索“Tutorial”，有几篇肌电的教程</li>
+<li>期刊内容大多与表面肌电、运动相关</li>
+</ul>
+<p>网站地址: <strong><a
+href="https://www.sciencedirect.com/journal/journal-of-electromyography-and-kinesiology">点我</a></strong></p></li>
+<li><p>EMG报告标准</p>
+<p>网站地址: <strong><a
+href="https://isek.org/wp-content/uploads/2015/05/Standards-for-Reporting-EMG-Data.pdf">点我</a></strong></p></li>
+</ul>
+<h3 id="opensim深入教学">6. OpenSim深入教学</h3>
+<p>知乎上的一篇关于OpenSim的教学文章，确实是比较深入的了。</p>
+<p>网站地址: <strong><a
+href="https://zhuanlan.zhihu.com/p/523055552">点我</a></strong></p>
+<h3 id="simon聊聊opensim">7. Simon聊聊OpenSim</h3>
+<p>关于OpenSim的教程和笔记。</p>
+<p>网站地址: <strong><a
+href="https://www.zhihu.com/column/c_1376915554922442752">点我</a></strong></p>
+<h3 id="gaitlab.ir">8. Gaitlab.ir</h3>
+<p>应该是伊朗的步态实验室，好处就是，里面的相关资料里有：</p>
+<ul>
+<li>各种生物力学的书PDF，提供下载（<strong>免费</strong>）</li>
+</ul>
+<p>网站地址: <strong><a
+href="http://www.gaitlab.ir">点我</a></strong></p>
+<hr />
+<h2 id="人">人</h2>
+<h3 id="peter-b.-shull">1. Peter B. Shull</h3>
+<p>上海交通大学，Wearable Systems Lab</p>
+<p>我们的实验室旨在分析和训练人体运动。我们结合机器人、触觉和生物力学原理，使用嵌入式电子设备、实时模型、传感器融合算法和新型反馈设备开发可穿戴系统。我们力求了解自然环境中的运动和运动修改基础知识，例如家庭、办公室、公园或体育馆。</p>
+<p>网站地址: <strong><a
+href="http://www.wearablesystems.org/">点我</a></strong></p>
+<hr />
+<h2 id="github">Github</h2>
+<h3 id="biomechanics-dataset">1.Biomechanics dataset</h3>
+<p>包含公开的生物力学数据库。 - C3D格式 - 其他格式</p>
+<p>网站地址: <strong><a
+href="https://github.com/mkjung99/biomechanics_dataset">点我</a></strong></p>
+<h3 id="wpi-aim-lab">2.WPI AIM Lab</h3>
+<p><img
+src="https://avatars.githubusercontent.com/u/12138786?s=200&amp;v=4" /></p>
+<p>网站地址: <strong><a
+href="https://github.com/WPI-AIM">点我</a></strong></p>
+<p>WPI AIM Lab是WPI自动化与介入医学机器人研究实验室的一个仓库。</p>
+<p>与生物力学相关的库有:</p>
+<ul>
+<li>AIM_GaitCore(步态分析工具箱)</li>
+<li>AIM_Vicon(读取和分析Vicon数据的包，可以读取Vicon导出的CSV文件，自动填补丢失的点)</li>
+<li>AIM_GaitAnalysisToolkit(Vicon数据步态分析工具箱，分析步态，分离步态周期)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>biomechanics</category>
+      </categories>
+      <tags>
+        <tag>资料</tag>
+        <tag>速查，笔记</tag>
       </tags>
   </entry>
 </search>
