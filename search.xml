@@ -722,6 +722,7 @@ Journal of Biomechanics<br>
 </ol>
 </div>
 </div>
+</div>
 ]]></content>
       <categories>
         <category>biomechanics</category>
@@ -849,6 +850,520 @@ class="math inline">\(|cd|=\sqrt{x_{cd}^2+y_{cd}^2+z_{cd}^2}\)</span></p>
       </categories>
       <tags>
         <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LME线性混合模型处理ERP</title>
+    <url>/2022/09/03/LME%E7%BA%BF%E6%80%A7%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B%E5%A4%84%E7%90%86ERP(test)/</url>
+    <content><![CDATA[<h1 id="lme线性混合模型处理erp">LME线性混合模型处理ERP</h1>
+<blockquote>
+<p><em>存在的问题</em></p>
+<ul>
+<li>时间窗口的选择</li>
+<li>通道的选择</li>
+<li>模型的选择</li>
+<li>变量编码<br />
+</li>
+<li>统计能力 power</li>
+</ul>
+</blockquote>
+<h2
+id="文献1--线性混合效应模型在婴儿和儿童事件相关潜力研究中的效用">文献1--线性混合效应模型在婴儿和儿童事件相关潜力研究中的效用</h2>
+<p>根据论文《线性混合效应模型在婴儿和儿童事件相关潜力研究中的效用》<span
+class="citation" data-cites="heiseUtilityLinearMixed2022"><sup>[<a
+href="#ref-heiseUtilityLinearMixed2022"
+role="doc-biblioref">1</a>]</sup></span>的处理过程找到了GitHub上的<a
+href="https://github.com/basclab/LME_MixedEffectsERPTutorial/tree/main/LMETutorialScripts">数据处理脚本</a>。脚本共有7个，其中1-5是Matlab从Continues
+EEG到ERP的处理过程，脚本6-7是R语言对ERP进行LME混合线性模型的处理过程，如Figure 1。</p>
+<figure id="fig:a">
+<img
+src="https://user-images.githubusercontent.com/49215489/148004509-6a02682d-62da-42e5-8828-5feb35ea8ff6.png"
+style="width:70.0%" alt="Figure 1. 文献中的处理流程" />
+<figcaption aria-hidden="true">Figure 1. 文献中的处理流程</figcaption>
+</figure>
+<span id="more"></span>
+<p>文章比较ANOVA与LMM，发现ANOVA的结果有偏差，随着受试者的减少，结果变得偏差。而LMM随着受试者的减少，模型也能产生准确、无偏差的结果。论文包括了教程和示例代码。</p>
+<h2
+id="文献2--线性混合效应模型和非独立数据的分析一个统一的框架用于分析改变主题内部和或项目内的分类和连续自变量">文献2--线性混合效应模型和非独立数据的分析：一个统一的框架，用于分析改变主题内部和/或项目内的分类和连续自变量。</h2>
+<p>近年来，对“线性混合效应模型” （LMEMs）的兴趣急剧增加。Judd、Westfall
+和 Kenny（2012 年）以及Barr、Levy、Scheepers 和 Tily（2013
+年）的有影响力的文章清楚地表明，许多心理学研究都需要这些类型的模型。<span
+class="citation"
+data-cites="brauerLinearMixedeffectsModels2018"><sup>[<a
+href="#ref-brauerLinearMixedeffectsModels2018"
+role="doc-biblioref">2</a>]</sup></span> 传统的
+ANOVA/回归方法的局限性在于它不能很好地处理缺失的数据，并且无法处理在“单位”内变化的连续预测变量（例如，受试者内、组间、组内、教室）。更重要的是，当相同的受试者暴露于同一组项目（或刺激或目标）时，这种方法会产生有偏差的推论统计。只有混合模型才能产生具有可接受的
+I 型和 II
+型错误率的无偏参数估计。（<em>也就是说ANOVA不适合重复测量</em>）</p>
+<h3 id="术语和数据格式">术语和数据格式</h3>
+<p>线性混合效应模型（LMEM）指代具有一种或多种的随机效应的模型，如分层回归、分层线性建模
+(HLM)、多级回归、多级线性建模、线性混合模型和随机系数模型。<br />
+<strong>为了采用“
+LMEM思维方式”，越来越多的研究人员现在以“长格式”而不是“宽格式”分析他们的数据</strong>。
+长格式的数据文件更“整洁”，因为它们类似于受试者间设计：一列表示因变量，一列或多列对应于预测变量些，并且一项观察与一行相关。R中的
+<strong>reshape</strong>
+函数允许研究人员将数据文件从宽格式转换为长格式，反之亦然。<br />
+想象一个假设的实验（我们将在本文中将其称为“研究
+1”），其中研究人员招募100名本科生，并要求他们列出他们在大学学习的两个高声望课程和两个低声望课程。声望被定义为课程在学生成绩单上“看起来不错”的程度（例如，困难的科学课程、荣誉课程、研究生水平的课程）。然后要求学生在9分制上表明他们对四个班级中的每一个课程的喜好。（Figure 2）</p>
+<figure id="fig:b">
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220831210157.png"
+style="width:70.0%" alt="Figure 2. 宽格式与长格式的相同数据比较" />
+<figcaption aria-hidden="true">Figure 2.
+宽格式与长格式的相同数据比较</figcaption>
+</figure>
+<h3 id="线性混合模型简介">线性混合模型简介</h3>
+<h4 id="固定变量和随机变量">固定变量和随机变量</h4>
+<p>在LMEM中，相关变量被认为是“固定的”（fixed）或“随机的”（random）。在“研究1”中的声望（prestige）就是一个固定变量，且有两个级别，而受试者（subject.ID）就是一个随机变量（有100个级别）。</p>
+<ul>
+<li>当从感兴趣的变量的所有级别收集数据时，变量被认为是固定的。<br />
+</li>
+<li>当一个变量具有许多可能的水平并且研究人员对所有可能的水平都感兴趣时，该变量被认为是随机的，但数据中仅包含水平的随机样本。<br />
+</li>
+<li>测量的预测因素，协变量和人口统计通常是固定的变量。<br />
+</li>
+<li>仅当每个变量级别的观察值多一个以上的观察值时，数据分析中才会明确包含随机变量。只有在数据中创建非独立性时，随机变量才包含在分析中。</li>
+</ul>
+<h4 id="简单误差-vs-复杂误差">简单误差 VS 复杂误差</h4>
+<p>统计分析都具有相同的基本结构：<span class="math inline">\(DATA =
+MODEL + ERROR\)</span>（Figure 3）。每个统计模型都基于结果变量(<span
+class="math inline">\(β0\)</span>)和一个或多个预测变量（此处为<span
+class="math inline">\(β1X\)</span>）的（加权）平均值进行预测。<strong>独立数据分析</strong>（例如，受试者间分析）和<strong>非独立数据分析</strong>（例如，受试者内分析）之间的主要区别在于误差项的复杂性。</p>
+<figure id="fig:c">
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220902001711.png"
+alt="Figure 3. 独立数据与非独立数据的比较" />
+<figcaption aria-hidden="true">Figure 3.
+独立数据与非独立数据的比较</figcaption>
+</figure>
+<p>在独立数据分析中（受试者间），误差项比较简单，只有一个随机误差（<span
+class="math inline">\(e_i\)</span>）。Figure 3左</p>
+<p>当数据是非独立的（受试者内）并通过LMEM分析时，误差来源于三个分量。Figure 3右</p>
+<ul>
+<li>随机截距：来源于受试者之间的个体差异（Figure 3中标记为<span
+class="math inline">\(e_{RI}\)</span> 或 <span
+class="math inline">\(u_{0j}\)</span> ）</li>
+<li>随机斜率：来源于受试者之间受预测变量（除了受试者的其他变量）影响的差异（Figure 3中标记为<span
+class="math inline">\(e_{RS}\)</span> 或 <span
+class="math inline">\(u_{1j}X_{ij}\)</span> ）</li>
+<li>随机误差：其他误差来源。（Figure 3中标记为<span
+class="math inline">\(e\)</span> 或 <span
+class="math inline">\(e_{ij}\)</span> ）</li>
+</ul>
+<p>在GLM（一般线性模型）中的重点是解释与预测变量的相关回归系数。在Figure 3中，β1表示模型对“声望”对喜欢的影响的估计。如果β1在统计上显着，我们得出结论，预测变量对结果变量有影响。</p>
+<h4 id="固定效应与随机效应的解释">固定效应与随机效应的解释</h4>
+<ul>
+<li>固定效应：在Figure 3中的两个模型中，系数β0和β1称为“固定效应“。β1为固定斜率，β0为固定截距。这些影响称为“固定"，因为它们适用于整个样本。</li>
+<li>随机效应：在Figure 3中的两个模型中，系数<span
+class="math inline">\(u_{0j}\)</span> 和 <span
+class="math inline">\(u_{1j}X_{ij}\)</span>称为“随机效应“。<span
+class="math inline">\(u_{1j}X_{ij}\)</span>为随机斜率，<span
+class="math inline">\(u_{0j}\)</span>为随机截距，因为他们代表了模型中β0和β1在不同受试者间的变化程度。在Equation 1中更容易理解。</li>
+</ul>
+<p><span id="eq:a"><span class="math display">\[Y_{ij} = ( \beta_0 +
+u_{0j} ) + ( \beta_1 + u_{1j} ) X_{ij} +
+e_{ij}\qquad{(1)}\]</span></span></p>
+<h3
+id="扩展到具有多个二分预测变量的设计">扩展到具有多个二分预测变量的设计</h3>
+<p>与方差分析和回归分析一样，当模型包含交互项时，LMEM
+通常要求我们在分析之前将预测变量居中。更准确地说，只有当二分变量已被重新编码为
+-.5 和
++.5（或以零为中心的任何其他两个值）并且连续变量已经“平均居中”（通过从每个分数中减去平均值）。</p>
+<h4 id="连续受试者内预测变量的分析">连续受试者内预测变量的分析</h4>
+<p>LMEM可以轻松扩展到连续变量间（内部）的分析（例如：受试者间，课程间）。</p>
+<h4 id="不同形式的均值居中">不同形式的均值居中</h4>
+<p>尽管预测变量在研究 1 和 2
+中都以零为中心，但两者之间存在重要区别：在研究 1
+中，二分预测变量被重新编码为 -.5 和
++.5，并且不需要重新编码，因为它不会影响与预测变量相关的固定效应的参数估计。然而，在研究
+2
+中，连续预测变量以每个受试者自己的均值为中心（有时称为“聚类均值居中”或“组均值居中”）。这种操作对于获得预测变量和结果之间的主体内关联的无偏估计是必要的。</p>
+<h4 id="相关分析">相关分析</h4>
+<p>LMEM框架还可以用于检查连续的受试者间预测因子与一个或多个其他预测变量的交互作用。<br />
+如果预测变量是在受试者内，应该聚类平均值居中（cluster-mean）,
+Figure 4。</p>
+<figure id="fig:d">
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220902231832.png"
+alt="Figure 4. 受试者间（性别）" />
+<figcaption aria-hidden="true">Figure 4. 受试者间（性别）</figcaption>
+</figure>
+<p>如果预测变量是在受试者间，应该以总平均居中（grand-mean）,
+Figure 5。</p>
+<figure id="fig:e">
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220902231936.png"
+alt="Figure 5. 受试者内（科学）" />
+<figcaption aria-hidden="true">Figure 5. 受试者内（科学）</figcaption>
+</figure>
+<p><strong>请注意，受试者内的连续预测变量可以是时间，以便模型可以检查受试者随时间的变化。</strong></p>
+<h3 id="扩展到多级模型">扩展到多级模型</h3>
+<p>在到目前为止讨论的所有示例中，预测变量在
+受试者中各不相同。读者应该知道，上面所说的一切（以及文章的其余部分）也适用于预测变量在高阶单元或“集群”内变化的研究。例如当受试者嵌套在一个组（groups）、家庭（families）、或者教室（classrooms）。所谓的“多级模型”只是LMEM的一个特例。</p>
+<h4 id="多级模型示例">多级模型示例</h4>
+<p>考虑一项研究，其中研究人员组成四个人的讨论组，并为其中两个人分配一个高地位（高声望）和两个低地位（低声望）。（有一个小的变化：主题.ID
+被替换为
+group.ID）。受试者和组都是随机变量。鉴于每个受试者只有一次观察，LMEM
+不包含副主题随机效应。它确实包含两个组的随机效应：一个逐组随机截距（因为来自同一组的四个数据点是相关的）和一个逐组随机斜率（因为预测变量“声望”在组内变化
+）</p>
+<h3 id="限制最大似然">限制最大似然</h3>
+<p>应该注意的是，LMEM
+使用称为“限制最大似然”（ReML）的估计程序，而不是作为标准 ANOVA
+和回归分析的“普通最小二乘法”（OLS）。 使用 ReML 作为估计程序有许多 LMEM
+用户应该注意的含义。除了在简单的 LMEM
+中，最终模型可能具有带小数的分母自由度。它们应该这样报告，例如，F (1,
+54.17) = 4.86, p &lt; .04。 只有 Kenward-Roger
+自由度的F统计量的结果才能准确再现重复测量方差分析的结果。</p>
+<h3 id="非独立的多重来源">非独立的多重来源</h3>
+<p>在许多心理学实验中，受试者会接触到相同的一组项目，即他们可能会查看相同的单词、句子、图片或头像，或者他们可能会对相同的产品、面孔、艺术品或个人进行评分。或者，聚集在组、家庭、教室或县中的受试者可以各自提供多个数据点。此类研究包含两个非独立性来源：一些回答可能更相似，因为它们是由同一受试者做出的，其他回答可能更相似，因为它们涉及相同的项目（即不同的受试者对相同的项目进行评分)，但其他反应可能更相似，因为它们是由同一组的受试者做出的。</p>
+<p>当存在多个非独立来源时，可能很难决定分析中应包括哪些随机效应。</p>
+<p>然而，幸运的是，所有专家都同意数据分析的初始步骤。</p>
+<ol type="1">
+<li><p>第一步包括确定研究设计所要求的所谓“最大随机效应结构”。正如我们将看到的那样，这个最大随机效应结构包括我们可能希望根据设计特征包括的所有随机效应，即基于预测变量是否在导致非独立性的随机变量的水平之内或之间变化数据。</p></li>
+<li><p>第二步包括估计具有最大随机效应的LMEM结构体。然而，正如我们将看到的，这并不总是可能的，因为一些
+LMEM 非常复杂，以至于迭代估计过程无法收敛。</p></li>
+<li><p>在这种情况下，有必要逐步简化随机效应结构，直到可以实现收敛。</p></li>
+</ol>
+<hr />
+<p><strong>在接下来的部分中，我们将详细讨论前两个步骤中的每一个。在我们的讨论中，我们将关注两个导致数据不独立的随机变量。第一个随机变量始终是主题。我们将第二个随机变量称为“项目”，但读者应该知道，这个术语可能指的是任何随机变量，它是非独立的第二个来源（例如，刺激、目标、同盟者、位置、小组、教室）。</strong></p>
+<h3 id="如何确定最大随机效应结构">如何确定最大随机效应结构</h3>
+<h4 id="随机截距">随机截距</h4>
+<p>通过在最大随机效应结构中确定适当的随机截距来解释其非独立性。Figure 6中的第一条规则确定了什么时候需要随机截距。当考虑的单元是受试者时，只要给定受试者多个数据点（测试点），就应该包括一个由受试者产生的随机截距。
+当每个受试者有多个数据点并且每个项目有多个数据点时，必须通过添加按受试者随机截距和按项目随机截距来考虑这两个非独立来源。</p>
+<figure id="fig:f">
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220907235123.png"
+alt="Figure 6. 一组关于应包含在最大随机效应结构中的受试者和项目随机效应类型的简单规则" />
+<figcaption aria-hidden="true">Figure 6.
+一组关于应包含在最大随机效应结构中的受试者和项目随机效应类型的简单规则</figcaption>
+</figure>
+<p>第一个规则：如果单元引起非独立性，则需要一个串联随机截距。<br />
+第二个规则：通常，单位内预测变量需要一个串联随机斜率，而单位间预测器则不需要。<br />
+第三个规则：建议在包含交互的所有因素均为单位内部时，包括一个串联随机斜率，以进行相互作用。</p>
+<h4 id="随机斜率">随机斜率</h4>
+<p>随机斜率参见Figure 6中的第二个规则。我们希望为在受试者内变化的任何预测变量包括一个按受试者随机斜率（但不是在受试者之间变化时）。同样，我们希望为在项目内变化的任何预测变量包括一个逐项随机斜率（但不是在项目之间变化时）。</p>
+<ul>
+<li>在受试者间变化的研究<br />
+为了说明这个规则，让我们想象一个研究，在该研究中，受试者评价他们对八辆低声望汽车和八辆高声望汽车的喜好。所有受试者都对同一组
+16 辆汽车进行评分(Figure 7)。
+请注意，声望的随机斜率不需要随机斜率，因为声望在项目内不会变化（每辆目标汽车的声望要么低要么高）。</li>
+</ul>
+<figure id="fig:g">
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220912143752.png"
+alt="Figure 7. LMEM 和 R 脚本用于具有一个二分预测变量（声望）的研究，该变量 在 受试者内部但在项目之间有所不同" />
+<figcaption aria-hidden="true">Figure 7. LMEM 和 R
+脚本用于具有一个二分预测变量（声望）的研究，该变量 在
+受试者内部但在项目之间有所不同</figcaption>
+</figure>
+<ul>
+<li>在项目内变化的研究<br />
+想象一项研究，其中受试者评估同一组 20
+辆汽车（中等声望），但他们在两个受试者之间的条件之一中这样做。一半的受试者在看过五辆声望很高的汽车（高声望背景）后评价他们对这
+20
+辆车的喜好，而另一半受试者之前曾接触过五辆声望很低的汽车（低声望背景）。同样，这项研究包含两个非独立性来源，主题和项目，需要两个随机截距。预测变量“声望”在受试者之间变化（每个受试者仅在一个声望上下文条件下），但在项目内变化（20
+辆目标汽车中的每一辆在某些受试者的声望较高的上下文中，但在某些受试者的声望较低的上下文中其他科目）。适当
+LMEM的最大随机效应结构包含三个随机效应（参见Figure 8）。鉴于声望（背景）因学科而异，因此无需包括副学科
+声望的随机斜率。</li>
+</ul>
+<figure id="fig:h">
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220912144628.png"
+alt="Figure 8. LMEM 和 R 脚本用于具有一个二分预测器（声望）的研究，该预测器在受试者之间但在项目内部有所不同" />
+<figcaption aria-hidden="true">Figure 8. LMEM 和 R
+脚本用于具有一个二分预测器（声望）的研究，该预测器在受试者之间但在项目内部有所不同</figcaption>
+</figure>
+<h4 id="交互的随机效应">交互的随机效应</h4>
+<p>关于交互，参见Figure 6中的第三条规则。当交互作用的所有预测变量在受试者内变化时，交互项的逐受试者随机斜率应包含在最大随机效应结构中。同样，当交互项的所有预测变量在项内变化时，研究人员应该为交互项包括一个逐项的随机斜率。除了前两条之外，这条规则允许我们为更复杂的设计确定最大随机效应结构。</p>
+<h3 id="如何解决收敛问题">如何解决收敛问题</h3>
+<p>在确定了研究的最大随机效应结构后，下一步是估计相应的
+LMEM。不幸的是，导出参数估计的迭代 ReML
+过程并不总是“收敛”（即，数值优化算法不能可靠地确定对数似然函数的最大值）。如果模型无法收敛，可以使用Figure 9中的方式补救。</p>
+<figure id="fig:i">
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220912162649.png"
+alt="Figure 9. 可用于实现 LMEM 收敛的 20 种补救措施清单" />
+<figcaption aria-hidden="true">Figure 9. 可用于实现 LMEM 收敛的 20
+种补救措施清单</figcaption>
+</figure>
+<blockquote>
+<p>预防措施避免收敛失败：<br />
+1. 在您的研究中包括尽可能多的受试者和尽可能多的项目。<br />
+2. 包括异质受试者和异质物品。解决收敛失败的非感性补救措施：<br />
+3.
+检查您的数据（案例分析，分配假设）。如有必要，将转换应用于预测变量或结果变量。<br />
+4.
+检查模型拼写错误（例如，该模型是否包含一个在单位之间变化的预测变量的字节单位随机斜率？）。<br />
+5. 确保所有预测因素都居中（降低了多重共线性）。<br />
+6. 增加迭代次数。<br />
+7. 更改用于最大化对数似然函数的数值优化过程。<br />
+8. 给模型更好的启动值。<br />
+9. 重建预测变量或结果变量。<br />
+10.
+检查非关联是否是由于存在一些特定细胞的少数受试者（或项目）。如果是，请考虑归纳数据或删除有问题的主题（或项目）。<br />
+11.
+去除协变量的随机效应（只要协变量与感兴趣因素之间的相互作用不在模型中）。<br />
+12. 检查您的模型是否可以简化：如果假设是x2 by
+x2相互作用，则可能无需在模型中包含x3和x4（至少最初）。或在一组高度相关的预测指标中删除除一个预测因子以外的所有预测变量。解决融合失败的经典疗法：<br />
+13.
+如果目标是测试两个固定效果X1和X2，而不是它们的相互作用，则估计两个LMEM，一个均具有固定效果，但仅是X1的随机斜率（用于测试X1），一个具有两个固定效果，但只有X2的随机斜率（用于测试X2）。<br />
+14.
+如果您的设计具有两个或多个单元内预测因素，并且您的假设涉及互动，请删除单位内预测变量和低阶相互作用的串联随机斜率，但请勿删除副本UNIT单位内预测变量之间的最高阶段相互作用的随机斜率（Barr，2013，Frontiers）。<br />
+15.
+在随机效果之间有选择地删除协方差：首先删除与您的假设无直接相关的预测因子的协方差（如果您决定将这些预测变量保留在模型中）。继续删除您怀疑无论如何都接近零的协方差。最后，消除随机效应之间的所有协方差。<br />
+16.
+删除模型中也有随机斜率的一些随机截距。请勿删除随机斜率。警告您的读者，您估计了一个没有随机拦截的模型。<br />
+17.
+执行两个单独的LMEM-一个主体作为分析单位（具有最大的受试者随机效应结构，但没有副本随机效应），一个用作为分析单位的项目（具有最大的副总体随机效应结构，但没有受试者随机效应）并应用F1
+F2逻辑（两者都必须在p .05处显着）。具有重大缺点的纠正措施：<br />
+18.
+运行分析并计算Clark（1973）Min-F'统计数据。请注意，该测试的功能不足。如果Min-F’很重要，您可以确信您的结果不是由于I型错误率而引起的。<br />
+19.
+运行LMEM或重复测量方差分析，其中受试者是唯一的随机变量（因此忽略了由于项目而引起的非独立性）。警告您的读者，您的I型错误率可能高达60％（请参阅Judd等人，2012年的表2）。<br />
+20. 估计您保持随机的LMEM</p>
+</blockquote>
+<h3 id="决定要估计的lmem">决定要估计的LMEM</h3>
+<p>在前面的部分中，我们已经描述了分析LMEM
+的前两个步骤。第一步是确定研究设计所需的最大随机效应结构。第二步是让
+LMEM 在保持随机效应结构尽可能大的同时收敛。
+<strong>大多数专家一致认为，最终的 LMEM
+需要包含作为研究人员假设重点的预测变量的随机斜率，而不管这个（这些）随机斜率的方差如何。他们还同意，随机效应结构中方差接近于零的方差分量的存在不会影响模型的拟合优度。因此，无论它们是包含还是排除，对固定效应的显着性检验的影响都非常小。</strong></p>
+<h3 id="统计能力与普遍性">统计能力与普遍性</h3>
+<p>在大多数 LMEM 中，预测变量的推理测试（即固定效应）的能力不足。</p>
+<h3 id="结论">结论</h3>
+<p>如果我们想知道我们的效果
+是否存在——也就是说，即使研究的一个小方面发生了变化，被调查的心理过程是否发生并在现实世界中发挥作用，并且观察到的效果是否会复制——有必要随机选择项目（即刺激、目标、同盟者、学校、地点、环境），并在我们的数据分析中估计包含适当副项目随机效应的LMEM。</p>
+<p>LMEM
+非常适合分析独立或由某些更高阶单元（例如，治疗师内的患者）聚集的受试者随时间（或空间）的变化。LMEM
+处理缺失数据更有效，因为与重复测量方差分析不同，它们不会消除具有一个或多个缺失值的受试者的所有观察结果。这是从
+LMEM 到“广义线性混合 效应
+模型”的一小步，当结果变量是分类、有序或计数时，这是需要的。</p>
+<p>诸如方差分析和回归分析之类的标准统计程序是否已过时？绝对不是，因为仍然有许多心理学研究，其中预测变量因受试者而异，而受试者是唯一的随机变量。然而，我们经常让我们的受试者接触多个项目（例如，刺激、同盟者），检查它们如何随时间变化（例如，治疗、学习），在多种环境（例如，位置、情况）中测试它们，并与受试者打交道相互影响的人（例如，小组、教室）。鉴于这些类型的研究涉及多个非独立来源，LMEM
+将越来越多地出现在我们科学期刊的结果部分中，并且无疑属于心理学研究人员的标准工具包。</p>
+<h2
+id="文献3--面部分类的全有或全无神经机制来自-n170-的证据">文献3--面部分类的全有或全无神经机制：来自
+N170 的证据</h2>
+<p>为了解开这些替代方案，我们采用线性混合模型 (LMM) 与零假设显着性检验
+(NHST) 和等价检验 (ETs) 来检查 N170
+对不同持续时间的面部和房屋图像的依赖性，而参与者报告每次试验的主观信心.
+采取了几项措施来确保参与者在报告高主观信心时确实对面部有清晰的感知。<span
+class="citation" data-cites="jinAllornoneNeuralMechanisms2022"><sup>[<a
+href="#ref-jinAllornoneNeuralMechanisms2022"
+role="doc-biblioref">3</a>]</sup></span></p>
+<p>为了解开这些替代方案，我们采用了线性混合建模（LMM），具有无效的假设显着性测试（NHST）和等效测试（ETS）来检查N170对面部和房屋图像的依赖性，而参与者则报告了每个试验的主观置信度。</p>
+<h3 id="材料和方法">材料和方法</h3>
+<h4 id="受试者">受试者</h4>
+<p>35名受试者，仅在确定刺激为FAC的时候，按键1。</p>
+<h4 id="刺激">刺激</h4>
+<p>40张高加索人（20位女性）面孔的照片, 40套房屋图像。</p>
+<h4 id="设备">设备</h4>
+<p>E-Prime
+2.0，三星同步主HDTV显示器（60Hz），使用128通道AG/AGCL电极网，常见顶点（CZ）用作参考。</p>
+<h4 id="eeg数据处理">EEG数据处理</h4>
+<p>除了基于独立组件分析（ICA）结果拒绝独立组件（ICA）的结果外，所有步骤均使用新西兰Escience基础架构的高性能计算集群中的MATLAB脚本完成。(available:
+https://osf. io/fvtc3/)</p>
+<h3 id="程序">程序</h3>
+<h4 id="积分窗口峰值通道和平均振幅">积分窗口、峰值通道和平均振幅</h4>
+<p>使用数据驱动的方法来确定N170和P1的窗口。</p>
+<ol type="1">
+<li>根据之前研究选择P7和P8作为可能的峰值通道。</li>
+<li>总平均所有通道在刺激后100ms到250ms确定了这个这个大平均波形的最小（负）振幅。</li>
+<li>定义了一个全宽半最大值的窗口，通过迭代调整窗口落在36-40ms的范围。</li>
+<li>创建窗口的总平均头皮图，观察确认通道。负峰值活动中心在PO7和PO8附近。</li>
+<li>用更新的峰值从新检查窗口。</li>
+<li>确定ERP组件窗口内的平均振幅，交给LMM分析。</li>
+</ol>
+<h3 id="统计分析">统计分析</h3>
+<h4 id="线性混合建模">线性混合建模</h4>
+<p>在本研究中应用 LMM 的具体好处是，与 rm-ANOVA 相比，LMM
+可以在存在缺失数据的情况下产生无偏的结果，而无需移除参与者。LMM
+的另一个优点是它们可以在单个观察级别上对幅度进行建模并估计多个随机效应。<br />
+为每个因变量获得最佳模型的一般程序遵循Bates、Kliegl 等人的建议<span
+class="citation" data-cites="batesParsimoniousMixedModels2018"><sup>[<a
+href="#ref-batesParsimoniousMixedModels2018"
+role="doc-biblioref">4</a>]</sup></span>。</p>
+<ol type="1">
+<li>首先创建最大模型，包含所有受试者和项目的随机截距和随机斜率。</li>
+<li>如果最大模型没有收敛，拟合相应的零相关模型，其中随机效应之间的相关性被强制为0。</li>
+<li>然后没有显著解释数据的随机效应被零相关参数中移除，模型缩减。</li>
+<li>再在简化模型中添加剩余随机效应之间的相关性来扩展模型，如果不能收敛，则将方差最小的随机效应逐一去除，直到模型收敛，从而得到最终的最优模型。</li>
+<li>在此模型上进行后续比较。</li>
+</ol>
+<h3 id="软件">软件</h3>
+<p>我们使用 R（R Core Team 2021）和 RStudio（RStudio Team
+2021）进行了所有统计分析。使用 Tidyverse 软件包整理数据（Wickham
+等人，2019 年）。我们使用 lme4 包 ( Bates, Mächler, et al. 2015b ) 执行
+LMM，并使用 emmeans 包 (Lenth 2021 ) 进行后续比较和 ET，其中使用
+Satterthwaite 近似来估计统计结果。R Markdown
+输出文件可在https://osf.io/zv6kg/获得。</p>
+<h3 id="文献4--简约的混合模型">文献4--简约的混合模型</h3>
+<p>在过去的十年中，当将受试者和项目作为随机因素的变化时，心理语言实验的分析方式发生了重大变化（特别是从方差分析到线性混合模型（LMM））。尽管层次线性模型已经存在数十年了，但在Pinheiro和Bates（2000）之后的语言学和心理学等领域，它们在心理学和语言学等领域的采用变得更加广泛。最近，LMM的使用已扩散到其他心理学领域，例如人格和社会心理学。<span
+class="citation" data-cites="batesParsimoniousMixedModels2018"><sup>[<a
+href="#ref-batesParsimoniousMixedModels2018"
+role="doc-biblioref">4</a>]</sup></span>
+一个特别有吸引力的特征是，通过LMMS，有关实验效果和相互作用的统计推断不再需要单独的差异分析，一个针对受试者和项目，可以进行在一个连贯的框架内。</p>
+<p>这种连贯性的好处是有一定代价的。使用混合效应模型分析实验数据的重要部分是选择适当的随机效应结构。原则上，LMM不仅考虑受试者之间的差异和因变量的平均值（即随机截距）的均值，而且在受试者之间以及所有主效应和交互作用（即随机斜率）以及项目之间的差异以及项目之间的差异（即随机斜率）以及截距和斜率之间的相关性。让我们使用最简单的模型来说明基本点，使用两级主题内实验操作，并使用主体作为唯一的随机因素，使用Bates等人描述的R的“
+LME4”软件包的公式表示法。 （2015a）：</p>
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">Y <span class="operator">~</span> <span class="number">1</span> <span class="operator">+</span> A <span class="operator">+</span> <span class="punctuation">(</span><span class="number">1</span><span class="operator">|</span>Subject<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<p>该模型可能支持受试者内因子A的固定效应A。但是，如果A（即两个实验条件之间的差异）在受试者之间可靠地不同，那么关于A的不确定性可能是如此之大，以至于以至于主要影响的主要影响A在模型中不再显着，允许A：</p>
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">Y <span class="operator">~</span> <span class="number">1</span> <span class="operator">+</span> A <span class="operator">+</span> <span class="punctuation">(</span><span class="number">1</span><span class="operator">+</span>A<span class="operator">|</span>Subject<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<p>为了评估实验操作的重要性，因此必须在存在相应的随机斜率的情况下检查其固定作用。</p>
+<h2
+id="文献4--急性运动可改善甲基苯丙胺的渴望和抑制缺陷一项erp研究">文献4--急性运动可改善甲基苯丙胺的渴望和抑制缺陷：一项ERP研究</h2>
+<p>渴望（carving）抑制缺陷（inhibitory deficts）</p>
+<p>本研究采用受试者内平衡设计。共有 24 名参与者符合 DSM-IV 的MA
+依赖标准被招募。渴望水平、反应时间和反应准确性，以及事件相关电位 (ERP)
+成分 N2 和
+P3，在运动和控制治疗后以平衡顺序进行测量。急性运动也促进了标准和 MA
+相关的 Go/Nogo 任务的抑制性能。与阅读控制时段和 Go
+条件相比，在锻炼时段和 Nogo 条件下的两项任务中观察到更大的 N2
+幅度，但没有更大的 P3 幅度<span class="citation"
+data-cites="wangAcuteExerciseAmeliorates2015"><sup>[<a
+href="#ref-wangAcuteExerciseAmeliorates2015"
+role="doc-biblioref">5</a>]</sup></span>。论文证明中等强度的急性运动对MA的渴望和抑制控制有益。</p>
+<p>抑制是指不当行为或与任务无关信息的适应能力。</p>
+<h3 id="介绍">介绍</h3>
+<p>MA用户在多种认知表现指标上表现更差，例如抑制、执行能力、记忆和现实生活中的功能能力。抑制涉及多个大脑区域，包括额下叶、顶叶和基底神经节。长期滥用MA会导致与抑制相关的大脑功能区域障碍，例如前扣带皮层（ACC）和背外侧前额叶皮层（DLPFC）。</p>
+<p>N2被认为代表了一个冲突监测过程，相对于健康组，滥用药物组观察到较低的N2振幅。<br />
+P3振幅被认为代表了上下文更新、注意力资源分配以及促进检测和评估刺激的过程，与N2类似，具有物质依赖的个体在皮质抑制相关的任务间表现出降低的P3振幅。<br />
+大量研究发现，在健康人群中停止中等强度的急性有氧运动后，需要抑制控制的任务条件下，认知能力的增强都与P3振幅增强有关。</p>
+<h3 id="方法">方法</h3>
+<h4 id="参与者">参与者</h4>
+<p>24名18-40岁参与者(20男，4女），根据DSM-IV标准，排除1）精神病史
+2）身体或医疗状况 3）色盲 4）Raven的智力测试标准。</p>
+<h4 id="渴望评估">渴望评估</h4>
+<p>视觉模拟量表（VAS）。</p>
+<h4 id="认知任务">认知任务</h4>
+<p>使用两个Go/Nogo范式，Go: MA-Go(蓝框MA), Neutral-Go(蓝框中性); Nogo:
+MA-Nogo(), Neutral-Nogo。</p>
+<h4 id="eeg处理">EEG处理</h4>
+<p>N2和P3量化为200ms-300ms和300-500ms之间。分别来自于Fz、Cz、Pz的电极。</p>
+<h4 id="统计分析-1">统计分析</h4>
+<ul>
+<li>VAS：为了检查参与者的渴望状态，应用 2（会话：运动，控制） ×
+4（时间点：运动前、运动中、运动后立即、 运动后 50
+分钟）重复测量方差分析来评估 VAS 分数。</li>
+<li>关于神经电数据，对于标准 Go/Nogo 任务，2（会话） × 2（条件） ×
+3（站点：Fz、Cz、Pz）ANOVA 分别针对 N2 幅度、N2 潜伏期、P3 幅度和 P3
+潜伏期进行。</li>
+</ul>
+<h2 id="相关网页链接">相关网页链接</h2>
+<ul>
+<li><p>论文：</p>
+<p><a href="http://www.80lib.com/user/enlist/sd.html">80图书馆</a></p>
+<p><a
+href="https://www.sciencedirect.com/science/article/pii/S0749596X20300061#b0390">心理科学中线性混合效应模型的最佳实践指南</a></p>
+<p><a
+href="https://www.sciencedirect.com/science/article/pii/S2590260122000030">使用线性混合模型分析会话中的学习过程可以改善治疗效果的检测：计时心理旋转的示例性研究</a></p>
+<p><a
+href="https://www.sciencedirect.com/science/article/pii/S0167876022001416#bb0200">自愿与强制语言转换的控制机制：来自ERP的证据</a></p>
+<p><a
+href="https://www.frontiersin.org/articles/10.3389/fpsyg.2010.00238/full">线性混合模型中的实验效果和个体差异：估计视觉注意力中的空间、物体和吸引力效应之间的关系</a></p></li>
+<li><p>R语言：</p>
+<p><a
+href="https://zhuanlan.zhihu.com/p/60204351">R语言之重复测量方差分析——ezANOVA的使用与解析</a></p>
+<p><a
+href="https://zhuanlan.zhihu.com/p/88497589">bruceR包重磅更新：方差分析、简单效应检验、事后多重比较</a></p>
+<p><a
+href="https://zhuanlan.zhihu.com/p/281150493">R语言综合工具包：bruceR中文帮助文档（持续更新）</a></p>
+<p><a
+href="https://www.bilibili.com/video/BV1XT4y1S7r4?p=5&amp;vd_source=7b248d6596f7ca4944759406d03d59d8">（R语言）线性混合效应模型教程</a></p>
+<p><a
+href="https://www.bilibili.com/read/cv16091910?from=note">（R语言）线性混合效应模型教程(代码)</a></p>
+<p><a
+href="https://github.com/basclab/LME_MixedEffectsERPTutorial/blob/main/LMETutorialScripts/LME_07_AnalyzeLMEModel.R">LME_MixedEffectsERPTutorial</a></p>
+<p><a
+href="https://blog.csdn.net/kMD8d5R/article/details/85240949">基于R的混合线性模型的实现</a></p></li>
+<li><p>教程</p>
+<p><a
+href="https://www.bilibili.com/video/BV1gk4y127kW?spm_id_from=333.999.0.0&amp;vd_source=7b248d6596f7ca4944759406d03d59d8">[讲座/北理工]R语言入门-线性混合模型分析_王蓓老师_200824</a></p>
+<p><a
+href="https://pan.baidu.com/s/1mhJlTrXA-JhLnU2invuXYQ#list/path=%2Fsharelink252639068-950448459562825%2F01&amp;parentPath=%2Fsharelink252639068-950448459562825">王蓓老师的课程资料</a></p>
+<p><a
+href="https://ourcodingclub.github.io/tutorials/mixed-models/?nsukey=JfcXN4ZtaaEgpYJMyxe3oLJVjnlrrISjyCNa8jr%2FJxC5boovrpcf%2BTJJhmqhALfQNznAP1VPeUUSZghPYi93AZHNXDFsaXoP9oL%2FEzSgzpmo9VmN7oUwmYExM%2F5cQ5Y3BhDFhWxHSxbAeT3iYd6fwXLzR65TQThi239DVAazfetJiUJlMdBoxgvfGykUcx50Fnd8BemyGv%2FLMezfhVe0tA%3D%3D&amp;from=timeline">INTRODUCTION
+TO LINEAR MIXED MODELS</a></p>
+<p><a
+href="https://mfviz.com/hierarchical-models/">线性混合模型教学动画</a></p>
+<p><a
+href="https://mfviz.com/hierarchical-models/">线性混合效应模型入门之一（linear
+mixed effects model）</a></p>
+<p><a
+href="https://zhuanlan.zhihu.com/p/483173133">线性混合效应模型入门之二 -
+实例操作及结果解读（R、Python、SPSS实现）</a></p>
+<p><a
+href="https://zhuanlan.zhihu.com/p/483173133">线性混合效应模型入门之二 -
+实例操作及结果解读（R、Python、SPSS实现）</a></p>
+<p><a
+href="https://www.51xxziyuan.com/61/2161.html">跟着这篇柳叶刀的文章来学会重复测量方差分析</a></p>
+<p><a
+href="https://xw.qq.com/cmsid/20200413A0HCBT00">F＝3.4括号里面的数字什么意思？方差分析F检验结果如何解读？</a></p>
+<p><a
+href="https://blog.csdn.net/qq_42021257/article/details/115913771">论文中怎么写F检验值</a></p></li>
+<li><p>SPSS</p>
+<p><a
+href="https://mfviz.com/hierarchical-models/">【心理学实验】SPSS两因素重复测量方差分析
+简单效应分析(有代码在评论里)</a></p>
+<figure id="fig:重复测量流程图">
+<img
+src="https://pic1.zhimg.com/80/v2-4ac4078f118ecadd756cd639c5862768_1440w.jpg"
+style="width:50.0%" alt="Figure 10. 重复测量流程图" />
+<figcaption aria-hidden="true">Figure 10. 重复测量流程图</figcaption>
+</figure></li>
+</ul>
+<h1 class="unnumbered" id="bibliography">Reference</h1>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0"
+role="list">
+<div id="ref-heiseUtilityLinearMixed2022" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[1] </div><div
+class="csl-right-inline">HEISE M J. MON S K. BOWMAN L C. Utility of
+linear mixed effects models for event-related potential research with
+infants and children[J/OL]. Developmental Cognitive Neuroscience, 2022,
+54: 101070[2022-08-27]. <a
+href="https://www.sciencedirect.com/science/article/pii/S1878929322000147">https://www.sciencedirect.com/science/article/pii/S1878929322000147</a>.</div>
+</div>
+<div id="ref-brauerLinearMixedeffectsModels2018" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[2] </div><div
+class="csl-right-inline">BRAUER M. CURTIN J J. Linear mixed-effects
+models and the analysis of nonindependent data: <span>A</span> unified
+framework to analyze categorical and continuous independent variables
+that vary within-subjects and/or within-items.[J/OL]. Psychological
+Methods, 2018, 23(3): 389-411[2022-08-31]. <a
+href="http://doi.apa.org/getdoi.cfm?doi=10.1037/met0000159">http://doi.apa.org/getdoi.cfm?doi=10.1037/met0000159</a>.</div>
+</div>
+<div id="ref-jinAllornoneNeuralMechanisms2022" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">JIN
+H. HAYWARD W G. CORBALLIS P M. All-or-none neural mechanisms underlying
+face categorization: Evidence from the <span>N170</span>[J/OL]. Cerebral
+Cortex, 2022: bhac101[2022-09-02]. <a
+href="https://doi.org/10.1093/cercor/bhac101">https://doi.org/10.1093/cercor/bhac101</a>.</div>
+</div>
+<div id="ref-batesParsimoniousMixedModels2018" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[4] </div><div
+class="csl-right-inline">BATES D. KLIEGL R. VASISHTH S. et al.
+Parsimonious <span>Mixed Models</span>[EB/OL]. (2018-05-26)[2022-09-02].
+<a
+href="http://arxiv.org/abs/1506.04967">http://arxiv.org/abs/1506.04967</a>.</div>
+</div>
+<div id="ref-wangAcuteExerciseAmeliorates2015" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[5] </div><div
+class="csl-right-inline">WANG D. ZHOU C. CHANG Y K. Acute exercise
+ameliorates craving and inhibitory deficits in methamphetamine: <span>An
+ERP</span> study[J/OL]. Physiology &amp; Behavior, 2015, 147:
+38-46[2022-09-20]. <a
+href="https://www.sciencedirect.com/science/article/pii/S0031938415002036">https://www.sciencedirect.com/science/article/pii/S0031938415002036</a>.</div>
+</div>
+</div>
+]]></content>
+      <categories>
+        <category>EEG</category>
+      </categories>
+      <tags>
+        <tag>模板</tag>
       </tags>
   </entry>
   <entry>
@@ -1047,12 +1562,115 @@ style="display: inline-block; vertical-align: top;">我是脚注</span><a href="
 </ol>
 </div>
 </div>
+</div>
 ]]></content>
       <categories>
         <category>markdown</category>
       </categories>
       <tags>
         <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nas虚拟机设置</title>
+    <url>/2025/08/29/nas%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%AE%BE%E7%BD%AE/</url>
+    <content><![CDATA[<h2 id="安装zsh插件">1 安装zsh插件</h2>
+<p>kali自己带zsh，也安装了一些插件，再装一些好用的。</p>
+<h3 id="zsh-autosuggestions">1.1 zsh-autosuggestions</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://gitclone/github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions</span><br><span class="line"><span class="built_in">source</span> ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh</span><br></pre></td></tr></table></figure>
+<h3 id="autojump">1.2 autojump</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/wting/autojump.git</span><br><span class="line"><span class="built_in">cd</span> autojump</span><br><span class="line">./install.py <span class="comment"># or ./uninstall.py</span></span><br></pre></td></tr></table></figure>
+<h3 id="command-not-found">1.3 command-not-found</h3>
+<p>在.zshrc文件中添加</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">plugins=(command-not-found)</span><br></pre></td></tr></table></figure>
+<h2 id="换源">2 换源</h2>
+<p><code>sudo vim /etc/apt/sources.list</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">清华大学Kali镜像源</span><br><span class="line">把原来的源注释掉</span><br><span class="line"></span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free</span><br></pre></td></tr></table></figure>
+<p><code>apt update</code></p>
+<h2 id="开通ssh">3 开通ssh</h2>
+<p>默认新安装的kali系统会关闭ssh 连接服务,我们通过命令打开:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#启动ssh服务</span></span><br><span class="line">sudo systemctl start ssh</span><br><span class="line">servicesshstart?</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看ssh 服务状态</span></span><br><span class="line">sudo systemctl status ssh</span><br><span class="line"></span><br><span class="line"><span class="comment">#加入开机启动</span></span><br><span class="line">sudo systemctl <span class="built_in">enable</span> ssh</span><br></pre></td></tr></table></figure>
+<h2 id="中文输入法">4 中文输入法</h2>
+<p>kali自己不带中文输入法，要安装一下ibus-pinyin，后面输入法自带小鹤双拼，修改一下就好</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install ibus-pinyin</span><br></pre></td></tr></table></figure>
+<h2 id="ip地址查询">5 ip地址查询</h2>
+<ul>
+<li>ipw.cn</li>
+<li><a href="http://test6.ustc.edu.cn/">中科大测速</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 请勿用于商业用途，仅供个人测试学习之用，请遵守中国法律法规</span></span><br><span class="line"><span class="comment"># 查询本机外网IPv4地址</span></span><br><span class="line">curl 4.ipw.cn</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询本机外网IPv6地址</span></span><br><span class="line">curl 6.ipw.cn</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试网络是IPv4还是IPv6访问优先(访问IPv4/IPv6双栈站点，如果返回IPv6地址，则IPv6访问优先)</span></span><br><span class="line">curl test.ipw.cn</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="git-clone-无法使用">6 git clone 无法使用</h2>
+<p>由于网络原因，<code>git clone</code>无法使用，利用镜像网站加速。</p>
+<ul>
+<li><a href="https://github.akams.cn/"
+class="uri">https://github.akams.cn/</a></li>
+<li><a href="https://bgithub.xyz/"
+class="uri">https://bgithub.xyz/</a></li>
+<li><a href="https://gitclone.com/"
+class="uri">https://gitclone.com/</a>
+<ul>
+<li>这个方便在直接可以在//后面加上一个<code>gitclone/</code>就可以了。</li>
+</ul></li>
+<li><a href="http://ffgithub.com/" class="uri">http://ffgithub.com/</a>
+<ul>
+<li>这个网站直接有项目的镜像和项目的趋势</li>
+</ul></li>
+</ul>
+<h2 id="文件互传">7 文件互传</h2>
+<h3 id="使用sftp">7.1 使用SFTP</h3>
+<p>SFTP 是一个通过
+SSH（安全外壳协议）加密的文件传输协议，通常用于安全地在本地计算机和远程服务器之间传输文件。</p>
+<p>步骤：</p>
+<p>在本地计算机上，打开一个终端或命令提示符。
+使用以下命令连接到远程服务器： <code>sftp username@your-server-ip</code>
+如果用户名有空格可以用： <code>sftp "用户名"@"主机地址"</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">username 是您的远程服务器用户名，your-server-ip 是服务器的 IP 地址。</span><br></pre></td></tr></table></figure>
+<p>登录后，可以使用 get 下载文件或使用 put 上传文件：
+下载文件：<code>get /remote/path/to/file /local/path/to/save</code>
+上传文件：<code>put /local/path/to/file /remote/path/to/save</code>
+完成后，使用 <code>exit</code> 退出 SFTP 会话。</p>
+<h3 id="使用绿联云">7.2 使用绿联云</h3>
+<p>在绿联nas上选择文件,共享，然后在虚拟机上用浏览器下载。</p>
+<h2 id="科学上网">8 科学上网</h2>
+<p><strong><a
+href="https://zhaotizi.site/">找梯子啊</a>这个网站可以，内容比较丰富！</strong>
+新安装的kali，无法访问GitHub，在安装一些软件的时间无法安装，比如lazyvim。在桌面安装支持订阅的软件后，浏览器可以科学上网，但是终端不行。
+所以解决方案是，在桌面的时候用订阅软件比如<a
+href="https://clashverge.net/">Clash
+Verge</a>，在终端的时候用终端版的Clash。</p>
+<ul>
+<li><a href="https://github.com/nelvko/clash-for-linux-install">Linux
+一键安装 Clash</a>（测试后最终这个好用一点）</li>
+<li><a
+href="https://github.com/wnlen/clash-for-linux">clash-for-linux</a></li>
+<li><a
+href="https://kirigaya.cn/files/linux_tools/clash-for-linux.zip">clash-for-linux
+新下载地址</a></li>
+<li><a
+href="https://github.com/mzz2017/gg/blob/main/README_zh.md">gg-一种终端vpn</a>（测试没有成功，可能订阅有问题）</li>
+</ul>
+<h3 id="终端设置">8.1 终端设置</h3>
+<p>可能桌面开了代理，但是终端连不上代理。这个时候就要对终端进行设置了。
+开启代理后，设置.zshrc or .bashrc，加入命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=http://proxy.example.com:8080</span><br><span class="line"><span class="built_in">export</span> https_proxy=http://proxy.example.com:8080</span><br></pre></td></tr></table></figure>
+<p>再<code>sources zsh</code>一下</p>
+<p>但可能安装了vpn以后也无法访问GitHub，那么先看一下系统的proxy，</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">env</span> | grep -E <span class="string">&#x27;http_proxy|https_proxy&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>然后<code>vim ~/.gitconfig</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[https]</span><br><span class="line">        proxy = http://127.0.0.1:7897(系统的proxy)</span><br><span class="line">[http]</span><br><span class="line">        proxy = http://127.0.0.1:7897(系统的proxy)</span><br></pre></td></tr></table></figure>
+<h3 id="机场订阅源">8.2 机场订阅源</h3>
+<ul>
+<li>vpn订阅：<a
+href="https://main.cutecloudone.de/console">最萌云</a>，可以通过自带的订阅转换，变成clash订阅连接</li>
+<li><a href="https://user.dg5.biz">狗狗加速</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+        <tag>vim</tag>
       </tags>
   </entry>
   <entry>
@@ -1126,7 +1744,7 @@ will transform<br />
 <code>\cos 2\theta = \cos^2 \theta - \sin^2 \theta =  2 \cos^2 \theta - 1</code>,<br />
 never show correct style<br />
 <span class="math inline">\(\cos 2\theta = \cos^2 \theta - \sin^2 \theta
-= 2 \cos^2 \theta - 1\)</span><br />
+=  2 \cos^2 \theta - 1\)</span><br />
 Another problem again. I search many websites and it didn't work, feel
 maybe the themes did not support mathjax format. So I decide change my
 blog themes to Next. congratulations! We have a hole new website! And it
@@ -1187,6 +1805,195 @@ href="https://storage.googleapis.com/tfjs-models/demos/posenet/camera.html">clic
       </categories>
       <tags>
         <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>生物力学资料速查</title>
+    <url>/2022/12/03/quick_search/</url>
+    <content><![CDATA[<p>这里用于记录生物力学有关的资料以及网站，方便速查。</p>
+<hr />
+<h2 id="官网">官网</h2>
+<h3 id="bob">1. BOB</h3>
+<p><img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20221205005224.png"
+style="width:60.0%" /></p>
+<p>BOB(Biomechanics of
+Bodies)是一个包含易用肌骨模型的软件，用于分析功能和量化模型。</p>
+<p>网站地址: <strong><a
+href="https://space.bilibili.com/121053892">点我</a></strong></p>
+<span id="more"></span>
+<h3 id="motion-lab-systems">2. Motion Lab Systems</h3>
+<p><img src="https://www.motion-labs.com/images/gaitlogo.png" /></p>
+<p>Motion Lab
+Systems是一个生物力学肌电和相关设备的网站，网站自带了处理C3D数据、肌电数据的软件（windows）。</p>
+<p>其中有两个免费的软件可以查看C3D数据。</p>
+<p>地址: <strong><a
+href="https://space.bilibili.com/121053892">点我</a></strong></p>
+<ul>
+<li>MLSivewer</li>
+<li>Mokka</li>
+</ul>
+<h3 id="theia-3d">3. THEIA 3D</h3>
+<p>无标记点动作捕捉</p>
+<p><img
+src="https://www.theiamarkerless.ca/wp-content/uploads/logo_red_black_name_runner_168x50.png" /></p>
+<p>网站地址: <strong><a
+href="https://www.theiamarkerless.ca/">点我</a></strong></p>
+<h3 id="btk-mokka">4. BTK &amp; Mokka</h3>
+<p>BTK（Biomechanical
+ToolKit）是python的C3D数据处理包，Mokka是一个Win平台下读取与可视化的软件，并且有个小型官网。</p>
+<ul>
+<li>BTK（更新到2016年9月） BTK文档：<strong><a
+href="http://biomechanical-toolkit.github.io/">点我</a></strong></li>
+<li>Mokka小型官网：<strong><a
+href="http://biomechanical-toolkit.github.io/mokka/index.html">点我</a></strong></li>
+</ul>
+<h3 id="c3d">5. C3D</h3>
+<p>C3D文件官网，C3D文件介绍，格式标准（PDF），处理C3D文件的软件</p>
+<p>网站地址: <strong><a
+href="https://www.c3d.org/index.html">点我</a></strong></p>
+<h3 id="isbs论坛官网">6. ISBS论坛官网</h3>
+<p>网站地址: <strong><a
+href="https://biomch-l.isbweb.org/">点我</a></strong></p>
+<ul>
+<li>生物力学讨论帖子</li>
+<li>工作招聘</li>
+<li><strong>每个月的生物力学文献更新📜</strong></li>
+</ul>
+<h3 id="the-biomechanist">7. The Biomechanist</h3>
+<p><img
+src="https://www.biomechanist.net/wp-content/uploads/2020/09/cropped-Logo-6-e1601280454906-4.png"
+style="width:40.0%" /></p>
+<p>网站地址: <strong><a
+href="https://www.biomechanist.net/">点我</a></strong></p>
+<p>我们是德国科隆体育大学“运动与医学中的人类技术”硕士课程的五名学生。我们每个人都来自一个完全不同的运动领域，但我们有一个共同点：对运动和生物力学的迷恋。我们认为这是体育和运动科学中被低估的一部分，并希望这个网站将有助于引起对这个令人兴奋的话题的更多关注。</p>
+<ul>
+<li>有关于生物力学基础教学</li>
+<li>有ISBS的YouTube视频教学</li>
+<li>有一些blog</li>
+</ul>
+<h3 id="simtk">8. SimTK</h3>
+<p>生物医学仿真工具，包含了生物学建模，生物力学建模等工具。</p>
+<p>网站地址: <strong><a href="https://simtk.org/">点我</a></strong></p>
+<ul>
+<li><p>Opensim</p>
+<p><img src="https://simtk.org/logos/opensim?dummy_value=509697024"
+style="width:10.0%" /></p>
+<p>提供易于使用、可扩展的软件，用于对神经肌肉骨骼系统进行建模、模拟、控制和分析。</p></li>
+<li><p>OpenCap</p>
+<p><img src="https://simtk.org/logos/opencap?dummy_value=2104624939"
+style="width:10.0%" /></p>
+<p>OpenCap是一个软件包，用于从智能手机视频中估计3D人体运动动态。</p></li>
+<li><p>还有很多</p></li>
+</ul>
+<h3 id="kintics-toolkit">9. Kintics Toolkit</h3>
+<p>用于处理C3D数据。 是学生和研究人员学习使用 Python 进行 3D
+生物力学数据处理的在线资源。 是一个开源的 Python
+包，它（仅）完成此处理的繁重工作，因此用户可以控制他们的数据。</p>
+<p>网站地址: <strong><a
+href="https://kineticstoolkit.uqam.ca">点我</a></strong></p>
+<p><img
+src="https://kineticstoolkit.uqam.ca/doc/_images/frontpage.gif" /></p>
+<ul>
+<li>有Github仓库</li>
+<li>有C3D处理说明文档</li>
+<li>有python教程</li>
+</ul>
+<hr />
+<h2 id="学习">学习</h2>
+<h3 id="选择无言b站">1. 选择无言（B站）</h3>
+<p>B站up主，估计是上体的人。</p>
+<p>有Visual
+3D的使用视频教程，Anybody建模的教程，以及其他python，Matlab在关于生物力学的应用。</p>
+<p>网站地址: <strong><a
+href="https://space.bilibili.com/121053892">点我</a></strong></p>
+<h3 id="working-with-btk-and-mokka">2. Working with BTK and Mokka</h3>
+<ul>
+<li>介绍在Mokka中可视化C3D文件。</li>
+<li>介绍在Matlab中读取C3D文件。</li>
+<li>下载连接</li>
+</ul>
+<p>网站地址: <strong><a
+href="https://www.biomechanist.net/btk-and-mokka/">点我</a></strong></p>
+<h3 id="bassettbiomechanics">3. bassettbiomechanics</h3>
+<p>生物力学基础、Visual 3D 视频教程。（需要注册，有些要收费）</p>
+<p><img
+src="https://bassettbiomechanics.com/wp-content/uploads/sites/7/2020/11/BassettBiomechanics_Header_in_line.png" /></p>
+<p>网站地址: <strong><a
+href="https://bassettbiomechanics.com">点我</a></strong></p>
+<h3 id="emg交互教学">4. EMG交互教学</h3>
+<p>带有肌电的信号采集动画，可以交互的观察理解肌电的信号采集原理，学习肌电的基础知识。</p>
+<ul>
+<li>网页下面还有两个交互工具（EMG
+神经肌肉模拟，EMG分析工具）可以学习一下</li>
+<li>网页下面有肌电的教学视频（EMG in Sports Biomechanics)可以看一下</li>
+</ul>
+<p>网站地址: <strong><a
+href="https://delsys.com/interactive-teaching-tools-for-beginners-learn-electromyography-emg/">点我</a></strong></p>
+<h3 id="emg期刊和emg报告标准">5. EMG期刊和EMG报告标准</h3>
+<ul>
+<li><p>EMG期刊</p>
+<p><img
+src="https://ars.els-cdn.com/content/image/1-s2.0-S1050641119X0005X-cov200h.gif" /></p>
+<p>The official journal of ISEK is the Journal of Electromyography and
+Kinesiology (JEK), published bimonthly at Elsevier Science.</p>
+<ul>
+<li>期刊内搜索“Tutorial”，有几篇肌电的教程</li>
+<li>期刊内容大多与表面肌电、运动相关</li>
+</ul>
+<p>网站地址: <strong><a
+href="https://www.sciencedirect.com/journal/journal-of-electromyography-and-kinesiology">点我</a></strong></p></li>
+<li><p>EMG报告标准</p>
+<p>网站地址: <strong><a
+href="https://isek.org/wp-content/uploads/2015/05/Standards-for-Reporting-EMG-Data.pdf">点我</a></strong></p></li>
+</ul>
+<h3 id="opensim深入教学">6. OpenSim深入教学</h3>
+<p>知乎上的一篇关于OpenSim的教学文章，确实是比较深入的了。</p>
+<p>网站地址: <strong><a
+href="https://zhuanlan.zhihu.com/p/523055552">点我</a></strong></p>
+<h3 id="simon聊聊opensim">7. Simon聊聊OpenSim</h3>
+<p>关于OpenSim的教程和笔记。</p>
+<p>网站地址: <strong><a
+href="https://www.zhihu.com/column/c_1376915554922442752">点我</a></strong></p>
+<h3 id="gaitlab.ir">8. Gaitlab.ir</h3>
+<p>应该是伊朗的步态实验室，好处就是，里面的相关资料里有：</p>
+<ul>
+<li>各种生物力学的书PDF，提供下载（<strong>免费</strong>）</li>
+</ul>
+<p>网站地址: <strong><a
+href="http://www.gaitlab.ir">点我</a></strong></p>
+<hr />
+<h2 id="人">人</h2>
+<h3 id="peter-b.-shull">1. Peter B. Shull</h3>
+<p>上海交通大学，Wearable Systems Lab</p>
+<p>我们的实验室旨在分析和训练人体运动。我们结合机器人、触觉和生物力学原理，使用嵌入式电子设备、实时模型、传感器融合算法和新型反馈设备开发可穿戴系统。我们力求了解自然环境中的运动和运动修改基础知识，例如家庭、办公室、公园或体育馆。</p>
+<p>网站地址: <strong><a
+href="http://www.wearablesystems.org/">点我</a></strong></p>
+<hr />
+<h2 id="github">Github</h2>
+<h3 id="biomechanics-dataset">1.Biomechanics dataset</h3>
+<p>包含公开的生物力学数据库。 - C3D格式 - 其他格式</p>
+<p>网站地址: <strong><a
+href="https://github.com/mkjung99/biomechanics_dataset">点我</a></strong></p>
+<h3 id="wpi-aim-lab">2.WPI AIM Lab</h3>
+<p><img
+src="https://avatars.githubusercontent.com/u/12138786?s=200&amp;v=4" /></p>
+<p>网站地址: <strong><a
+href="https://github.com/WPI-AIM">点我</a></strong></p>
+<p>WPI AIM Lab是WPI自动化与介入医学机器人研究实验室的一个仓库。</p>
+<p>与生物力学相关的库有:</p>
+<ul>
+<li>AIM_GaitCore(步态分析工具箱)</li>
+<li>AIM_Vicon(读取和分析Vicon数据的包，可以读取Vicon导出的CSV文件，自动填补丢失的点)</li>
+<li>AIM_GaitAnalysisToolkit(Vicon数据步态分析工具箱，分析步态，分离步态周期)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>biomechanics</category>
+      </categories>
+      <tags>
+        <tag>资料</tag>
+        <tag>速查，笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -1330,72 +2137,432 @@ href="https://gaomm.top/2022/08/25/%E5%86%99%E4%BD%9C%E6%A8%A1%E6%9D%BF/">写作
       </tags>
   </entry>
   <entry>
-    <title>写作模板</title>
-    <url>/2022/08/25/%E5%86%99%E4%BD%9C%E6%A8%A1%E6%9D%BF/</url>
-    <content><![CDATA[<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">chapters:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">figureTitle:</span> <span class="string">&quot;图&quot;</span></span><br><span class="line"><span class="attr">figPrefix:</span> <span class="string">&quot;图&quot;</span></span><br><span class="line"><span class="attr">tableTitle:</span> <span class="string">&quot;表&quot;</span></span><br><span class="line"><span class="attr">tablePrefix:</span> <span class="string">&quot;表&quot;</span></span><br><span class="line"><span class="attr">tableTemplate:</span> <span class="string">|</span></span><br><span class="line"><span class="string">  *$$tableTitle$$ $$i$$*$$titleDelim$$ $$t$$</span></span><br><span class="line"><span class="string"></span><span class="attr">bibliography:</span> <span class="string">&quot;path/EEG.bib&quot;</span></span><br><span class="line"><span class="attr">csl:</span> <span class="string">chinese-gb7714-2005-numeric.csl</span> </span><br><span class="line"><span class="attr">reference-section-title:</span> <span class="string">Reference</span></span><br><span class="line"><span class="attr">tableTemplate:</span> <span class="string">|</span></span><br><span class="line"><span class="string">  *$$tableTitle$$ $$i$$*$$titleDelim$$ $$t$$</span></span><br><span class="line"><span class="string"></span><span class="attr">link-citations:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">lang:</span> <span class="string">en-GB</span></span><br><span class="line"><span class="attr">papersize:</span> <span class="string">a4</span></span><br><span class="line"><span class="attr">colorlinks:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">links-as-notes:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">fontsize:</span> <span class="number">11.</span><span class="string">5pt</span></span><br></pre></td></tr></table></figure>
-<p><span id="more"></span></p>
-<h1 id="lme线性混合模型处理erp">LME线性混合模型处理ERP</h1>
-<h2 id="处理流程">处理流程</h2>
-<p>根据论文《线性混合效应模型在婴儿和儿童事件相关潜力研究中的效用》<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>的处理过程找到了GitHub上的<a
-href="https://github.com/basclab/LME_MixedEffectsERPTutorial/tree/main/LMETutorialScripts">数据处理脚本</a>。脚本共有7个，其中1-5是Matlab从Continues
-EEG到ERP的处理过程，脚本6-7是R语言对ERP进行LME混合线性模型的处理过程，如下图。</p>
-<p>测试引用<span class="citation"
-data-cites="marusicNeuralBasesAgeRelated2022 tenbrinkeEffectsComputerizedCognitive2019 heiseUtilityLinearMixed2022"><sup>[<a
-href="#ref-marusicNeuralBasesAgeRelated2022"
-role="doc-biblioref">1</a>–<a href="#ref-heiseUtilityLinearMixed2022"
-role="doc-biblioref">3</a>]</sup></span></p>
-<p>吧啦吧啦吧啦，见Table 1</p>
-<div id="tbl:表头">
-<table>
-<caption>Table 1. 我是表</caption>
+    <title>安装Ubuntu版openpose</title>
+    <url>/2018/06/18/%E5%AE%89%E8%A3%85Ubuntu%E7%89%88openpose/</url>
+    <content><![CDATA[<h2 id="ubuntu-下载加速">Ubuntu 下载加速</h2>
+<ul>
+<li><p>apt使用清华源 <code>sudo vi /etc/apt/sources.list</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main     restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted universe multiverse</span><br></pre></td></tr></table></figure>
+<span id="more"></span></li>
+</ul>
+<p>更新apt</p>
+<p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure> - 安装pip <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget https://bootstrap.pypa.io/get-pip.py</span><br><span class="line">sudo python get-pip.py</span><br><span class="line">pip -V　　#查看pip版本</span><br></pre></td></tr></table></figure> - pip 豆瓣源加速 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir ~/.pip</span><br><span class="line">cd ~/.pip</span><br><span class="line">sudo gedit ~/.pip/pip.conf</span><br></pre></td></tr></table></figure>
+复制文件 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[global] </span><br><span class="line">index-url = http://pypi.douban.com/simple </span><br><span class="line">[install] </span><br><span class="line">trusted-host=pypi.douban.com</span><br></pre></td></tr></table></figure> - 安装git <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install git</span><br></pre></td></tr></table></figure> - git 加速 -
+查找域名对应的ip地址，并修改hosts文件 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nslookup github.global.ssl.fastly.Net</span><br><span class="line">nslookup github.com</span><br></pre></td></tr></table></figure> <img
+src="https://img-blog.csdn.net/20180112135533032?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHp3d3BnbXd5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" />
+- 将下列内容加入<code>sudo vi /etc/hosts</code>文件中 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">151.101.76.249 http://global-ssl.fastly.net</span><br><span class="line">192.30.255.113 http://github.com  #此处112还是113根据自己的情况调整？</span><br></pre></td></tr></table></figure> -
+刷新dns缓存 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo /etc/init.d/networking restart</span><br></pre></td></tr></table></figure> ## 安装openpose ### 克隆openpose
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose</span><br></pre></td></tr></table></figure></p>
+<h3 id="准备工作">准备工作</h3>
+<ul>
+<li><p>安装Cmake GUI<br />
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get install cmake-qt-gui</span><br></pre></td></tr></table></figure></p></li>
+<li><p>安装OpenCV<br />
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get install libopencv-dev</span><br></pre></td></tr></table></figure></p></li>
+<li><p>安装Cafe<br />
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo bash ./ubuntu/install_cmake.sh</span><br></pre></td></tr></table></figure></p></li>
+</ul>
+<h3 id="配置">配置</h3>
+<ul>
+<li>Open CMake GUI and select the OpenPose directory as project source
+directory, and a non-existing or empty sub-directory
+(e.g., <code>build</code>) where the Makefile files (Ubuntu) or Visual
+Studio solution (Windows) will be generated. If <code>build</code> does
+not exist, it will ask you whether to create it.
+Press <code>Yes</code>.</li>
+</ul>
+<p><a
+href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/media/cmake_installation/im_1.png"><img
+src="https://github.com/CMU-Perceptual-Computing-Lab/openpose/raw/master/doc/media/cmake_installation/im_1.png" /></a><a
+href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/media/cmake_installation/im_1_windows.png"><img
+src="https://github.com/CMU-Perceptual-Computing-Lab/openpose/raw/master/doc/media/cmake_installation/im_1_windows.png" /></a></p>
+<ul>
+<li>Press the <code>Configure</code> button, keep the generator
+in <code>Unix Makefile</code> (Ubuntu) or set it
+to <code>Visual Studio 14 2015 Win64</code> (Windows), and
+press <code>Finish</code>.</li>
+</ul>
+<p><a
+href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/media/cmake_installation/im_2.png"><img
+src="https://github.com/CMU-Perceptual-Computing-Lab/openpose/raw/master/doc/media/cmake_installation/im_2.png" /></a> <a
+href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/media/cmake_installation/im_2_windows.png"><img
+src="https://github.com/CMU-Perceptual-Computing-Lab/openpose/raw/master/doc/media/cmake_installation/im_2_windows.png" /></a></p>
+<ul>
+<li>If this step is successful, the <code>Configuring done</code> text
+will appear in the bottom box in the last line. Otherwise, some red text
+will appear in that same bottom box.</li>
+</ul>
+<p><a
+href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/media/cmake_installation/im_3.png"><img
+src="https://github.com/CMU-Perceptual-Computing-Lab/openpose/raw/master/doc/media/cmake_installation/im_3.png" /></a><a
+href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/media/cmake_installation/im_3_windows.png"><img
+src="https://github.com/CMU-Perceptual-Computing-Lab/openpose/raw/master/doc/media/cmake_installation/im_3_windows.png" /></a></p>
+<ul>
+<li>Press the <code>Generate</code> button and proceed to <a
+href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/installation.md#openpose-building">OpenPose
+Building</a>. You can now close CMake.</li>
+</ul>
+<p><strong>Note:</strong> If you prefer to use your own custom Caffe or
+OpenCV versions, see <a
+href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/installation.md#custom-caffe">Custom
+Caffe</a> or <a
+href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/installation.md#custom-opencv">Custom
+OpenCV</a> respectively.</p>
+]]></content>
+      <categories>
+        <category>openpose</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OpenSim教程 1--肌肉骨骼建模入门</title>
+    <url>/2020/03/07/%E6%95%99%E7%A8%8B1--%E8%82%8C%E8%82%89%E9%AA%A8%E9%AA%BC%E5%BB%BA%E6%A8%A1%E5%85%A5%E9%97%A8%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89/</url>
+    <content><![CDATA[<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/t1SPZlBWLExdYmH.png"
+alt="intro1-2.png" />
+<figcaption aria-hidden="true">intro1-2.png</figcaption>
+</figure>
+<span id="more"></span>
+<h2 id="i.-目标">I. 目标</h2>
+<h3 id="opensim-介绍">OpenSim 介绍</h3>
+<p>骨骼肌肉模型使我们可以去学习神经肌肉协调，分析运动员表笑和估计骨骼肌肉负荷。OpenSim是一款开源软件，它允许用户开发、分析和可视化模型并生成动作的动力学模拟<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>。在OpenSim中，骨骼肌肉模型由关节链接的环节刚体构成。肌肉跨过关节产生力并驱使关节运动。一旦骨骼肌肉模型创建，OpenSim用户可以在其中进行研究，包括调查骨骼肌肉的几何学影响、关节运动学、肌肉-肌腱在作用力下的性质以及在肌力作用下关节的运动。在OpenSim中，我们的目标是提供一个允许生物力学团体去创造、分享、扩展模型库以及动力学仿真工具的框架来用于研究和量化人体与动物的动作。</p>
+<h3 id="目标">目标</h3>
+<p>本教程的目标是通过展示图形化骨骼肌肉模型框架工具调查下肢肌肉-肌腱长度和动量矩变化来向用户介绍OpenSim。在本教程中：</p>
+<ul>
+<li>熟悉OpenSim的操作图形界面</li>
+<li>发现一些骨骼肌肉模型的局限</li>
+<li>探索单关节与双关节肌肉的不同</li>
+<li>使用OpenSim接触重要的临床问题</li>
+</ul>
+<h3 id="格式">格式</h3>
+<p>教程的每一个部分都会通过确定的OpenSim
+GUI工具指导你和回答你的一些问题。菜单的名称、选项名称、需要选择的命令以及在OpenSim中的输入都会粗体显示。问题会被基于OpenSim的人体肌肉骨骼模型系统的基本知识来回答。当你完成所有部分的教程你可以自由探索OpenSim和下肢模型。根据你所做的探索，本教程可能耗时1-2小时完成。</p>
+<h3 id="opensim-gui-简介">OpenSim GUI 简介</h3>
+<p>这里有OpenSim GUI的主要组成。下表将介绍GUI。</p>
+<p><em>注意：打开OpenSim时具有如下显示，但并没有载入模型。</em></p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/JbnwW9jZqmkELUa.png"
+alt="GUI_components.png" />
+<figcaption aria-hidden="true">GUI_components.png</figcaption>
+</figure>
+<p>关于GUI的文档可以在用户手册中找到--&gt; <a
+href="https://simtk-confluence.stanford.edu/display/OpenSim/Graphical+User+Interface">Graphical
+User Interface</a></p>
+<h2 id="ii.-下肢骨骼肌肉模型">II. 下肢骨骼肌肉模型</h2>
+<p>在这个部分，你将载入一个下肢模型<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>到OpenSim中然后使它“行走”。这个模型代表一位身高约1.8m、体重约75KG的成人受试者。模型包含13个刚体环节和92条代表肌肉的直线（43条位于下肢和6条位于躯干）。</p>
+<h3 id="加载模型">加载模型</h3>
+<p>第一个分析的模型为<strong>gait2392.osim</strong>。加载这个模型到OpenSim中。</p>
+<ul>
+<li>点击<strong>File</strong>菜单选择<strong>OpenModel</strong></li>
+<li>在你的文件夹<em>Documents/OpenSim/4.0</em>中找到<strong>Models</strong>文件夹（Windows用，根据安装位置路径可能不同）。可能还有其他的模型文件，教程中所有的模型（Model）和动作（Motion）文件都在<strong>Models</strong>文件夹下</li>
+<li>打开<strong>Gait2392_simbody</strong>文件夹，选择<strong>gait2392_simbody.osim</strong>双击打开</li>
+</ul>
+<p>打开模型后导航窗口将会显示模型的名称，如果你有多个模型你你可以修改每个模型的名称。导航窗口会提供模型的身体（bodies）、肌肉（muscles）、关机（joints）的特殊信息。如果导航窗口不可见，点击<strong>Window</strong>菜单再选择导航（Navigator）。使用左键来打开。</p>
+<p><em>注意：如果已经打开，也可以点击标题栏看到导航窗口</em></p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/QrT7KsPBuJeNlVk.png"
+alt="gait2392_Navigator40.png" />
+<figcaption aria-hidden="true">gait2392_Navigator40.png</figcaption>
+</figure>
+<h3 id="观察模型">观察模型</h3>
+<p>OpenSim允许使用鼠标定位模型。</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
 <thead>
-<tr class="header">
-<th>a</th>
-<th>b</th>
-<th>c</th>
-<th>b</th>
+<tr>
+<th>Camera Action <br/>摄像机动作</th>
+<th>Windows</th>
+<th>Mac</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>2</td>
+<tr>
+<td><em>Rotate</em> <em>旋转</em></td>
+<td><strong>left-click and hold</strong> (PC or mouse)<br/>
+<strong>左键点击再保持</strong></td>
+<td><strong>single-finger click and hold</strong> (Mac trackpad) <br/>
+<strong>单指点击再保持</strong></td>
 </tr>
-<tr class="even">
-<td>3</td>
-<td>2</td>
-<td>1</td>
-<td>2</td>
+<tr>
+<td><em>Translate</em> <em>平移</em></td>
+<td><strong>right-click and hold</strong> (PC or mouse)<br/>
+<strong>右键点击再保持</strong></td>
+<td><strong>two-finger click and hold</strong> (Mac trackpad) <br/>
+<strong>双指点击再保持</strong></td>
+</tr>
+<tr>
+<td><em>Zoom</em> <em>缩放</em></td>
+<td><strong>scroll up or down</strong> (PC or mouse) <br/>
+<strong>滚轮上下</strong></td>
+<td><strong>pinch or expand</strong> (Mac trackpad).<br/>
+<strong>双指张开或回收</strong></td>
 </tr>
 </tbody>
 </table>
-</div>
-<p>引用一个图Figure 1, 2</p>
-<figure>
-<img src="https://s2.loli.net/2022/07/27/HKG6QcCpNwXn7dY.png"
-id="fig:重复测量流程图2" style="width:50.0%" alt="Figure 1. 图的标题" />
-<figcaption aria-hidden="true">Figure 1. 图的标题</figcaption>
-</figure>
-<p>测试公式：见公式Equation 1 <span id="eq:eqn1"><span
-class="math display">\[P_i(x) = \sum_i a_i
-x^i\qquad{(1)}\]</span></span></p>
+<p>另外，有6个定位图标在可视化窗口中。</p>
+<ul>
+<li><p>改变摄像头视角于X方向，单击<nobr><img src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/FfsZM7vPzVOkjKb.png" alt="worddavd0fb176a5d7ca390fefafaed1f4dc686.png"  /></nobr>图标。</p></li>
+<li><p>相似的，点击其他按钮来观察另外的方向</p></li>
+<li><p>双击使身体位于屏幕中间</p></li>
+</ul>
 <figure>
 <img
-src="https://pic1.zhimg.com/80/v2-4ac4078f118ecadd756cd639c5862768_1440w.jpg"
-id="fig:重复测量流程图" style="width:50.0%"
-alt="Figure 2. 重复测量流程图" />
-<figcaption aria-hidden="true">Figure 2. 重复测量流程图</figcaption>
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/GaArTuktEbc1XRj.png"
+alt="view40.png" />
+<figcaption aria-hidden="true">view40.png</figcaption>
 </figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pandoc -i <span class="string">&#x27;.\LME线性混合模型处理ERP(test).md&#x27;</span> -o test.docx --filter pandoc-crossref --cite</span><br></pre></td></tr></table></figure>
-<h2 id="hexo中使用pandoc">hexo中使用pandoc</h2>
+<p>在继续之前，请点击<img src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/FfsZM7vPzVOkjKb-20220826233816745.png" alt="worddavd0fb176a5d7ca390fefafaed1f4dc686.png"  />图标重制你的视角。</p>
+<h3 id="模型坐标">模型坐标</h3>
+<p>坐标窗口（<em>Coordinates
+window</em>）包含模型关节对应的坐标、自由度的滑块。点击窗口（<strong>Window</strong>）菜单选择坐标（<strong>Coordinates</strong>）来显示坐标窗口。在当前模型下，盆骨的方向相对于模型，模型的方向相对于地面。</p>
+<p>*注意：如果已经打开，可以点击标题栏显示坐标窗口。</p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/51PcihsKCxAFwlp.png"
+alt="coordinates_in_gui.png" />
+<figcaption aria-hidden="true">coordinates_in_gui.png</figcaption>
+</figure>
+<ul>
+<li><p>前三个滑块--骨盆倾斜（tilt）、侧倾（list）和旋转（rotation）与
+<strong><em>“骨盆”</em></strong>
+的Z轴、X轴和Y轴的旋转相对应。要使盆骨绕z轴旋转，可拖动盆骨倾斜滑块。同样地，若要将盆骨绕另外两个轴旋转，可拖动相应的滑块。</p></li>
+<li><p>接下来的三个滑块--骨盆tx，ty和tz--对应于骨盆沿
+<strong><em>“地面”</em></strong> 参考系的X，Y和Z轴的平移。</p>
+<p><em>注意：以这种方式旋转和平移模型会更改模型相对于地面的方向和位置，这与在可视化器中旋转或平移模型视图不同。</em></p></li>
+<li><p>其余滑块对应于关节旋转并控制单个自由度。要旋转关节，请拖动滑块或在相邻的文本框中键入所需的关节角度。</p></li>
+<li><p>使用姿势（<strong>Poses</strong>）菜单中的工具，你可以恢复模型的默认姿势，保存当前姿势或将当前姿势设置为模型的新默认姿势。</p>
+<ul>
+<li>现在，通过单击姿势（<strong>Poses</strong>）按钮并选择默认（<strong>Default</strong>）来恢复默认坐标。</li>
+<li>在本教程的后面，您将保存一个新的姿势。为此，在设置好模型姿势后，在<strong>Poses</strong>菜单中选择新建（<strong>New</strong>），输入姿势的名称，然后单击OK。单击姿势（<strong>Poses</strong>）时，要保存的姿势将保存在默认（Default）下。</li>
+<li>若要设置新的模型默认姿势，请在根据需要设置好模型后，在姿势（<strong>Poses</strong>）菜单中选择默认设置（<strong>Set
+Default</strong>）。您需要保存模型以保存新的默认姿势。</li>
+</ul></li>
+</ul>
+<h3 id="模型中的肌肉">模型中的肌肉</h3>
+<p>肌肉--肌腱的路径在OpenSim中由线段连接的一系列点表示。要查看所有肌肉的列表：</p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/kKSfPBt5AmxN2Vb.png"
+alt="motion_in_muscles.png" />
+<figcaption aria-hidden="true">motion_in_muscles.png</figcaption>
+</figure>
+<ul>
+<li>在导航中，展开<strong><em>3DGaitModel2392</em></strong>（模型名称）中的力（<strong><em>Forces</em></strong>），肌肉（<strong><em>Muscles</em></strong>）以及所有标题。</li>
+<li>要展示单个肌肉，右键单击指定肌肉名称下的所有组别，如
+<em>glut_med1_r</em>，然后从弹出菜单中选择<strong><em>显示&gt;只显示</em></strong>（<strong><em>Display&gt;Show
+Olny</em></strong>）</li>
+<li>要切换所有肌肉的显示，请右键单击肌肉（<strong>Muscles</strong>）或所有（<strong>all</strong>）标题，然后选择显示&gt;显示
+或 显示&gt;隐藏（<strong>Display &gt; Show</strong> or <strong>Display
+&gt; Hide</strong> ）</li>
+<li>某些肌肉可以用多条线代表，而不是单一的作用线。在这个模型中，臀中肌是由多个作用线代表的肌肉的一个例子(如,
+glut_med1_r, glut_med2_r, glut_med3_r)</li>
+</ul>
+<p>对于某些肌肉，肌肉起点与止点的两点足以描述肌肉路径。对于那些包裹了骨或者被筋膜包裹的肌肉，中间包裹（<em>intermediate
+wrapping</em>）或者通过点（<em>via points</em>）。要查看这些包装点：</p>
+<ul>
+<li>通过单击姿势（<strong>Poses</strong>）按钮并选择默认（<strong>Default</strong>）来恢复默认模型姿势。然后放大右膝关节</li>
+<li>右键单击<strong><em>R_knee_ext</em></strong>
+肌肉组，然后选择仅显示（<strong><em>Show only</em></strong>）</li>
+<li>使用<strong>knee_angle_r</strong> 坐标滑块完全弯曲右膝盖</li>
+<li>注意，一定的膝角时包裹点在某些膝盖伸直器中以引入，从而使肌肉路径发展为扭结然后出现在骨骼周围并将其包裹</li>
+<li>下肢模型中的某些肌肉会在极限运动范围内穿过骨骼或深层肌肉</li>
+</ul>
+<h3 id="问题">问题</h3>
 <ol type="1">
-<li><p>安装<code>hexo-renderer-pandoc</code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure></p></li>
-<li><p>修改hexo文件夹下的<code>_config.yml</code> <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">pandoc:</span></span><br><span class="line"><span class="attr">filters:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">pandoc-crossref</span></span><br><span class="line"><span class="attr">extra:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">citeproc:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">bibliography:</span> <span class="string">&quot;/Users/macgazelle/blog/hexo/source/_posts/EEG.bib&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">csl:</span> <span class="string">&quot;/Users/macgazelle/blog/hexo/source/_posts/chinese-gb7714-2015-numeric.csl&quot;</span> </span><br><span class="line"><span class="attr">meta:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">link-citations:</span> <span class="literal">true</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">reference-section-title:</span> <span class="string">Reference</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">colorlinks:</span> <span class="literal">true</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">lang:</span> <span class="string">en-GB</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">figPrefix:</span> <span class="string">&quot;Figure&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">tblPrefix:</span> <span class="string">&quot;Table&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">tableTitle:</span> <span class="string">&quot;Table&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">figureTitle:</span> <span class="string">&quot;Figure&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">titleDelim:</span> <span class="string">.</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">eqnPrefix:</span> <span class="string">&quot;Equation&quot;</span></span><br><span class="line"><span class="attr">template:</span></span><br><span class="line"><span class="attr">mathEngine:</span></span><br></pre></td></tr></table></figure></p></li>
-<li><p>头文件yml记得要加两句<br />
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">disableNunjucks:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></p></li>
-<li><p>hexo部署的时候，记得clean一下，用下面的命令 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure></p>
+<li><p><strong>自由度</strong></p>
+<ol type="a">
+<li><p>使用坐标面板（Coordinates panel
+）查看模型的自由度。该模型总共有多少个自由度？列出右腿的自由度。</p></li>
+<li><p>所有模型均为近似值。将模型中的自由度与下肢中的自由度进行比较。举例说明已简化的关节运动。举例说明该模型未包含的动作</p></li>
+</ol></li>
+<li><p><strong>肌肉</strong></p>
+<ol type="a">
+<li>模型中有多少肌肉？这与模型中的自由度数相比如何？完全驱动模型所需的最少肌肉数量是多少？</li>
+</ol>
+<p>提示：例如完全驱动膝，意味着膝关节的屈和伸</p>
+<ol start="2" type="a">
+<li>在模型中命名两条肌肉（臀肌以外），这些肌肉由多条线代表其行动。为什么认为这些肌肉以这种方式代表？</li>
+</ol>
+<p>提示：具有多个作用线的其他肌肉使用与臀中肌相同的命名约定。</p>
+<ol start="3" type="a">
+<li>哪些膝盖伸肌有包裹点？每个膝伸肌器的包裹点在什么角度出现？一块肌肉可能有多个包裹点。</li>
+</ol></li>
+<li><p><strong>建模限制</strong></p>
+<ol type="a">
+<li>放大右髋部，仅显示glut_max3_r肌肉（右臀部伸肌群）。检查此肌肉的整个髋关节屈曲角度。在运动范围内看到glut_max3_r的路径有什么问题？肌肉路径的点对点表示以什么方式简化了骨骼肌肉的几何结构？</li>
+</ol></li>
+</ol>
+<h2 id="iii.-关节角度肌腱长度和力臂">III. 关节角度，肌腱长度和力臂</h2>
+<p>在此部分，你将何根据肢体配置（limb
+configuration）来调查肌肉--肌腱以及力臂。骨骼肌肉的几何形态对于肌肉的功能和发展骨骼肌肉模型非常重要。肌肉--肌腱力量取决于肌肉--肌腱的长度，而关节的动量取决于肌肉--肌腱力量和力臂。因此，在开发用于预测肌肉肌腱力和关节力矩的精确模型时，准确确定肌肉骨骼的几何形状至关重要。</p>
+<h3 id="使用绘图">使用绘图</h3>
+<p>OpenSim的绘图允许你绘制肌肉--肌腱属性，如长度，力臂，力和关节动量。生成骨直肌和股中间肌的纤维长度与膝关节角度图：</p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/K9QtSZRPXTMNIVn.png"
+alt="PlotterTutorial1_40.png" />
+<figcaption aria-hidden="true">PlotterTutorial1_40.png</figcaption>
+</figure>
+<ul>
+<li><p>点击坐标窗口姿势&gt;默认（<strong>Poses&gt;Default</strong>）回到模型的初始姿势</p>
+<p><em>注意：绘图是基于当前模型配置而生成的。你的绘图将以默认的姿势生成</em></p></li>
+<li><p>要打开一个新的绘图，请点击工具（<strong>Tools</strong>）菜单然后选择绘图（<strong>Plot</strong>）。在绘图窗口，点击<strong>Y-Quantity</strong>按钮然后选择<strong>fiber-length</strong>。这个变量将在Y轴显示</p></li>
+<li><p>在选择万Y-Quantity后，如果想生成曲线还需要选择Muscles变量。点击<strong>Muscles</strong>按钮将出现一个菜单。</p></li>
+<li><p>为更快的找到肌肉，你可以筛选肌肉组中的肌肉。选择<strong>model</strong>选项然后使用<strong>Group</strong>下拉菜单来选择<strong>R_knee_ext</strong>。现在的肌肉列表中只会显示右膝伸肌器组。</p></li>
+<li><p>从列表中点击选择框（<strong>checkbox</strong>）中的<strong>rect_fem_r
+</strong>和<strong>vas_int_r</strong>标签来选择骨直肌（<em>recus
+femoris</em>）和骨中间肌（<em>vastus intermedius</em>）</p>
+<p><em>注意：在绘图窗口打开的时候不必去关掉肌肉窗口，你的选择会立刻在肌肉文字框中更新。这有助于在图中创建多条曲线，下一步会做。</em></p></li>
+<li><p>点击<strong>X-Quantity</strong>然后选择<strong>knee_angle_r</strong>。此变量将出现在x轴中。</p></li>
+<li><p>为给图增加一个标题，点击属性（<strong>properties</strong>）按钮然后在标题下的文字框中输入<strong>Fiber-Length
+vs. Knee Angle</strong>。点击OK。</p></li>
+<li><p>为增加一条曲线，点击增加（<strong>Add</strong>）</p>
+<p>*注意：图将使用以下单位：米（长度）、牛顿（力）、牛米（动量）。</p></li>
+<li><p>不要关闭绘图窗口，你将会在后面增加更多的图</p></li>
+</ul>
+<h3 id="问题-1">问题</h3>
+<ol start="4" type="1">
+<li><p><strong>肌纤维长度 vs 关节角度</strong></p>
+<ol type="a">
+<li><p>研究肌纤维长度与膝关节角度的关系图。对于股直肌和中间股直肌，如果右髋屈曲，您是否期望纤维长度曲线不同？为什么或者为什么不？</p></li>
+<li><p>在坐标窗口中，将模型的<strong><em>右髋屈曲调整至45度</em></strong>（将姿势保存为<strong>r_hip_flex_45</strong>），添加股直肌和中间股肌的纤维长度曲线以使髋屈曲45°。将模型的肌肉曲线与您先前绘制的未弯曲臀部的曲线与刚刚绘制的模型的曲线进行比较。曲线如何变化？解释您的发现。双关节肌肉如何使复杂化分析？</p></li>
+</ol>
+<p><em>注意：要选择多个曲线名称，请在选择时按住Ctrl（PC）或Command（Mac）。要打印或保存绘图，请在绘图上单击鼠标右键，然后选择“打印或导出图像”。</em></p></li>
+<li><p><strong>肌肉力矩臂 vs 关节角度</strong></p>
+<p>将模型恢复到初始位置且不屈曲髋（单击姿势&gt;默认，<strong>Poses&gt;Default</strong>）。现在绘制右股直肌和股中间肌肉的膝盖伸展力臂与膝关节角度的关系图。</p>
+<ul>
+<li>新建一个绘图窗口，点击<strong>Y-Quantity</strong> &gt;
+<strong>moment arm</strong> &gt; <strong>knee_angle_r</strong>
+然后点击<strong>X-Quantity</strong> &gt;
+<strong>knee_angle_r</strong></li>
+<li>与之前相同，选择右股直肌（<strong>rect_fem_r</strong>）和股中间肌（<strong>vas_int_r</strong>）</li>
+<li>设定图的名称为<strong>Knee Extension Moment Arm vs. Knee
+Angle</strong></li>
+<li>加入曲线到图中</li>
+</ul></li>
+</ol>
+<ol type="a">
+<li>每个肌肉的峰值力臂是什么，它们出现在什么膝关节角度？</li>
+</ol>
+<p><em>注意：如果将光标悬停在曲线上，工具提示将给出该特定点的坐标。</em></p>
+<ol start="2" type="a">
+<li>膝关节角度多少时力臂曲线不平滑（导数不连续的点）？你认为什么原因造成的？</li>
+</ol>
+<p><em>提示：看问题2.c</em></p>
+<p>随意绘制其他肢体位置，肌肉和/或关节的图。当您准备继续学习本教程时，请关闭绘图窗口并通过单击文件(<strong>File</strong>)菜单并选择关闭模型(<strong>Close
+Model</strong>)来关闭3DGaitModel2392模型。不要将模型设置保存到文件中，我们关闭模型以确保在浏览时进行的任何先前修改不会影响本教程的其余部分。</p>
+<h2 id="iv.-蹲伏步态腘绳肌长度的评估">IV. 蹲伏步态腘绳肌长度的评估</h2>
+<p>在教程的最后部分，你将使用OpenSim调查蹲伏步态形成的原因，一种脑瘫患者中最常见的行走异常步态。它的特征是在站立阶段膝过度屈曲，通常伴随着屈曲过度和髋关节内部旋转。造成蹲伏步态原因的一种假设是腘绳肌过短，骨科医生有时会为改善病人的姿态和步态来增加腘绳肌的长度。然而，其他导致膝过度屈的原因也有可能（如足屈肌薄弱），增加腘绳肌长度会降低肌肉产生力量的能力<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>。外科医生如何确定是否需要进行腘绳肌的增长呢？</p>
+<p>判别病人的腘绳肌是否比“正常”短的一种可能的方法是开发一个骨骼肌肉模型来比较正常步态的腘绳肌长度和病人的蹲伏步态腘绳肌长度。假设骨科医生已经给你一些病人的蹲伏步态运动学数据。医生考虑是否手术需要你的意见。</p>
+<h3 id="加载模型-1">加载模型</h3>
+<p>重新打开<strong>gait2392.osim</strong>模型。在动画模式，你需要加载一个动作文件（motion
+file）到OpenSim中。</p>
+<figure>
+<img
+src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/758kQhAuERY2zra.png"
+alt="gait2392_Normal40_side.png" />
+<figcaption aria-hidden="true">gait2392_Normal40_side.png</figcaption>
+</figure>
+<ul>
+<li><p>点击文件（<strong>File</strong>）菜单然后选择加载动作（<strong>Load
+Motion</strong>），确保你在<strong>Gait2392
+</strong>路径，选择<strong>normal.mot</strong>文件，点击打开（<strong>Open</strong>）。此文件包含了一个正常步态的运动学数据。在打开的模型中右键点击导航，弹出窗口选择重命名（<strong>Rename</strong>），为模型命名为<strong>Normal</strong>。</p>
+<p><em>注意：导航中重命名模型只会改变显示的名称，而不会修改模型文件的名称</em></p></li>
+</ul>
+<p>载入模型后，它的名称将会显示在工具栏中。另外，导航栏会出现一个名为动作（<strong>Motion</strong>）的分支。展开此分支可看到特定模型中加载的动作。模型加载成功后肌肉的颜色将变为蓝色。</p>
+<h3 id="动作滑块">动作滑块</h3>
+<p>动作滑块对应当前的动作文件。拖动动作滑块来播放当前动作。在动画模式下，使用视频控制（<strong>video
+control</strong>）按钮，例如点击<img src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/EPpLMJ7RImYs29O.png" alt="worddavd88b5fae75ecfddb6389263e1d251e5f.png"  />来播放（<strong>play</strong>），<img src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/oJGbgi4cC9VNw1B.png" alt="worddava5ed57bb58373fb4d13ea6067383680c.png"  />按钮来循环（<strong>loop</strong>），<img src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/sFZGlY8vfNcOw2V.png" alt="worddavf305a09a00c14e6014eb454b9af8ac62.png"  />按钮来暂停（<strong>pause</strong>），控制速度（<strong>speed</strong>）。</p>
+<h3 id="多个模型和动作">多个模型和动作</h3>
+<p>OpenSim可以对多个模型进行模拟。跟随一下步骤打开第二个模型和加载动作。</p>
+<ul>
+<li><p>导航中已经包含一个Normal模型，同样再打开一个<strong>gait2392.osim</strong>模型文件，在导航中重命名为<strong>Crouch</strong>。第二个加载的文件会自动变为<strong>Crouch</strong>模型。其他如加载动作等，将会应用到crouch模型中。从路径<strong>Gait2392
+</strong>加载动作文件<strong>crouch1.mot</strong>。</p>
+<p>*注意：如果没有看到两个模型被加载，请缩放视角。在教程的后续中，两个模型将会被称作<strong>Normal</strong>和<strong>Crouch</strong>。</p></li>
+<li><p>OpenSim能同步多个动作，允许同时播放多个动画。为此，在导航中展开每个模型的动作分支，按住<strong>Ctrl</strong>
+(Windows) 或<strong>Command</strong>
+(Mac)，再选择两个模型的名称使其高亮。右键点击每个模型名称，再选择同步（<strong>Sync</strong>）。弹出的动作（<strong>Motions</strong>）将会显示。</p></li>
+</ul>
+<h3 id="问题-2">问题</h3>
+<ol start="6" type="1">
+<li><p><strong>动作的范围</strong></p>
+<ol type="a">
+<li>同步播放normal步态和crouch步态。确认是在循环播放，调整播放速度和旋转角度。观察比较两模型。根据你的观察，用数量描述两个模型的一般运动学区别（关节坐标）。</li>
+</ol>
+<p>现在在数量上比较normal步态和crouch步态膝关节伸角度的区别。</p>
+<ul>
+<li>打开一个新的绘图（<strong>plot</strong>）窗口</li>
+<li>导航窗口中双击<em>Normal</em>模型的名称，使其变为粗体。</li>
+<li>在绘图窗口中，点击<strong>Y-Quantity</strong>，选择<strong>normal_gait(Deg.)</strong>
+，再选择<strong>knee_angle_r. </strong>，点击OK</li>
+<li>点击<strong>X-Quantity</strong>再选择<strong>normal_gait.
+</strong>，点击OK</li>
+<li>在曲线名称（<strong>Curve
+Name</strong>）文本框中编辑文字来读取正常步态（<strong>Normal
+Gait</strong>）</li>
+<li>要增加一条右膝关节角度vs步态周期的曲线，点击增加（<strong>Add</strong>）</li>
+<li>双击选中导航窗口已存在的模型<em>Crouch</em>，使其变为粗体</li>
+<li>在同一个绘图窗口中点击<strong>Y-Quantity</strong>，选择<strong>normal_gait(Deg.)
+</strong>，再选择<strong>knee_angle_r. </strong>，点击OK</li>
+<li>点击<strong>X-Quantity</strong>再选择<strong>normal_gait.
+</strong>，点击OK</li>
+<li>在曲线名称（<strong>Curve
+Name</strong>）文本框中编辑文字来读取正常步态（<strong>Crouch
+Gait</strong>）</li>
+</ul>
+<ol start="2" type="a">
+<li><p>从正常步态周期中画出膝关节角度曲线。标注后跟着地和脚尖离地的时间点以及站立和摆动的间隔。</p></li>
+<li><p>什么是正常步态站立时相的膝关节伸范围？</p></li>
+<li><p>如何让蹲伏步态的膝关节伸范围和正常步态相比较？</p></li>
+</ol></li>
+<li><p><strong>腘绳肌长度</strong></p>
+<p>骨外科医生相信病人可以从增长腘绳肌长度中受益。你可以做一个病人蹲伏步态周期和正常步态周期中腘绳肌（半腱肌）长度的比较。</p>
+<p>画一个半腱肌肌肉--肌腱长度在蹲伏步态周期中的图</p>
+<ul>
+<li><p>为删除之前的曲线，选择所有曲线名称列表然后点击删除（<strong>Delete</strong>）</p></li>
+<li><p>在模型（<strong>Model</strong>）下拉菜单中选择<em>normal</em>模型</p></li>
+<li><p>点击<strong>Y-Quantity</strong>然后选择肌肉--肌腱长度（<strong>muscle-tendon
+length</strong>）</p></li>
+<li><p>点击肌肉（<strong>Muscles</strong>）在列表中选择<strong>semiten_r</strong>
+。点击关闭（<strong>Close</strong>）</p>
+<p><em>注意：要快速选择</em>semiten_r<em>，在<strong>Pattern</strong>文本栏输入<strong>semi</strong></em></p></li>
+<li><p>点击<strong>X-Quantity</strong>然后选择<strong>normal_gait
+(Deg.)</strong></p></li>
+<li><p>在曲线名称（<strong>Curve
+Name</strong>）文本框中编辑文字来读取正常步态（<strong>Normal
+Gait</strong>）</p></li>
+<li><p>要增加一条腘绳肌长度vs步态周期的曲线，点击增加（<strong>Add</strong>）</p></li>
+<li><p>为做一个与蹲伏步态相似的曲线，请使蹲伏模型为当前模型。然后点击<strong>Y-Quantity</strong>并重新选择肌肉--肌腱长度（<strong>muscle-tendon
+length</strong>）</p></li>
+<li><p>点击肌肉（<strong>Muscles</strong>）选择<strong>semiten_r</strong></p></li>
+<li><p>点击<strong>X-Quantity</strong>然后选择<strong>crouch1_gait
+(Deg.)</strong></p></li>
+<li><p>在曲线名称（<strong>Curve
+Name</strong>）文本框中编辑文字来读取正常步态（<strong>Crouch
+Gait</strong>），然后点击增加（<strong>Add</strong>）</p></li>
+</ul>
+<ol type="a">
+<li><p>研究这些曲线。基于绘图，正常步态和蹲伏步态腘绳肌长度的峰值有何不同？对于病人，你是否建议腘绳肌增长手术？</p></li>
+<li><p>你分析的局限在哪里？</p></li>
+</ol></li>
+<li><p><strong>其他蹲伏步态文件（可选）</strong></p>
+<p>骨科医生治疗其他三名有蹲伏步态的病人。重复分析动作文件
+<em>crouch2.mot,
+crouch3.mot,</em>和<em>crouch4.mot</em>。注意你现在能用一个模型关联不止一种动作。对于这些病人你是否会建议手术会有一些区别？如果你想了解更多此类型的分析，请阅读文献<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>
+。</p></li>
+</ol>
+<p><strong><em>原文地址：</em></strong><a
+href="https://simtk-confluence.stanford.edu/display/OpenSim/Tutorial+1+-+Intro+to+Musculoskeletal+Modeling">点击这里跳转到原文（速度较慢）</a></p>
+<h2 id="参考">参考</h2>
 <div id="footnotes">
 <hr>
 <div id="footnotelist">
@@ -1403,54 +2570,41 @@ alt="Figure 2. 重复测量流程图" />
 <li id="fn:1">
 <span
 style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span
-style="display: inline-block; vertical-align: top;">Mjha B , Skma B ,
-Lcba B . Utility of Linear Mixed Effects Models for Event-Related
-Potential Research with Infants and Children. 2022.
-https://www.sciencedirect.com/science/article/pii/S1878929322000147</span><a href="#fnref:1" rev="footnote">
-↩︎</a>
+style="display: inline-block; vertical-align: top;">Delp, S.L.,
+Anderson, F.C., Arnold, A.S., Loan, P., Habib, A., John, C.T.,
+Guendelman, E., Thelen, D.G. OpenSim: Open-source software to create and
+analyze dynamic simulations of movement. IEEE Transactions on Biomedical
+Engineering, vol. 55, pp. 1940-1950,
+2007.</span><a href="#fnref:1" rev="footnote"> ↩︎</a>
+</li>
+<li id="fn:2">
+<span
+style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span
+style="display: inline-block; vertical-align: top;">Delp, S.L., Loan,
+J.P., Hoy, M.G., Zajac, F.E., Topp E.L., Rosen, J.M. An interactive
+graphics-based model of the lower extremity to study orthopaedic
+surgical procedures. IEEE Transactions on Biomedical Engineering, vol.
+37, pp. 757-767, 1990.</span><a href="#fnref:2" rev="footnote"> ↩︎</a>
+</li>
+<li id="fn:3">
+<span
+style="display: inline-block; vertical-align: top; padding-right: 10px;">3.</span><span
+style="display: inline-block; vertical-align: top;">Arnold, A.S., Liu,
+M., Ounpuu, S., Swartz, M., Delp, S.L., The role of estimating
+hamstrings lengths and velocities in planning treatments for crouch
+gait, Gait and Posture, vol. 23, pp. 273-281,
+2006.</span><a href="#fnref:3" rev="footnote"> ↩︎</a>
 </li>
 </ol>
 </div>
-</div></li>
-</ol>
-<h1 class="unnumbered" id="bibliography">Reference</h1>
-<div id="refs" class="references csl-bib-body" role="doc-bibliography">
-<div id="ref-marusicNeuralBasesAgeRelated2022" class="csl-entry"
-role="doc-biblioentry">
-<div class="csl-left-margin">[1] </div><div
-class="csl-right-inline">MARUSIC U. PESKAR M. DE PAUW K. et al. Neural
-<span>Bases</span> of <span>Age-Related Sensorimotor Slowing</span> in
-the <span>Upper</span> and <span>Lower Limbs</span>[J/OL]. Frontiers in
-Aging Neuroscience, 2022, 14: 819576. <a
-href="https://doi.org/10.3389/fnagi.2022.819576">https://doi.org/10.3389/fnagi.2022.819576</a>.</div>
-</div>
-<div id="ref-tenbrinkeEffectsComputerizedCognitive2019"
-class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">[2] </div><div class="csl-right-inline">TEN
-BRINKE L F. BEST J R. CHAN J L C. et al. The <span>Effects</span> of
-<span>Computerized Cognitive Training With</span> and <span>Without
-Physical Exercise</span> on <span>Cognitive Function</span> in
-<span>Older Adults</span>: <span>An</span> 8-<span>Week Randomized
-Controlled Trial</span>[J/OL]. The Journals of Gerontology: Series A,
-2019: glz115[2022-08-17]. <a
-href="https://academic.oup.com/biomedgerontology/advance-article/doi/10.1093/gerona/glz115/5485711">https://academic.oup.com/biomedgerontology/advance-article/doi/10.1093/gerona/glz115/5485711</a>.</div>
-</div>
-<div id="ref-heiseUtilityLinearMixed2022" class="csl-entry"
-role="doc-biblioentry">
-<div class="csl-left-margin">[3] </div><div
-class="csl-right-inline">HEISE M J. MON S K. BOWMAN L C. Utility of
-linear mixed effects models for event-related potential research with
-infants and children[J/OL]. Developmental Cognitive Neuroscience, 2022,
-54: 101070[2022-08-27]. <a
-href="https://www.sciencedirect.com/science/article/pii/S1878929322000147">https://www.sciencedirect.com/science/article/pii/S1878929322000147</a>.</div>
 </div>
 </div>
 ]]></content>
       <categories>
-        <category>papers</category>
+        <category>OpenSim</category>
       </categories>
       <tags>
-        <tag>模板</tag>
+        <tag>OpenSim</tag>
       </tags>
   </entry>
   <entry>
@@ -1568,29 +2722,29 @@ ID。由標題文字推導 ID 的規則如下：</p>
 <p>以下是一些範例，</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Header</th>
 <th>Identifier</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>Header identifiers in HTML</td>
 <td><code>header-identifiers-in-html</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td><em>Dogs</em>?–in <em>my</em> house?</td>
 <td><code>dogs--in-my-house</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td>[HTML], [S5], or [RTF]?</td>
 <td><code>html-s5-or-rtf</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td>3. Applications</td>
 <td><code>applications</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td>33</td>
 <td><code>section</code></td>
 </tr>
@@ -2245,49 +3399,49 @@ Pandoc
 <code>hs-citeproc</code>）。為了使用這項功能，你需要一個下列其中一種格式的參考書目資料庫：</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Format</th>
 <th>File extension</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>MODS</td>
 <td>.mods</td>
 </tr>
-<tr class="even">
+<tr>
 <td>BibLaTeX</td>
 <td>.bib</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>BibTeX</td>
 <td>.bibtex</td>
 </tr>
-<tr class="even">
+<tr>
 <td>RIS</td>
 <td>.ris</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>EndNote</td>
 <td>.enl</td>
 </tr>
-<tr class="even">
+<tr>
 <td>EndNote XML</td>
 <td>.xml</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>ISI</td>
 <td>.wos</td>
 </tr>
-<tr class="even">
+<tr>
 <td>MEDLINE</td>
 <td>.medline</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>Copac</td>
 <td>.copac</td>
 </tr>
-<tr class="even">
+<tr>
 <td>JSON citeproc</td>
 <td>.json</td>
 </tr>
@@ -2380,6 +3534,7 @@ class="line">isn't indented.</span><br>
 </ol>
 </div>
 </div>
+</div>
 ]]></content>
       <categories>
         <category>markdown</category>
@@ -2389,950 +3544,71 @@ class="line">isn't indented.</span><br>
       </tags>
   </entry>
   <entry>
-    <title>安装Ubuntu版openpose</title>
-    <url>/2018/06/18/%E5%AE%89%E8%A3%85Ubuntu%E7%89%88openpose/</url>
-    <content><![CDATA[<h2 id="ubuntu-下载加速">Ubuntu 下载加速</h2>
-<ul>
-<li><p>apt使用清华源 <code>sudo vi /etc/apt/sources.list</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main     restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted universe multiverse</span><br></pre></td></tr></table></figure>
-<span id="more"></span></li>
-</ul>
-<p>更新apt</p>
-<p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure> - 安装pip <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget https://bootstrap.pypa.io/get-pip.py</span><br><span class="line">sudo python get-pip.py</span><br><span class="line">pip -V　　#查看pip版本</span><br></pre></td></tr></table></figure> - pip 豆瓣源加速 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir ~/.pip</span><br><span class="line">cd ~/.pip</span><br><span class="line">sudo gedit ~/.pip/pip.conf</span><br></pre></td></tr></table></figure>
-复制文件 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[global] </span><br><span class="line">index-url = http://pypi.douban.com/simple </span><br><span class="line">[install] </span><br><span class="line">trusted-host=pypi.douban.com</span><br></pre></td></tr></table></figure> - 安装git <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install git</span><br></pre></td></tr></table></figure> - git 加速 -
-查找域名对应的ip地址，并修改hosts文件 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nslookup github.global.ssl.fastly.Net</span><br><span class="line">nslookup github.com</span><br></pre></td></tr></table></figure> <img
-src="https://img-blog.csdn.net/20180112135533032?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHp3d3BnbXd5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" />
-- 将下列内容加入<code>sudo vi /etc/hosts</code>文件中 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">151.101.76.249 http://global-ssl.fastly.net</span><br><span class="line">192.30.255.113 http://github.com  #此处112还是113根据自己的情况调整？</span><br></pre></td></tr></table></figure> -
-刷新dns缓存 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo /etc/init.d/networking restart</span><br></pre></td></tr></table></figure> ## 安装openpose ### 克隆openpose
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose</span><br></pre></td></tr></table></figure></p>
-<h3 id="准备工作">准备工作</h3>
-<ul>
-<li><p>安装Cmake GUI<br />
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get install cmake-qt-gui</span><br></pre></td></tr></table></figure></p></li>
-<li><p>安装OpenCV<br />
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get install libopencv-dev</span><br></pre></td></tr></table></figure></p></li>
-<li><p>安装Cafe<br />
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo bash ./ubuntu/install_cmake.sh</span><br></pre></td></tr></table></figure></p></li>
-</ul>
-<h3 id="配置">配置</h3>
-<ul>
-<li>Open CMake GUI and select the OpenPose directory as project source
-directory, and a non-existing or empty sub-directory
-(e.g., <code>build</code>) where the Makefile files (Ubuntu) or Visual
-Studio solution (Windows) will be generated. If <code>build</code> does
-not exist, it will ask you whether to create it.
-Press <code>Yes</code>.</li>
-</ul>
-<p><a
-href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/media/cmake_installation/im_1.png"><img
-src="https://github.com/CMU-Perceptual-Computing-Lab/openpose/raw/master/doc/media/cmake_installation/im_1.png" /></a><a
-href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/media/cmake_installation/im_1_windows.png"><img
-src="https://github.com/CMU-Perceptual-Computing-Lab/openpose/raw/master/doc/media/cmake_installation/im_1_windows.png" /></a></p>
-<ul>
-<li>Press the <code>Configure</code> button, keep the generator
-in <code>Unix Makefile</code> (Ubuntu) or set it
-to <code>Visual Studio 14 2015 Win64</code> (Windows), and
-press <code>Finish</code>.</li>
-</ul>
-<p><a
-href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/media/cmake_installation/im_2.png"><img
-src="https://github.com/CMU-Perceptual-Computing-Lab/openpose/raw/master/doc/media/cmake_installation/im_2.png" /></a> <a
-href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/media/cmake_installation/im_2_windows.png"><img
-src="https://github.com/CMU-Perceptual-Computing-Lab/openpose/raw/master/doc/media/cmake_installation/im_2_windows.png" /></a></p>
-<ul>
-<li>If this step is successful, the <code>Configuring done</code> text
-will appear in the bottom box in the last line. Otherwise, some red text
-will appear in that same bottom box.</li>
-</ul>
-<p><a
-href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/media/cmake_installation/im_3.png"><img
-src="https://github.com/CMU-Perceptual-Computing-Lab/openpose/raw/master/doc/media/cmake_installation/im_3.png" /></a><a
-href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/media/cmake_installation/im_3_windows.png"><img
-src="https://github.com/CMU-Perceptual-Computing-Lab/openpose/raw/master/doc/media/cmake_installation/im_3_windows.png" /></a></p>
-<ul>
-<li>Press the <code>Generate</code> button and proceed to <a
-href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/installation.md#openpose-building">OpenPose
-Building</a>. You can now close CMake.</li>
-</ul>
-<p><strong>Note:</strong> If you prefer to use your own custom Caffe or
-OpenCV versions, see <a
-href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/installation.md#custom-caffe">Custom
-Caffe</a> or <a
-href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/installation.md#custom-opencv">Custom
-OpenCV</a> respectively.</p>
-]]></content>
-      <categories>
-        <category>openpose</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LME线性混合模型处理ERP</title>
-    <url>/2022/09/03/LME%E7%BA%BF%E6%80%A7%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B%E5%A4%84%E7%90%86ERP(test)/</url>
-    <content><![CDATA[<h1 id="lme线性混合模型处理erp">LME线性混合模型处理ERP</h1>
-<blockquote>
-<p><em>存在的问题</em></p>
-<ul>
-<li>时间窗口的选择</li>
-<li>通道的选择</li>
-<li>模型的选择</li>
-<li>变量编码<br />
-</li>
-<li>统计能力 power</li>
-</ul>
-</blockquote>
-<h2
-id="文献1--线性混合效应模型在婴儿和儿童事件相关潜力研究中的效用">文献1--线性混合效应模型在婴儿和儿童事件相关潜力研究中的效用</h2>
-<p>根据论文《线性混合效应模型在婴儿和儿童事件相关潜力研究中的效用》<span
-class="citation" data-cites="heiseUtilityLinearMixed2022"><sup>[<a
-href="#ref-heiseUtilityLinearMixed2022"
-role="doc-biblioref">1</a>]</sup></span>的处理过程找到了GitHub上的<a
+    <title>写作模板</title>
+    <url>/2022/08/25/%E5%86%99%E4%BD%9C%E6%A8%A1%E6%9D%BF/</url>
+    <content><![CDATA[<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">chapters:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">figureTitle:</span> <span class="string">&quot;图&quot;</span></span><br><span class="line"><span class="attr">figPrefix:</span> <span class="string">&quot;图&quot;</span></span><br><span class="line"><span class="attr">tableTitle:</span> <span class="string">&quot;表&quot;</span></span><br><span class="line"><span class="attr">tablePrefix:</span> <span class="string">&quot;表&quot;</span></span><br><span class="line"><span class="attr">tableTemplate:</span> <span class="string">|</span></span><br><span class="line"><span class="string">  *$$tableTitle$$ $$i$$*$$titleDelim$$ $$t$$</span></span><br><span class="line"><span class="string"></span><span class="attr">bibliography:</span> <span class="string">&quot;path/EEG.bib&quot;</span></span><br><span class="line"><span class="attr">csl:</span> <span class="string">chinese-gb7714-2005-numeric.csl</span> </span><br><span class="line"><span class="attr">reference-section-title:</span> <span class="string">Reference</span></span><br><span class="line"><span class="attr">tableTemplate:</span> <span class="string">|</span></span><br><span class="line"><span class="string">  *$$tableTitle$$ $$i$$*$$titleDelim$$ $$t$$</span></span><br><span class="line"><span class="string"></span><span class="attr">link-citations:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">lang:</span> <span class="string">en-GB</span></span><br><span class="line"><span class="attr">papersize:</span> <span class="string">a4</span></span><br><span class="line"><span class="attr">colorlinks:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">links-as-notes:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">fontsize:</span> <span class="number">11.</span><span class="string">5pt</span></span><br></pre></td></tr></table></figure>
+<p><span id="more"></span></p>
+<h1 id="lme线性混合模型处理erp">LME线性混合模型处理ERP</h1>
+<h2 id="处理流程">处理流程</h2>
+<p>根据论文《线性混合效应模型在婴儿和儿童事件相关潜力研究中的效用》<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>的处理过程找到了GitHub上的<a
 href="https://github.com/basclab/LME_MixedEffectsERPTutorial/tree/main/LMETutorialScripts">数据处理脚本</a>。脚本共有7个，其中1-5是Matlab从Continues
-EEG到ERP的处理过程，脚本6-7是R语言对ERP进行LME混合线性模型的处理过程，如Figure 1。</p>
-<figure>
-<img
-src="https://user-images.githubusercontent.com/49215489/148004509-6a02682d-62da-42e5-8828-5feb35ea8ff6.png"
-id="fig:a" style="width:70.0%" alt="Figure 1. 文献中的处理流程" />
-<figcaption aria-hidden="true">Figure 1. 文献中的处理流程</figcaption>
-</figure>
-<span id="more"></span>
-<p>文章比较ANOVA与LMM，发现ANOVA的结果有偏差，随着受试者的减少，结果变得偏差。而LMM随着受试者的减少，模型也能产生准确、无偏差的结果。论文包括了教程和示例代码。</p>
-<h2
-id="文献2--线性混合效应模型和非独立数据的分析一个统一的框架用于分析改变主题内部和或项目内的分类和连续自变量">文献2--线性混合效应模型和非独立数据的分析：一个统一的框架，用于分析改变主题内部和/或项目内的分类和连续自变量。</h2>
-<p>近年来，对“线性混合效应模型” （LMEMs）的兴趣急剧增加。Judd、Westfall
-和 Kenny（2012 年）以及Barr、Levy、Scheepers 和 Tily（2013
-年）的有影响力的文章清楚地表明，许多心理学研究都需要这些类型的模型。<span
-class="citation"
-data-cites="brauerLinearMixedeffectsModels2018"><sup>[<a
-href="#ref-brauerLinearMixedeffectsModels2018"
-role="doc-biblioref">2</a>]</sup></span> 传统的
-ANOVA/回归方法的局限性在于它不能很好地处理缺失的数据，并且无法处理在“单位”内变化的连续预测变量（例如，受试者内、组间、组内、教室）。更重要的是，当相同的受试者暴露于同一组项目（或刺激或目标）时，这种方法会产生有偏差的推论统计。只有混合模型才能产生具有可接受的
-I 型和 II
-型错误率的无偏参数估计。（<em>也就是说ANOVA不适合重复测量</em>）</p>
-<h3 id="术语和数据格式">术语和数据格式</h3>
-<p>线性混合效应模型（LMEM）指代具有一种或多种的随机效应的模型，如分层回归、分层线性建模
-(HLM)、多级回归、多级线性建模、线性混合模型和随机系数模型。<br />
-<strong>为了采用“
-LMEM思维方式”，越来越多的研究人员现在以“长格式”而不是“宽格式”分析他们的数据</strong>。
-长格式的数据文件更“整洁”，因为它们类似于受试者间设计：一列表示因变量，一列或多列对应于预测变量些，并且一项观察与一行相关。R中的
-<strong>reshape</strong>
-函数允许研究人员将数据文件从宽格式转换为长格式，反之亦然。<br />
-想象一个假设的实验（我们将在本文中将其称为“研究
-1”），其中研究人员招募100名本科生，并要求他们列出他们在大学学习的两个高声望课程和两个低声望课程。声望被定义为课程在学生成绩单上“看起来不错”的程度（例如，困难的科学课程、荣誉课程、研究生水平的课程）。然后要求学生在9分制上表明他们对四个班级中的每一个课程的喜好。（Figure 2）</p>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220831210157.png"
-id="fig:b" style="width:70.0%"
-alt="Figure 2. 宽格式与长格式的相同数据比较" />
-<figcaption aria-hidden="true">Figure 2.
-宽格式与长格式的相同数据比较</figcaption>
-</figure>
-<h3 id="线性混合模型简介">线性混合模型简介</h3>
-<h4 id="固定变量和随机变量">固定变量和随机变量</h4>
-<p>在LMEM中，相关变量被认为是“固定的”（fixed）或“随机的”（random）。在“研究1”中的声望（prestige）就是一个固定变量，且有两个级别，而受试者（subject.ID）就是一个随机变量（有100个级别）。</p>
-<ul>
-<li>当从感兴趣的变量的所有级别收集数据时，变量被认为是固定的。<br />
-</li>
-<li>当一个变量具有许多可能的水平并且研究人员对所有可能的水平都感兴趣时，该变量被认为是随机的，但数据中仅包含水平的随机样本。<br />
-</li>
-<li>测量的预测因素，协变量和人口统计通常是固定的变量。<br />
-</li>
-<li>仅当每个变量级别的观察值多一个以上的观察值时，数据分析中才会明确包含随机变量。只有在数据中创建非独立性时，随机变量才包含在分析中。</li>
-</ul>
-<h4 id="简单误差-vs-复杂误差">简单误差 VS 复杂误差</h4>
-<p>统计分析都具有相同的基本结构：<span class="math inline">\(DATA =
-MODEL + ERROR\)</span>（Figure 3）。每个统计模型都基于结果变量(<span
-class="math inline">\(β0\)</span>)和一个或多个预测变量（此处为<span
-class="math inline">\(β1X\)</span>）的（加权）平均值进行预测。<strong>独立数据分析</strong>（例如，受试者间分析）和<strong>非独立数据分析</strong>（例如，受试者内分析）之间的主要区别在于误差项的复杂性。</p>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220902001711.png"
-id="fig:c" alt="Figure 3. 独立数据与非独立数据的比较" />
-<figcaption aria-hidden="true">Figure 3.
-独立数据与非独立数据的比较</figcaption>
-</figure>
-<p>在独立数据分析中（受试者间），误差项比较简单，只有一个随机误差（<span
-class="math inline">\(e_i\)</span>）。Figure 3左</p>
-<p>当数据是非独立的（受试者内）并通过LMEM分析时，误差来源于三个分量。Figure 3右</p>
-<ul>
-<li>随机截距：来源于受试者之间的个体差异（Figure 3中标记为<span
-class="math inline">\(e_{RI}\)</span> 或 <span
-class="math inline">\(u_{0j}\)</span> ）</li>
-<li>随机斜率：来源于受试者之间受预测变量（除了受试者的其他变量）影响的差异（Figure 3中标记为<span
-class="math inline">\(e_{RS}\)</span> 或 <span
-class="math inline">\(u_{1j}X_{ij}\)</span> ）</li>
-<li>随机误差：其他误差来源。（Figure 3中标记为<span
-class="math inline">\(e\)</span> 或 <span
-class="math inline">\(e_{ij}\)</span> ）</li>
-</ul>
-<p>在GLM（一般线性模型）中的重点是解释与预测变量的相关回归系数。在Figure 3中，β1表示模型对“声望”对喜欢的影响的估计。如果β1在统计上显着，我们得出结论，预测变量对结果变量有影响。</p>
-<h4 id="固定效应与随机效应的解释">固定效应与随机效应的解释</h4>
-<ul>
-<li>固定效应：在Figure 3中的两个模型中，系数β0和β1称为“固定效应“。β1为固定斜率，β0为固定截距。这些影响称为“固定"，因为它们适用于整个样本。</li>
-<li>随机效应：在Figure 3中的两个模型中，系数<span
-class="math inline">\(u_{0j}\)</span> 和 <span
-class="math inline">\(u_{1j}X_{ij}\)</span>称为“随机效应“。<span
-class="math inline">\(u_{1j}X_{ij}\)</span>为随机斜率，<span
-class="math inline">\(u_{0j}\)</span>为随机截距，因为他们代表了模型中β0和β1在不同受试者间的变化程度。在Equation 1中更容易理解。</li>
-</ul>
-<p><span id="eq:a"><span class="math display">\[Y_{ij} = ( \beta_0 +
-u_{0j} ) + ( \beta_1 + u_{1j} ) X_{ij} +
-e_{ij}\qquad{(1)}\]</span></span></p>
-<h3
-id="扩展到具有多个二分预测变量的设计">扩展到具有多个二分预测变量的设计</h3>
-<p>与方差分析和回归分析一样，当模型包含交互项时，LMEM
-通常要求我们在分析之前将预测变量居中。更准确地说，只有当二分变量已被重新编码为
--.5 和
-+.5（或以零为中心的任何其他两个值）并且连续变量已经“平均居中”（通过从每个分数中减去平均值）。</p>
-<h4 id="连续受试者内预测变量的分析">连续受试者内预测变量的分析</h4>
-<p>LMEM可以轻松扩展到连续变量间（内部）的分析（例如：受试者间，课程间）。</p>
-<h4 id="不同形式的均值居中">不同形式的均值居中</h4>
-<p>尽管预测变量在研究 1 和 2
-中都以零为中心，但两者之间存在重要区别：在研究 1
-中，二分预测变量被重新编码为 -.5 和
-+.5，并且不需要重新编码，因为它不会影响与预测变量相关的固定效应的参数估计。然而，在研究
-2
-中，连续预测变量以每个受试者自己的均值为中心（有时称为“聚类均值居中”或“组均值居中”）。这种操作对于获得预测变量和结果之间的主体内关联的无偏估计是必要的。</p>
-<h4 id="相关分析">相关分析</h4>
-<p>LMEM框架还可以用于检查连续的受试者间预测因子与一个或多个其他预测变量的交互作用。<br />
-如果预测变量是在受试者内，应该聚类平均值居中（cluster-mean）,
-Figure 4。</p>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220902231832.png"
-id="fig:d" alt="Figure 4. 受试者间（性别）" />
-<figcaption aria-hidden="true">Figure 4. 受试者间（性别）</figcaption>
-</figure>
-<p>如果预测变量是在受试者间，应该以总平均居中（grand-mean）,
-Figure 5。</p>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220902231936.png"
-id="fig:e" alt="Figure 5. 受试者内（科学）" />
-<figcaption aria-hidden="true">Figure 5. 受试者内（科学）</figcaption>
-</figure>
-<p><strong>请注意，受试者内的连续预测变量可以是时间，以便模型可以检查受试者随时间的变化。</strong></p>
-<h3 id="扩展到多级模型">扩展到多级模型</h3>
-<p>在到目前为止讨论的所有示例中，预测变量在
-受试者中各不相同。读者应该知道，上面所说的一切（以及文章的其余部分）也适用于预测变量在高阶单元或“集群”内变化的研究。例如当受试者嵌套在一个组（groups）、家庭（families）、或者教室（classrooms）。所谓的“多级模型”只是LMEM的一个特例。</p>
-<h4 id="多级模型示例">多级模型示例</h4>
-<p>考虑一项研究，其中研究人员组成四个人的讨论组，并为其中两个人分配一个高地位（高声望）和两个低地位（低声望）。（有一个小的变化：主题.ID
-被替换为
-group.ID）。受试者和组都是随机变量。鉴于每个受试者只有一次观察，LMEM
-不包含副主题随机效应。它确实包含两个组的随机效应：一个逐组随机截距（因为来自同一组的四个数据点是相关的）和一个逐组随机斜率（因为预测变量“声望”在组内变化
-）</p>
-<h3 id="限制最大似然">限制最大似然</h3>
-<p>应该注意的是，LMEM
-使用称为“限制最大似然”（ReML）的估计程序，而不是作为标准 ANOVA
-和回归分析的“普通最小二乘法”（OLS）。 使用 ReML 作为估计程序有许多 LMEM
-用户应该注意的含义。除了在简单的 LMEM
-中，最终模型可能具有带小数的分母自由度。它们应该这样报告，例如，F (1,
-54.17) = 4.86, p &lt; .04。 只有 Kenward-Roger
-自由度的F统计量的结果才能准确再现重复测量方差分析的结果。</p>
-<h3 id="非独立的多重来源">非独立的多重来源</h3>
-<p>在许多心理学实验中，受试者会接触到相同的一组项目，即他们可能会查看相同的单词、句子、图片或头像，或者他们可能会对相同的产品、面孔、艺术品或个人进行评分。或者，聚集在组、家庭、教室或县中的受试者可以各自提供多个数据点。此类研究包含两个非独立性来源：一些回答可能更相似，因为它们是由同一受试者做出的，其他回答可能更相似，因为它们涉及相同的项目（即不同的受试者对相同的项目进行评分)，但其他反应可能更相似，因为它们是由同一组的受试者做出的。</p>
-<p>当存在多个非独立来源时，可能很难决定分析中应包括哪些随机效应。</p>
-<p>然而，幸运的是，所有专家都同意数据分析的初始步骤。</p>
-<ol type="1">
-<li><p>第一步包括确定研究设计所要求的所谓“最大随机效应结构”。正如我们将看到的那样，这个最大随机效应结构包括我们可能希望根据设计特征包括的所有随机效应，即基于预测变量是否在导致非独立性的随机变量的水平之内或之间变化数据。</p></li>
-<li><p>第二步包括估计具有最大随机效应的LMEM结构体。然而，正如我们将看到的，这并不总是可能的，因为一些
-LMEM 非常复杂，以至于迭代估计过程无法收敛。</p></li>
-<li><p>在这种情况下，有必要逐步简化随机效应结构，直到可以实现收敛。</p></li>
-</ol>
-<hr />
-<p><strong>在接下来的部分中，我们将详细讨论前两个步骤中的每一个。在我们的讨论中，我们将关注两个导致数据不独立的随机变量。第一个随机变量始终是主题。我们将第二个随机变量称为“项目”，但读者应该知道，这个术语可能指的是任何随机变量，它是非独立的第二个来源（例如，刺激、目标、同盟者、位置、小组、教室）。</strong></p>
-<h3 id="如何确定最大随机效应结构">如何确定最大随机效应结构</h3>
-<h4 id="随机截距">随机截距</h4>
-<p>通过在最大随机效应结构中确定适当的随机截距来解释其非独立性。Figure 6中的第一条规则确定了什么时候需要随机截距。当考虑的单元是受试者时，只要给定受试者多个数据点（测试点），就应该包括一个由受试者产生的随机截距。
-当每个受试者有多个数据点并且每个项目有多个数据点时，必须通过添加按受试者随机截距和按项目随机截距来考虑这两个非独立来源。</p>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220907235123.png"
-id="fig:f"
-alt="Figure 6. 一组关于应包含在最大随机效应结构中的受试者和项目随机效应类型的简单规则" />
-<figcaption aria-hidden="true">Figure 6.
-一组关于应包含在最大随机效应结构中的受试者和项目随机效应类型的简单规则</figcaption>
-</figure>
-<p>第一个规则：如果单元引起非独立性，则需要一个串联随机截距。<br />
-第二个规则：通常，单位内预测变量需要一个串联随机斜率，而单位间预测器则不需要。<br />
-第三个规则：建议在包含交互的所有因素均为单位内部时，包括一个串联随机斜率，以进行相互作用。</p>
-<h4 id="随机斜率">随机斜率</h4>
-<p>随机斜率参见Figure 6中的第二个规则。我们希望为在受试者内变化的任何预测变量包括一个按受试者随机斜率（但不是在受试者之间变化时）。同样，我们希望为在项目内变化的任何预测变量包括一个逐项随机斜率（但不是在项目之间变化时）。</p>
-<ul>
-<li>在受试者间变化的研究<br />
-为了说明这个规则，让我们想象一个研究，在该研究中，受试者评价他们对八辆低声望汽车和八辆高声望汽车的喜好。所有受试者都对同一组
-16 辆汽车进行评分(Figure 7)。
-请注意，声望的随机斜率不需要随机斜率，因为声望在项目内不会变化（每辆目标汽车的声望要么低要么高）。</li>
-</ul>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220912143752.png"
-id="fig:g"
-alt="Figure 7. LMEM 和 R 脚本用于具有一个二分预测变量（声望）的研究，该变量 在 受试者内部但在项目之间有所不同" />
-<figcaption aria-hidden="true">Figure 7. LMEM 和 R
-脚本用于具有一个二分预测变量（声望）的研究，该变量 在
-受试者内部但在项目之间有所不同</figcaption>
-</figure>
-<ul>
-<li>在项目内变化的研究<br />
-想象一项研究，其中受试者评估同一组 20
-辆汽车（中等声望），但他们在两个受试者之间的条件之一中这样做。一半的受试者在看过五辆声望很高的汽车（高声望背景）后评价他们对这
-20
-辆车的喜好，而另一半受试者之前曾接触过五辆声望很低的汽车（低声望背景）。同样，这项研究包含两个非独立性来源，主题和项目，需要两个随机截距。预测变量“声望”在受试者之间变化（每个受试者仅在一个声望上下文条件下），但在项目内变化（20
-辆目标汽车中的每一辆在某些受试者的声望较高的上下文中，但在某些受试者的声望较低的上下文中其他科目）。适当
-LMEM的最大随机效应结构包含三个随机效应（参见Figure 8）。鉴于声望（背景）因学科而异，因此无需包括副学科
-声望的随机斜率。</li>
-</ul>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220912144628.png"
-id="fig:h"
-alt="Figure 8. LMEM 和 R 脚本用于具有一个二分预测器（声望）的研究，该预测器在受试者之间但在项目内部有所不同" />
-<figcaption aria-hidden="true">Figure 8. LMEM 和 R
-脚本用于具有一个二分预测器（声望）的研究，该预测器在受试者之间但在项目内部有所不同</figcaption>
-</figure>
-<h4 id="交互的随机效应">交互的随机效应</h4>
-<p>关于交互，参见Figure 6中的第三条规则。当交互作用的所有预测变量在受试者内变化时，交互项的逐受试者随机斜率应包含在最大随机效应结构中。同样，当交互项的所有预测变量在项内变化时，研究人员应该为交互项包括一个逐项的随机斜率。除了前两条之外，这条规则允许我们为更复杂的设计确定最大随机效应结构。</p>
-<h3 id="如何解决收敛问题">如何解决收敛问题</h3>
-<p>在确定了研究的最大随机效应结构后，下一步是估计相应的
-LMEM。不幸的是，导出参数估计的迭代 ReML
-过程并不总是“收敛”（即，数值优化算法不能可靠地确定对数似然函数的最大值）。如果模型无法收敛，可以使用Figure 9中的方式补救。</p>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220912162649.png"
-id="fig:i" alt="Figure 9. 可用于实现 LMEM 收敛的 20 种补救措施清单" />
-<figcaption aria-hidden="true">Figure 9. 可用于实现 LMEM 收敛的 20
-种补救措施清单</figcaption>
-</figure>
-<blockquote>
-<p>预防措施避免收敛失败：<br />
-1. 在您的研究中包括尽可能多的受试者和尽可能多的项目。<br />
-2. 包括异质受试者和异质物品。解决收敛失败的非感性补救措施：<br />
-3.
-检查您的数据（案例分析，分配假设）。如有必要，将转换应用于预测变量或结果变量。<br />
-4.
-检查模型拼写错误（例如，该模型是否包含一个在单位之间变化的预测变量的字节单位随机斜率？）。<br />
-5. 确保所有预测因素都居中（降低了多重共线性）。<br />
-6. 增加迭代次数。<br />
-7. 更改用于最大化对数似然函数的数值优化过程。<br />
-8. 给模型更好的启动值。<br />
-9. 重建预测变量或结果变量。<br />
-10.
-检查非关联是否是由于存在一些特定细胞的少数受试者（或项目）。如果是，请考虑归纳数据或删除有问题的主题（或项目）。<br />
-11.
-去除协变量的随机效应（只要协变量与感兴趣因素之间的相互作用不在模型中）。<br />
-12. 检查您的模型是否可以简化：如果假设是x2 by
-x2相互作用，则可能无需在模型中包含x3和x4（至少最初）。或在一组高度相关的预测指标中删除除一个预测因子以外的所有预测变量。解决融合失败的经典疗法：<br />
-13.
-如果目标是测试两个固定效果X1和X2，而不是它们的相互作用，则估计两个LMEM，一个均具有固定效果，但仅是X1的随机斜率（用于测试X1），一个具有两个固定效果，但只有X2的随机斜率（用于测试X2）。<br />
-14.
-如果您的设计具有两个或多个单元内预测因素，并且您的假设涉及互动，请删除单位内预测变量和低阶相互作用的串联随机斜率，但请勿删除副本UNIT单位内预测变量之间的最高阶段相互作用的随机斜率（Barr，2013，Frontiers）。<br />
-15.
-在随机效果之间有选择地删除协方差：首先删除与您的假设无直接相关的预测因子的协方差（如果您决定将这些预测变量保留在模型中）。继续删除您怀疑无论如何都接近零的协方差。最后，消除随机效应之间的所有协方差。<br />
-16.
-删除模型中也有随机斜率的一些随机截距。请勿删除随机斜率。警告您的读者，您估计了一个没有随机拦截的模型。<br />
-17.
-执行两个单独的LMEM-一个主体作为分析单位（具有最大的受试者随机效应结构，但没有副本随机效应），一个用作为分析单位的项目（具有最大的副总体随机效应结构，但没有受试者随机效应）并应用F1
-F2逻辑（两者都必须在p .05处显着）。具有重大缺点的纠正措施：<br />
-18.
-运行分析并计算Clark（1973）Min-F'统计数据。请注意，该测试的功能不足。如果Min-F’很重要，您可以确信您的结果不是由于I型错误率而引起的。<br />
-19.
-运行LMEM或重复测量方差分析，其中受试者是唯一的随机变量（因此忽略了由于项目而引起的非独立性）。警告您的读者，您的I型错误率可能高达60％（请参阅Judd等人，2012年的表2）。<br />
-20. 估计您保持随机的LMEM</p>
-</blockquote>
-<h3 id="决定要估计的lmem">决定要估计的LMEM</h3>
-<p>在前面的部分中，我们已经描述了分析LMEM
-的前两个步骤。第一步是确定研究设计所需的最大随机效应结构。第二步是让
-LMEM 在保持随机效应结构尽可能大的同时收敛。
-<strong>大多数专家一致认为，最终的 LMEM
-需要包含作为研究人员假设重点的预测变量的随机斜率，而不管这个（这些）随机斜率的方差如何。他们还同意，随机效应结构中方差接近于零的方差分量的存在不会影响模型的拟合优度。因此，无论它们是包含还是排除，对固定效应的显着性检验的影响都非常小。</strong></p>
-<h3 id="统计能力与普遍性">统计能力与普遍性</h3>
-<p>在大多数 LMEM 中，预测变量的推理测试（即固定效应）的能力不足。</p>
-<h3 id="结论">结论</h3>
-<p>如果我们想知道我们的效果
-是否存在——也就是说，即使研究的一个小方面发生了变化，被调查的心理过程是否发生并在现实世界中发挥作用，并且观察到的效果是否会复制——有必要随机选择项目（即刺激、目标、同盟者、学校、地点、环境），并在我们的数据分析中估计包含适当副项目随机效应的LMEM。</p>
-<p>LMEM
-非常适合分析独立或由某些更高阶单元（例如，治疗师内的患者）聚集的受试者随时间（或空间）的变化。LMEM
-处理缺失数据更有效，因为与重复测量方差分析不同，它们不会消除具有一个或多个缺失值的受试者的所有观察结果。这是从
-LMEM 到“广义线性混合 效应
-模型”的一小步，当结果变量是分类、有序或计数时，这是需要的。</p>
-<p>诸如方差分析和回归分析之类的标准统计程序是否已过时？绝对不是，因为仍然有许多心理学研究，其中预测变量因受试者而异，而受试者是唯一的随机变量。然而，我们经常让我们的受试者接触多个项目（例如，刺激、同盟者），检查它们如何随时间变化（例如，治疗、学习），在多种环境（例如，位置、情况）中测试它们，并与受试者打交道相互影响的人（例如，小组、教室）。鉴于这些类型的研究涉及多个非独立来源，LMEM
-将越来越多地出现在我们科学期刊的结果部分中，并且无疑属于心理学研究人员的标准工具包。</p>
-<h2
-id="文献3--面部分类的全有或全无神经机制来自-n170-的证据">文献3--面部分类的全有或全无神经机制：来自
-N170 的证据</h2>
-<p>为了解开这些替代方案，我们采用线性混合模型 (LMM) 与零假设显着性检验
-(NHST) 和等价检验 (ETs) 来检查 N170
-对不同持续时间的面部和房屋图像的依赖性，而参与者报告每次试验的主观信心.
-采取了几项措施来确保参与者在报告高主观信心时确实对面部有清晰的感知。<span
-class="citation" data-cites="jinAllornoneNeuralMechanisms2022"><sup>[<a
-href="#ref-jinAllornoneNeuralMechanisms2022"
+EEG到ERP的处理过程，脚本6-7是R语言对ERP进行LME混合线性模型的处理过程，如下图。</p>
+<p>测试引用<span class="citation"
+data-cites="marusicNeuralBasesAgeRelated2022 tenbrinkeEffectsComputerizedCognitive2019 heiseUtilityLinearMixed2022"><sup>[<a
+href="#ref-marusicNeuralBasesAgeRelated2022"
+role="doc-biblioref">1</a>–<a href="#ref-heiseUtilityLinearMixed2022"
 role="doc-biblioref">3</a>]</sup></span></p>
-<p>为了解开这些替代方案，我们采用了线性混合建模（LMM），具有无效的假设显着性测试（NHST）和等效测试（ETS）来检查N170对面部和房屋图像的依赖性，而参与者则报告了每个试验的主观置信度。</p>
-<h3 id="材料和方法">材料和方法</h3>
-<h4 id="受试者">受试者</h4>
-<p>35名受试者，仅在确定刺激为FAC的时候，按键1。</p>
-<h4 id="刺激">刺激</h4>
-<p>40张高加索人（20位女性）面孔的照片, 40套房屋图像。</p>
-<h4 id="设备">设备</h4>
-<p>E-Prime
-2.0，三星同步主HDTV显示器（60Hz），使用128通道AG/AGCL电极网，常见顶点（CZ）用作参考。</p>
-<h4 id="eeg数据处理">EEG数据处理</h4>
-<p>除了基于独立组件分析（ICA）结果拒绝独立组件（ICA）的结果外，所有步骤均使用新西兰Escience基础架构的高性能计算集群中的MATLAB脚本完成。(available:
-https://osf. io/fvtc3/)</p>
-<h3 id="程序">程序</h3>
-<h4 id="积分窗口峰值通道和平均振幅">积分窗口、峰值通道和平均振幅</h4>
-<p>使用数据驱动的方法来确定N170和P1的窗口。</p>
-<ol type="1">
-<li>根据之前研究选择P7和P8作为可能的峰值通道。</li>
-<li>总平均所有通道在刺激后100ms到250ms确定了这个这个大平均波形的最小（负）振幅。</li>
-<li>定义了一个全宽半最大值的窗口，通过迭代调整窗口落在36-40ms的范围。</li>
-<li>创建窗口的总平均头皮图，观察确认通道。负峰值活动中心在PO7和PO8附近。</li>
-<li>用更新的峰值从新检查窗口。</li>
-<li>确定ERP组件窗口内的平均振幅，交给LMM分析。</li>
-</ol>
-<h3 id="统计分析">统计分析</h3>
-<h4 id="线性混合建模">线性混合建模</h4>
-<p>在本研究中应用 LMM 的具体好处是，与 rm-ANOVA 相比，LMM
-可以在存在缺失数据的情况下产生无偏的结果，而无需移除参与者。LMM
-的另一个优点是它们可以在单个观察级别上对幅度进行建模并估计多个随机效应。<br />
-为每个因变量获得最佳模型的一般程序遵循Bates、Kliegl 等人的建议<span
-class="citation" data-cites="batesParsimoniousMixedModels2018"><sup>[<a
-href="#ref-batesParsimoniousMixedModels2018"
-role="doc-biblioref">4</a>]</sup></span>。</p>
-<ol type="1">
-<li>首先创建最大模型，包含所有受试者和项目的随机截距和随机斜率。</li>
-<li>如果最大模型没有收敛，拟合相应的零相关模型，其中随机效应之间的相关性被强制为0。</li>
-<li>然后没有显著解释数据的随机效应被零相关参数中移除，模型缩减。</li>
-<li>再在简化模型中添加剩余随机效应之间的相关性来扩展模型，如果不能收敛，则将方差最小的随机效应逐一去除，直到模型收敛，从而得到最终的最优模型。</li>
-<li>在此模型上进行后续比较。</li>
-</ol>
-<h3 id="软件">软件</h3>
-<p>我们使用 R（R Core Team 2021）和 RStudio（RStudio Team
-2021）进行了所有统计分析。使用 Tidyverse 软件包整理数据（Wickham
-等人，2019 年）。我们使用 lme4 包 ( Bates, Mächler, et al. 2015b ) 执行
-LMM，并使用 emmeans 包 (Lenth 2021 ) 进行后续比较和 ET，其中使用
-Satterthwaite 近似来估计统计结果。R Markdown
-输出文件可在https://osf.io/zv6kg/获得。</p>
-<h3 id="文献4--简约的混合模型">文献4--简约的混合模型</h3>
-<p>在过去的十年中，当将受试者和项目作为随机因素的变化时，心理语言实验的分析方式发生了重大变化（特别是从方差分析到线性混合模型（LMM））。尽管层次线性模型已经存在数十年了，但在Pinheiro和Bates（2000）之后的语言学和心理学等领域，它们在心理学和语言学等领域的采用变得更加广泛。最近，LMM的使用已扩散到其他心理学领域，例如人格和社会心理学。<span
-class="citation" data-cites="batesParsimoniousMixedModels2018"><sup>[<a
-href="#ref-batesParsimoniousMixedModels2018"
-role="doc-biblioref">4</a>]</sup></span>
-一个特别有吸引力的特征是，通过LMMS，有关实验效果和相互作用的统计推断不再需要单独的差异分析，一个针对受试者和项目，可以进行在一个连贯的框架内。</p>
-<p>这种连贯性的好处是有一定代价的。使用混合效应模型分析实验数据的重要部分是选择适当的随机效应结构。原则上，LMM不仅考虑受试者之间的差异和因变量的平均值（即随机截距）的均值，而且在受试者之间以及所有主效应和交互作用（即随机斜率）以及项目之间的差异以及项目之间的差异（即随机斜率）以及截距和斜率之间的相关性。让我们使用最简单的模型来说明基本点，使用两级主题内实验操作，并使用主体作为唯一的随机因素，使用Bates等人描述的R的“
-LME4”软件包的公式表示法。 （2015a）：</p>
-<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">Y <span class="operator">~</span> <span class="number">1</span> <span class="operator">+</span> A <span class="operator">+</span> <span class="punctuation">(</span><span class="number">1</span><span class="operator">|</span>Subject<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-<p>该模型可能支持受试者内因子A的固定效应A。但是，如果A（即两个实验条件之间的差异）在受试者之间可靠地不同，那么关于A的不确定性可能是如此之大，以至于以至于主要影响的主要影响A在模型中不再显着，允许A：</p>
-<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">Y <span class="operator">~</span> <span class="number">1</span> <span class="operator">+</span> A <span class="operator">+</span> <span class="punctuation">(</span><span class="number">1</span><span class="operator">+</span>A<span class="operator">|</span>Subject<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-<p>为了评估实验操作的重要性，因此必须在存在相应的随机斜率的情况下检查其固定作用。</p>
-<h2
-id="文献4--急性运动可改善甲基苯丙胺的渴望和抑制缺陷一项erp研究">文献4--急性运动可改善甲基苯丙胺的渴望和抑制缺陷：一项ERP研究</h2>
-<p>渴望（carving）抑制缺陷（inhibitory deficts）</p>
-<p>本研究采用受试者内平衡设计。共有 24 名参与者符合 DSM-IV 的MA
-依赖标准被招募。渴望水平、反应时间和反应准确性，以及事件相关电位 (ERP)
-成分 N2 和
-P3，在运动和控制治疗后以平衡顺序进行测量。急性运动也促进了标准和 MA
-相关的 Go/Nogo 任务的抑制性能。与阅读控制时段和 Go
-条件相比，在锻炼时段和 Nogo 条件下的两项任务中观察到更大的 N2
-幅度，但没有更大的 P3 幅度<span class="citation"
-data-cites="wangAcuteExerciseAmeliorates2015"><sup>[<a
-href="#ref-wangAcuteExerciseAmeliorates2015"
-role="doc-biblioref">5</a>]</sup></span>。论文证明中等强度的急性运动对MA的渴望和抑制控制有益。</p>
-<p>抑制是指不当行为或与任务无关信息的适应能力。</p>
-<h3 id="介绍">介绍</h3>
-<p>MA用户在多种认知表现指标上表现更差，例如抑制、执行能力、记忆和现实生活中的功能能力。抑制涉及多个大脑区域，包括额下叶、顶叶和基底神经节。长期滥用MA会导致与抑制相关的大脑功能区域障碍，例如前扣带皮层（ACC）和背外侧前额叶皮层（DLPFC）。</p>
-<p>N2被认为代表了一个冲突监测过程，相对于健康组，滥用药物组观察到较低的N2振幅。<br />
-P3振幅被认为代表了上下文更新、注意力资源分配以及促进检测和评估刺激的过程，与N2类似，具有物质依赖的个体在皮质抑制相关的任务间表现出降低的P3振幅。<br />
-大量研究发现，在健康人群中停止中等强度的急性有氧运动后，需要抑制控制的任务条件下，认知能力的增强都与P3振幅增强有关。</p>
-<h3 id="方法">方法</h3>
-<h4 id="参与者">参与者</h4>
-<p>24名18-40岁参与者(20男，4女），根据DSM-IV标准，排除1）精神病史
-2）身体或医疗状况 3）色盲 4）Raven的智力测试标准。</p>
-<h4 id="渴望评估">渴望评估</h4>
-<p>视觉模拟量表（VAS）。</p>
-<h4 id="认知任务">认知任务</h4>
-<p>使用两个Go/Nogo范式，Go: MA-Go(蓝框MA), Neutral-Go(蓝框中性); Nogo:
-MA-Nogo(), Neutral-Nogo。</p>
-<h4 id="eeg处理">EEG处理</h4>
-<p>N2和P3量化为200ms-300ms和300-500ms之间。分别来自于Fz、Cz、Pz的电极。</p>
-<h4 id="统计分析-1">统计分析</h4>
-<ul>
-<li>VAS：为了检查参与者的渴望状态，应用 2（会话：运动，控制） ×
-4（时间点：运动前、运动中、运动后立即、 运动后 50
-分钟）重复测量方差分析来评估 VAS 分数。</li>
-<li>关于神经电数据，对于标准 Go/Nogo 任务，2（会话） × 2（条件） ×
-3（站点：Fz、Cz、Pz）ANOVA 分别针对 N2 幅度、N2 潜伏期、P3 幅度和 P3
-潜伏期进行。</li>
-</ul>
-<h2 id="相关网页链接">相关网页链接</h2>
-<ul>
-<li><p>论文：</p>
-<p><a href="http://www.80lib.com/user/enlist/sd.html">80图书馆</a></p>
-<p><a
-href="https://www.sciencedirect.com/science/article/pii/S0749596X20300061#b0390">心理科学中线性混合效应模型的最佳实践指南</a></p>
-<p><a
-href="https://www.sciencedirect.com/science/article/pii/S2590260122000030">使用线性混合模型分析会话中的学习过程可以改善治疗效果的检测：计时心理旋转的示例性研究</a></p>
-<p><a
-href="https://www.sciencedirect.com/science/article/pii/S0167876022001416#bb0200">自愿与强制语言转换的控制机制：来自ERP的证据</a></p>
-<p><a
-href="https://www.frontiersin.org/articles/10.3389/fpsyg.2010.00238/full">线性混合模型中的实验效果和个体差异：估计视觉注意力中的空间、物体和吸引力效应之间的关系</a></p></li>
-<li><p>R语言：</p>
-<p><a
-href="https://zhuanlan.zhihu.com/p/60204351">R语言之重复测量方差分析——ezANOVA的使用与解析</a></p>
-<p><a
-href="https://zhuanlan.zhihu.com/p/88497589">bruceR包重磅更新：方差分析、简单效应检验、事后多重比较</a></p>
-<p><a
-href="https://zhuanlan.zhihu.com/p/281150493">R语言综合工具包：bruceR中文帮助文档（持续更新）</a></p>
-<p><a
-href="https://www.bilibili.com/video/BV1XT4y1S7r4?p=5&amp;vd_source=7b248d6596f7ca4944759406d03d59d8">（R语言）线性混合效应模型教程</a></p>
-<p><a
-href="https://www.bilibili.com/read/cv16091910?from=note">（R语言）线性混合效应模型教程(代码)</a></p>
-<p><a
-href="https://github.com/basclab/LME_MixedEffectsERPTutorial/blob/main/LMETutorialScripts/LME_07_AnalyzeLMEModel.R">LME_MixedEffectsERPTutorial</a></p>
-<p><a
-href="https://blog.csdn.net/kMD8d5R/article/details/85240949">基于R的混合线性模型的实现</a></p></li>
-<li><p>教程</p>
-<p><a
-href="https://www.bilibili.com/video/BV1gk4y127kW?spm_id_from=333.999.0.0&amp;vd_source=7b248d6596f7ca4944759406d03d59d8">[讲座/北理工]R语言入门-线性混合模型分析_王蓓老师_200824</a></p>
-<p><a
-href="https://pan.baidu.com/s/1mhJlTrXA-JhLnU2invuXYQ#list/path=%2Fsharelink252639068-950448459562825%2F01&amp;parentPath=%2Fsharelink252639068-950448459562825">王蓓老师的课程资料</a></p>
-<p><a
-href="https://ourcodingclub.github.io/tutorials/mixed-models/?nsukey=JfcXN4ZtaaEgpYJMyxe3oLJVjnlrrISjyCNa8jr%2FJxC5boovrpcf%2BTJJhmqhALfQNznAP1VPeUUSZghPYi93AZHNXDFsaXoP9oL%2FEzSgzpmo9VmN7oUwmYExM%2F5cQ5Y3BhDFhWxHSxbAeT3iYd6fwXLzR65TQThi239DVAazfetJiUJlMdBoxgvfGykUcx50Fnd8BemyGv%2FLMezfhVe0tA%3D%3D&amp;from=timeline">INTRODUCTION
-TO LINEAR MIXED MODELS</a></p>
-<p><a
-href="https://mfviz.com/hierarchical-models/">线性混合模型教学动画</a></p>
-<p><a
-href="https://mfviz.com/hierarchical-models/">线性混合效应模型入门之一（linear
-mixed effects model）</a></p>
-<p><a
-href="https://zhuanlan.zhihu.com/p/483173133">线性混合效应模型入门之二 -
-实例操作及结果解读（R、Python、SPSS实现）</a></p>
-<p><a
-href="https://zhuanlan.zhihu.com/p/483173133">线性混合效应模型入门之二 -
-实例操作及结果解读（R、Python、SPSS实现）</a></p>
-<p><a
-href="https://www.51xxziyuan.com/61/2161.html">跟着这篇柳叶刀的文章来学会重复测量方差分析</a></p>
-<p><a
-href="https://xw.qq.com/cmsid/20200413A0HCBT00">F＝3.4括号里面的数字什么意思？方差分析F检验结果如何解读？</a></p>
-<p><a
-href="https://blog.csdn.net/qq_42021257/article/details/115913771">论文中怎么写F检验值</a></p></li>
-<li><p>SPSS</p>
-<p><a
-href="https://mfviz.com/hierarchical-models/">【心理学实验】SPSS两因素重复测量方差分析
-简单效应分析(有代码在评论里)</a></p>
-<figure>
-<img
-src="https://pic1.zhimg.com/80/v2-4ac4078f118ecadd756cd639c5862768_1440w.jpg"
-id="fig:重复测量流程图" style="width:50.0%"
-alt="Figure 10. 重复测量流程图" />
-<figcaption aria-hidden="true">Figure 10. 重复测量流程图</figcaption>
-</figure></li>
-</ul>
-<h1 class="unnumbered" id="bibliography">Reference</h1>
-<div id="refs" class="references csl-bib-body" role="doc-bibliography">
-<div id="ref-heiseUtilityLinearMixed2022" class="csl-entry"
-role="doc-biblioentry">
-<div class="csl-left-margin">[1] </div><div
-class="csl-right-inline">HEISE M J. MON S K. BOWMAN L C. Utility of
-linear mixed effects models for event-related potential research with
-infants and children[J/OL]. Developmental Cognitive Neuroscience, 2022,
-54: 101070[2022-08-27]. <a
-href="https://www.sciencedirect.com/science/article/pii/S1878929322000147">https://www.sciencedirect.com/science/article/pii/S1878929322000147</a>.</div>
-</div>
-<div id="ref-brauerLinearMixedeffectsModels2018" class="csl-entry"
-role="doc-biblioentry">
-<div class="csl-left-margin">[2] </div><div
-class="csl-right-inline">BRAUER M. CURTIN J J. Linear mixed-effects
-models and the analysis of nonindependent data: <span>A</span> unified
-framework to analyze categorical and continuous independent variables
-that vary within-subjects and/or within-items.[J/OL]. Psychological
-Methods, 2018, 23(3): 389-411[2022-08-31]. <a
-href="http://doi.apa.org/getdoi.cfm?doi=10.1037/met0000159">http://doi.apa.org/getdoi.cfm?doi=10.1037/met0000159</a>.</div>
-</div>
-<div id="ref-jinAllornoneNeuralMechanisms2022" class="csl-entry"
-role="doc-biblioentry">
-<div class="csl-left-margin">[3] </div><div class="csl-right-inline">JIN
-H. HAYWARD W G. CORBALLIS P M. All-or-none neural mechanisms underlying
-face categorization: Evidence from the <span>N170</span>[J/OL]. Cerebral
-Cortex, 2022: bhac101[2022-09-02]. <a
-href="https://doi.org/10.1093/cercor/bhac101">https://doi.org/10.1093/cercor/bhac101</a>.</div>
-</div>
-<div id="ref-batesParsimoniousMixedModels2018" class="csl-entry"
-role="doc-biblioentry">
-<div class="csl-left-margin">[4] </div><div
-class="csl-right-inline">BATES D. KLIEGL R. VASISHTH S. et al.
-Parsimonious <span>Mixed Models</span>[EB/OL]. (2018-05-26)[2022-09-02].
-<a
-href="http://arxiv.org/abs/1506.04967">http://arxiv.org/abs/1506.04967</a>.</div>
-</div>
-<div id="ref-wangAcuteExerciseAmeliorates2015" class="csl-entry"
-role="doc-biblioentry">
-<div class="csl-left-margin">[5] </div><div
-class="csl-right-inline">WANG D. ZHOU C. CHANG Y K. Acute exercise
-ameliorates craving and inhibitory deficits in methamphetamine: <span>An
-ERP</span> study[J/OL]. Physiology &amp; Behavior, 2015, 147:
-38-46[2022-09-20]. <a
-href="https://www.sciencedirect.com/science/article/pii/S0031938415002036">https://www.sciencedirect.com/science/article/pii/S0031938415002036</a>.</div>
-</div>
-</div>
-]]></content>
-      <categories>
-        <category>EEG</category>
-      </categories>
-      <tags>
-        <tag>模板</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>OpenSim教程 1--肌肉骨骼建模入门</title>
-    <url>/2020/03/07/%E6%95%99%E7%A8%8B1--%E8%82%8C%E8%82%89%E9%AA%A8%E9%AA%BC%E5%BB%BA%E6%A8%A1%E5%85%A5%E9%97%A8%EF%BC%88%E7%BD%91%E7%BB%9C%E7%89%88%EF%BC%89/</url>
-    <content><![CDATA[<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/t1SPZlBWLExdYmH.png"
-alt="intro1-2.png" />
-<figcaption aria-hidden="true">intro1-2.png</figcaption>
-</figure>
-<span id="more"></span>
-<h2 id="i.-目标">I. 目标</h2>
-<h3 id="opensim-介绍">OpenSim 介绍</h3>
-<p>骨骼肌肉模型使我们可以去学习神经肌肉协调，分析运动员表笑和估计骨骼肌肉负荷。OpenSim是一款开源软件，它允许用户开发、分析和可视化模型并生成动作的动力学模拟<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>。在OpenSim中，骨骼肌肉模型由关节链接的环节刚体构成。肌肉跨过关节产生力并驱使关节运动。一旦骨骼肌肉模型创建，OpenSim用户可以在其中进行研究，包括调查骨骼肌肉的几何学影响、关节运动学、肌肉-肌腱在作用力下的性质以及在肌力作用下关节的运动。在OpenSim中，我们的目标是提供一个允许生物力学团体去创造、分享、扩展模型库以及动力学仿真工具的框架来用于研究和量化人体与动物的动作。</p>
-<h3 id="目标">目标</h3>
-<p>本教程的目标是通过展示图形化骨骼肌肉模型框架工具调查下肢肌肉-肌腱长度和动量矩变化来向用户介绍OpenSim。在本教程中：</p>
-<ul>
-<li>熟悉OpenSim的操作图形界面</li>
-<li>发现一些骨骼肌肉模型的局限</li>
-<li>探索单关节与双关节肌肉的不同</li>
-<li>使用OpenSim接触重要的临床问题</li>
-</ul>
-<h3 id="格式">格式</h3>
-<p>教程的每一个部分都会通过确定的OpenSim
-GUI工具指导你和回答你的一些问题。菜单的名称、选项名称、需要选择的命令以及在OpenSim中的输入都会粗体显示。问题会被基于OpenSim的人体肌肉骨骼模型系统的基本知识来回答。当你完成所有部分的教程你可以自由探索OpenSim和下肢模型。根据你所做的探索，本教程可能耗时1-2小时完成。</p>
-<h3 id="opensim-gui-简介">OpenSim GUI 简介</h3>
-<p>这里有OpenSim GUI的主要组成。下表将介绍GUI。</p>
-<p><em>注意：打开OpenSim时具有如下显示，但并没有载入模型。</em></p>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/JbnwW9jZqmkELUa.png"
-alt="GUI_components.png" />
-<figcaption aria-hidden="true">GUI_components.png</figcaption>
-</figure>
-<p>关于GUI的文档可以在用户手册中找到--&gt; <a
-href="https://simtk-confluence.stanford.edu/display/OpenSim/Graphical+User+Interface">Graphical
-User Interface</a></p>
-<h2 id="ii.-下肢骨骼肌肉模型">II. 下肢骨骼肌肉模型</h2>
-<p>在这个部分，你将载入一个下肢模型<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>到OpenSim中然后使它“行走”。这个模型代表一位身高约1.8m、体重约75KG的成人受试者。模型包含13个刚体环节和92条代表肌肉的直线（43条位于下肢和6条位于躯干）。</p>
-<h3 id="加载模型">加载模型</h3>
-<p>第一个分析的模型为<strong>gait2392.osim</strong>。加载这个模型到OpenSim中。</p>
-<ul>
-<li>点击<strong>File</strong>菜单选择<strong>OpenModel</strong></li>
-<li>在你的文件夹<em>Documents/OpenSim/4.0</em>中找到<strong>Models</strong>文件夹（Windows用，根据安装位置路径可能不同）。可能还有其他的模型文件，教程中所有的模型（Model）和动作（Motion）文件都在<strong>Models</strong>文件夹下</li>
-<li>打开<strong>Gait2392_simbody</strong>文件夹，选择<strong>gait2392_simbody.osim</strong>双击打开</li>
-</ul>
-<p>打开模型后导航窗口将会显示模型的名称，如果你有多个模型你你可以修改每个模型的名称。导航窗口会提供模型的身体（bodies）、肌肉（muscles）、关机（joints）的特殊信息。如果导航窗口不可见，点击<strong>Window</strong>菜单再选择导航（Navigator）。使用左键来打开。</p>
-<p><em>注意：如果已经打开，也可以点击标题栏看到导航窗口</em></p>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/QrT7KsPBuJeNlVk.png"
-alt="gait2392_Navigator40.png" />
-<figcaption aria-hidden="true">gait2392_Navigator40.png</figcaption>
-</figure>
-<h3 id="观察模型">观察模型</h3>
-<p>OpenSim允许使用鼠标定位模型。</p>
-<table style="width:100%;">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 40%" />
-<col style="width: 40%" />
-</colgroup>
+<p>吧啦吧啦吧啦，见Table 1</p>
+<div id="tbl:表头">
+<table>
+<caption>Table 1. 我是表</caption>
 <thead>
-<tr class="header">
-<th>Camera Action <br/>摄像机动作</th>
-<th>Windows</th>
-<th>Mac</th>
+<tr>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>b</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td><em>Rotate</em> <em>旋转</em></td>
-<td><strong>left-click and hold</strong> (PC or mouse)<br/>
-<strong>左键点击再保持</strong></td>
-<td><strong>single-finger click and hold</strong> (Mac trackpad) <br/>
-<strong>单指点击再保持</strong></td>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
 </tr>
-<tr class="even">
-<td><em>Translate</em> <em>平移</em></td>
-<td><strong>right-click and hold</strong> (PC or mouse)<br/>
-<strong>右键点击再保持</strong></td>
-<td><strong>two-finger click and hold</strong> (Mac trackpad) <br/>
-<strong>双指点击再保持</strong></td>
-</tr>
-<tr class="odd">
-<td><em>Zoom</em> <em>缩放</em></td>
-<td><strong>scroll up or down</strong> (PC or mouse) <br/>
-<strong>滚轮上下</strong></td>
-<td><strong>pinch or expand</strong> (Mac trackpad).<br/>
-<strong>双指张开或回收</strong></td>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
 </tr>
 </tbody>
 </table>
-<p>另外，有6个定位图标在可视化窗口中。</p>
-<ul>
-<li><p>改变摄像头视角于X方向，单击<nobr><img src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/FfsZM7vPzVOkjKb.png" alt="worddavd0fb176a5d7ca390fefafaed1f4dc686.png"  /></nobr>图标。</p></li>
-<li><p>相似的，点击其他按钮来观察另外的方向</p></li>
-<li><p>双击使身体位于屏幕中间</p></li>
-</ul>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/GaArTuktEbc1XRj.png"
-alt="view40.png" />
-<figcaption aria-hidden="true">view40.png</figcaption>
+</div>
+<p>引用一个图Figure 1, 2</p>
+<figure id="fig:重复测量流程图2">
+<img src="https://s2.loli.net/2022/07/27/HKG6QcCpNwXn7dY.png"
+style="width:50.0%" alt="Figure 1. 图的标题" />
+<figcaption aria-hidden="true">Figure 1. 图的标题</figcaption>
 </figure>
-<p>在继续之前，请点击<img src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/FfsZM7vPzVOkjKb-20220826233816745.png" alt="worddavd0fb176a5d7ca390fefafaed1f4dc686.png"  />图标重制你的视角。</p>
-<h3 id="模型坐标">模型坐标</h3>
-<p>坐标窗口（<em>Coordinates
-window</em>）包含模型关节对应的坐标、自由度的滑块。点击窗口（<strong>Window</strong>）菜单选择坐标（<strong>Coordinates</strong>）来显示坐标窗口。在当前模型下，盆骨的方向相对于模型，模型的方向相对于地面。</p>
-<p>*注意：如果已经打开，可以点击标题栏显示坐标窗口。</p>
-<figure>
+<p>测试公式：见公式Equation 1 <span id="eq:eqn1"><span
+class="math display">\[P_i(x) = \sum_i a_i
+x^i\qquad{(1)}\]</span></span></p>
+<figure id="fig:重复测量流程图">
 <img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/51PcihsKCxAFwlp.png"
-alt="coordinates_in_gui.png" />
-<figcaption aria-hidden="true">coordinates_in_gui.png</figcaption>
+src="https://pic1.zhimg.com/80/v2-4ac4078f118ecadd756cd639c5862768_1440w.jpg"
+style="width:50.0%" alt="Figure 2. 重复测量流程图" />
+<figcaption aria-hidden="true">Figure 2. 重复测量流程图</figcaption>
 </figure>
-<ul>
-<li><p>前三个滑块--骨盆倾斜（tilt）、侧倾（list）和旋转（rotation）与
-<strong><em>“骨盆”</em></strong>
-的Z轴、X轴和Y轴的旋转相对应。要使盆骨绕z轴旋转，可拖动盆骨倾斜滑块。同样地，若要将盆骨绕另外两个轴旋转，可拖动相应的滑块。</p></li>
-<li><p>接下来的三个滑块--骨盆tx，ty和tz--对应于骨盆沿
-<strong><em>“地面”</em></strong> 参考系的X，Y和Z轴的平移。</p>
-<p><em>注意：以这种方式旋转和平移模型会更改模型相对于地面的方向和位置，这与在可视化器中旋转或平移模型视图不同。</em></p></li>
-<li><p>其余滑块对应于关节旋转并控制单个自由度。要旋转关节，请拖动滑块或在相邻的文本框中键入所需的关节角度。</p></li>
-<li><p>使用姿势（<strong>Poses</strong>）菜单中的工具，你可以恢复模型的默认姿势，保存当前姿势或将当前姿势设置为模型的新默认姿势。</p>
-<ul>
-<li>现在，通过单击姿势（<strong>Poses</strong>）按钮并选择默认（<strong>Default</strong>）来恢复默认坐标。</li>
-<li>在本教程的后面，您将保存一个新的姿势。为此，在设置好模型姿势后，在<strong>Poses</strong>菜单中选择新建（<strong>New</strong>），输入姿势的名称，然后单击OK。单击姿势（<strong>Poses</strong>）时，要保存的姿势将保存在默认（Default）下。</li>
-<li>若要设置新的模型默认姿势，请在根据需要设置好模型后，在姿势（<strong>Poses</strong>）菜单中选择默认设置（<strong>Set
-Default</strong>）。您需要保存模型以保存新的默认姿势。</li>
-</ul></li>
-</ul>
-<h3 id="模型中的肌肉">模型中的肌肉</h3>
-<p>肌肉--肌腱的路径在OpenSim中由线段连接的一系列点表示。要查看所有肌肉的列表：</p>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/kKSfPBt5AmxN2Vb.png"
-alt="motion_in_muscles.png" />
-<figcaption aria-hidden="true">motion_in_muscles.png</figcaption>
-</figure>
-<ul>
-<li>在导航中，展开<strong><em>3DGaitModel2392</em></strong>（模型名称）中的力（<strong><em>Forces</em></strong>），肌肉（<strong><em>Muscles</em></strong>）以及所有标题。</li>
-<li>要展示单个肌肉，右键单击指定肌肉名称下的所有组别，如
-<em>glut_med1_r</em>，然后从弹出菜单中选择<strong><em>显示&gt;只显示</em></strong>（<strong><em>Display&gt;Show
-Olny</em></strong>）</li>
-<li>要切换所有肌肉的显示，请右键单击肌肉（<strong>Muscles</strong>）或所有（<strong>all</strong>）标题，然后选择显示&gt;显示
-或 显示&gt;隐藏（<strong>Display &gt; Show</strong> or <strong>Display
-&gt; Hide</strong> ）</li>
-<li>某些肌肉可以用多条线代表，而不是单一的作用线。在这个模型中，臀中肌是由多个作用线代表的肌肉的一个例子(如,
-glut_med1_r, glut_med2_r, glut_med3_r)</li>
-</ul>
-<p>对于某些肌肉，肌肉起点与止点的两点足以描述肌肉路径。对于那些包裹了骨或者被筋膜包裹的肌肉，中间包裹（<em>intermediate
-wrapping</em>）或者通过点（<em>via points</em>）。要查看这些包装点：</p>
-<ul>
-<li>通过单击姿势（<strong>Poses</strong>）按钮并选择默认（<strong>Default</strong>）来恢复默认模型姿势。然后放大右膝关节</li>
-<li>右键单击<strong><em>R_knee_ext</em></strong>
-肌肉组，然后选择仅显示（<strong><em>Show only</em></strong>）</li>
-<li>使用<strong>knee_angle_r</strong> 坐标滑块完全弯曲右膝盖</li>
-<li>注意，一定的膝角时包裹点在某些膝盖伸直器中以引入，从而使肌肉路径发展为扭结然后出现在骨骼周围并将其包裹</li>
-<li>下肢模型中的某些肌肉会在极限运动范围内穿过骨骼或深层肌肉</li>
-</ul>
-<h3 id="问题">问题</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pandoc -i <span class="string">&#x27;.\LME线性混合模型处理ERP(test).md&#x27;</span> -o test.docx --filter pandoc-crossref --cite</span><br></pre></td></tr></table></figure>
+<h2 id="hexo中使用pandoc">hexo中使用pandoc</h2>
 <ol type="1">
-<li><p><strong>自由度</strong></p>
-<ol type="a">
-<li><p>使用坐标面板（Coordinates panel
-）查看模型的自由度。该模型总共有多少个自由度？列出右腿的自由度。</p></li>
-<li><p>所有模型均为近似值。将模型中的自由度与下肢中的自由度进行比较。举例说明已简化的关节运动。举例说明该模型未包含的动作</p></li>
-</ol></li>
-<li><p><strong>肌肉</strong></p>
-<ol type="a">
-<li>模型中有多少肌肉？这与模型中的自由度数相比如何？完全驱动模型所需的最少肌肉数量是多少？</li>
-</ol>
-<p>提示：例如完全驱动膝，意味着膝关节的屈和伸</p>
-<ol start="2" type="a">
-<li>在模型中命名两条肌肉（臀肌以外），这些肌肉由多条线代表其行动。为什么认为这些肌肉以这种方式代表？</li>
-</ol>
-<p>提示：具有多个作用线的其他肌肉使用与臀中肌相同的命名约定。</p>
-<ol start="3" type="a">
-<li>哪些膝盖伸肌有包裹点？每个膝伸肌器的包裹点在什么角度出现？一块肌肉可能有多个包裹点。</li>
-</ol></li>
-<li><p><strong>建模限制</strong></p>
-<ol type="a">
-<li>放大右髋部，仅显示glut_max3_r肌肉（右臀部伸肌群）。检查此肌肉的整个髋关节屈曲角度。在运动范围内看到glut_max3_r的路径有什么问题？肌肉路径的点对点表示以什么方式简化了骨骼肌肉的几何结构？</li>
-</ol></li>
-</ol>
-<h2 id="iii.-关节角度肌腱长度和力臂">III. 关节角度，肌腱长度和力臂</h2>
-<p>在此部分，你将何根据肢体配置（limb
-configuration）来调查肌肉--肌腱以及力臂。骨骼肌肉的几何形态对于肌肉的功能和发展骨骼肌肉模型非常重要。肌肉--肌腱力量取决于肌肉--肌腱的长度，而关节的动量取决于肌肉--肌腱力量和力臂。因此，在开发用于预测肌肉肌腱力和关节力矩的精确模型时，准确确定肌肉骨骼的几何形状至关重要。</p>
-<h3 id="使用绘图">使用绘图</h3>
-<p>OpenSim的绘图允许你绘制肌肉--肌腱属性，如长度，力臂，力和关节动量。生成骨直肌和股中间肌的纤维长度与膝关节角度图：</p>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/K9QtSZRPXTMNIVn.png"
-alt="PlotterTutorial1_40.png" />
-<figcaption aria-hidden="true">PlotterTutorial1_40.png</figcaption>
-</figure>
-<ul>
-<li><p>点击坐标窗口姿势&gt;默认（<strong>Poses&gt;Default</strong>）回到模型的初始姿势</p>
-<p><em>注意：绘图是基于当前模型配置而生成的。你的绘图将以默认的姿势生成</em></p></li>
-<li><p>要打开一个新的绘图，请点击工具（<strong>Tools</strong>）菜单然后选择绘图（<strong>Plot</strong>）。在绘图窗口，点击<strong>Y-Quantity</strong>按钮然后选择<strong>fiber-length</strong>。这个变量将在Y轴显示</p></li>
-<li><p>在选择万Y-Quantity后，如果想生成曲线还需要选择Muscles变量。点击<strong>Muscles</strong>按钮将出现一个菜单。</p></li>
-<li><p>为更快的找到肌肉，你可以筛选肌肉组中的肌肉。选择<strong>model</strong>选项然后使用<strong>Group</strong>下拉菜单来选择<strong>R_knee_ext</strong>。现在的肌肉列表中只会显示右膝伸肌器组。</p></li>
-<li><p>从列表中点击选择框（<strong>checkbox</strong>）中的<strong>rect_fem_r
-</strong>和<strong>vas_int_r</strong>标签来选择骨直肌（<em>recus
-femoris</em>）和骨中间肌（<em>vastus intermedius</em>）</p>
-<p><em>注意：在绘图窗口打开的时候不必去关掉肌肉窗口，你的选择会立刻在肌肉文字框中更新。这有助于在图中创建多条曲线，下一步会做。</em></p></li>
-<li><p>点击<strong>X-Quantity</strong>然后选择<strong>knee_angle_r</strong>。此变量将出现在x轴中。</p></li>
-<li><p>为给图增加一个标题，点击属性（<strong>properties</strong>）按钮然后在标题下的文字框中输入<strong>Fiber-Length
-vs. Knee Angle</strong>。点击OK。</p></li>
-<li><p>为增加一条曲线，点击增加（<strong>Add</strong>）</p>
-<p>*注意：图将使用以下单位：米（长度）、牛顿（力）、牛米（动量）。</p></li>
-<li><p>不要关闭绘图窗口，你将会在后面增加更多的图</p></li>
-</ul>
-<h3 id="问题-1">问题</h3>
-<ol start="4" type="1">
-<li><p><strong>肌纤维长度 vs 关节角度</strong></p>
-<ol type="a">
-<li><p>研究肌纤维长度与膝关节角度的关系图。对于股直肌和中间股直肌，如果右髋屈曲，您是否期望纤维长度曲线不同？为什么或者为什么不？</p></li>
-<li><p>在坐标窗口中，将模型的<strong><em>右髋屈曲调整至45度</em></strong>（将姿势保存为<strong>r_hip_flex_45</strong>），添加股直肌和中间股肌的纤维长度曲线以使髋屈曲45°。将模型的肌肉曲线与您先前绘制的未弯曲臀部的曲线与刚刚绘制的模型的曲线进行比较。曲线如何变化？解释您的发现。双关节肌肉如何使复杂化分析？</p></li>
-</ol>
-<p><em>注意：要选择多个曲线名称，请在选择时按住Ctrl（PC）或Command（Mac）。要打印或保存绘图，请在绘图上单击鼠标右键，然后选择“打印或导出图像”。</em></p></li>
-<li><p><strong>肌肉力矩臂 vs 关节角度</strong></p>
-<p>将模型恢复到初始位置且不屈曲髋（单击姿势&gt;默认，<strong>Poses&gt;Default</strong>）。现在绘制右股直肌和股中间肌肉的膝盖伸展力臂与膝关节角度的关系图。</p>
-<ul>
-<li>新建一个绘图窗口，点击<strong>Y-Quantity</strong> &gt;
-<strong>moment arm</strong> &gt; <strong>knee_angle_r</strong>
-然后点击<strong>X-Quantity</strong> &gt;
-<strong>knee_angle_r</strong></li>
-<li>与之前相同，选择右股直肌（<strong>rect_fem_r</strong>）和股中间肌（<strong>vas_int_r</strong>）</li>
-<li>设定图的名称为<strong>Knee Extension Moment Arm vs. Knee
-Angle</strong></li>
-<li>加入曲线到图中</li>
-</ul></li>
-</ol>
-<ol type="a">
-<li>每个肌肉的峰值力臂是什么，它们出现在什么膝关节角度？</li>
-</ol>
-<p><em>注意：如果将光标悬停在曲线上，工具提示将给出该特定点的坐标。</em></p>
-<ol start="2" type="a">
-<li>膝关节角度多少时力臂曲线不平滑（导数不连续的点）？你认为什么原因造成的？</li>
-</ol>
-<p><em>提示：看问题2.c</em></p>
-<p>随意绘制其他肢体位置，肌肉和/或关节的图。当您准备继续学习本教程时，请关闭绘图窗口并通过单击文件(<strong>File</strong>)菜单并选择关闭模型(<strong>Close
-Model</strong>)来关闭3DGaitModel2392模型。不要将模型设置保存到文件中，我们关闭模型以确保在浏览时进行的任何先前修改不会影响本教程的其余部分。</p>
-<h2 id="iv.-蹲伏步态腘绳肌长度的评估">IV. 蹲伏步态腘绳肌长度的评估</h2>
-<p>在教程的最后部分，你将使用OpenSim调查蹲伏步态形成的原因，一种脑瘫患者中最常见的行走异常步态。它的特征是在站立阶段膝过度屈曲，通常伴随着屈曲过度和髋关节内部旋转。造成蹲伏步态原因的一种假设是腘绳肌过短，骨科医生有时会为改善病人的姿态和步态来增加腘绳肌的长度。然而，其他导致膝过度屈的原因也有可能（如足屈肌薄弱），增加腘绳肌长度会降低肌肉产生力量的能力<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>。外科医生如何确定是否需要进行腘绳肌的增长呢？</p>
-<p>判别病人的腘绳肌是否比“正常”短的一种可能的方法是开发一个骨骼肌肉模型来比较正常步态的腘绳肌长度和病人的蹲伏步态腘绳肌长度。假设骨科医生已经给你一些病人的蹲伏步态运动学数据。医生考虑是否手术需要你的意见。</p>
-<h3 id="加载模型-1">加载模型</h3>
-<p>重新打开<strong>gait2392.osim</strong>模型。在动画模式，你需要加载一个动作文件（motion
-file）到OpenSim中。</p>
-<figure>
-<img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/758kQhAuERY2zra.png"
-alt="gait2392_Normal40_side.png" />
-<figcaption aria-hidden="true">gait2392_Normal40_side.png</figcaption>
-</figure>
-<ul>
-<li><p>点击文件（<strong>File</strong>）菜单然后选择加载动作（<strong>Load
-Motion</strong>），确保你在<strong>Gait2392
-</strong>路径，选择<strong>normal.mot</strong>文件，点击打开（<strong>Open</strong>）。此文件包含了一个正常步态的运动学数据。在打开的模型中右键点击导航，弹出窗口选择重命名（<strong>Rename</strong>），为模型命名为<strong>Normal</strong>。</p>
-<p><em>注意：导航中重命名模型只会改变显示的名称，而不会修改模型文件的名称</em></p></li>
-</ul>
-<p>载入模型后，它的名称将会显示在工具栏中。另外，导航栏会出现一个名为动作（<strong>Motion</strong>）的分支。展开此分支可看到特定模型中加载的动作。模型加载成功后肌肉的颜色将变为蓝色。</p>
-<h3 id="动作滑块">动作滑块</h3>
-<p>动作滑块对应当前的动作文件。拖动动作滑块来播放当前动作。在动画模式下，使用视频控制（<strong>video
-control</strong>）按钮，例如点击<img src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/EPpLMJ7RImYs29O.png" alt="worddavd88b5fae75ecfddb6389263e1d251e5f.png"  />来播放（<strong>play</strong>），<img src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/oJGbgi4cC9VNw1B.png" alt="worddava5ed57bb58373fb4d13ea6067383680c.png"  />按钮来循环（<strong>loop</strong>），<img src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/uPic/sFZGlY8vfNcOw2V.png" alt="worddavf305a09a00c14e6014eb454b9af8ac62.png"  />按钮来暂停（<strong>pause</strong>），控制速度（<strong>speed</strong>）。</p>
-<h3 id="多个模型和动作">多个模型和动作</h3>
-<p>OpenSim可以对多个模型进行模拟。跟随一下步骤打开第二个模型和加载动作。</p>
-<ul>
-<li><p>导航中已经包含一个Normal模型，同样再打开一个<strong>gait2392.osim</strong>模型文件，在导航中重命名为<strong>Crouch</strong>。第二个加载的文件会自动变为<strong>Crouch</strong>模型。其他如加载动作等，将会应用到crouch模型中。从路径<strong>Gait2392
-</strong>加载动作文件<strong>crouch1.mot</strong>。</p>
-<p>*注意：如果没有看到两个模型被加载，请缩放视角。在教程的后续中，两个模型将会被称作<strong>Normal</strong>和<strong>Crouch</strong>。</p></li>
-<li><p>OpenSim能同步多个动作，允许同时播放多个动画。为此，在导航中展开每个模型的动作分支，按住<strong>Ctrl</strong>
-(Windows) 或<strong>Command</strong>
-(Mac)，再选择两个模型的名称使其高亮。右键点击每个模型名称，再选择同步（<strong>Sync</strong>）。弹出的动作（<strong>Motions</strong>）将会显示。</p></li>
-</ul>
-<h3 id="问题-2">问题</h3>
-<ol start="6" type="1">
-<li><p><strong>动作的范围</strong></p>
-<ol type="a">
-<li>同步播放normal步态和crouch步态。确认是在循环播放，调整播放速度和旋转角度。观察比较两模型。根据你的观察，用数量描述两个模型的一般运动学区别（关节坐标）。</li>
-</ol>
-<p>现在在数量上比较normal步态和crouch步态膝关节伸角度的区别。</p>
-<ul>
-<li>打开一个新的绘图（<strong>plot</strong>）窗口</li>
-<li>导航窗口中双击<em>Normal</em>模型的名称，使其变为粗体。</li>
-<li>在绘图窗口中，点击<strong>Y-Quantity</strong>，选择<strong>normal_gait(Deg.)</strong>
-，再选择<strong>knee_angle_r. </strong>，点击OK</li>
-<li>点击<strong>X-Quantity</strong>再选择<strong>normal_gait.
-</strong>，点击OK</li>
-<li>在曲线名称（<strong>Curve
-Name</strong>）文本框中编辑文字来读取正常步态（<strong>Normal
-Gait</strong>）</li>
-<li>要增加一条右膝关节角度vs步态周期的曲线，点击增加（<strong>Add</strong>）</li>
-<li>双击选中导航窗口已存在的模型<em>Crouch</em>，使其变为粗体</li>
-<li>在同一个绘图窗口中点击<strong>Y-Quantity</strong>，选择<strong>normal_gait(Deg.)
-</strong>，再选择<strong>knee_angle_r. </strong>，点击OK</li>
-<li>点击<strong>X-Quantity</strong>再选择<strong>normal_gait.
-</strong>，点击OK</li>
-<li>在曲线名称（<strong>Curve
-Name</strong>）文本框中编辑文字来读取正常步态（<strong>Crouch
-Gait</strong>）</li>
-</ul>
-<ol start="2" type="a">
-<li><p>从正常步态周期中画出膝关节角度曲线。标注后跟着地和脚尖离地的时间点以及站立和摆动的间隔。</p></li>
-<li><p>什么是正常步态站立时相的膝关节伸范围？</p></li>
-<li><p>如何让蹲伏步态的膝关节伸范围和正常步态相比较？</p></li>
-</ol></li>
-<li><p><strong>腘绳肌长度</strong></p>
-<p>骨外科医生相信病人可以从增长腘绳肌长度中受益。你可以做一个病人蹲伏步态周期和正常步态周期中腘绳肌（半腱肌）长度的比较。</p>
-<p>画一个半腱肌肌肉--肌腱长度在蹲伏步态周期中的图</p>
-<ul>
-<li><p>为删除之前的曲线，选择所有曲线名称列表然后点击删除（<strong>Delete</strong>）</p></li>
-<li><p>在模型（<strong>Model</strong>）下拉菜单中选择<em>normal</em>模型</p></li>
-<li><p>点击<strong>Y-Quantity</strong>然后选择肌肉--肌腱长度（<strong>muscle-tendon
-length</strong>）</p></li>
-<li><p>点击肌肉（<strong>Muscles</strong>）在列表中选择<strong>semiten_r</strong>
-。点击关闭（<strong>Close</strong>）</p>
-<p><em>注意：要快速选择</em>semiten_r<em>，在<strong>Pattern</strong>文本栏输入<strong>semi</strong></em></p></li>
-<li><p>点击<strong>X-Quantity</strong>然后选择<strong>normal_gait
-(Deg.)</strong></p></li>
-<li><p>在曲线名称（<strong>Curve
-Name</strong>）文本框中编辑文字来读取正常步态（<strong>Normal
-Gait</strong>）</p></li>
-<li><p>要增加一条腘绳肌长度vs步态周期的曲线，点击增加（<strong>Add</strong>）</p></li>
-<li><p>为做一个与蹲伏步态相似的曲线，请使蹲伏模型为当前模型。然后点击<strong>Y-Quantity</strong>并重新选择肌肉--肌腱长度（<strong>muscle-tendon
-length</strong>）</p></li>
-<li><p>点击肌肉（<strong>Muscles</strong>）选择<strong>semiten_r</strong></p></li>
-<li><p>点击<strong>X-Quantity</strong>然后选择<strong>crouch1_gait
-(Deg.)</strong></p></li>
-<li><p>在曲线名称（<strong>Curve
-Name</strong>）文本框中编辑文字来读取正常步态（<strong>Crouch
-Gait</strong>），然后点击增加（<strong>Add</strong>）</p></li>
-</ul>
-<ol type="a">
-<li><p>研究这些曲线。基于绘图，正常步态和蹲伏步态腘绳肌长度的峰值有何不同？对于病人，你是否建议腘绳肌增长手术？</p></li>
-<li><p>你分析的局限在哪里？</p></li>
-</ol></li>
-<li><p><strong>其他蹲伏步态文件（可选）</strong></p>
-<p>骨科医生治疗其他三名有蹲伏步态的病人。重复分析动作文件
-<em>crouch2.mot,
-crouch3.mot,</em>和<em>crouch4.mot</em>。注意你现在能用一个模型关联不止一种动作。对于这些病人你是否会建议手术会有一些区别？如果你想了解更多此类型的分析，请阅读文献<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>
-。</p></li>
-</ol>
-<p><strong><em>原文地址：</em></strong><a
-href="https://simtk-confluence.stanford.edu/display/OpenSim/Tutorial+1+-+Intro+to+Musculoskeletal+Modeling">点击这里跳转到原文（速度较慢）</a></p>
-<h2 id="参考">参考</h2>
+<li><p>安装<code>hexo-renderer-pandoc</code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure></p></li>
+<li><p>修改hexo文件夹下的<code>_config.yml</code> <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">pandoc:</span></span><br><span class="line"><span class="attr">filters:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">pandoc-crossref</span></span><br><span class="line"><span class="attr">extra:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">citeproc:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">bibliography:</span> <span class="string">&quot;/Users/macgazelle/blog/hexo/source/_posts/EEG.bib&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">csl:</span> <span class="string">&quot;/Users/macgazelle/blog/hexo/source/_posts/chinese-gb7714-2015-numeric.csl&quot;</span> </span><br><span class="line"><span class="attr">meta:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">link-citations:</span> <span class="literal">true</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">reference-section-title:</span> <span class="string">Reference</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">colorlinks:</span> <span class="literal">true</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">lang:</span> <span class="string">en-GB</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">figPrefix:</span> <span class="string">&quot;Figure&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">tblPrefix:</span> <span class="string">&quot;Table&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">tableTitle:</span> <span class="string">&quot;Table&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">figureTitle:</span> <span class="string">&quot;Figure&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">titleDelim:</span> <span class="string">.</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">eqnPrefix:</span> <span class="string">&quot;Equation&quot;</span></span><br><span class="line"><span class="attr">template:</span></span><br><span class="line"><span class="attr">mathEngine:</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>头文件yml记得要加两句<br />
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">disableNunjucks:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>hexo部署的时候，记得clean一下，用下面的命令 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure></p>
 <div id="footnotes">
 <hr>
 <div id="footnotelist">
@@ -3340,40 +3616,56 @@ href="https://simtk-confluence.stanford.edu/display/OpenSim/Tutorial+1+-+Intro+t
 <li id="fn:1">
 <span
 style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span
-style="display: inline-block; vertical-align: top;">Delp, S.L.,
-Anderson, F.C., Arnold, A.S., Loan, P., Habib, A., John, C.T.,
-Guendelman, E., Thelen, D.G. OpenSim: Open-source software to create and
-analyze dynamic simulations of movement. IEEE Transactions on Biomedical
-Engineering, vol. 55, pp. 1940-1950,
-2007.</span><a href="#fnref:1" rev="footnote"> ↩︎</a>
-</li>
-<li id="fn:2">
-<span
-style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span
-style="display: inline-block; vertical-align: top;">Delp, S.L., Loan,
-J.P., Hoy, M.G., Zajac, F.E., Topp E.L., Rosen, J.M. An interactive
-graphics-based model of the lower extremity to study orthopaedic
-surgical procedures. IEEE Transactions on Biomedical Engineering, vol.
-37, pp. 757-767, 1990.</span><a href="#fnref:2" rev="footnote"> ↩︎</a>
-</li>
-<li id="fn:3">
-<span
-style="display: inline-block; vertical-align: top; padding-right: 10px;">3.</span><span
-style="display: inline-block; vertical-align: top;">Arnold, A.S., Liu,
-M., Ounpuu, S., Swartz, M., Delp, S.L., The role of estimating
-hamstrings lengths and velocities in planning treatments for crouch
-gait, Gait and Posture, vol. 23, pp. 273-281,
-2006.</span><a href="#fnref:3" rev="footnote"> ↩︎</a>
+style="display: inline-block; vertical-align: top;">Mjha B , Skma B ,
+Lcba B . Utility of Linear Mixed Effects Models for Event-Related
+Potential Research with Infants and Children. 2022.
+https://www.sciencedirect.com/science/article/pii/S1878929322000147</span><a href="#fnref:1" rev="footnote">
+↩︎</a>
 </li>
 </ol>
 </div>
 </div>
+</div></li>
+</ol>
+<h1 class="unnumbered" id="bibliography">Reference</h1>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0"
+role="list">
+<div id="ref-marusicNeuralBasesAgeRelated2022" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[1] </div><div
+class="csl-right-inline">MARUSIC U. PESKAR M. DE PAUW K. et al. Neural
+<span>Bases</span> of <span>Age-Related Sensorimotor Slowing</span> in
+the <span>Upper</span> and <span>Lower Limbs</span>[J/OL]. Frontiers in
+Aging Neuroscience, 2022, 14: 819576. <a
+href="https://doi.org/10.3389/fnagi.2022.819576">https://doi.org/10.3389/fnagi.2022.819576</a>.</div>
+</div>
+<div id="ref-tenbrinkeEffectsComputerizedCognitive2019"
+class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">TEN
+BRINKE L F. BEST J R. CHAN J L C. et al. The <span>Effects</span> of
+<span>Computerized Cognitive Training With</span> and <span>Without
+Physical Exercise</span> on <span>Cognitive Function</span> in
+<span>Older Adults</span>: <span>An</span> 8-<span>Week Randomized
+Controlled Trial</span>[J/OL]. The Journals of Gerontology: Series A,
+2019: glz115[2022-08-17]. <a
+href="https://academic.oup.com/biomedgerontology/advance-article/doi/10.1093/gerona/glz115/5485711">https://academic.oup.com/biomedgerontology/advance-article/doi/10.1093/gerona/glz115/5485711</a>.</div>
+</div>
+<div id="ref-heiseUtilityLinearMixed2022" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[3] </div><div
+class="csl-right-inline">HEISE M J. MON S K. BOWMAN L C. Utility of
+linear mixed effects models for event-related potential research with
+infants and children[J/OL]. Developmental Cognitive Neuroscience, 2022,
+54: 101070[2022-08-27]. <a
+href="https://www.sciencedirect.com/science/article/pii/S1878929322000147">https://www.sciencedirect.com/science/article/pii/S1878929322000147</a>.</div>
+</div>
+</div>
 ]]></content>
       <categories>
-        <category>OpenSim</category>
+        <category>papers</category>
       </categories>
       <tags>
-        <tag>OpenSim</tag>
+        <tag>模板</tag>
       </tags>
   </entry>
   <entry>
@@ -3518,6 +3810,7 @@ style="display: inline-block; vertical-align: top;">杨志平的网志地址：h
 </ol>
 </div>
 </div>
+</div>
 ]]></content>
       <categories>
         <category>papers</category>
@@ -3569,7 +3862,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <col style="width: 5%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>Freq</th>
 <th>Burst</th>
 <th>Centrality</th>
@@ -3580,7 +3873,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>1608</td>
 <td></td>
 <td>0.18</td>
@@ -3589,7 +3882,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>运动</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>1339</td>
 <td></td>
 <td>0.18</td>
@@ -3598,7 +3891,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>体力活动</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>880</td>
 <td></td>
 <td>0.07</td>
@@ -3607,7 +3900,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>健康</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>763</td>
 <td>18.53</td>
 <td>0.09</td>
@@ -3616,7 +3909,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>随机对照试验</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>620</td>
 <td></td>
 <td>0.05</td>
@@ -3625,7 +3918,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>生活质量</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>443</td>
 <td></td>
 <td>0.03</td>
@@ -3634,7 +3927,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>肥胖</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>424</td>
 <td></td>
 <td>0.07</td>
@@ -3643,7 +3936,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>老年成人</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>393</td>
 <td></td>
 <td>0.03</td>
@@ -3652,7 +3945,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>妇女</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>373</td>
 <td></td>
 <td>0.05</td>
@@ -3661,7 +3954,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>干预</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>369</td>
 <td></td>
 <td>0.03</td>
@@ -3670,7 +3963,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>风险因素</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>341</td>
 <td></td>
 <td>0.02</td>
@@ -3679,7 +3972,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>成人</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>332</td>
 <td></td>
 <td>0.02</td>
@@ -3688,7 +3981,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>风险</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>309</td>
 <td>4.89</td>
 <td>0.02</td>
@@ -3697,7 +3990,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>心血管疾病</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>305</td>
 <td></td>
 <td>0.02</td>
@@ -3706,7 +3999,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>美国</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>275</td>
 <td></td>
 <td>0.02</td>
@@ -3715,7 +4008,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>孩子</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>272</td>
 <td></td>
 <td>0.01</td>
@@ -3724,7 +4017,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>公共卫生</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>265</td>
 <td></td>
 <td>0.02</td>
@@ -3733,7 +4026,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>青少年</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>257</td>
 <td></td>
 <td>0.03</td>
@@ -3742,7 +4035,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>死亡率</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>254</td>
 <td></td>
 <td>0.02</td>
@@ -3751,7 +4044,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>康复</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>249</td>
 <td></td>
 <td>0.04</td>
@@ -3760,7 +4053,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>预防</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>246</td>
 <td>10.74</td>
 <td>0.02</td>
@@ -3769,7 +4062,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>meta分析</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>245</td>
 <td></td>
 <td>0.02</td>
@@ -3778,7 +4071,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>流行</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>242</td>
 <td></td>
 <td>0.03</td>
@@ -3787,7 +4080,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>疾病</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>241</td>
 <td></td>
 <td>0.02</td>
@@ -3796,7 +4089,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>体质量指数</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>223</td>
 <td></td>
 <td>0.01</td>
@@ -3805,7 +4098,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>人口</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>212</td>
 <td></td>
 <td>0.02</td>
@@ -3814,7 +4107,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>抑郁症</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>205</td>
 <td></td>
 <td>0.01</td>
@@ -3823,7 +4116,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>协会</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>203</td>
 <td></td>
 <td>0.02</td>
@@ -3832,7 +4125,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>程序</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>190</td>
 <td></td>
 <td>0.02</td>
@@ -3841,7 +4134,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>行为</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>186</td>
 <td></td>
 <td>0.02</td>
@@ -3850,7 +4143,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>性能</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>175</td>
 <td></td>
 <td>0.04</td>
@@ -3859,7 +4152,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>冠心病</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>167</td>
 <td></td>
 <td>0.02</td>
@@ -3868,7 +4161,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>重量 lo</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>164</td>
 <td></td>
 <td>0.01</td>
@@ -3877,7 +4170,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>跟进</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>157</td>
 <td></td>
 <td>0.01</td>
@@ -3886,7 +4179,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>outcm</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>156</td>
 <td></td>
 <td>0.04</td>
@@ -3895,7 +4188,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>健身</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>156</td>
 <td></td>
 <td>0.01</td>
@@ -3904,7 +4197,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>走</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>153</td>
 <td></td>
 <td>0.03</td>
@@ -3913,7 +4206,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>代谢综合征</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>152</td>
 <td></td>
 <td>0</td>
@@ -3922,7 +4215,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>运动</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>149</td>
 <td></td>
 <td>0.01</td>
@@ -3931,7 +4224,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>美国心脏协会</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>149</td>
 <td>4.45</td>
 <td>0.03</td>
@@ -3940,7 +4233,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>骨骼肌</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>148</td>
 <td></td>
 <td>0</td>
@@ -3949,7 +4242,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>超重</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>143</td>
 <td></td>
 <td>0.02</td>
@@ -3958,7 +4251,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>管理</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>142</td>
 <td></td>
 <td>0.01</td>
@@ -3967,7 +4260,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>流行病 学</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>142</td>
 <td></td>
 <td>0.01</td>
@@ -3976,7 +4269,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>胰岛素抵抗</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>140</td>
 <td></td>
 <td>0.02</td>
@@ -3985,7 +4278,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>饮食</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>139</td>
 <td></td>
 <td>0.01</td>
@@ -3994,7 +4287,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>有效性</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>136</td>
 <td></td>
 <td>0.01</td>
@@ -4003,7 +4296,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>男人</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>134</td>
 <td></td>
 <td>0.01</td>
@@ -4012,7 +4305,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>乳腺癌</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>132</td>
 <td></td>
 <td>0.02</td>
@@ -4021,7 +4314,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>身体成分</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>130</td>
 <td></td>
 <td>0.03</td>
@@ -4045,7 +4338,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <col style="width: 5%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>Freq</th>
 <th>Burst</th>
 <th>Centrality</th>
@@ -4056,7 +4349,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>1608</td>
 <td></td>
 <td>0.18</td>
@@ -4065,7 +4358,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>运动</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>1339</td>
 <td></td>
 <td>0.18</td>
@@ -4074,7 +4367,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>体力活动</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>880</td>
 <td></td>
 <td>0.07</td>
@@ -4083,7 +4376,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>健康</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>763</td>
 <td>18.53</td>
 <td>0.09</td>
@@ -4092,7 +4385,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>随机对照试验</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>620</td>
 <td></td>
 <td>0.05</td>
@@ -4101,7 +4394,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>生活质量</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>443</td>
 <td></td>
 <td>0.03</td>
@@ -4110,7 +4403,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>肥胖</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>424</td>
 <td></td>
 <td>0.07</td>
@@ -4119,7 +4412,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>老年成人</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>393</td>
 <td></td>
 <td>0.03</td>
@@ -4128,7 +4421,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>妇女</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>373</td>
 <td></td>
 <td>0.05</td>
@@ -4137,7 +4430,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>干预</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>369</td>
 <td></td>
 <td>0.03</td>
@@ -4146,7 +4439,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>风险因素</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>341</td>
 <td></td>
 <td>0.02</td>
@@ -4155,7 +4448,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>成人</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>332</td>
 <td></td>
 <td>0.02</td>
@@ -4164,7 +4457,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>风险</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>309</td>
 <td>4.89</td>
 <td>0.02</td>
@@ -4173,7 +4466,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>心血管疾病</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>305</td>
 <td></td>
 <td>0.02</td>
@@ -4182,7 +4475,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>美国</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>275</td>
 <td></td>
 <td>0.02</td>
@@ -4191,7 +4484,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>孩子</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>272</td>
 <td></td>
 <td>0.01</td>
@@ -4200,7 +4493,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>公共卫生</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>265</td>
 <td></td>
 <td>0.02</td>
@@ -4209,7 +4502,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>青少年</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>257</td>
 <td></td>
 <td>0.03</td>
@@ -4218,7 +4511,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>死亡率</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>254</td>
 <td></td>
 <td>0.02</td>
@@ -4227,7 +4520,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>康复</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>249</td>
 <td></td>
 <td>0.04</td>
@@ -4236,7 +4529,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>预防</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>246</td>
 <td>10.74</td>
 <td>0.02</td>
@@ -4245,7 +4538,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>meta分析</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>245</td>
 <td></td>
 <td>0.02</td>
@@ -4254,7 +4547,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>流行</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>242</td>
 <td></td>
 <td>0.03</td>
@@ -4263,7 +4556,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>疾病</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>241</td>
 <td></td>
 <td>0.02</td>
@@ -4272,7 +4565,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>体质量指数</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>223</td>
 <td></td>
 <td>0.01</td>
@@ -4281,7 +4574,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>人口</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>212</td>
 <td></td>
 <td>0.02</td>
@@ -4290,7 +4583,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>抑郁症</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>205</td>
 <td></td>
 <td>0.01</td>
@@ -4299,7 +4592,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>协会</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>203</td>
 <td></td>
 <td>0.02</td>
@@ -4308,7 +4601,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>程序</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>190</td>
 <td></td>
 <td>0.02</td>
@@ -4317,7 +4610,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>行为</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>186</td>
 <td></td>
 <td>0.02</td>
@@ -4326,7 +4619,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>性能</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>175</td>
 <td></td>
 <td>0.04</td>
@@ -4335,7 +4628,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>冠心病</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>167</td>
 <td></td>
 <td>0.02</td>
@@ -4344,7 +4637,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>重量 lo</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>164</td>
 <td></td>
 <td>0.01</td>
@@ -4353,7 +4646,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>跟进</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>157</td>
 <td></td>
 <td>0.01</td>
@@ -4362,7 +4655,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>outcm</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>156</td>
 <td></td>
 <td>0.04</td>
@@ -4371,7 +4664,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>健身</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>156</td>
 <td></td>
 <td>0.01</td>
@@ -4380,7 +4673,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>走</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>153</td>
 <td></td>
 <td>0.03</td>
@@ -4389,7 +4682,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>代谢综合征</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>152</td>
 <td></td>
 <td>0</td>
@@ -4398,7 +4691,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>运动</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>149</td>
 <td></td>
 <td>0.01</td>
@@ -4407,7 +4700,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>美国心脏协会</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>149</td>
 <td>4.45</td>
 <td>0.03</td>
@@ -4416,7 +4709,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>骨骼肌</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>148</td>
 <td></td>
 <td>0</td>
@@ -4425,7 +4718,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>超重</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>143</td>
 <td></td>
 <td>0.02</td>
@@ -4434,7 +4727,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>管理</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>142</td>
 <td></td>
 <td>0.01</td>
@@ -4443,7 +4736,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>流行病 学</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>142</td>
 <td></td>
 <td>0.01</td>
@@ -4452,7 +4745,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>胰岛素抵抗</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>140</td>
 <td></td>
 <td>0.02</td>
@@ -4461,7 +4754,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>饮食</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>139</td>
 <td></td>
 <td>0.01</td>
@@ -4470,7 +4763,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>有效性</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>136</td>
 <td></td>
 <td>0.01</td>
@@ -4479,7 +4772,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>男人</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>134</td>
 <td></td>
 <td>0.01</td>
@@ -4488,7 +4781,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>乳腺癌</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>132</td>
 <td></td>
 <td>0.02</td>
@@ -4497,7 +4790,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>身体成分</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>130</td>
 <td></td>
 <td>0.03</td>
@@ -4521,7 +4814,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <col style="width: 5%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>Freq</th>
 <th>Burst</th>
 <th>Centrality</th>
@@ -4532,7 +4825,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>763</td>
 <td>18.53</td>
 <td>0.09</td>
@@ -4541,7 +4834,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>随机对照试验</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>54</td>
 <td>15.41</td>
 <td>0</td>
@@ -4550,7 +4843,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>人体骨骼肌</td>
 <td>2011</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>98</td>
 <td>13.09</td>
 <td>0.01</td>
@@ -4559,7 +4852,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>抵抗运动</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>82</td>
 <td>11.36</td>
 <td>0</td>
@@ -4568,7 +4861,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>加速度 计</td>
 <td>2009</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>120</td>
 <td>10.87</td>
 <td>0.01</td>
@@ -4577,7 +4870,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>心肺健身</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>32</td>
 <td>10.75</td>
 <td>0</td>
@@ -4586,7 +4879,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>休闲时间</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>246</td>
 <td>10.74</td>
 <td>0.02</td>
@@ -4595,7 +4888,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>meta分析</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>33</td>
 <td>10.47</td>
 <td>0</td>
@@ -4604,7 +4897,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>人类</td>
 <td>2011</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>18</td>
 <td>9.68</td>
 <td>0</td>
@@ -4613,7 +4906,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>协会</td>
 <td>2013</td>
 </tr>
-<tr class="even">
+<tr>
 <td>55</td>
 <td>9.55</td>
 <td>0</td>
@@ -4622,7 +4915,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>绝经后妇女</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>25</td>
 <td>9.44</td>
 <td>0</td>
@@ -4631,7 +4924,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>青年成人</td>
 <td>2010</td>
 </tr>
-<tr class="even">
+<tr>
 <td>20</td>
 <td>9.38</td>
 <td>0</td>
@@ -4640,7 +4933,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>体质量指数</td>
 <td>2012</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>26</td>
 <td>9.1</td>
 <td>0</td>
@@ -4649,7 +4942,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>平衡</td>
 <td>2009</td>
 </tr>
-<tr class="even">
+<tr>
 <td>40</td>
 <td>9.05</td>
 <td>0</td>
@@ -4658,7 +4951,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>心肌梗塞</td>
 <td>2011</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>69</td>
 <td>9.04</td>
 <td>0.01</td>
@@ -4667,7 +4960,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>久坐行为</td>
 <td>2009</td>
 </tr>
-<tr class="even">
+<tr>
 <td>25</td>
 <td>8.75</td>
 <td>0</td>
@@ -4676,7 +4969,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>性别</td>
 <td>2009</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>26</td>
 <td>8.73</td>
 <td>0</td>
@@ -4685,7 +4978,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>非洲裔美国人</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>18</td>
 <td>8.44</td>
 <td>0</td>
@@ -4694,7 +4987,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>抑郁症</td>
 <td>2012</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>17</td>
 <td>8.38</td>
 <td>0</td>
@@ -4703,7 +4996,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>程序</td>
 <td>2013</td>
 </tr>
-<tr class="even">
+<tr>
 <td>46</td>
 <td>7.88</td>
 <td>0</td>
@@ -4712,7 +5005,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>教育</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>44</td>
 <td>7.54</td>
 <td>0.01</td>
@@ -4721,7 +5014,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>维护</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>43</td>
 <td>7.37</td>
 <td>0</td>
@@ -4730,7 +5023,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>骨密度</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>40</td>
 <td>6.85</td>
 <td>0</td>
@@ -4739,7 +5032,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>模型</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>41</td>
 <td>6.83</td>
 <td>0</td>
@@ -4748,7 +5041,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>计划的行为</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>29</td>
 <td>6.78</td>
 <td>0</td>
@@ -4757,7 +5050,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>损伤</td>
 <td>2010</td>
 </tr>
-<tr class="even">
+<tr>
 <td>29</td>
 <td>6.68</td>
 <td>0</td>
@@ -4766,7 +5059,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>大脑</td>
 <td>2009</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>79</td>
 <td>6.6</td>
 <td>0.01</td>
@@ -4775,7 +5068,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>健康促进</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>63</td>
 <td>6.58</td>
 <td>0</td>
@@ -4784,7 +5077,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>运动医学的</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>32</td>
 <td>6.42</td>
 <td>0</td>
@@ -4793,7 +5086,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>指引</td>
 <td>2009</td>
 </tr>
-<tr class="even">
+<tr>
 <td>47</td>
 <td>6.38</td>
 <td>0</td>
@@ -4802,7 +5095,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>随机对照试验</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>29</td>
 <td>6.09</td>
 <td>0</td>
@@ -4811,7 +5104,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>检讨</td>
 <td>2010</td>
 </tr>
-<tr class="even">
+<tr>
 <td>49</td>
 <td>6.04</td>
 <td>0.01</td>
@@ -4820,7 +5113,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>预测</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>19</td>
 <td>6.02</td>
 <td>0</td>
@@ -4829,7 +5122,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>人口</td>
 <td>2011</td>
 </tr>
-<tr class="even">
+<tr>
 <td>78</td>
 <td>5.89</td>
 <td>0.01</td>
@@ -4838,7 +5131,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>炎症</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>38</td>
 <td>5.82</td>
 <td>0</td>
@@ -4847,7 +5140,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>社会支持</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>32</td>
 <td>5.72</td>
 <td>0.01</td>
@@ -4856,7 +5149,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>心力衰竭</td>
 <td>2009</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>76</td>
 <td>5.62</td>
 <td>0.01</td>
@@ -4865,7 +5158,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>所有原因死亡</td>
 <td>2009</td>
 </tr>
-<tr class="even">
+<tr>
 <td>55</td>
 <td>5.61</td>
 <td>0</td>
@@ -4874,7 +5167,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>疲劳</td>
 <td>2009</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>35</td>
 <td>5.58</td>
 <td>0</td>
@@ -4883,7 +5176,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>糖尿病</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>32</td>
 <td>5.49</td>
 <td>0</td>
@@ -4892,7 +5185,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>2型糖尿病</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>49</td>
 <td>5.27</td>
 <td>0</td>
@@ -4901,7 +5194,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>焦虑</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>24</td>
 <td>5.12</td>
 <td>0</td>
@@ -4910,7 +5203,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>行为更改</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>309</td>
 <td>4.89</td>
 <td>0.02</td>
@@ -4919,7 +5212,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>心血管疾病</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>48</td>
 <td>4.51</td>
 <td>0.02</td>
@@ -4928,7 +5221,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>认知</td>
 <td>2010</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>149</td>
 <td>4.45</td>
 <td>0.03</td>
@@ -4937,7 +5230,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>骨骼肌</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>97</td>
 <td>4.35</td>
 <td>0.01</td>
@@ -4946,7 +5239,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>阿尔茨海默病</td>
 <td>2008</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>123</td>
 <td>4.28</td>
 <td>0.01</td>
@@ -4955,7 +5248,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>有氧运动</td>
 <td>2008</td>
 </tr>
-<tr class="even">
+<tr>
 <td>46</td>
 <td>4.18</td>
 <td>0</td>
@@ -4964,7 +5257,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>氧化应激</td>
 <td>2009</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>49</td>
 <td>4.07</td>
 <td>0</td>
@@ -4973,7 +5266,7 @@ science的领域排名，主要的研究领域为公共环境职业健康、体�
 <td>骨性关节炎</td>
 <td>2009</td>
 </tr>
-<tr class="even">
+<tr>
 <td>55</td>
 <td>3.87</td>
 <td>0</td>
@@ -5031,195 +5324,6 @@ alt="image-20180711231737440" /></p>
       </categories>
       <tags>
         <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>生物力学资料速查</title>
-    <url>/2022/12/03/quick_search/</url>
-    <content><![CDATA[<p>这里用于记录生物力学有关的资料以及网站，方便速查。</p>
-<hr />
-<h2 id="官网">官网</h2>
-<h3 id="bob">1. BOB</h3>
-<p><img
-src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20221205005224.png"
-style="width:60.0%" /></p>
-<p>BOB(Biomechanics of
-Bodies)是一个包含易用肌骨模型的软件，用于分析功能和量化模型。</p>
-<p>网站地址: <strong><a
-href="https://space.bilibili.com/121053892">点我</a></strong></p>
-<span id="more"></span>
-<h3 id="motion-lab-systems">2. Motion Lab Systems</h3>
-<p><img src="https://www.motion-labs.com/images/gaitlogo.png" /></p>
-<p>Motion Lab
-Systems是一个生物力学肌电和相关设备的网站，网站自带了处理C3D数据、肌电数据的软件（windows）。</p>
-<p>其中有两个免费的软件可以查看C3D数据。</p>
-<p>地址: <strong><a
-href="https://space.bilibili.com/121053892">点我</a></strong></p>
-<ul>
-<li>MLSivewer</li>
-<li>Mokka</li>
-</ul>
-<h3 id="theia-3d">3. THEIA 3D</h3>
-<p>无标记点动作捕捉</p>
-<p><img
-src="https://www.theiamarkerless.ca/wp-content/uploads/logo_red_black_name_runner_168x50.png" /></p>
-<p>网站地址: <strong><a
-href="https://www.theiamarkerless.ca/">点我</a></strong></p>
-<h3 id="btk-mokka">4. BTK &amp; Mokka</h3>
-<p>BTK（Biomechanical
-ToolKit）是python的C3D数据处理包，Mokka是一个Win平台下读取与可视化的软件，并且有个小型官网。</p>
-<ul>
-<li>BTK（更新到2016年9月） BTK文档：<strong><a
-href="http://biomechanical-toolkit.github.io/">点我</a></strong></li>
-<li>Mokka小型官网：<strong><a
-href="http://biomechanical-toolkit.github.io/mokka/index.html">点我</a></strong></li>
-</ul>
-<h3 id="c3d">5. C3D</h3>
-<p>C3D文件官网，C3D文件介绍，格式标准（PDF），处理C3D文件的软件</p>
-<p>网站地址: <strong><a
-href="https://www.c3d.org/index.html">点我</a></strong></p>
-<h3 id="isbs论坛官网">6. ISBS论坛官网</h3>
-<p>网站地址: <strong><a
-href="https://biomch-l.isbweb.org/">点我</a></strong></p>
-<ul>
-<li>生物力学讨论帖子</li>
-<li>工作招聘</li>
-<li><strong>每个月的生物力学文献更新📜</strong></li>
-</ul>
-<h3 id="the-biomechanist">7. The Biomechanist</h3>
-<p><img
-src="https://www.biomechanist.net/wp-content/uploads/2020/09/cropped-Logo-6-e1601280454906-4.png"
-style="width:40.0%" /></p>
-<p>网站地址: <strong><a
-href="https://www.biomechanist.net/">点我</a></strong></p>
-<p>我们是德国科隆体育大学“运动与医学中的人类技术”硕士课程的五名学生。我们每个人都来自一个完全不同的运动领域，但我们有一个共同点：对运动和生物力学的迷恋。我们认为这是体育和运动科学中被低估的一部分，并希望这个网站将有助于引起对这个令人兴奋的话题的更多关注。</p>
-<ul>
-<li>有关于生物力学基础教学</li>
-<li>有ISBS的YouTube视频教学</li>
-<li>有一些blog</li>
-</ul>
-<h3 id="simtk">8. SimTK</h3>
-<p>生物医学仿真工具，包含了生物学建模，生物力学建模等工具。</p>
-<p>网站地址: <strong><a href="https://simtk.org/">点我</a></strong></p>
-<ul>
-<li><p>Opensim</p>
-<p><img src="https://simtk.org/logos/opensim?dummy_value=509697024"
-style="width:10.0%" /></p>
-<p>提供易于使用、可扩展的软件，用于对神经肌肉骨骼系统进行建模、模拟、控制和分析。</p></li>
-<li><p>OpenCap</p>
-<p><img src="https://simtk.org/logos/opencap?dummy_value=2104624939"
-style="width:10.0%" /></p>
-<p>OpenCap是一个软件包，用于从智能手机视频中估计3D人体运动动态。</p></li>
-<li><p>还有很多</p></li>
-</ul>
-<h3 id="kintics-toolkit">9. Kintics Toolkit</h3>
-<p>用于处理C3D数据。 是学生和研究人员学习使用 Python 进行 3D
-生物力学数据处理的在线资源。 是一个开源的 Python
-包，它（仅）完成此处理的繁重工作，因此用户可以控制他们的数据。</p>
-<p>网站地址: <strong><a
-href="https://kineticstoolkit.uqam.ca">点我</a></strong></p>
-<p><img
-src="https://kineticstoolkit.uqam.ca/doc/_images/frontpage.gif" /></p>
-<ul>
-<li>有Github仓库</li>
-<li>有C3D处理说明文档</li>
-<li>有python教程</li>
-</ul>
-<hr />
-<h2 id="学习">学习</h2>
-<h3 id="选择无言b站">1. 选择无言（B站）</h3>
-<p>B站up主，估计是上体的人。</p>
-<p>有Visual
-3D的使用视频教程，Anybody建模的教程，以及其他python，Matlab在关于生物力学的应用。</p>
-<p>网站地址: <strong><a
-href="https://space.bilibili.com/121053892">点我</a></strong></p>
-<h3 id="working-with-btk-and-mokka">2. Working with BTK and Mokka</h3>
-<ul>
-<li>介绍在Mokka中可视化C3D文件。</li>
-<li>介绍在Matlab中读取C3D文件。</li>
-<li>下载连接</li>
-</ul>
-<p>网站地址: <strong><a
-href="https://www.biomechanist.net/btk-and-mokka/">点我</a></strong></p>
-<h3 id="bassettbiomechanics">3. bassettbiomechanics</h3>
-<p>生物力学基础、Visual 3D 视频教程。（需要注册，有些要收费）</p>
-<p><img
-src="https://bassettbiomechanics.com/wp-content/uploads/sites/7/2020/11/BassettBiomechanics_Header_in_line.png" /></p>
-<p>网站地址: <strong><a
-href="https://bassettbiomechanics.com">点我</a></strong></p>
-<h3 id="emg交互教学">4. EMG交互教学</h3>
-<p>带有肌电的信号采集动画，可以交互的观察理解肌电的信号采集原理，学习肌电的基础知识。</p>
-<ul>
-<li>网页下面还有两个交互工具（EMG
-神经肌肉模拟，EMG分析工具）可以学习一下</li>
-<li>网页下面有肌电的教学视频（EMG in Sports Biomechanics)可以看一下</li>
-</ul>
-<p>网站地址: <strong><a
-href="https://delsys.com/interactive-teaching-tools-for-beginners-learn-electromyography-emg/">点我</a></strong></p>
-<h3 id="emg期刊和emg报告标准">5. EMG期刊和EMG报告标准</h3>
-<ul>
-<li><p>EMG期刊</p>
-<p><img
-src="https://ars.els-cdn.com/content/image/1-s2.0-S1050641119X0005X-cov200h.gif" /></p>
-<p>The official journal of ISEK is the Journal of Electromyography and
-Kinesiology (JEK), published bimonthly at Elsevier Science.</p>
-<ul>
-<li>期刊内搜索“Tutorial”，有几篇肌电的教程</li>
-<li>期刊内容大多与表面肌电、运动相关</li>
-</ul>
-<p>网站地址: <strong><a
-href="https://www.sciencedirect.com/journal/journal-of-electromyography-and-kinesiology">点我</a></strong></p></li>
-<li><p>EMG报告标准</p>
-<p>网站地址: <strong><a
-href="https://isek.org/wp-content/uploads/2015/05/Standards-for-Reporting-EMG-Data.pdf">点我</a></strong></p></li>
-</ul>
-<h3 id="opensim深入教学">6. OpenSim深入教学</h3>
-<p>知乎上的一篇关于OpenSim的教学文章，确实是比较深入的了。</p>
-<p>网站地址: <strong><a
-href="https://zhuanlan.zhihu.com/p/523055552">点我</a></strong></p>
-<h3 id="simon聊聊opensim">7. Simon聊聊OpenSim</h3>
-<p>关于OpenSim的教程和笔记。</p>
-<p>网站地址: <strong><a
-href="https://www.zhihu.com/column/c_1376915554922442752">点我</a></strong></p>
-<h3 id="gaitlab.ir">8. Gaitlab.ir</h3>
-<p>应该是伊朗的步态实验室，好处就是，里面的相关资料里有：</p>
-<ul>
-<li>各种生物力学的书PDF，提供下载（<strong>免费</strong>）</li>
-</ul>
-<p>网站地址: <strong><a
-href="http://www.gaitlab.ir">点我</a></strong></p>
-<hr />
-<h2 id="人">人</h2>
-<h3 id="peter-b.-shull">1. Peter B. Shull</h3>
-<p>上海交通大学，Wearable Systems Lab</p>
-<p>我们的实验室旨在分析和训练人体运动。我们结合机器人、触觉和生物力学原理，使用嵌入式电子设备、实时模型、传感器融合算法和新型反馈设备开发可穿戴系统。我们力求了解自然环境中的运动和运动修改基础知识，例如家庭、办公室、公园或体育馆。</p>
-<p>网站地址: <strong><a
-href="http://www.wearablesystems.org/">点我</a></strong></p>
-<hr />
-<h2 id="github">Github</h2>
-<h3 id="biomechanics-dataset">1.Biomechanics dataset</h3>
-<p>包含公开的生物力学数据库。 - C3D格式 - 其他格式</p>
-<p>网站地址: <strong><a
-href="https://github.com/mkjung99/biomechanics_dataset">点我</a></strong></p>
-<h3 id="wpi-aim-lab">2.WPI AIM Lab</h3>
-<p><img
-src="https://avatars.githubusercontent.com/u/12138786?s=200&amp;v=4" /></p>
-<p>网站地址: <strong><a
-href="https://github.com/WPI-AIM">点我</a></strong></p>
-<p>WPI AIM Lab是WPI自动化与介入医学机器人研究实验室的一个仓库。</p>
-<p>与生物力学相关的库有:</p>
-<ul>
-<li>AIM_GaitCore(步态分析工具箱)</li>
-<li>AIM_Vicon(读取和分析Vicon数据的包，可以读取Vicon导出的CSV文件，自动填补丢失的点)</li>
-<li>AIM_GaitAnalysisToolkit(Vicon数据步态分析工具箱，分析步态，分离步态周期)</li>
-</ul>
-]]></content>
-      <categories>
-        <category>biomechanics</category>
-      </categories>
-      <tags>
-        <tag>资料</tag>
-        <tag>速查，笔记</tag>
       </tags>
   </entry>
 </search>

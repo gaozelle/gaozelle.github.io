@@ -150,7 +150,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://s2.loli.net/2022/07/27/HKG6QcCpNwXn7dY.png">
 <meta property="article:published_time" content="2022-08-25T08:16:48.000Z">
-<meta property="article:modified_time" content="2022-09-15T07:54:09.477Z">
+<meta property="article:modified_time" content="2025-08-12T17:03:17.823Z">
 <meta property="article:author" content="gazelle">
 <meta property="article:tag" content="模板">
 <meta name="twitter:card" content="summary">
@@ -489,7 +489,7 @@ role="doc-biblioref">3</a>]</sup></span></p>
 <table>
 <caption>Table 1. 我是表</caption>
 <thead>
-<tr class="header">
+<tr>
 <th>a</th>
 <th>b</th>
 <th>c</th>
@@ -497,13 +497,13 @@ role="doc-biblioref">3</a>]</sup></span></p>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>1</td>
 <td>2</td>
 <td>3</td>
 <td>2</td>
 </tr>
-<tr class="even">
+<tr>
 <td>3</td>
 <td>2</td>
 <td>1</td>
@@ -513,19 +513,18 @@ role="doc-biblioref">3</a>]</sup></span></p>
 </table>
 </div>
 <p>引用一个图Figure 1, 2</p>
-<figure>
+<figure id="fig:重复测量流程图2">
 <img src="https://s2.loli.net/2022/07/27/HKG6QcCpNwXn7dY.png"
-id="fig:重复测量流程图2" style="width:50.0%" alt="Figure 1. 图的标题" />
+style="width:50.0%" alt="Figure 1. 图的标题" />
 <figcaption aria-hidden="true">Figure 1. 图的标题</figcaption>
 </figure>
 <p>测试公式：见公式Equation 1 <span id="eq:eqn1"><span
 class="math display">\[P_i(x) = \sum_i a_i
 x^i\qquad{(1)}\]</span></span></p>
-<figure>
+<figure id="fig:重复测量流程图">
 <img
 src="https://pic1.zhimg.com/80/v2-4ac4078f118ecadd756cd639c5862768_1440w.jpg"
-id="fig:重复测量流程图" style="width:50.0%"
-alt="Figure 2. 重复测量流程图" />
+style="width:50.0%" alt="Figure 2. 重复测量流程图" />
 <figcaption aria-hidden="true">Figure 2. 重复测量流程图</figcaption>
 </figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandoc -i <span class="string">&#x27;.\LME线性混合模型处理ERP(test).md&#x27;</span> -o test.docx --filter pandoc-crossref --cite</span><br></pre></td></tr></table></figure>
@@ -551,12 +550,14 @@ https://www.sciencedirect.com/science/article/pii/S1878929322000147</span><a hre
 </li>
 </ol>
 </div>
+</div>
 </div></li>
 </ol>
 <h1 class="unnumbered" id="bibliography">Reference</h1>
-<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0"
+role="list">
 <div id="ref-marusicNeuralBasesAgeRelated2022" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[1] </div><div
 class="csl-right-inline">MARUSIC U. PESKAR M. DE PAUW K. et al. Neural
 <span>Bases</span> of <span>Age-Related Sensorimotor Slowing</span> in
@@ -565,7 +566,7 @@ Aging Neuroscience, 2022, 14: 819576. <a
 target="_blank" rel="noopener" href="https://doi.org/10.3389/fnagi.2022.819576">https://doi.org/10.3389/fnagi.2022.819576</a>.</div>
 </div>
 <div id="ref-tenbrinkeEffectsComputerizedCognitive2019"
-class="csl-entry" role="doc-biblioentry">
+class="csl-entry" role="listitem">
 <div class="csl-left-margin">[2] </div><div class="csl-right-inline">TEN
 BRINKE L F. BEST J R. CHAN J L C. et al. The <span>Effects</span> of
 <span>Computerized Cognitive Training With</span> and <span>Without
@@ -576,7 +577,7 @@ Controlled Trial</span>[J/OL]. The Journals of Gerontology: Series A,
 target="_blank" rel="noopener" href="https://academic.oup.com/biomedgerontology/advance-article/doi/10.1093/gerona/glz115/5485711">https://academic.oup.com/biomedgerontology/advance-article/doi/10.1093/gerona/glz115/5485711</a>.</div>
 </div>
 <div id="ref-heiseUtilityLinearMixed2022" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[3] </div><div
 class="csl-right-inline">HEISE M J. MON S K. BOWMAN L C. Utility of
 linear mixed effects models for event-related potential research with
@@ -740,7 +741,7 @@ target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/artic
                 
                   <a href="/archives/%7C%7C%20archive">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -916,7 +917,7 @@ target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/artic
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2024</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

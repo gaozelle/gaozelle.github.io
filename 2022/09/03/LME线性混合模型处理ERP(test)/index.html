@@ -490,10 +490,10 @@ href="#ref-heiseUtilityLinearMixed2022"
 role="doc-biblioref">1</a>]</sup></span>的处理过程找到了GitHub上的<a
 target="_blank" rel="noopener" href="https://github.com/basclab/LME_MixedEffectsERPTutorial/tree/main/LMETutorialScripts">数据处理脚本</a>。脚本共有7个，其中1-5是Matlab从Continues
 EEG到ERP的处理过程，脚本6-7是R语言对ERP进行LME混合线性模型的处理过程，如Figure 1。</p>
-<figure>
+<figure id="fig:a">
 <img
 src="https://user-images.githubusercontent.com/49215489/148004509-6a02682d-62da-42e5-8828-5feb35ea8ff6.png"
-id="fig:a" style="width:70.0%" alt="Figure 1. 文献中的处理流程" />
+style="width:70.0%" alt="Figure 1. 文献中的处理流程" />
 <figcaption aria-hidden="true">Figure 1. 文献中的处理流程</figcaption>
 </figure>
 <span id="more"></span>
@@ -520,11 +520,10 @@ LMEM思维方式”，越来越多的研究人员现在以“长格式”而不�
 函数允许研究人员将数据文件从宽格式转换为长格式，反之亦然。<br />
 想象一个假设的实验（我们将在本文中将其称为“研究
 1”），其中研究人员招募100名本科生，并要求他们列出他们在大学学习的两个高声望课程和两个低声望课程。声望被定义为课程在学生成绩单上“看起来不错”的程度（例如，困难的科学课程、荣誉课程、研究生水平的课程）。然后要求学生在9分制上表明他们对四个班级中的每一个课程的喜好。（Figure 2）</p>
-<figure>
+<figure id="fig:b">
 <img
 src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220831210157.png"
-id="fig:b" style="width:70.0%"
-alt="Figure 2. 宽格式与长格式的相同数据比较" />
+style="width:70.0%" alt="Figure 2. 宽格式与长格式的相同数据比较" />
 <figcaption aria-hidden="true">Figure 2.
 宽格式与长格式的相同数据比较</figcaption>
 </figure>
@@ -545,10 +544,10 @@ alt="Figure 2. 宽格式与长格式的相同数据比较" />
 MODEL + ERROR\)</span>（Figure 3）。每个统计模型都基于结果变量(<span
 class="math inline">\(β0\)</span>)和一个或多个预测变量（此处为<span
 class="math inline">\(β1X\)</span>）的（加权）平均值进行预测。<strong>独立数据分析</strong>（例如，受试者间分析）和<strong>非独立数据分析</strong>（例如，受试者内分析）之间的主要区别在于误差项的复杂性。</p>
-<figure>
+<figure id="fig:c">
 <img
 src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220902001711.png"
-id="fig:c" alt="Figure 3. 独立数据与非独立数据的比较" />
+alt="Figure 3. 独立数据与非独立数据的比较" />
 <figcaption aria-hidden="true">Figure 3.
 独立数据与非独立数据的比较</figcaption>
 </figure>
@@ -598,18 +597,18 @@ id="扩展到具有多个二分预测变量的设计">扩展到具有多个二�
 <p>LMEM框架还可以用于检查连续的受试者间预测因子与一个或多个其他预测变量的交互作用。<br />
 如果预测变量是在受试者内，应该聚类平均值居中（cluster-mean）,
 Figure 4。</p>
-<figure>
+<figure id="fig:d">
 <img
 src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220902231832.png"
-id="fig:d" alt="Figure 4. 受试者间（性别）" />
+alt="Figure 4. 受试者间（性别）" />
 <figcaption aria-hidden="true">Figure 4. 受试者间（性别）</figcaption>
 </figure>
 <p>如果预测变量是在受试者间，应该以总平均居中（grand-mean）,
 Figure 5。</p>
-<figure>
+<figure id="fig:e">
 <img
 src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220902231936.png"
-id="fig:e" alt="Figure 5. 受试者内（科学）" />
+alt="Figure 5. 受试者内（科学）" />
 <figcaption aria-hidden="true">Figure 5. 受试者内（科学）</figcaption>
 </figure>
 <p><strong>请注意，受试者内的连续预测变量可以是时间，以便模型可以检查受试者随时间的变化。</strong></p>
@@ -646,10 +645,9 @@ LMEM 非常复杂，以至于迭代估计过程无法收敛。</p></li>
 <h4 id="随机截距">随机截距</h4>
 <p>通过在最大随机效应结构中确定适当的随机截距来解释其非独立性。Figure 6中的第一条规则确定了什么时候需要随机截距。当考虑的单元是受试者时，只要给定受试者多个数据点（测试点），就应该包括一个由受试者产生的随机截距。
 当每个受试者有多个数据点并且每个项目有多个数据点时，必须通过添加按受试者随机截距和按项目随机截距来考虑这两个非独立来源。</p>
-<figure>
+<figure id="fig:f">
 <img
 src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220907235123.png"
-id="fig:f"
 alt="Figure 6. 一组关于应包含在最大随机效应结构中的受试者和项目随机效应类型的简单规则" />
 <figcaption aria-hidden="true">Figure 6.
 一组关于应包含在最大随机效应结构中的受试者和项目随机效应类型的简单规则</figcaption>
@@ -665,10 +663,9 @@ alt="Figure 6. 一组关于应包含在最大随机效应结构中的受试者�
 16 辆汽车进行评分(Figure 7)。
 请注意，声望的随机斜率不需要随机斜率，因为声望在项目内不会变化（每辆目标汽车的声望要么低要么高）。</li>
 </ul>
-<figure>
+<figure id="fig:g">
 <img
 src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220912143752.png"
-id="fig:g"
 alt="Figure 7. LMEM 和 R 脚本用于具有一个二分预测变量（声望）的研究，该变量 在 受试者内部但在项目之间有所不同" />
 <figcaption aria-hidden="true">Figure 7. LMEM 和 R
 脚本用于具有一个二分预测变量（声望）的研究，该变量 在
@@ -684,10 +681,9 @@ alt="Figure 7. LMEM 和 R 脚本用于具有一个二分预测变量（声望）
 LMEM的最大随机效应结构包含三个随机效应（参见Figure 8）。鉴于声望（背景）因学科而异，因此无需包括副学科
 声望的随机斜率。</li>
 </ul>
-<figure>
+<figure id="fig:h">
 <img
 src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220912144628.png"
-id="fig:h"
 alt="Figure 8. LMEM 和 R 脚本用于具有一个二分预测器（声望）的研究，该预测器在受试者之间但在项目内部有所不同" />
 <figcaption aria-hidden="true">Figure 8. LMEM 和 R
 脚本用于具有一个二分预测器（声望）的研究，该预测器在受试者之间但在项目内部有所不同</figcaption>
@@ -698,10 +694,10 @@ alt="Figure 8. LMEM 和 R 脚本用于具有一个二分预测器（声望）的
 <p>在确定了研究的最大随机效应结构后，下一步是估计相应的
 LMEM。不幸的是，导出参数估计的迭代 ReML
 过程并不总是“收敛”（即，数值优化算法不能可靠地确定对数似然函数的最大值）。如果模型无法收敛，可以使用Figure 9中的方式补救。</p>
-<figure>
+<figure id="fig:i">
 <img
 src="https://gazelle-pic-bed.oss-cn-hangzhou.aliyuncs.com/20220912162649.png"
-id="fig:i" alt="Figure 9. 可用于实现 LMEM 收敛的 20 种补救措施清单" />
+alt="Figure 9. 可用于实现 LMEM 收敛的 20 种补救措施清单" />
 <figcaption aria-hidden="true">Figure 9. 可用于实现 LMEM 收敛的 20
 种补救措施清单</figcaption>
 </figure>
@@ -922,18 +918,18 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42021257/article/d
 <p><a
 target="_blank" rel="noopener" href="https://mfviz.com/hierarchical-models/">【心理学实验】SPSS两因素重复测量方差分析
 简单效应分析(有代码在评论里)</a></p>
-<figure>
+<figure id="fig:重复测量流程图">
 <img
 src="https://pic1.zhimg.com/80/v2-4ac4078f118ecadd756cd639c5862768_1440w.jpg"
-id="fig:重复测量流程图" style="width:50.0%"
-alt="Figure 10. 重复测量流程图" />
+style="width:50.0%" alt="Figure 10. 重复测量流程图" />
 <figcaption aria-hidden="true">Figure 10. 重复测量流程图</figcaption>
 </figure></li>
 </ul>
 <h1 class="unnumbered" id="bibliography">Reference</h1>
-<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0"
+role="list">
 <div id="ref-heiseUtilityLinearMixed2022" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[1] </div><div
 class="csl-right-inline">HEISE M J. MON S K. BOWMAN L C. Utility of
 linear mixed effects models for event-related potential research with
@@ -942,7 +938,7 @@ infants and children[J/OL]. Developmental Cognitive Neuroscience, 2022,
 target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S1878929322000147">https://www.sciencedirect.com/science/article/pii/S1878929322000147</a>.</div>
 </div>
 <div id="ref-brauerLinearMixedeffectsModels2018" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[2] </div><div
 class="csl-right-inline">BRAUER M. CURTIN J J. Linear mixed-effects
 models and the analysis of nonindependent data: <span>A</span> unified
@@ -952,7 +948,7 @@ Methods, 2018, 23(3): 389-411[2022-08-31]. <a
 target="_blank" rel="noopener" href="http://doi.apa.org/getdoi.cfm?doi=10.1037/met0000159">http://doi.apa.org/getdoi.cfm?doi=10.1037/met0000159</a>.</div>
 </div>
 <div id="ref-jinAllornoneNeuralMechanisms2022" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[3] </div><div class="csl-right-inline">JIN
 H. HAYWARD W G. CORBALLIS P M. All-or-none neural mechanisms underlying
 face categorization: Evidence from the <span>N170</span>[J/OL]. Cerebral
@@ -960,7 +956,7 @@ Cortex, 2022: bhac101[2022-09-02]. <a
 target="_blank" rel="noopener" href="https://doi.org/10.1093/cercor/bhac101">https://doi.org/10.1093/cercor/bhac101</a>.</div>
 </div>
 <div id="ref-batesParsimoniousMixedModels2018" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[4] </div><div
 class="csl-right-inline">BATES D. KLIEGL R. VASISHTH S. et al.
 Parsimonious <span>Mixed Models</span>[EB/OL]. (2018-05-26)[2022-09-02].
@@ -968,7 +964,7 @@ Parsimonious <span>Mixed Models</span>[EB/OL]. (2018-05-26)[2022-09-02].
 target="_blank" rel="noopener" href="http://arxiv.org/abs/1506.04967">http://arxiv.org/abs/1506.04967</a>.</div>
 </div>
 <div id="ref-wangAcuteExerciseAmeliorates2015" class="csl-entry"
-role="doc-biblioentry">
+role="listitem">
 <div class="csl-left-margin">[5] </div><div
 class="csl-right-inline">WANG D. ZHOU C. CHANG Y K. Acute exercise
 ameliorates craving and inhibitory deficits in methamphetamine: <span>An
@@ -1132,7 +1128,7 @@ target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/artic
                 
                   <a href="/archives/%7C%7C%20archive">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1309,7 +1305,7 @@ N170 的证据</span></a><ol class="nav-child"><li class="nav-item nav-level-3">
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2024</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
