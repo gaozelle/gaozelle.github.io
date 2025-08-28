@@ -149,7 +149,6 @@
 <meta property="og:description" content="123456789101112131415161718chapters: falsefigureTitle: &quot;图&quot;figPrefix: &quot;图&quot;tableTitle: &quot;表&quot;tablePrefix: &quot;表&quot;tableTemplate: |  *$$tableTitle$$ $$i$$*$$titleDelim$$ $$">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://s2.loli.net/2022/07/27/HKG6QcCpNwXn7dY.png">
-<meta property="og:image" content="https://pic1.zhimg.com/80/v2-4ac4078f118ecadd756cd639c5862768_1440w.jpg">
 <meta property="article:published_time" content="2022-08-25T08:16:48.000Z">
 <meta property="article:modified_time" content="2025-08-12T17:03:17.823Z">
 <meta property="article:author" content="gazelle">
@@ -474,13 +473,21 @@
 
       
         <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">chapters:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">figureTitle:</span> <span class="string">&quot;图&quot;</span></span><br><span class="line"><span class="attr">figPrefix:</span> <span class="string">&quot;图&quot;</span></span><br><span class="line"><span class="attr">tableTitle:</span> <span class="string">&quot;表&quot;</span></span><br><span class="line"><span class="attr">tablePrefix:</span> <span class="string">&quot;表&quot;</span></span><br><span class="line"><span class="attr">tableTemplate:</span> <span class="string">|</span></span><br><span class="line"><span class="string">  *$$tableTitle$$ $$i$$*$$titleDelim$$ $$t$$</span></span><br><span class="line"><span class="string"></span><span class="attr">bibliography:</span> <span class="string">&quot;path/EEG.bib&quot;</span></span><br><span class="line"><span class="attr">csl:</span> <span class="string">chinese-gb7714-2005-numeric.csl</span> </span><br><span class="line"><span class="attr">reference-section-title:</span> <span class="string">Reference</span></span><br><span class="line"><span class="attr">tableTemplate:</span> <span class="string">|</span></span><br><span class="line"><span class="string">  *$$tableTitle$$ $$i$$*$$titleDelim$$ $$t$$</span></span><br><span class="line"><span class="string"></span><span class="attr">link-citations:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">lang:</span> <span class="string">en-GB</span></span><br><span class="line"><span class="attr">papersize:</span> <span class="string">a4</span></span><br><span class="line"><span class="attr">colorlinks:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">links-as-notes:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">fontsize:</span> <span class="number">11.</span><span class="string">5pt</span></span><br></pre></td></tr></table></figure>
-  <span id="more"></span>
-<h1 id="LME线性混合模型处理ERP"><a href="#LME线性混合模型处理ERP" class="headerlink" title="LME线性混合模型处理ERP"></a>LME线性混合模型处理ERP</h1><h2 id="处理流程"><a href="#处理流程" class="headerlink" title="处理流程"></a>处理流程</h2><p>根据论文《线性混合效应模型在婴儿和儿童事件相关潜力研究中的效用》<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>的处理过程找到了GitHub上的<a target="_blank" rel="noopener" href="https://github.com/basclab/LME_MixedEffectsERPTutorial/tree/main/LMETutorialScripts">数据处理脚本</a>。脚本共有7个，其中1-5是Matlab从Continues EEG到ERP的处理过程，脚本6-7是R语言对ERP进行LME混合线性模型的处理过程，如下图。</p>
-<p>测试引用[@marusicNeuralBasesAgeRelated2022; @tenbrinkeEffectsComputerizedCognitive2019; @heiseUtilityLinearMixed2022] </p>
-<p>吧啦吧啦吧啦，见[@tbl:表头]</p>
-<p>: 我是表 {#tbl:表头}</p>
-<div class="table-container">
+<p><span id="more"></span></p>
+<h1 id="lme线性混合模型处理erp">LME线性混合模型处理ERP</h1>
+<h2 id="处理流程">处理流程</h2>
+<p>根据论文《线性混合效应模型在婴儿和儿童事件相关潜力研究中的效用》<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>的处理过程找到了GitHub上的<a
+target="_blank" rel="noopener" href="https://github.com/basclab/LME_MixedEffectsERPTutorial/tree/main/LMETutorialScripts">数据处理脚本</a>。脚本共有7个，其中1-5是Matlab从Continues
+EEG到ERP的处理过程，脚本6-7是R语言对ERP进行LME混合线性模型的处理过程，如下图。</p>
+<p>测试引用<span class="citation"
+data-cites="marusicNeuralBasesAgeRelated2022 tenbrinkeEffectsComputerizedCognitive2019 heiseUtilityLinearMixed2022"><sup>[<a
+href="#ref-marusicNeuralBasesAgeRelated2022"
+role="doc-biblioref">1</a>–<a href="#ref-heiseUtilityLinearMixed2022"
+role="doc-biblioref">3</a>]</sup></span></p>
+<p>吧啦吧啦吧啦，见Table 1</p>
+<div id="tbl:表头">
 <table>
+<caption>Table 1. 我是表</caption>
 <thead>
 <tr>
 <th>a</th>
@@ -505,21 +512,80 @@
 </tbody>
 </table>
 </div>
-<p>引用一个图[@fig:重复测量流程图2; @fig:重复测量流程图]</p>
-<p><img src="https://s2.loli.net/2022/07/27/HKG6QcCpNwXn7dY.png" alt="图的标题">{#fig:重复测量流程图2 width=50% }</p>
-<p>测试公式：见公式[@eq:eqn1]</p>
-<p><script type="math/tex">P_i(x) = \sum_i a_i x^i</script> {#eq:eqn1}</p>
-<p><img src="https://pic1.zhimg.com/80/v2-4ac4078f118ecadd756cd639c5862768_1440w.jpg" alt="重复测量流程图">{#fig:重复测量流程图 width=50%}</p>
+<p>引用一个图Figure 1, 2</p>
+<figure id="fig:重复测量流程图2">
+<img src="https://s2.loli.net/2022/07/27/HKG6QcCpNwXn7dY.png"
+style="width:50.0%" alt="Figure 1. 图的标题" />
+<figcaption aria-hidden="true">Figure 1. 图的标题</figcaption>
+</figure>
+<p>测试公式：见公式Equation 1 <span id="eq:eqn1"><span
+class="math display">\[P_i(x) = \sum_i a_i
+x^i\qquad{(1)}\]</span></span></p>
+<figure id="fig:重复测量流程图">
+<img
+src="https://pic1.zhimg.com/80/v2-4ac4078f118ecadd756cd639c5862768_1440w.jpg"
+style="width:50.0%" alt="Figure 2. 重复测量流程图" />
+<figcaption aria-hidden="true">Figure 2. 重复测量流程图</figcaption>
+</figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandoc -i <span class="string">&#x27;.\LME线性混合模型处理ERP(test).md&#x27;</span> -o test.docx --filter pandoc-crossref --cite</span><br></pre></td></tr></table></figure>
-<h2 id="hexo中使用pandoc"><a href="#hexo中使用pandoc" class="headerlink" title="hexo中使用pandoc"></a>hexo中使用pandoc</h2><ol>
-<li>安装<code>hexo-renderer-pandoc</code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure></li>
-<li>修改hexo文件夹下的<code>_config.yml</code><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">pandoc:</span></span><br><span class="line"><span class="attr">filters:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">pandoc-crossref</span></span><br><span class="line"><span class="attr">extra:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">citeproc:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">bibliography:</span> <span class="string">&quot;/Users/macgazelle/blog/hexo/source/_posts/EEG.bib&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">csl:</span> <span class="string">&quot;/Users/macgazelle/blog/hexo/source/_posts/chinese-gb7714-2015-numeric.csl&quot;</span> </span><br><span class="line"><span class="attr">meta:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">link-citations:</span> <span class="literal">true</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">reference-section-title:</span> <span class="string">Reference</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">colorlinks:</span> <span class="literal">true</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">lang:</span> <span class="string">en-GB</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">figPrefix:</span> <span class="string">&quot;Figure&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">tblPrefix:</span> <span class="string">&quot;Table&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">tableTitle:</span> <span class="string">&quot;Table&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">figureTitle:</span> <span class="string">&quot;Figure&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">titleDelim:</span> <span class="string">.</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">eqnPrefix:</span> <span class="string">&quot;Equation&quot;</span></span><br><span class="line"><span class="attr">template:</span></span><br><span class="line"><span class="attr">mathEngine:</span></span><br></pre></td></tr></table></figure></li>
-<li><p>头文件yml记得要加两句   </p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">disableNunjucks:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>hexo部署的时候，记得clean一下，用下面的命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Mjha B ,  Skma B ,  Lcba B . Utility of Linear Mixed Effects Models for Event-Related Potential Research with Infants and Children.  2022. https://www.sciencedirect.com/science/article/pii/S1878929322000147</span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div>&lt;/div&gt;</p>
+<h2 id="hexo中使用pandoc">hexo中使用pandoc</h2>
+<ol type="1">
+<li><p>安装<code>hexo-renderer-pandoc</code> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure></p></li>
+<li><p>修改hexo文件夹下的<code>_config.yml</code> <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">pandoc:</span></span><br><span class="line"><span class="attr">filters:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">pandoc-crossref</span></span><br><span class="line"><span class="attr">extra:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">citeproc:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">bibliography:</span> <span class="string">&quot;/Users/macgazelle/blog/hexo/source/_posts/EEG.bib&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">csl:</span> <span class="string">&quot;/Users/macgazelle/blog/hexo/source/_posts/chinese-gb7714-2015-numeric.csl&quot;</span> </span><br><span class="line"><span class="attr">meta:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">link-citations:</span> <span class="literal">true</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">reference-section-title:</span> <span class="string">Reference</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">colorlinks:</span> <span class="literal">true</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">lang:</span> <span class="string">en-GB</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">figPrefix:</span> <span class="string">&quot;Figure&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">tblPrefix:</span> <span class="string">&quot;Table&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">tableTitle:</span> <span class="string">&quot;Table&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">figureTitle:</span> <span class="string">&quot;Figure&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">titleDelim:</span> <span class="string">.</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">eqnPrefix:</span> <span class="string">&quot;Equation&quot;</span></span><br><span class="line"><span class="attr">template:</span></span><br><span class="line"><span class="attr">mathEngine:</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>头文件yml记得要加两句<br />
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">disableNunjucks:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>hexo部署的时候，记得clean一下，用下面的命令 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure></p>
+<div id="footnotes">
+<hr>
+<div id="footnotelist">
+<ol style="list-style:none; padding-left: 0;">
+<li id="fn:1">
+<span
+style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span
+style="display: inline-block; vertical-align: top;">Mjha B , Skma B ,
+Lcba B . Utility of Linear Mixed Effects Models for Event-Related
+Potential Research with Infants and Children. 2022.
+https://www.sciencedirect.com/science/article/pii/S1878929322000147</span><a href="#fnref:1" rev="footnote">
+↩︎</a>
 </li>
 </ol>
+</div>
+</div>
+</div></li>
+</ol>
+<h1 class="unnumbered" id="bibliography">Reference</h1>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0"
+role="list">
+<div id="ref-marusicNeuralBasesAgeRelated2022" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[1] </div><div
+class="csl-right-inline">MARUSIC U. PESKAR M. DE PAUW K. et al. Neural
+<span>Bases</span> of <span>Age-Related Sensorimotor Slowing</span> in
+the <span>Upper</span> and <span>Lower Limbs</span>[J/OL]. Frontiers in
+Aging Neuroscience, 2022, 14: 819576. <a
+target="_blank" rel="noopener" href="https://doi.org/10.3389/fnagi.2022.819576">https://doi.org/10.3389/fnagi.2022.819576</a>.</div>
+</div>
+<div id="ref-tenbrinkeEffectsComputerizedCognitive2019"
+class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">TEN
+BRINKE L F. BEST J R. CHAN J L C. et al. The <span>Effects</span> of
+<span>Computerized Cognitive Training With</span> and <span>Without
+Physical Exercise</span> on <span>Cognitive Function</span> in
+<span>Older Adults</span>: <span>An</span> 8-<span>Week Randomized
+Controlled Trial</span>[J/OL]. The Journals of Gerontology: Series A,
+2019: glz115[2022-08-17]. <a
+target="_blank" rel="noopener" href="https://academic.oup.com/biomedgerontology/advance-article/doi/10.1093/gerona/glz115/5485711">https://academic.oup.com/biomedgerontology/advance-article/doi/10.1093/gerona/glz115/5485711</a>.</div>
+</div>
+<div id="ref-heiseUtilityLinearMixed2022" class="csl-entry"
+role="listitem">
+<div class="csl-left-margin">[3] </div><div
+class="csl-right-inline">HEISE M J. MON S K. BOWMAN L C. Utility of
+linear mixed effects models for event-related potential research with
+infants and children[J/OL]. Developmental Cognitive Neuroscience, 2022,
+54: 101070[2022-08-27]. <a
+target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S1878929322000147">https://www.sciencedirect.com/science/article/pii/S1878929322000147</a>.</div>
+</div>
+</div>
 
       
     </div>
@@ -831,7 +897,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LME%E7%BA%BF%E6%80%A7%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B%E5%A4%84%E7%90%86ERP"><span class="nav-number">1.</span> <span class="nav-text">LME线性混合模型处理ERP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">处理流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo%E4%B8%AD%E4%BD%BF%E7%94%A8pandoc"><span class="nav-number">1.2.</span> <span class="nav-text">hexo中使用pandoc</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lme%E7%BA%BF%E6%80%A7%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B%E5%A4%84%E7%90%86erp"><span class="nav-number">1.</span> <span class="nav-text">LME线性混合模型处理ERP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">处理流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo%E4%B8%AD%E4%BD%BF%E7%94%A8pandoc"><span class="nav-number">1.2.</span> <span class="nav-text">hexo中使用pandoc</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bibliography"><span class="nav-number">2.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
